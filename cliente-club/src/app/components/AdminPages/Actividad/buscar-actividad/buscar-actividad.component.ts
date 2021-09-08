@@ -11,6 +11,9 @@ export class BuscarActividadComponent implements OnInit {
 
   actividades: any = [];
   act = { id: "", descripcion: "" };
+
+  reintentar: boolean = false;
+  mensaje: string = "";
   
   constructor(private usuariosService: UsuariosService, private router: Router) { }
 
@@ -50,4 +53,31 @@ export class BuscarActividadComponent implements OnInit {
     )
   }
 
+  //Agregar actividad
+  registrar(){
+		
+    console.log(this.act)
+    
+    this.usuariosService.guardarActividad(this.act).subscribe(
+      res => {
+        let result:any=res;
+        console.log(result.message);
+        this.router.navigate(['admin/home']);
+        
+      },
+      err => {
+        console.log(err.error.message);
+        this.reintentar = true;
+        this.mensaje = err.error.message;
+      }
+    )
+	}
+
+  recargarForm() {
+    this.reintentar = false;
+    this.mensaje = "";
+  }
+
+
 }
+

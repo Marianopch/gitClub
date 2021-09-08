@@ -1,26 +1,63 @@
 <app-navigation></app-navigation>
 
-<table class="table table-success table-striped table-hover table-sm">
-    <thead >
-        <th>ID</th>
-        <th>Descripcion</th>
-    </thead>
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Nueva Actividad
+</button>
 
-    <tbody *ngIf="actividades.length > 0; else fila">
-        <tr *ngFor=" let actividad of actividades">
-            <td><input type="text" name="ID" [(ngModel)]="actividad.Id_Actividad"></td>
-            <td><input type="text" name="Descripcion" [(ngModel)]="actividad.Descripcion_Actividad"></td>
-            <td>
-                <button class="btn btn-info" (click)="modificarAct(actividad)"> Modificar </button>
-                <button class="btn btn-danger" (click)="eliminarAct(actividad.Id_Actividad)"> Eliminar </button>
-            </td>
-        </tr>
-    </tbody>
-    <ng-template #fila>
-        <tbody>
-            <tr>
-                <td colspan="4">No hay mas filas</td>
+<div class="container">
+    <table class="table table-success table-bordered border-primary">
+
+        <thead>
+            <th>ID</th>
+            <th>Descripcion</th>
+            <th></th>
+        </thead>
+
+        <tbody *ngIf="actividades.length > 0; else fila">
+            <tr *ngFor=" let actividad of actividades">
+                <td><input type="text" name="ID" [(ngModel)]="actividad.Id_Actividad"></td>
+                <td><input type="text" name="Descripcion" [(ngModel)]="actividad.Descripcion_Actividad"></td>
+                <td>
+                    <button class="btn btn-info" (click)="modificarAct(actividad)"> Modificar </button>
+                    <button class="btn btn-danger" (click)="eliminarAct(actividad.Id_Actividad)"> Eliminar </button>
+                </td>
             </tr>
         </tbody>
-    </ng-template>
-</table>
+        <ng-template #fila>
+            <tbody>
+                <tr>
+                    <td colspan="4">No hay mas filas</td>
+                </tr>
+            </tbody>
+        </ng-template>
+    </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva Actividad</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div *ngIf="!reintentar">
+
+
+                    <form>
+                        <label>Nombre de la actividad</label>
+                        <input type="text" name="descripcion" [(ngModel)]="act.descripcion" placeholder="Descripcion"
+                            class="form-control">
+                        <button class="btn btn-success btn-block" (click)="registrar()">Enviar</button>
+                    </form>
+                </div>
+
+
+                <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn-guardar" data-bs-dismiss="modal">Crear</button>
+            </div> -->
+            </div>
+        </div>
+    </div>
