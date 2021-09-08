@@ -1,0 +1,16 @@
+<app-navigation></app-navigation>
+
+
+<div *ngIf="!reintentar">
+
+
+    <form >
+        <input type="text" name="descripcion" [(ngModel)]="act.descripcion" placeholder="Descripcion"
+            class="form-control">
+        <button class="btn btn-success btn-block" (click)="registrar()">Enviar</button>
+    </form>
+</div>
+<!-- <div *ngIf="reintentar" class="card-body">
+    {{mensaje}} <br>
+    <button class="btn btn-info" (click)=recargarForm()>Reintentar</button>
+</div> -->

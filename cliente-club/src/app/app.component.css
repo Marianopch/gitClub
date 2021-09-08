@@ -1,0 +1,8 @@
+/* para que los campos number no tengan la flechita y se pueda completar el campo */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}    
+  

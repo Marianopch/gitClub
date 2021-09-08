@@ -1,0 +1,80 @@
+<app-navigation></app-navigation>
+
+<h3><b> <u> REGISTRO ALTA SOCIO</u></b></h3>
+
+<div *ngIf="!reintentar">
+    <div class="container">
+
+        <form (submit)=registrar()>
+
+            <input type="text" name="Numero_Usuario" [(ngModel)]="user.Numero_Usuario" placeholder="Numero Socio"
+                class="form-control" autofocus>
+            <div [ngSwitch]=" errorNumUs" >
+                <div *ngSwitchCase="1">Debes completar el campo</div>
+                <div *ngSwitchCase="2">Numero de usuario muy largo</div>
+                <div *ngSwitchCase="3">El formato del usuario SOCIO debe comenzar con la letra S y finalizar con 5
+                    numeros
+                    max.
+                    EJ: S00001 .</div>
+            </div>
+            <input type="text" name="Nombre_Usuario" [(ngModel)]="user.Nombre_Usuario" placeholder="Nombre"
+                class="form-control">
+            <div [ngSwitch]="errorNombre">
+                <div *ngSwitchCase="1">Debes completar el campo</div>
+                <div *ngSwitchCase="2">Nombre muy largo</div>
+                <div *ngSwitchCase="3">Nombre debe ser alfabetico</div>
+            </div>
+            <input type="text" name="Apellido_Usuario"  [(ngModel)]="user.Apellido_Usuario" placeholder="Apellido"
+                class="form-control">
+            <div   [ngSwitch]="errorApellido">
+                <div *ngSwitchCase="1" >Debes completar el campo</div>
+                <div *ngSwitchCase="2">Apellido muy largo</div>
+                <div *ngSwitchCase="3">Apellido  debe ser alfabetico</div>
+            </div>
+            <input type="text" name="DNI_Usuario" [(ngModel)]="user.DNI_Usuario" placeholder="DNI" class="form-control">
+            <div [ngSwitch]="errorDNI">
+                <div *ngSwitchCase="1">Debes completar el campo</div>
+                <div *ngSwitchCase="2">DNI muy largo</div>
+                <div *ngSwitchCase="3">DNI muy corto. Debe ser mayor a 1000000</div>
+                <div *ngSwitchCase="4">DNI debe ser Numerico</div>
+            </div>
+            <input type="text" name="Mail_Usuario" [(ngModel)]="user.Mail_Usuario" placeholder="Mail"
+                class="form-control">
+            <div [ngSwitch]="errorMail">
+                <div *ngSwitchCase="1">Debes completar el campo</div>
+                <div *ngSwitchCase="2">Email muy largo</div>
+                <div *ngSwitchCase="3">Email debe ser nombre@dominio.algo .</div>
+            </div>
+            <input type="text" name="Telefono_Usuario" [(ngModel)]="user.Telefono_Usuario" placeholder="Telefono"
+                class="form-control">
+            <div [ngSwitch]="errorTel">
+                <div *ngSwitchCase="1">Debes completar el campo</div>
+                <div *ngSwitchCase="2">Telefono muy largo</div>
+                <div *ngSwitchCase="3">Telefono muy corto</div>
+                <div *ngSwitchCase="4">El telefono debe ser Numerico. Ej: 1199887766 </div>
+            </div>
+            <input type="text" name="Direccion_Usuario" [(ngModel)]="user.Direccion_Usuario" placeholder="Direccion"
+                class="form-control">
+            <div [ngSwitch]="errorDirec">
+                <div *ngSwitchCase="1">Debes completar el campo</div>
+                <div *ngSwitchCase="2">La direccion es muy larga</div>
+                <div *ngSwitchCase="3">La direccion debe ser formato nombre calle - altura. Ej: Calle falsa 123.</div>
+            </div>
+            <input type="password" name="Password_Usuario" [(ngModel)]="user.Password_Usuario" placeholder="Password"
+                class="form-control">
+            <div [ngSwitch]="errorPassword">
+                <div *ngSwitchCase="1">Debes completar el campo</div>
+                <div *ngSwitchCase="2">Contraseña muy larga</div>
+                <div *ngSwitchCase="3">Contraseña debe ser alfanumerica y admite mayusculas.</div>
+            </div>
+
+            <input type="hidden" name="Id_Rol" [(ngModel)]="user.Id_Rol" value="2" class="form-control">
+            <input type="hidden" name="Id_Estado" [(ngModel)]="user.Id_Estado" value="1" class="form-control">
+            <button class="btn btn-success btn-block" (click)="verificarForm()">Enviar</button>
+        </form>
+    </div>
+</div>
+<div *ngIf="reintentar" class="card-body">
+    {{mensaje}} <br>
+    <button class="btn btn-info" (click)=recargarForm()>Reintentar</button>
+</div>

@@ -1,0 +1,36 @@
+<app-navigation></app-navigation>
+<h3><b> <u> REGISTRO ALTA ADMIN</u></b></h3>
+
+<div >
+    <div class="container">
+
+        <form >
+            <select class="form-control" [(ngModel)]="clase.Id_Actividad" name="actividad">
+                <option *ngFor=" let actividad of actividades" [value]="actividad.Id_Actividad" > {{actividad.Descripcion_Actividad}} </option>
+            </select>
+
+            <input class="form-control" type="number" name="Cupo_Clase" [(ngModel)]="clase.Cupo_Clase" placeholder="Cupo" class="form-control">
+
+            <select class="form-control" [(ngModel)]="clase.Numero_Usuario" name="instructor">
+                <option *ngFor=" let ins of instructor" [value]="ins.Numero_Usuario" >  {{ins.Nombre_Usuario}}  {{ins.Apellido_Usuario}} </option>
+            </select>
+
+            <select class="form-control" [(ngModel)]="clase.Id_Horario" name="horario">
+                <option *ngFor=" let hora of horarios"  [value]="hora.Id_Horario" > {{hora.Comienzo_Horario}} {{hora.Finalizacion_Horario}}</option>
+            </select>
+
+            <ul class="list-group">
+                <li *ngFor=" let dia of dias">
+                  <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                  {{dia.Nombre_dias}}
+                </li>
+            </ul>
+
+
+
+            <button class="btn btn-success btn-block" (click)="Agregar()"> Enviar </button>
+        </form>
+
+    </div>
+</div>
+

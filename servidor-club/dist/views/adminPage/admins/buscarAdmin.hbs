@@ -1,0 +1,66 @@
+{{>headerAdmin}}
+<link rel="stylesheet" href="/css/AdminCss/buscarSocio.css">
+
+
+<form action="#" method="POST">
+    <div>
+        <h4>Filtros</h4>
+        <input type="text" placeholder="Numero Socio">
+        <input type="text" placeholder="Nombre">
+        <input type="text" placeholder="Apellido">
+        <input type="number" placeholder="DNI">
+        <br>
+        <br>
+        <button>Filtrar</button>
+    </div>
+</form>
+
+
+<br>
+<br>
+
+
+<table border="1">
+    <theader>
+        <th>Numero</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DNI</th>
+        <th>Mail</th>
+        <th>Telefono</th>
+        <th>Direccion</th>
+        <th>Fecha Creacion</th>
+        <th>Password</th>
+        <th>Rol</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </theader>
+    
+    {{#each users}}
+    <tr>
+        <form action="./modificarAdmin/{{Numero_Usuario}}" method="post">
+            <td><input type="text" name="Numero_Usuario" value="{{Numero_Usuario}}" readonly></td>
+            <td><input type="text" name="Nombre_Usuario" value="{{Nombre_Usuario}}"></td>
+            <td><input type="text" name="Apellido_Usuario" value="{{Apellido_Usuario}}"></td>
+            <td><input type="number" name="DNI_Usuario" value="{{DNI_Usuario}}"></td>
+            <td><input type="email" name="Mail_Usuario" value="{{Mail_Usuario}}"></td>
+            <td><input type="number" name="Telefono_Usuario" value="{{Telefono_Usuario}}"></td>
+            <td><input type="text" name="Direccion_Usuario" value="{{Direccion_Usuario}}"></td>
+            <td>{{FechaCreacion_Usuario}}</td>
+            <td>{{Password_Usuario}}</td>
+            <td>{{Descripcion_Rol}}</td>
+            <td>{{Descripcion_Estado}}</td>
+            <td>
+            <button>Modificar</button>
+            <a href="/admin/eliminarAdmin/{{Numero_Usuario}}">Eliminar</a>
+            </td>
+        </form>
+    </tr>
+    {{else}}
+
+    <tr>
+        <td colspan="4">No hay mas filas</td>
+    </tr>
+
+    {{/each}}
+</table>

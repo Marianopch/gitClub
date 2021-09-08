@@ -1,0 +1,18 @@
+{{>headerAdmin}}
+
+
+<form action="./agregarSocio" method="post">
+
+    <input type="text" name="Numero_Usuario" placeholder="Numero Socio" class="form-control" autofocus>
+    <input type="text" name="Nombre_Usuario" placeholder="Nombre" class="form-control">
+    <input type="text" name="Apellido_Usuario" placeholder="Apellido" class="form-control">
+    <input type="number" name="DNI_Usuario" placeholder="DNI" class="form-control">
+    <input type="text" name="Mail_Usuario" placeholder="Mail" class="form-control">
+    <input type="number" name="Telefono_Usuario" placeholder="Telefono" class="form-control">
+    <input type="text" name="Direccion_Usuario" placeholder="Direccion" class="form-control">
+    <input type="password" name="Password_Usuario" placeholder="Password" class="form-control">
+    <input type="hidden" name="Id_Rol" value="2" class="form-control" >
+    <input type="hidden" name="Id_Estado" value="1" class="form-control">
+    <button>Enviar</button>
+    
+</form>

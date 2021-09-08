@@ -1,0 +1,34 @@
+input{
+    width: 90%;
+    margin: 10px 0px;
+    box-sizing: border-box;
+}
+
+h3{
+    color: whitesmoke;
+    text-align-last: center;
+}
+.container{
+    border-radius: 4px;
+    background-color: darkgray;
+    padding: 18PX;
+    width: 500px;
+    margin: auto;
+}
+
+button{
+    background-color: #29812c  ;
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+button:hover{
+    background-color: darkgreen;
+}
+

@@ -1,0 +1,54 @@
+<app-navigation></app-navigation>
+
+<form action="#" method="POST">
+    <div>
+        <h4>Filtros</h4>
+        <input type="text" placeholder="Numero Admin">
+        <input type="text" placeholder="Nombre">
+        <input type="text" placeholder="Apellido">
+        <input type="number" placeholder="DNI">
+        <br>
+        <br>
+        <button id="but">Filtrar</button>
+    </div>
+</form>
+
+<br>
+<br>
+
+<table class="table table-success table-striped table-hover table-sm">
+    <thead >
+        <th>Numero Clase</th>
+        <th>Actividad</th>
+        <th>Instructor</th>
+        <th>Horario</th>
+        <th>Cupo Clase</th>
+        <th>Acciones</th>
+    </thead>
+    <tbody *ngIf="clases.length > 0; else fila">
+        <tr *ngFor=" let clase of clases">
+            <td><input type="text" name="Id_Clase" [(ngModel)]="clase.Id_Clase"></td>
+            <td><input type="text" name="Descripcion_Actividad" [(ngModel)]="clase.Descripcion_Actividad"></td>
+            <td>
+                <input type="text" name="Nombre_Usuario" [(ngModel)]="clase.Nombre_Usuario">
+                <input type="text" name="Apellido_Usuario" [(ngModel)]="clase.Apellido_Usuario">
+            </td>
+            <td>
+                <input type="text" name="Nombre_Usuario" [(ngModel)]="clase.Comienzo_Horario">
+                <input type="text" name="Apellido_Usuario" [(ngModel)]="clase.Finalizacion_Horario">
+            </td>
+            <td><input type="number" name="Cupo_Clase" [(ngModel)]="clase.Cupo_Clase"></td>
+            <td>
+                <button class="btn btn-info" id="btnMod" > Modificar </button>
+                <button class="btn btn-danger" id="btnEli" > Eliminar </button>
+            </td>
+        </tr>
+    </tbody>
+    <ng-template #fila>
+        <tbody>
+            <tr>
+                <td colspan="4">No hay mas filas</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
