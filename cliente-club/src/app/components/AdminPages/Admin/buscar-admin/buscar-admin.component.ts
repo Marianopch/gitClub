@@ -16,7 +16,7 @@ export class BuscarAdminComponent implements OnInit {
   ngOnInit(): void {
     this.usuariosService.listarAdmin().subscribe(
       res => {
-        this.usuarios = res;
+         this.usuarios = res;
         console.log(res)
       },
       err => console.log(err)
