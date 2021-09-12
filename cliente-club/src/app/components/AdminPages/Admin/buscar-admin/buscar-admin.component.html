@@ -13,23 +13,23 @@
     </div>
 </form>
 <br>
-<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Nuevo
+<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" id="butAgr">
+    Nuevo Admin
 </button>
 
 <br>
 <br>
-
-<table class="table table-success table-striped table-hover table-sm">
+<div class="table-responsive">
+<table style="width: 100%;" class="table table-success table-striped table-hover table-sm">
     <thead >
-        <th>Numero</th>
+        <th >Numero</th>
         <th>Nombre</th>
         <th>Apellido</th>
         <th>DNI</th>
         <th>Mail</th>
         <th>Telefono</th>
         <th>Direccion</th>
-        <th>Fecha Creacion</th>
+        <!-- <th>Fecha Creacion</th> -->
         <th>Password</th>
         <th>Rol</th>
         <th>Estado</th>
@@ -37,20 +37,20 @@
     </thead>
     <tbody *ngIf="usuarios.length > 0; else fila">
         <tr *ngFor=" let usuario of usuarios">
-            <td><input type="text" name="Numero_Usuario" [(ngModel)]="usuario.Numero_Usuario"></td>
-            <td><input type="text" name="Nombre_Usuario" [(ngModel)]="usuario.Nombre_Usuario"></td>
-            <td><input type="text" name="Apellido_Usuario" [(ngModel)]="usuario.Apellido_Usuario"></td>
-            <td><input type="number" name="DNI_Usuario" [(ngModel)]="usuario.DNI_Usuario"></td>
-            <td><input type="email" name="Mail_Usuario" [(ngModel)]="usuario.Mail_Usuario"></td>
-            <td><input type="number" name="Telefono_Usuario" [(ngModel)]="usuario.Telefono_Usuario"></td>
-            <td><input type="text" name="Direccion_Usuario" [(ngModel)]="usuario.Direccion_Usuario"></td>
-            <td>{{usuario.FechaCreacion_Usuario}}</td>
+            <td ><input class="input" type="text" name="Numero_Usuario" [(ngModel)]="usuario.Numero_Usuario"></td>
+            <td><input class="input"  type="text" name="Nombre_Usuario" [(ngModel)]="usuario.Nombre_Usuario"></td>
+            <td><input class="input" type="text" name="Apellido_Usuario" [(ngModel)]="usuario.Apellido_Usuario"></td>
+            <td><input class="input" type="number" name="DNI_Usuario" [(ngModel)]="usuario.DNI_Usuario"></td>
+            <td><input class="input" type="email" name="Mail_Usuario" [(ngModel)]="usuario.Mail_Usuario"></td>
+            <td><input class="input" type="number" name="Telefono_Usuario" [(ngModel)]="usuario.Telefono_Usuario"></td>
+            <td><input class="input" type="text" name="Direccion_Usuario" [(ngModel)]="usuario.Direccion_Usuario"></td>
+            <!-- <td>{{usuario.FechaCreacion_Usuario}}</td> -->
             <td>{{usuario.Password_Usuario}}</td>
             <td>{{usuario.Descripcion_Rol}}</td>
             <td>{{usuario.Descripcion_Estado}}</td>
             <td>
-                <button class="btn btn-info" id="btnMod" (click)="modificarUser(usuario)"> Modificar </button>
-                <button class="btn btn-danger" id="btnEli" (click)="eliminarUser(usuario.Numero_Usuario)"> Eliminar </button>
+                <button class="btn btn-info" id="butMod" (click)="modificarUser(usuario)"> Modificar </button>
+                <button class="btn btn-danger" id="butEli" (click)="eliminarUser(usuario.Numero_Usuario)"> Eliminar </button>
             </td>
         </tr>
     </tbody>
@@ -62,6 +62,7 @@
         </tbody>
     </ng-template>
 </table>
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

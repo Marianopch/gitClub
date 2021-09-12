@@ -19,30 +19,46 @@ h4{
 }
 
 input{
-    margin: 10px;
+    margin: 3px;
     border: black;
     border-width: 2px;
     border-style: solid;
     
 }
+
+.input{
+   width: 100px;
+}
+
 #but{
    background-color: lightslategrey  ;
    border: none;
    color: white;
    padding: 12px 32px;
    text-decoration: none;
-   margin: 4px 2px;
+   
    border-radius: 4px;
    cursor: pointer;
    margin: 10px;
    
+}
+#butEli{
+   margin: 3px;
+}
+
+#butMod{
+   margin: 3px;
+}
+
+#btnAgr{
+   margin: 10px;
 }
 
 #but:hover{
    background-color: goldenrod;
 }
 
-#btnMod:hover{
+.btn-info:hover{
    background-color: blue;
 }
 

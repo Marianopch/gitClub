@@ -1,3 +1,15 @@
 thead{
     background-color: azure;
 }
+
+#butAgregar {
+    margin: 20px;
+}
+
+.btn-info:hover{
+    background-color: royalblue;
+} 
+
+table{
+    border: black;
+}

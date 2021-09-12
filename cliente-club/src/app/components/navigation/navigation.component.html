@@ -83,7 +83,7 @@
             data-bs-toggle="dropdown" aria-expanded="false" style="color: whitesmoke; margin: 10px;"><i class="fas fa-star" style="color: gold; margin: 5px;"></i> Socios</a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" routerLink="../../admin/buscarSocio"> <i class="fas fa-search" style="margin: 10px; color: beige;"></i>Buscar </a></li>
-            <li><a class="dropdown-item" routerLink="../agregarSocio" > Agregar </a></li>
+            <!-- <li><a class="dropdown-item" routerLink="../agregarSocio" > Agregar </a></li> -->
           </ul>
         </li>
       </ul>
@@ -96,7 +96,7 @@
             data-bs-toggle="dropdown" aria-expanded="false" style="color: whitesmoke;"><i class="fas fa-chess-king" style="color: goldenrod; margin: 5px;"></i> Admin</a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" routerLink="../../admin/buscarAdmin"><i class="fas fa-search" style="margin: 10px; color: beige;"></i> Buscar </a></li>
-            <li><a class="dropdown-item" routerLink="../../admin/agregarAdmin"> Agregar </a></li>
+            <!-- <li><a class="dropdown-item" routerLink="../../admin/agregarAdmin"> Agregar </a></li> -->
           </ul>
         </li>
       </ul>
@@ -109,7 +109,7 @@
             data-bs-toggle="dropdown" aria-expanded="false" style="color: whitesmoke;"> <i class="fas fa-quidditch" style="margin: 5px;color: orange;"></i> Actividad</a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" routerLink="../../admin/buscarActividad"><i class="fas fa-search" style="margin: 10px; color: beige;"></i> Buscar </a></li>
-            <li><a class="dropdown-item" routerLink="../../admin/agregarActividad"> Agregar </a></li>
+            <!-- <li><a class="dropdown-item" routerLink="../../admin/agregarActividad"> Agregar </a></li> -->
           </ul>
         </li>
       </ul>
@@ -123,7 +123,7 @@
             ; color: rgb(255, 94, 0);"></i> Instructor </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" routerLink="../../admin/buscarInstructor"><i class="fas fa-search" style="margin: 10px; color: beige;"></i> Buscar </a></li>
-            <li><a class="dropdown-item" routerLink="../../admin/agregarInstructor"> Agregar </a></li>
+            <!-- <li><a class="dropdown-item" routerLink="../../admin/agregarInstructor"> Agregar </a></li> -->
           </ul>
         </li>
       </ul>
@@ -167,7 +167,7 @@
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false"> <i class="fas fa-dumbbell"
+            data-bs-toggle="dropdown" aria-expanded="false" style="color: aliceblue;"> <i class="fas fa-dumbbell"
               style="color: chartreuse; margin: 10px;"></i> Actividades</a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" routerLink="../../socio/calendar"> <i class="far fa-calendar-alt"></i> Calendario </a></li>
@@ -179,7 +179,10 @@
 
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav">
-        <button class="button"> <i class="fas fa-user" style="color: black;"></i> Mi Perfil</button>
+        <li class="nav-item">
+          <a class="nav-link" style="color: aliceblue;" > <i class="fas fa-user" style="color: rgb(250, 239, 239); padding:  5px;"></i> Mi Perfil</a>
+        </li>
+        <!-- < class="button"> <i class="fas fa-user" style="color: black;"></i> Mi Perfil</button> -->
         <!-- <button class="button"></button> -->
       </ul>
     </div>
@@ -189,14 +192,15 @@
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <button class="nav-button"><i class="far fa-newspaper"></i> Novedades </button>
+          <a class="nav-link"  style="color:aliceblue"> <i class="far fa-newspaper"></i> Novedades</a>
+          <!-- <button class="nav-button"><i class="far fa-newspaper"></i> Novedades </button> -->
         </li>
       </ul>
     </div>
 
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" id="logout" (click)="logout()" style="color: darkgray; margin: 10px;"> <b> Cerrar sesion <i
+        <a class="nav-link" id="logout" (click)="logout()" style="color: aliceblue; margin: 10px;"> <b> Cerrar sesion <i
               class="fas fa-sign-out-alt"></i></b></a>
       </li>
     </ul>
