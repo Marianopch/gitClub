@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Router } from '@angular/router';
 import { Observable, forkJoin } from 'rxjs';
+import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-agregar-clase',
@@ -9,6 +10,7 @@ import { Observable, forkJoin } from 'rxjs';
   styleUrls: ['./agregar-clase.component.css']
 })
 export class AgregarClaseComponent implements OnInit {
+
 
   clase = {Id_Actividad: "", Id_Horario: "", Cupo_Clase: "", Numero_Usuario: "", Id_Dias: [] };
 
@@ -23,9 +25,11 @@ export class AgregarClaseComponent implements OnInit {
 
   dias: any = [];
   dia = { Id_dias: "", Nombre_dias: "" };
+  diasSelect: any = [];
 
   reintentar: boolean = false;
   mensaje: string = "";
+
 
   constructor(private usuariosService: UsuariosService, private router: Router) { }
 
@@ -85,8 +89,6 @@ export class AgregarClaseComponent implements OnInit {
   }
 
   Agregar(){
-
-    
     console.log(this.clase)
 
     this.usuariosService.agregarClase(this.clase).subscribe(
@@ -106,6 +108,9 @@ export class AgregarClaseComponent implements OnInit {
     )
   }
 
+  // getSelectedDias(){
+  //   return this.diasSelect
+  // }
 }
 
 

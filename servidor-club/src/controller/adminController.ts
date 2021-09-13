@@ -157,6 +157,10 @@ class AdminController {
 		const clase = req.body;
 		console.log(req.body);
 
+		// for( let i = 0; i < clase.Id_Dias.length; ++ ) {
+
+		// }
+
 		const busquedaClase = await adminModel.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
 
 
@@ -164,8 +168,12 @@ class AdminController {
 
 			const result = await adminModel.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
 
+			const resultdias = await adminModel.crearClaseDias(clase.Id_Dias);
+
 			console.log(result);
-			
+
+			console.log(resultdias);
+
 			return res.status(200).json({ message: 'Clase saved!!' });
 		}
 		return res.status(403).json({ message: 'Clase exists!!' });

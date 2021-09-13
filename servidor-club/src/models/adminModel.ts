@@ -172,6 +172,13 @@ class AdminModel {
 		return result;
 	}
 
+	async crearClaseDias(Id_Dias: number) {
+
+		const resultDias = (await this.db.query('INSERT INTO diasclases  (Id_Dias)   Values  (?)', [Id_Dias]))[0].affectedRows;
+		console.log(resultDias);
+		return resultDias;
+	}
+
 	async listarClases() {//Devuelve todas las filas de la tabla usuario
 		//const db=this.connection;
 		const clases = await this.db.query('Select * from clases JOIN Actividades ON actividades.Id_Actividad = clases.Id_Actividad JOIN Horarios ON clases.Id_Horario = horarios.Id_Horario JOIN Usuarios ON usuarios.Numero_Usuario = clases.Numero_Usuario;');

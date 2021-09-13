@@ -197,6 +197,13 @@ class AdminModel {
             return result;
         });
     }
+    crearClaseDias(Id_Dias) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const resultDias = (yield this.db.query('INSERT INTO diasclases  (Id_Dias)   Values  (?)', [Id_Dias]))[0].affectedRows;
+            console.log(resultDias);
+            return resultDias;
+        });
+    }
     listarClases() {
         return __awaiter(this, void 0, void 0, function* () {
             //const db=this.connection;

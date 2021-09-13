@@ -152,10 +152,14 @@ class AdminController {
         return __awaiter(this, void 0, void 0, function* () {
             const clase = req.body;
             console.log(req.body);
+            // for( let i = 0; i < clase.Id_Dias.length; ++ ) {
+            // }
             const busquedaClase = yield adminModel_1.default.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
             if (!busquedaClase) {
                 const result = yield adminModel_1.default.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+                const resultdias = yield adminModel_1.default.crearClaseDias(clase.Id_Dias);
                 console.log(result);
+                console.log(resultdias);
                 return res.status(200).json({ message: 'Clase saved!!' });
             }
             return res.status(403).json({ message: 'Clase exists!!' });
