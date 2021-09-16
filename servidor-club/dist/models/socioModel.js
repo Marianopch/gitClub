@@ -67,6 +67,16 @@ class SocioModel {
             return usuarios[0];
         });
     }
+    //SocioPage - MiPerfil Sector 
+    verDatosUser(Numero_Usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM usuarios WHERE Numero_Usuario = ?;', [Numero_Usuario]);
+            console.log(encontrado);
+            if (encontrado.length > 1)
+                return encontrado[0][0];
+            return null;
+        });
+    }
 }
 //Exportamos el enrutador con 
 const socioModel = new SocioModel();

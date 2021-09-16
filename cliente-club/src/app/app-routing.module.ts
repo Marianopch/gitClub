@@ -15,6 +15,7 @@ import { HomeSocioComponent } from './components/SocioPages/home-socio/home-soci
 import { AgregarClaseComponent } from './components/AdminPages/Clases/agregar-clase/agregar-clase.component';
 import { BuscarClaseComponent } from './components/AdminPages/Clases/buscar-clase/buscar-clase.component';
 import { CalendarioComponent } from './components/SocioPages/calendario/calendario.component';
+import { MiPerfilComponent } from './components/SocioPages/mi-perfil/mi-perfil.component';
 
 
 const routes: Routes = [
@@ -137,6 +138,11 @@ const routes: Routes = [
 	{
 		path: 'socio/calendar',
 		component: CalendarioComponent,
+		canActivate: [AuthGuard]
+	},
+	{
+		path: 'socio/miperfil',
+		component: MiPerfilComponent,
 		canActivate: [AuthGuard]
 	},
 ];

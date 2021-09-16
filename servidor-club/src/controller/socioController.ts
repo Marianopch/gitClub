@@ -6,6 +6,8 @@ import jwt from "jsonwebtoken";
 
 class SocioController {
 
+	//SocioPage - Calendar Sector - Inscripcion
+
     public async clasesLu(req: Request, res: Response) {
 
 		console.log(req.body);
@@ -53,6 +55,16 @@ class SocioController {
 		console.log(req.body);
 		const usuarios = await socioModel.listarClaseDo();
 		return res.json(usuarios);
+	}
+
+	//SocioPage - MiPerfil Sector 
+	public async miperfil(req: Request, res: Response) {
+		//res.send('Usuario '+ req.params.id +' Eliminado!!!');
+		const { Numero_Usuario } = req.body;
+		console.log(Numero_Usuario);
+		const datosusuario = await socioModel.verDatosUser(Numero_Usuario);
+		console.log(datosusuario);
+		return res.json(datosusuario);
 	}
 
 }

@@ -66,6 +66,17 @@ class SocioModel {
 		return usuarios[0];
 	}
 
+	
+	//SocioPage - MiPerfil Sector 
+	async verDatosUser(Numero_Usuario: string) {
+		
+		const encontrado: any = await this.db.query('SELECT * FROM usuarios WHERE Numero_Usuario = ?;', [Numero_Usuario]);
+		console.log(encontrado);
+		if (encontrado.length > 1)
+			return encontrado[0][0];
+		return null;
+	}
+
 }
 //Exportamos el enrutador con 
 

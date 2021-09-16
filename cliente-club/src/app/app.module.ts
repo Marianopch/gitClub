@@ -29,6 +29,7 @@ import { CalendarioComponent } from './components/SocioPages/calendario/calendar
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { MiPerfilComponent } from './components/SocioPages/mi-perfil/mi-perfil.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     HomeSocioComponent,
     BuscarClaseComponent,
     AgregarClaseComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    MiPerfilComponent
   ],
   imports: [
     BrowserModule,

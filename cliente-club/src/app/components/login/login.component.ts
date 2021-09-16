@@ -26,8 +26,9 @@ export class LoginComponent implements OnInit {
         let result: any = res;
         console.log(result);
         
-          localStorage.setItem('rol', result.rol);
-         localStorage.setItem('token', result.token);
+        localStorage.setItem('rol', result.rol);
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('Usuario', this.user.Numero_Usuario);
         //this.router.navigate(['admin/home']);
         
         this.usuariosService.loged$.emit();

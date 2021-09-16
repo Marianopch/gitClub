@@ -23,6 +23,8 @@ class SocioRoutes {
         this.router.get('/clasesVi', socioController_1.default.clasesVi);
         this.router.get('/clasesSa', socioController_1.default.clasesSa);
         this.router.get('/clasesDo', socioController_1.default.clasesDo);
+        //SocioPage - MiPerfil Sector 
+        this.router.get('/miperfil/:Numero_Usuario', socioController_1.default.miperfil);
     }
 }
 //Exportamos el enrutador con 

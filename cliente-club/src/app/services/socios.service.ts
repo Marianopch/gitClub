@@ -34,5 +34,10 @@ export class SociosService {
   clasesDo(){
     return this.http.get(`${this.API_URI}/clasesDo`);
   }
+
+
+  buscarDatosSocio(Numero_Usuario: any){
+    return this.http.get(`${this.API_URI}/miperfil/${Numero_Usuario}`, Numero_Usuario)
+  }
   
 }

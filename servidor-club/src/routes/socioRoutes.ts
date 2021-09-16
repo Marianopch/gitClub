@@ -22,6 +22,8 @@ class SocioRoutes {
         this.router.get('/clasesSa', socioController.clasesSa);
         this.router.get('/clasesDo', socioController.clasesDo);
 
+        //SocioPage - MiPerfil Sector 
+        this.router.get('/miperfil/:Numero_Usuario', socioController.miperfil);
 
     }
 

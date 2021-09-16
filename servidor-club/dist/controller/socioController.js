@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const socioModel_1 = __importDefault(require("../models/socioModel"));
 class SocioController {
+    //SocioPage - Calendar Sector - Inscripcion
     clasesLu(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
@@ -61,6 +62,17 @@ class SocioController {
             console.log(req.body);
             const usuarios = yield socioModel_1.default.listarClaseDo();
             return res.json(usuarios);
+        });
+    }
+    //SocioPage - MiPerfil Sector 
+    miperfil(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { Numero_Usuario } = req.body;
+            console.log(Numero_Usuario);
+            const datosusuario = yield socioModel_1.default.verDatosUser(Numero_Usuario);
+            console.log(datosusuario);
+            return res.json(datosusuario);
         });
     }
 }
