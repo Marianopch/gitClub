@@ -67,11 +67,9 @@ class SocioController {
     //SocioPage - MiPerfil Sector 
     miperfil(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
-            const { Numero_Usuario } = req.body;
-            console.log(Numero_Usuario);
+            const { Numero_Usuario } = req.params;
             const datosusuario = yield socioModel_1.default.verDatosUser(Numero_Usuario);
-            console.log(datosusuario);
+            console.log("Devolucion BD:" + datosusuario);
             return res.json(datosusuario);
         });
     }

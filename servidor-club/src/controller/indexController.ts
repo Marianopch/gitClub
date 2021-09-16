@@ -17,10 +17,10 @@ class IndexController {
         if (!result)
             return res.status(404).json({ message: "Usuario no registrado" });
 
-        console.log(result.Nombre_Usuario);
+        console.log(result.Numero_Usuario);
         console.log(result.Password_Usuario);
 
-        if (result?.Nombre_Usuario == usuario && result?.Password_Usuario == password) {
+        if (result?.Numero_Usuario == usuario && result?.Password_Usuario == password) {
             req.session.user = result;
             req.session.auth = true;
             if (result?.rol === "admin") {
@@ -31,7 +31,7 @@ class IndexController {
             }
             //res.redirect("./home");
             const token: string = jwt.sign({ _id: result.id }, "secretKey");
-            res.status(200).json({ message: "Bienvenido " + result.Nombre_Usuario, token: token, rol: result.Id_Rol });
+            res.status(200).json({ message: "Bienvenido " + result.Numero_Usuario, token: token, rol: result.Id_Rol });
             //res.status(200).json({ message: "Bienvenido " + result.Nombre_Usuario });
             return ;
         }

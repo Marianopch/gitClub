@@ -26,9 +26,9 @@ class IndexController {
             console.log(result);
             if (!result)
                 return res.status(404).json({ message: "Usuario no registrado" });
-            console.log(result.Nombre_Usuario);
+            console.log(result.Numero_Usuario);
             console.log(result.Password_Usuario);
-            if ((result === null || result === void 0 ? void 0 : result.Nombre_Usuario) == usuario && (result === null || result === void 0 ? void 0 : result.Password_Usuario) == password) {
+            if ((result === null || result === void 0 ? void 0 : result.Numero_Usuario) == usuario && (result === null || result === void 0 ? void 0 : result.Password_Usuario) == password) {
                 req.session.user = result;
                 req.session.auth = true;
                 if ((result === null || result === void 0 ? void 0 : result.rol) === "admin") {
@@ -40,7 +40,7 @@ class IndexController {
                 }
                 //res.redirect("./home");
                 const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
-                res.status(200).json({ message: "Bienvenido " + result.Nombre_Usuario, token: token, rol: result.Id_Rol });
+                res.status(200).json({ message: "Bienvenido " + result.Numero_Usuario, token: token, rol: result.Id_Rol });
                 //res.status(200).json({ message: "Bienvenido " + result.Nombre_Usuario });
                 return;
             }

@@ -37,7 +37,7 @@ export class SociosService {
 
 
   buscarDatosSocio(Numero_Usuario: any){
-    return this.http.get(`${this.API_URI}/miperfil/${Numero_Usuario}`, Numero_Usuario)
+    return this.http.get(`${this.API_URI}/miperfil/${Numero_Usuario}`)
   }
   
 }

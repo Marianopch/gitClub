@@ -70,8 +70,9 @@ class SocioModel {
     //SocioPage - MiPerfil Sector 
     verDatosUser(Numero_Usuario) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("BD numero :" + Numero_Usuario);
             const encontrado = yield this.db.query('SELECT * FROM usuarios WHERE Numero_Usuario = ?;', [Numero_Usuario]);
-            console.log(encontrado);
+            console.log("BD:" + encontrado);
             if (encontrado.length > 1)
                 return encontrado[0][0];
             return null;

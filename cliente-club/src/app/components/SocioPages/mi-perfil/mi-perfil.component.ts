@@ -19,8 +19,9 @@ export class MiPerfilComponent implements OnInit {
     console.log(Numero_Usuario)
     this.sociosService.buscarDatosSocio(Numero_Usuario).subscribe(
       res => {
+        let result: any = res;
         this.usuarios = res;
-        console.log(res)
+        console.log(result);
       },
       err => console.log(err)
     )

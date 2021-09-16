@@ -59,11 +59,11 @@ class SocioController {
 
 	//SocioPage - MiPerfil Sector 
 	public async miperfil(req: Request, res: Response) {
-		//res.send('Usuario '+ req.params.id +' Eliminado!!!');
-		const { Numero_Usuario } = req.body;
-		console.log(Numero_Usuario);
+
+		const { Numero_Usuario } = req.params;
+
 		const datosusuario = await socioModel.verDatosUser(Numero_Usuario);
-		console.log(datosusuario);
+		console.log("Devolucion BD:" + datosusuario);
 		return res.json(datosusuario);
 	}
 

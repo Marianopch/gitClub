@@ -29,7 +29,7 @@ class IndexModel {
     //Si no la encuentra devuelve null
     buscarNombre(nombre) {
         return __awaiter(this, void 0, void 0, function* () {
-            const encontrado = yield this.db.query('SELECT * FROM usuarios WHERE Nombre_Usuario = ?', [nombre]);
+            const encontrado = yield this.db.query('SELECT * FROM usuarios WHERE Numero_Usuario = ?', [nombre]);
             //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
             if (encontrado.length > 1)
                 return encontrado[0][0];

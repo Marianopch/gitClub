@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@ang
 export class AgregarClaseComponent implements OnInit {
 
 
-  clase = {Id_Actividad: "", Id_Horario: "", Cupo_Clase: "", Numero_Usuario: "", Id_Dias: [] };
+  clase = {Id_Actividad: "", Id_Horario: "", Cupo_Clase: "", Numero_Usuario: "", Id_Dias: ""};
 
   actividades: any = [];
   act = { Id_Actividad: "", descripcion: "" };
@@ -25,7 +25,7 @@ export class AgregarClaseComponent implements OnInit {
 
   dias: any = [];
   dia = { Id_dias: "", Nombre_dias: "" };
-  diasSelect: any = [];
+
 
   reintentar: boolean = false;
   mensaje: string = "";
@@ -88,7 +88,12 @@ export class AgregarClaseComponent implements OnInit {
     )
   }
 
-  Agregar(){
+  AgregarCompleto(){
+    this.AgregarClase();
+    this.AgregarDias();
+  }
+
+  AgregarClase(){
     console.log(this.clase)
 
     this.usuariosService.agregarClase(this.clase).subscribe(
@@ -108,13 +113,22 @@ export class AgregarClaseComponent implements OnInit {
     )
   }
 
-  // getSelectedDias(){
-  //   return this.diasSelect
-  // }
+  AgregarDias(){
+    console.log(this.clase)
+
+    this.usuariosService.agregarClase(this.clase).subscribe(
+      res => {
+        let result:any=res;
+        console.log(result.message);
+        this.router.navigate(['admin/home']);
+        
+      },
+      err => {
+        console.log(err.error.message);
+        this.reintentar = true;
+        this.mensaje = err.error.message;
+      }
+    )
+  }
+
 }
-
-
-
-
-
-//FORKJOIN? MULTIPLE SUBSCRIBE

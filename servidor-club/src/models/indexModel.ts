@@ -21,7 +21,7 @@ class IndexModel {
 //Devuelve un objeto cuya fila en la tabla usuarios coincide con nombre.
     //Si no la encuentra devuelve null
     async buscarNombre(nombre: string) {
-        const encontrado: any = await this.db.query('SELECT * FROM usuarios WHERE Nombre_Usuario = ?', [nombre]);
+        const encontrado: any = await this.db.query('SELECT * FROM usuarios WHERE Numero_Usuario = ?', [nombre]);
         //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
         if (encontrado.length > 1)
             return encontrado[0][0];
