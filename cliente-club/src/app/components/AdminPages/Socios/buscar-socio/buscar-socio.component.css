@@ -65,3 +65,8 @@ table {
 #btnEli:hover{
     background-color: darkred;
 }
+
+div.modal-header{
+    background-color: rgb(33, 46, 46);
+    color: floralwhite;
+}
