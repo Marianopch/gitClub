@@ -69,7 +69,7 @@ class SocioModel {
     }
     verClase(Id_Clase) {
         return __awaiter(this, void 0, void 0, function* () {
-            const encontrado = yield this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad ,Comienzo_Horario, Finalizacion_Horario, dias.Nombre_dias FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE clases.Id_Clase = ?;', [Id_Clase]);
+            const encontrado = yield this.db.query('SELECT * FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE clases.Id_Clase = ?;', [Id_Clase]);
             if (encontrado.length > 1)
                 return encontrado[0][0];
             return null;
@@ -78,9 +78,7 @@ class SocioModel {
     //SocioPage - MiPerfil Sector 
     verDatosUser(Numero_Usuario) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("BD numero :" + Numero_Usuario);
             const encontrado = yield this.db.query('SELECT * FROM usuarios WHERE Numero_Usuario = ?;', [Numero_Usuario]);
-            console.log("BD:" + encontrado);
             if (encontrado.length > 1)
                 return encontrado[0][0];
             return null;

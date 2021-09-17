@@ -101,9 +101,9 @@
             <tr>{{claseLu.Comienzo_Horario}}</tr>
             <tr>{{claseLu.Finalizacion_Horario}}</tr>
             <tr>
-              <!-- <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  ng-click="buscarDatosClase(claseLu.Id_Clase)">
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="buscarDatosClase(claseLu.Id_Clase)">
                 Anotarme - Ver informacion
-              </button> -->
+              </button>
             </tr>
         </td>
       </tr>
@@ -115,7 +115,11 @@
             <tr>{{claseMa.Descripcion_Actividad}}</tr>
             <tr>{{claseMa.Comienzo_Horario}}</tr>
             <tr>{{claseMa.Finalizacion_Horario}}</tr>
-            <tr><button class="btn btn-info"> Anotarme - Ver informacion </button></tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="buscarDatosClase(claseMa.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
         </td>
       </tr>
     </td>
@@ -126,7 +130,11 @@
             <tr>{{claseMi.Descripcion_Actividad}}</tr>
             <tr>{{claseMi.Comienzo_Horario}}</tr>
             <tr>{{claseMi.Finalizacion_Horario}}</tr>
-            <tr><button class="btn btn-info"> Anotarme - Ver informacion </button></tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="buscarDatosClase(claseMi.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
         </td>
       </tr>
     </td>
@@ -137,7 +145,11 @@
             <tr>{{claseJu.Descripcion_Actividad}}</tr>
             <tr>{{claseJu.Comienzo_Horario}}</tr>
             <tr>{{claseJu.Finalizacion_Horario}}</tr>
-            <tr><button class="btn btn-info"> Anotarme - Ver informacion </button></tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="buscarDatosClase(claseJu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
         </td>
       </tr>
     </td>
@@ -148,7 +160,11 @@
             <tr>{{claseVi.Descripcion_Actividad}}</tr>
             <tr>{{claseVi.Comienzo_Horario}}</tr>
             <tr>{{claseVi.Finalizacion_Horario}}</tr>
-            <tr><button class="btn btn-info"> Anotarme - Ver informacion </button></tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="buscarDatosClase(claseVi.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
         </td>
       </tr>
     </td>
@@ -160,7 +176,7 @@
             <tr>{{claseSa.Comienzo_Horario}}</tr>
             <tr>{{claseSa.Finalizacion_Horario}}</tr>
             <tr>
-              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  ng-click="buscarDatosClase(claseSa.Id_Clase)">
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="buscarDatosClase(claseSa.Id_Clase)">
                 Anotarme - Ver informacion
               </button>
             </tr>
@@ -220,10 +236,10 @@
               </div>
 
 
-              <!-- <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="btn-guardar" data-bs-dismiss="modal">Crear</button>
-          </div> -->
-          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="btn-cerrar" data-bs-dismiss="modal"> Cerrar </button>
+              <button type="button" class="btn btn-primary" id="btn-guardar" data-bs-dismiss="modal"> Inscribirme! </button>
+            </div>
+        </div>
       </div>
   </div>

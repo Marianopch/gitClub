@@ -127,7 +127,7 @@ export class CalendarioComponent implements OnInit {
   buscarDatosClase(Id_Clase: any){
 
     console.log(Id_Clase);
-    this.sociosService.buscarClase(this.claseSa.Id_Clase).subscribe(
+    this.sociosService.buscarClase(Id_Clase).subscribe(
       res => {
         let result: any = res;
         this.infoClase = res;
