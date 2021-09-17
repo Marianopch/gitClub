@@ -69,8 +69,14 @@ class SocioController {
         return __awaiter(this, void 0, void 0, function* () {
             const { Numero_Usuario } = req.params;
             const datosusuario = yield socioModel_1.default.verDatosUser(Numero_Usuario);
-            console.log("Devolucion BD:" + datosusuario);
             return res.json(datosusuario);
+        });
+    }
+    verInfoClase(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { Id_Clase } = req.params;
+            const datosclase = yield socioModel_1.default.verClase(Id_Clase);
+            return res.json(datosclase);
         });
     }
 }

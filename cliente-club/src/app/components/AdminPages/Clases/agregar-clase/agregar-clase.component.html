@@ -19,12 +19,24 @@
                 <option *ngFor=" let hora of horarios"  [value]="hora.Id_Horario" > {{hora.Comienzo_Horario}} {{hora.Finalizacion_Horario}}</option>
             </select>
 
-            <ul class="list-group">
+            <!-- <ul class="list-group">
                 <li *ngFor=" let dia of dias">
                   <input class="form-check-input me-1" type="checkbox" [value]="clase.Id_Dias" >
                   {{dia.Nombre_dias}}
                 </li>
-            </ul>
+            </ul> -->
+
+            <div *ngFor="let dia of dias">
+
+                <label>
+  
+                  <input type="checkbox" [value]="dia.id" (change)="onCheckboxChange($event)" />
+  
+                  {{dia.Nombre_dias}}
+  
+                </label>
+  
+              </div>
 
             <!-- <div class="form-group">
                 <label for="options">Options :</label>

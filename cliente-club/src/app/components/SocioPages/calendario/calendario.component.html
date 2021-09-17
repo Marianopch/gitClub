@@ -81,51 +81,149 @@
 
 </table> -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>
-        <span class="day">1</span>
-        <span class="long">Monday</span>
-        <span class="short">Mon</span>
-      </th>
-      <th>
-        <span class="day">2</span>
-        <span class="long">Tuesday</span>
-        <span class="short">Tue</span>
-      </th>
-      <th>
-        <span class="day">3</span>
-        <span class="long">Wendsday</span>
-        <span class="short">We</span>
-      </th>
-      <th>
-        <span class="day">4</span>
-        <span class="long">Thursday</span>
-        <span class="short">Thur</span>
-      </th>
-      <th>
-        <span class="day active">5</span>
-        <span class="long">Friday</span>
-        <span class="short">Fri</span>
-      </th>
-      <th>
-        <span class="day">6</span>
-        <span class="long">Saturday</span>
-        <span class="short">Sat</span>
-      </th>
-      <th>
-        <span class="day">7</span>
-        <span class="long">Sunday</span>
-        <span class="short">Sun</span>
-      </th>
-    </tr>
+  <thead >
+    <th>Lunes</th>
+    <th>Martes</th>
+    <th>Miercoles</th>
+    <th>Jueves</th>
+    <th>Viernes</th>
+    <th>Sabado</th>
+    <th>Domingo</th>
   </thead>
+
   <tbody>
-    <tr>
-      <td></td>
-    </tr>
+
+    <td >
+      <tr *ngFor=" let claseLu of clasesLu">
+        <td >
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <!-- <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  ng-click="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button> -->
+            </tr>
+        </td>
+      </tr>
+    </td>
+
+    <td >
+      <tr *ngFor=" let claseMa of clasesMa">
+        <td >
+            <tr>{{claseMa.Descripcion_Actividad}}</tr>
+            <tr>{{claseMa.Comienzo_Horario}}</tr>
+            <tr>{{claseMa.Finalizacion_Horario}}</tr>
+            <tr><button class="btn btn-info"> Anotarme - Ver informacion </button></tr>
+        </td>
+      </tr>
+    </td>
+
+    <td >
+      <tr *ngFor=" let claseMi of clasesMi">
+        <td >
+            <tr>{{claseMi.Descripcion_Actividad}}</tr>
+            <tr>{{claseMi.Comienzo_Horario}}</tr>
+            <tr>{{claseMi.Finalizacion_Horario}}</tr>
+            <tr><button class="btn btn-info"> Anotarme - Ver informacion </button></tr>
+        </td>
+      </tr>
+    </td>
+
+    <td >
+      <tr *ngFor=" let claseJu of clasesJu">
+        <td >
+            <tr>{{claseJu.Descripcion_Actividad}}</tr>
+            <tr>{{claseJu.Comienzo_Horario}}</tr>
+            <tr>{{claseJu.Finalizacion_Horario}}</tr>
+            <tr><button class="btn btn-info"> Anotarme - Ver informacion </button></tr>
+        </td>
+      </tr>
+    </td>
+
+    <td >
+      <tr *ngFor=" let claseVi of clasesVi">
+        <td >
+            <tr>{{claseVi.Descripcion_Actividad}}</tr>
+            <tr>{{claseVi.Comienzo_Horario}}</tr>
+            <tr>{{claseVi.Finalizacion_Horario}}</tr>
+            <tr><button class="btn btn-info"> Anotarme - Ver informacion </button></tr>
+        </td>
+      </tr>
+    </td>
+
+    <td >
+      <tr *ngFor=" let claseSa of clasesSa">
+        <td >
+            <tr>{{claseSa.Descripcion_Actividad}}</tr>
+            <tr>{{claseSa.Comienzo_Horario}}</tr>
+            <tr>{{claseSa.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  ng-click="buscarDatosClase(claseSa.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+        </td>
+      </tr>
+    </td>
+
+    <td >
+      <tr *ngFor=" let claseDo of clasesDo">
+        <td >
+            <tr>{{claseDo.Descripcion_Actividad}}</tr>
+            <tr>{{claseDo.Comienzo_Horario}}</tr>
+            <tr>{{claseDo.Finalizacion_Horario}}</tr>
+            <tr>
+
+            </tr>
+        </td>
+      </tr>
+    </td>
+
   </tbody>
 </table>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ver Informacion Clase</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+              <div>
+                <label>Clase: </label>
+                <p>{{infoClase.Descripcion_Actividad}}</p>
+
+                <label>Instructor: </label>
+                <p>{{infoClase.Numero_Usuario}}</p>
+
+                <label>Comienzo:</label>
+                <p>{{infoClase.Comienzo_Horario}}</p>
+
+                <label>Finalizacion:</label>
+                <p>{{infoClase.Finalizacion_Horario}}</p>
+
+                <label>Cupo:</label>
+                <p>{{infoClase.Cupo_Clase}}</p>
+                  <!-- <form>
+                      <label>Nombre de la actividad</label>
+                      <input type="text" name="descripcion" [(ngModel)]="act.descripcion" placeholder="Descripcion"
+                          class="form-control">
+                      <button class="btn btn-success btn-block" (click)="registrar()">Enviar</button>
+                  </form> -->
+              </div>
+
+
+              <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="btn-guardar" data-bs-dismiss="modal">Crear</button>
+          </div> -->
+          </div>
+      </div>
+  </div>

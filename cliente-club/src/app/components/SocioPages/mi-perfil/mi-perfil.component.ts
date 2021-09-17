@@ -16,7 +16,7 @@ export class MiPerfilComponent implements OnInit {
 
   ngOnInit(): void {
     let Numero_Usuario = localStorage.getItem('Usuario');
-    console.log(Numero_Usuario)
+
     this.sociosService.buscarDatosSocio(Numero_Usuario).subscribe(
       res => {
         let result: any = res;

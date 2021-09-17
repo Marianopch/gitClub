@@ -19,52 +19,64 @@ class SocioModel {
 
 	async listarClaseLu() {
 
-		const usuarios = await this.db.query('SELECT Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad');
+		const usuarios = await this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "1"');
 
 		return usuarios[0];
 	}
 
 	async listarClaseMa() {
 
-		const usuarios = await this.db.query('SELECT Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM ');
+		const usuarios = await this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "2" ');
 
 		return usuarios[0];
 	}
 
 	async listarClaseMi() {
 
-		const usuarios = await this.db.query('SELECT Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM ');
+		const usuarios = await this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "3" ');
 
 		return usuarios[0];
 	}
 
 	async listarClaseJu() {
 
-		const usuarios = await this.db.query('SELECT Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM ');
+		const usuarios = await this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "4" ');
 
 		return usuarios[0];
 	}
 
 	async listarClaseVi() {
 
-		const usuarios = await this.db.query('SELECT Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM ');
+		const usuarios = await this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "5" ');
 
 		return usuarios[0];
 	}
 
 	async listarClaseSa() {
 
-		const usuarios = await this.db.query('SELECT Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM ');
+		const usuarios = await this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "6" ');
 
 		return usuarios[0];
 	}
 
 	async listarClaseDo() {
 
-		const usuarios = await this.db.query('SELECT Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM ');
+		const usuarios = await this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "7" ');
 
 		return usuarios[0];
 	}
+
+	async verClase(Id_Clase: any) {
+
+
+		const encontrado = await this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad ,Comienzo_Horario, Finalizacion_Horario, dias.Nombre_dias FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE clases.Id_Clase = ?;', [Id_Clase]);
+
+		if (encontrado.length > 1)
+			return encontrado[0][0];
+		return null;
+	}
+
+
 
 	
 	//SocioPage - MiPerfil Sector 

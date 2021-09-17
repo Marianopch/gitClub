@@ -25,7 +25,7 @@ export class AgregarClaseComponent implements OnInit {
 
   dias: any = [];
   dia = { Id_dias: "", Nombre_dias: "" };
-
+  diasSelect : any = [];
 
   reintentar: boolean = false;
   mensaje: string = "";
@@ -100,7 +100,7 @@ export class AgregarClaseComponent implements OnInit {
       res => {
         let result:any=res;
         console.log(result.message);
-        this.router.navigate(['admin/home']);
+        // this.router.navigate(['admin/home']);
         
       },
       err => {
@@ -116,11 +116,10 @@ export class AgregarClaseComponent implements OnInit {
   AgregarDias(){
     console.log(this.clase)
 
-    this.usuariosService.agregarClase(this.clase).subscribe(
+    this.usuariosService.agregarClase(this.diasSelect).subscribe(
       res => {
         let result:any=res;
         console.log(result.message);
-        this.router.navigate(['admin/home']);
         
       },
       err => {
@@ -129,6 +128,22 @@ export class AgregarClaseComponent implements OnInit {
         this.mensaje = err.error.message;
       }
     )
+  }
+
+  onCheckboxChange(e: any) {
+
+    if (e.target.checked) {
+
+      this.diasSelect.push(new FormControl(e.target.value));
+
+    } else {
+
+       const index = this.diasSelect.controls.findIndex((x: { value: any; }) => x.value === e.target.value);
+
+       this.diasSelect.removeAt(index);
+
+    }
+
   }
 
 }

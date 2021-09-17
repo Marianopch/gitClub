@@ -40,4 +40,8 @@ export class SociosService {
     return this.http.get(`${this.API_URI}/miperfil/${Numero_Usuario}`)
   }
   
+  buscarClase(Id_Clase: any){
+    return this.http.get(`${this.API_URI}/calendar`, Id_Clase)
+  }
+
 }

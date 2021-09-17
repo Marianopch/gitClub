@@ -12,25 +12,28 @@ import { Router } from '@angular/router';
 export class CalendarioComponent implements OnInit {
 
   clasesLu: any = [];
-  claseLu = {Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
+  claseLu = {Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
 
   clasesMa: any = [];
-  claseMa = {Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
+  claseMa = {Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
   
   clasesMi: any = [];
-  claseMi = {Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
+  claseMi = {Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
 
   clasesJu: any = [];
-  claseJu = {Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
+  claseJu = {Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
 
   clasesVi: any = [];
-  claseVi = {Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
+  claseVi = {Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
  
   clasesSa: any = [];
-  claseSa = {Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}  
+  claseSa = {Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: "", Numero_Usuario: ""}  
   
   clasesDo: any = [];
-  claseDo = {Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
+  claseDo = {Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
+
+  infoClase: any = [];
+
 
   constructor(private sociosService: SociosService, private router: Router) { }
 
@@ -120,5 +123,19 @@ export class CalendarioComponent implements OnInit {
       err => console.log(err)
     )
   }
+
+  buscarDatosClase(Id_Clase: any){
+
+    console.log(Id_Clase);
+    this.sociosService.buscarClase(this.claseSa.Id_Clase).subscribe(
+      res => {
+        let result: any = res;
+        this.infoClase = res;
+        console.log(result);
+      },
+      err => console.log(err)
+    )
+  }
+
 
 }

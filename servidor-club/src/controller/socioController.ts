@@ -63,8 +63,17 @@ class SocioController {
 		const { Numero_Usuario } = req.params;
 
 		const datosusuario = await socioModel.verDatosUser(Numero_Usuario);
-		console.log("Devolucion BD:" + datosusuario);
+
 		return res.json(datosusuario);
+	}
+
+	public async verInfoClase(req: Request, res: Response) {
+
+		const { Id_Clase } = req.params;
+
+		const datosclase = await socioModel.verClase(Id_Clase);
+
+		return res.json(datosclase);
 	}
 
 }
