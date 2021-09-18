@@ -11,7 +11,7 @@
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Foto">
                     </div>
                     <h5 class="user-name">{{usuarios.Nombre_Usuario}} {{usuarios.Apellido_Usuario}}</h5>
-                    <h6 class="user-email">Numero Usuario: {{usuarios.Numero_Usuario}}</h6>
+                    <h6 class="user-email" >Numero Usuario: {{usuarios.Numero_Usuario}}</h6>
                     <h6 class="user-email">Mail: {{usuarios.Mail_Usuario}}</h6>
                     <h6 class="user-email">DNI: {{usuarios.DNI_Usuario}}</h6>
                     <h6 class="user-email">Telefono: {{usuarios.Telefono_Usuario}}</h6>
@@ -30,9 +30,11 @@
     <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
     <div class="card h-100">
         <div class="card-body">
+            <form action="#">
             <div class="row gutters">
+                
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <h6 class="mb-2 text-primary">Personal Details</h6>
+                    <h6 class="mb-2 text-primary">Datos Personales</h6>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
@@ -74,18 +76,26 @@
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="text-right">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-                        <button type="button" id="submit" name="submit" class="btn btn-success">Modificar Datos</button>
+                        <button type="reset"  name="submit" class="btn btn-light">Limpiar</button>
+                        <button type="button" id="submit" name="submit" class="btn btn-warning">Modificar Datos</button>
                     </div>
                 </div>
             </div>
+        </form>
         </div>
-        <div>
-            <form action="">
-                <input type="file" name="imagen" >
-            </form>
-        </div>
+        <!-- <div> -->
+            <!-- <form action="">
+                
+                <input type="file" name="imagen" id="aptoMedico" >
+            </form> --><label id="labelApto" >Carga de Apto Medico</label> 
+            <div class="input-group">
+                
+                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                <button class="btn btn-primary" type="button" id="inputGroupFileAddon04">Enviar</button>
+              </div>
+        <!-- </div> -->
     </div>
     </div>
     </div>
     </div>
+    <br>

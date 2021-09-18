@@ -6,6 +6,9 @@ body {
     position: relative;
     height: 100%;
 }
+
+
+
 .account-settings .user-profile {
     margin: 0 0 1rem 0;
     padding-bottom: 1rem;
@@ -26,7 +29,7 @@ body {
 }
 .account-settings .user-profile h6.user-email {
     margin: 0;
-    font-size: 0.8rem;
+    font-size: medium;
     font-weight: 400;
     color: #9fa8b9;
 }
@@ -58,4 +61,34 @@ body {
     border-radius: 5px;
     border: 0;
     margin-bottom: 1rem;
+}
+
+button.btn-light{
+    border: black;
+    border-style: solid;
+    margin: 5px;
+}
+
+button.btn-light:hover{
+    background-color: silver;
+}
+
+#aptoMedico{
+    margin: 5px 0px 15px 15px;
+}
+
+#labelApto{
+    margin-left: 15px;
+    font-weight: bold;
+    text-decoration:darkgreen ;
+    text-decoration-line: underline;
+}
+
+div.input-group{
+    width: 80%;
+    margin: 15px 0px 15px 15px;
+}
+button.btn-outline-warning{
+    border-style: groove;
+    border-color: black;
 }
