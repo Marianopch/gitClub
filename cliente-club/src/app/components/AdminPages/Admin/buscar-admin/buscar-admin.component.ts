@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class BuscarAdminComponent implements OnInit {
 
+  filterPost ='';
+  page:number =0;
   usuarios: any = [];
   errorNumUs=0;
   errorNombre=0;
@@ -33,6 +35,17 @@ export class BuscarAdminComponent implements OnInit {
       err => console.log(err)
     )
   }
+
+  //FILTRO PIPE
+  nextPage(){
+    this.page +=5;
+  }
+  prevPage(){
+    if(this.page >0) 
+    this.page -=5;
+  }
+//-------------------------
+
 
   eliminarUser(Numero_Usuario: any) {
 
@@ -102,7 +115,7 @@ registrar(){
   }
 
   verificarNumUs(Numero_Usuario:string): number {
-    const patron=/^[s][0-9]{1,5}$/i;
+    const patron=/^[a][0-9]{1,5}$/i;
     if(Numero_Usuario.length==0)
       return 1;
     if(Numero_Usuario.length>6)

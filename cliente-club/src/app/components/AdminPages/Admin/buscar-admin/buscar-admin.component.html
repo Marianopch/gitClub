@@ -1,6 +1,6 @@
 <app-navigation></app-navigation>
 
-<form action="#" method="POST">
+<!-- <form action="#" method="POST">
     <div>
         <h4>Filtros</h4>
         <input type="text" placeholder="Numero Admin">
@@ -11,7 +11,42 @@
         <br>
         <button id="but">Filtrar</button>
     </div>
-</form>
+</form> -->
+
+<!-- FILTRO PIPES -->
+<form>
+    <div class ="form-group mb-2">
+        <div class = "input-group">
+            <div class= "input-group-text bg-white">
+                <i class="fas fa-search"></i>
+                <input type="text" class="form-control" placeholder="Nombre Socio"[(ngModel)]="filterPost" name="filterpost" >
+                <div class="input-group-prepend">
+                    
+                    <div  class="input-group-text" id="btnGroupAddon2"> <i class="far fa-address-card"></i> __Para Crear un Nuevo Usuario haga "click" en "Nuevo" <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Nuevo
+                    </button></div>
+                </div>
+            </div>
+            <!--<div class="input-group">
+                <div class="input-group-prepend">
+                    
+                    <div class="input-group-text" id="btnGroupAddon2"> Para Crear un Nuevo Usuario haga "click" en "Nuevo"</div>
+                </div>
+                
+              </div>-->
+    
+        </div>
+    
+    
+       
+        </div>
+       
+    
+    </form>
+    <button class="btn btn-primary" (click)="prevPage()">Anterior</button>
+    &nbsp;
+    <button class="btn btn-primary" (click)="nextPage()" [disabled]="(usuarios | filtro:filterPost:page).length === 0">Siguiente</button>
+
 <br>
 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" id="butAgr">
     Nuevo Admin
@@ -36,7 +71,7 @@
         <th>Acciones</th>
     </thead>
     <tbody *ngIf="usuarios.length > 0; else fila">
-        <tr *ngFor=" let usuario of usuarios">
+        <tr *ngFor=" let usuario of usuarios | filtro:filterPost:page ">
             <td ><input class="input" type="text" name="Numero_Usuario" [(ngModel)]="usuario.Numero_Usuario"></td>
             <td><input class="input"  type="text" name="Nombre_Usuario" [(ngModel)]="usuario.Nombre_Usuario"></td>
             <td><input class="input" type="text" name="Apellido_Usuario" [(ngModel)]="usuario.Apellido_Usuario"></td>
@@ -63,6 +98,10 @@
     </ng-template>
 </table>
 </div>
+<div *ngIf="(usuarios | filtro:filterPost:page).length === 0" class="card-body">
+    <h3>No Se Encuentran más resultados</h3>
+     
+ </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -83,7 +122,7 @@
                             <div [ngSwitch]=" errorNumUs" >
                                 <div *ngSwitchCase="1">Debes completar el campo</div>
                                 <div *ngSwitchCase="2">Numero de usuario muy largo</div>
-                                <div *ngSwitchCase="3">El formato del usuario SOCIO debe comenzar con la letra S y finalizar con 5
+                                <div *ngSwitchCase="3">El formato del usuario ADMIN debe comenzar con la letra A y finalizar con 5
                                     numeros
                                     max.
                                     EJ: S00001 .</div>

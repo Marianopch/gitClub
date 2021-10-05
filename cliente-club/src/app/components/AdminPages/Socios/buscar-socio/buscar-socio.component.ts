@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 
 export class BuscarSocioComponent implements OnInit {
 
+  filterPost ='';
+  page:number =0;
   usuarios: any = [];
   errorNumUs=0;
   errorNombre=0;
@@ -35,6 +37,16 @@ export class BuscarSocioComponent implements OnInit {
       err => console.log(err)
     )
   }
+  
+//FILTRO PIPE
+  nextPage(){
+    this.page +=10;
+  }
+  prevPage(){
+    if(this.page >0) 
+    this.page -=10;
+  }
+//-------------------------
 
   eliminarUser(Numero_Usuario: any) {
 

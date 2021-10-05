@@ -31,6 +31,8 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MiPerfilComponent } from './components/SocioPages/mi-perfil/mi-perfil.component';
 import { NovedadesComponent } from './components/SocioPages/novedades/novedades.component';
+import { FiltroPipe } from './pipes/filtro.pipe';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { NovedadesComponent } from './components/SocioPages/novedades/novedades.
     AgregarClaseComponent,
     CalendarioComponent,
     MiPerfilComponent,
-    NovedadesComponent
+    NovedadesComponent,
+    FiltroPipe,
   ],
   imports: [
     BrowserModule,
