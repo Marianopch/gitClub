@@ -1,4 +1,4 @@
 export interface claseSocio {
-    id_Clase?:number;
-    id_Socio?:string;
+    Id_Clase?:number;
+    Numero_Usuario?:string;
 }

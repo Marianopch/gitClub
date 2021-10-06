@@ -84,9 +84,10 @@ class SocioModel {
             return null;
         });
     }
-    inscribirSocio(id_Clase, id_Socio) {
+    inscribirSocio(Id_Clase, Numero_Usuario) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = (yield this.db.query('INSERT INTO sociosclases SET ?', [id_Clase, id_Socio]))[0].affectedRows;
+            console.log(Id_Clase, Numero_Usuario);
+            const result = (yield this.db.query('INSERT INTO sociosclases SET ?', [Id_Clase, Numero_Usuario]))[0].affectedRows;
             console.log(result);
             return result;
         });

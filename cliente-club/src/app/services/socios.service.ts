@@ -46,12 +46,20 @@ export class SociosService {
     return this.http.get(`${this.API_URI}/calendar/${Id_Clase}`)
   }
 
-  inscribirSocio(claseSocio: claseSocio ): Observable<claseSocio>{
-    console.log(claseSocio);
+  // inscribirSocio(claseSocio: claseSocio ): Observable<claseSocio>{
+  //   console.log(claseSocio);
     
-    return this.http.post(`${this.API_URI}/calendar/inscripcion`, claseSocio)
+  //   return this.http.post(`${this.API_URI}/calendar/inscripcion`, claseSocio)
+  // }
+
+  // inscribirSocio(claseSocio: claseSocio ){
+  //   console.log(claseSocio.Id_Clase);
+  //   return this.http.post(`${this.API_URI}/calendar/inscripcion`, claseSocio)
+  // }
+
+  inscribirSocio(Id_Clase: any, Numero_Usuario: any ){
+    console.log(Id_Clase,Numero_Usuario);
+    return this.http.post(`${this.API_URI}/calendar/inscripcion`, Id_Clase, Numero_Usuario)
   }
-
-
 
 }
