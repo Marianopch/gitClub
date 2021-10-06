@@ -81,10 +81,11 @@ class SocioController {
     }
     inscripcionSocioClase(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { envioDatos } = req.body;
-            console.log(envioDatos.Id_Clase);
-            console.log(envioDatos.Usuario);
-            const inscripcion = yield socioModel_1.default.inscribirSocio(envioDatos.Id_Clase, envioDatos.Usuario);
+            const envioDatos = req.body;
+            console.log(req.params);
+            // console.log(envioDatos.Id_Clase);
+            // console.log(envioDatos.Usuario);
+            const inscripcion = yield socioModel_1.default.inscribirSocio(envioDatos.id_Clase, envioDatos.id_Socio);
             return res.json(inscripcion);
         });
     }

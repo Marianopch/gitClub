@@ -137,11 +137,11 @@ export class CalendarioComponent implements OnInit {
     )
   }
 
-  inscribirse(Id_Clase: any){
+  inscribirse(Id_Clase: number){
 
     let usuario = localStorage.getItem("Usuario");	
 
-    let envioDatos: any = [Id_Clase, usuario];
+    let envioDatos: object = [Id_Clase, usuario];
 
     this.sociosService.inscribirSocio(envioDatos).subscribe(
       res => {

@@ -155,7 +155,7 @@ class AdminController {
 
 	public async agregarClase(req: Request, res: Response) {
 		const clase = req.body;
-		console.log(clase);
+		console.log(req.body);
 
 		// for( let i = 0; i < clase.Id_Dias.length; ++ ) {
 

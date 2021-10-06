@@ -1,6 +1,8 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { claseSocio } from '../models/claseSocioModel';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -44,9 +46,12 @@ export class SociosService {
     return this.http.get(`${this.API_URI}/calendar/${Id_Clase}`)
   }
 
-  inscribirSocio(envioDatos: object ){
-    console.log(envioDatos);
-    return this.http.post(`${this.API_URI}/calendar/inscripcion`, envioDatos)
+  inscribirSocio(claseSocio: claseSocio ): Observable<claseSocio>{
+    console.log(claseSocio);
+    
+    return this.http.post(`${this.API_URI}/calendar/inscripcion`, claseSocio)
   }
+
+
 
 }

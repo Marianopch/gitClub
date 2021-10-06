@@ -8,49 +8,49 @@ class SocioController {
 
 	//SocioPage - Calendar Sector - Inscripcion
 
-    public async clasesLu(req: Request, res: Response) {
+	public async clasesLu(req: Request, res: Response) {
 
 		console.log(req.body);
 		const usuarios = await socioModel.listarClaseLu();
 		return res.json(usuarios);
 	}
 
-    public async clasesMa(req: Request, res: Response) {
+	public async clasesMa(req: Request, res: Response) {
 
 		console.log(req.body);
 		const usuarios = await socioModel.listarClaseMa();
 		return res.json(usuarios);
 	}
 
-    public async clasesMi(req: Request, res: Response) {
+	public async clasesMi(req: Request, res: Response) {
 
 		console.log(req.body);
 		const usuarios = await socioModel.listarClaseMi();
 		return res.json(usuarios);
 	}
 
-    public async clasesJu(req: Request, res: Response) {
+	public async clasesJu(req: Request, res: Response) {
 
 		console.log(req.body);
 		const usuarios = await socioModel.listarClaseJu();
 		return res.json(usuarios);
 	}
 
-    public async clasesVi(req: Request, res: Response) {
+	public async clasesVi(req: Request, res: Response) {
 
 		console.log(req.body);
 		const usuarios = await socioModel.listarClaseVi();
 		return res.json(usuarios);
 	}
 
-    public async clasesSa(req: Request, res: Response) {
+	public async clasesSa(req: Request, res: Response) {
 
 		console.log(req.body);
 		const usuarios = await socioModel.listarClaseSa();
 		return res.json(usuarios);
 	}
 
-    public async clasesDo(req: Request, res: Response) {
+	public async clasesDo(req: Request, res: Response) {
 
 		console.log(req.body);
 		const usuarios = await socioModel.listarClaseDo();
@@ -78,17 +78,19 @@ class SocioController {
 
 	public async inscripcionSocioClase(req: Request, res: Response) {
 
-		const { envioDatos } =  req.body;
+		const envioDatos = req.body;
+		console.log(req.params);
 
-		console.log(envioDatos.Id_Clase);
-		console.log(envioDatos.Usuario);
-		
-		const inscripcion = await socioModel.inscribirSocio(envioDatos.Id_Clase, envioDatos.Usuario);
+
+		// console.log(envioDatos.Id_Clase);
+		// console.log(envioDatos.Usuario);
+
+		const inscripcion = await socioModel.inscribirSocio(envioDatos.id_Clase, envioDatos.id_Socio);
 
 		return res.json(inscripcion);
 	}
 
-	
+
 
 }
 

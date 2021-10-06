@@ -151,7 +151,7 @@ class AdminController {
     agregarClase(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const clase = req.body;
-            console.log(clase);
+            console.log(req.body);
             // for( let i = 0; i < clase.Id_Dias.length; ++ ) {
             // }
             const busquedaClase = yield adminModel_1.default.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);

@@ -101,8 +101,8 @@ export class UsuariosService {
   }
 
   //falta arreglar
-  actualilzarInstructor(id: string, actividad: Actividad): Observable<Actividad> {
-    return this.http.put(`${this.API_URI}/modificarInstructor/${id}`, actividad);
+  actualilzarInstructor(id: string, usuario: Usuario): Observable<Usuario> {
+    return this.http.put(`${this.API_URI}/modificarInstructor/${id}`, usuario);
   }
 
   //AdminPage - Clases Sector
