@@ -24,10 +24,10 @@ export class AgregarClaseComponent implements OnInit {
   hora = { Id_Horario: "", Comienzo_Horario: "" , Finalizacion_Horario: ""};
 
   dias: any = [];
-  dia = { Id_dias: "", Nombre_dias: "" };
+  dia = { Id_dias: "", Nombre_dias: "" , checked: false};
 
   diasSelect : any = [];
-  diaSelect = { Id_dias: "", Nombre_dias: "" };
+  diaSelect = { Id_dias: "", Nombre_dias: "", checked: false};
 
   reintentar: boolean = false;
   mensaje: string = "";
@@ -134,20 +134,24 @@ export class AgregarClaseComponent implements OnInit {
 
   onCheckboxChange(e: any) {
 
+    console.log(this.dias);
+
     if (e.target.checked) {
 
       this.diasSelect.push(new FormControl(e.target.value));
-      console.log(this.diasSelect.Id_dias);
+
 
     } else {
 
        const index = this.diasSelect.controls.findIndex((x: { value: any; }) => x.value === e.target.value);
-       console.log(this.diasSelect.Id_dias);
+
        this.diasSelect.removeAt(index);
 
     }
 
   }
 
-
+  onChange(){
+    console.log(this.dias);
+  }
 }

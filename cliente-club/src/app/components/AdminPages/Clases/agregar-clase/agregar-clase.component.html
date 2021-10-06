@@ -41,11 +41,18 @@
                 </label> -->
   
 
-              <ul class="checkbox-items">
+              <!-- <ul class="checkbox-items">
                 <li  *ngFor="let dia of dias">
                   <input type="checkbox"  [value]="dia.Id_Dias" (change)="onCheckboxChange($event)">{{dia.Nombre_dias}}
                 </li>
-              </ul>
+              </ul> -->
+
+
+                <div  *ngFor="let dia of dias">
+                  <input type="checkbox"  [value]="dia.Id_Dias" (change)="onCheckboxChange($event)" [(ngModel)]="dia.checked" [ngModelOptions]="{standalone: true}">{{dia.Nombre_dias}}
+                </div>
+
+
 
             <!-- <div class="form-group">
                 <label for="options">Options :</label>
@@ -60,8 +67,7 @@
                     </label>
                 </div>
             </div> -->
-  
-            <button class="btn btn-success btn-block" (click)="AgregarCompleto()"> Enviar </button>
+            <!-- <button class="btn btn-success btn-block" (click)="AgregarCompleto()"> Enviar </button> -->
         </form>
 
 
