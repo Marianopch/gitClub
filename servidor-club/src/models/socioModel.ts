@@ -89,6 +89,13 @@ class SocioModel {
 		return null;
 	}
 
+	async inscribirSocio(Id_Clase: any, Usuario: any) {
+		const result = (await this.db.query('INSERT INTO sociosclases SET ?', [Id_Clase, Usuario]))[0].affectedRows;
+		console.log(result);
+		return result;
+	}
+	
+
 }
 //Exportamos el enrutador con 
 

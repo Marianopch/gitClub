@@ -41,7 +41,12 @@ export class SociosService {
   }
   
   buscarClase(Id_Clase: any){
-    return this.http.get(`${this.API_URI}/calendar/${Id_Clase}`, )
+    return this.http.get(`${this.API_URI}/calendar/${Id_Clase}`)
+  }
+
+  inscribirSocio(envioDatos: object ){
+    console.log(envioDatos);
+    return this.http.post(`${this.API_URI}/calendar/inscripcion`, envioDatos)
   }
 
 }

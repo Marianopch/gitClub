@@ -79,6 +79,15 @@ class SocioController {
             return res.json(datosclase);
         });
     }
+    inscripcionSocioClase(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { envioDatos } = req.body;
+            console.log(envioDatos.Id_Clase);
+            console.log(envioDatos.Usuario);
+            const inscripcion = yield socioModel_1.default.inscribirSocio(envioDatos.Id_Clase, envioDatos.Usuario);
+            return res.json(inscripcion);
+        });
+    }
 }
 const socioController = new SocioController();
 exports.default = socioController;

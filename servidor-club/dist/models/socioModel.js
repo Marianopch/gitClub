@@ -84,6 +84,13 @@ class SocioModel {
             return null;
         });
     }
+    inscribirSocio(Id_Clase, Usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('INSERT INTO sociosclases SET ?', [Id_Clase, Usuario]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
 }
 //Exportamos el enrutador con 
 const socioModel = new SocioModel();

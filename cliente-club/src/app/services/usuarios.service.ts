@@ -5,6 +5,7 @@ import { Actividad } from '../models/actividadModel';
 import { Clase } from '../models/claseModel';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { Dias } from '../models/diaModel';
 
 @Injectable({
   providedIn: 'root'

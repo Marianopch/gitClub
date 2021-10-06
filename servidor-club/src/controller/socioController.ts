@@ -76,6 +76,20 @@ class SocioController {
 		return res.json(datosclase);
 	}
 
+	public async inscripcionSocioClase(req: Request, res: Response) {
+
+		const { envioDatos } =  req.body;
+
+		console.log(envioDatos.Id_Clase);
+		console.log(envioDatos.Usuario);
+		
+		const inscripcion = await socioModel.inscribirSocio(envioDatos.Id_Clase, envioDatos.Usuario);
+
+		return res.json(inscripcion);
+	}
+
+	
+
 }
 
 const socioController = new SocioController();

@@ -24,6 +24,7 @@ class SocioRoutes {
         this.router.get('/clasesSa', socioController_1.default.clasesSa);
         this.router.get('/clasesDo', socioController_1.default.clasesDo);
         this.router.get('/calendar/:Id_Clase', socioController_1.default.verInfoClase);
+        this.router.post('/calendar/inscripcion', socioController_1.default.inscripcionSocioClase);
         //SocioPage - MiPerfil Sector 
         this.router.get('/miperfil/:Numero_Usuario', socioController_1.default.miperfil);
     }

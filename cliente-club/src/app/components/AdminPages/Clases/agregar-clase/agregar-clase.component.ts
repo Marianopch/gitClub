@@ -25,6 +25,7 @@ export class AgregarClaseComponent implements OnInit {
 
   dias: any = [];
   dia = { Id_dias: "", Nombre_dias: "" };
+
   diasSelect : any = [];
 
   reintentar: boolean = false;
@@ -135,6 +136,7 @@ export class AgregarClaseComponent implements OnInit {
     if (e.target.checked) {
 
       this.diasSelect.push(new FormControl(e.target.value));
+      console.log(this.diasSelect.Id_dias);
 
     } else {
 
