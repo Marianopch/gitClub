@@ -57,9 +57,9 @@ export class SociosService {
   //   return this.http.post(`${this.API_URI}/calendar/inscripcion`, claseSocio)
   // }
 
-  inscribirSocio(Id_Clase: any, Numero_Usuario: any ){
-    console.log(Id_Clase,Numero_Usuario);
-    return this.http.post(`${this.API_URI}/calendar/inscripcion`, Id_Clase, Numero_Usuario)
+  inscribirSocio(envioDatos: claseSocio ){
+    console.log(envioDatos);
+    return this.http.post(`${this.API_URI}/calendar/inscripcion`, envioDatos)
   }
 
 }

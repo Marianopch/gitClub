@@ -87,7 +87,7 @@ class SocioModel {
     inscribirSocio(Id_Clase, Numero_Usuario) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(Id_Clase, Numero_Usuario);
-            const result = (yield this.db.query('INSERT INTO sociosclases SET ?', [Id_Clase, Numero_Usuario]))[0].affectedRows;
+            const result = (yield this.db.query('INSERT INTO sociosclases ( Id_Clase, Numero_Usuario ) VALUES  (?, ?)', [Id_Clase, Numero_Usuario]))[0].affectedRows;
             console.log(result);
             return result;
         });

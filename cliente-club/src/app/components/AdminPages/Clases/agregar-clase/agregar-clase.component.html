@@ -26,17 +26,26 @@
                 </li>
             </ul> -->
 
-            <div *ngFor="let dia of dias">
 
-                <label>
+
+            <!-- <select  >
+                <option  type="checkbox" *ngFor="let dia of dias" value]="dia.Id_Dias" [(change)="onCheckboxChange($event)" > </option>
+            </select> -->
+
+                <!-- <label *ngFor="let dia of dias"> 
   
-                  <input type="checkbox" [value]="dia.id" (change)="onCheckboxChange($event)" />
+                  <input  type="checkbox" [value]="dia.Id_Dias" (change)="onCheckboxChange($event)" />
   
                   {{dia.Nombre_dias}}
   
-                </label>
+                </label> -->
   
-              </div>
+
+              <ul class="checkbox-items">
+                <li  *ngFor="let dia of dias">
+                  <input type="checkbox"  [value]="dia.Id_Dias" (change)="onCheckboxChange($event)">{{dia.Nombre_dias}}
+                </li>
+              </ul>
 
             <!-- <div class="form-group">
                 <label for="options">Options :</label>
@@ -56,7 +65,12 @@
         </form>
 
 
-        <label>{{diasSelect.Id_Actividad}}</label>
+        <div class="col-md-4">
+            <h4>Dia Seleccionado: {{diasSelect.length}} </h4>
+            <ul>
+              <li *ngFor="let diaSelect of diasSelect">{{diaSelect.Nombre_dias}}</li>
+            </ul>
+          </div>
     </div>
 </div>
 

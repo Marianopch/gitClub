@@ -80,12 +80,12 @@ class SocioController {
 
 		const envioDatos = req.body;
 		console.log(envioDatos);
-
-
+		console.log(envioDatos[0]);
+		console.log(envioDatos[1]);
 		// console.log(envioDatos.Id_Clase);
 		// console.log(envioDatos.Usuario);
 
-		const inscripcion = await socioModel.inscribirSocio(envioDatos.Id_Clase, envioDatos.Numero_Usuario);
+		const inscripcion = await socioModel.inscribirSocio(envioDatos[0], envioDatos[1]);
 
 		return res.json(inscripcion);
 	}

@@ -91,7 +91,8 @@ class SocioModel {
 
 	async inscribirSocio(Id_Clase:string, Numero_Usuario:string) {
 		console.log(Id_Clase, Numero_Usuario)
-		const result = (await this.db.query('INSERT INTO sociosclases SET ?', [Id_Clase,Numero_Usuario]))[0].affectedRows;
+		const result = (await this.db.query('INSERT INTO sociosclases ( Id_Clase, Numero_Usuario ) VALUES  (?, ?)', [Id_Clase,Numero_Usuario]))[0].affectedRows;
+		
 		console.log(result);
 		return result;
 	}

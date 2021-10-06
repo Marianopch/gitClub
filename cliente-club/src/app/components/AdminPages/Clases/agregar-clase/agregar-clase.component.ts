@@ -27,6 +27,7 @@ export class AgregarClaseComponent implements OnInit {
   dia = { Id_dias: "", Nombre_dias: "" };
 
   diasSelect : any = [];
+  diaSelect = { Id_dias: "", Nombre_dias: "" };
 
   reintentar: boolean = false;
   mensaje: string = "";
@@ -141,11 +142,12 @@ export class AgregarClaseComponent implements OnInit {
     } else {
 
        const index = this.diasSelect.controls.findIndex((x: { value: any; }) => x.value === e.target.value);
-
+       console.log(this.diasSelect.Id_dias);
        this.diasSelect.removeAt(index);
 
     }
 
   }
+
 
 }

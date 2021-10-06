@@ -141,9 +141,9 @@ export class CalendarioComponent implements OnInit {
 
     let Numero_Usuario = localStorage.getItem("Usuario");	
 
-    // let envioDatos: object = [Id_Clase, Numero_Usuario];
+     let envioDatos: any = [Id_Clase, Numero_Usuario];
 
-    this.sociosService.inscribirSocio(this.infoClase.Id_Clase,Numero_Usuario).subscribe(
+    this.sociosService.inscribirSocio(envioDatos).subscribe(
       res => {
         let result:any=res;
         console.log(result.message);
