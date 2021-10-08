@@ -152,17 +152,65 @@ class AdminController {
         return __awaiter(this, void 0, void 0, function* () {
             const clase = req.body;
             console.log(req.body);
-            // for( let i = 0; i < clase.Id_Dias.length; ++ ) {
-            // }
-            const busquedaClase = yield adminModel_1.default.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
-            if (!busquedaClase) {
-                const result = yield adminModel_1.default.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
-                const resultdias = yield adminModel_1.default.crearClaseDias(clase.Id_Dias);
-                console.log(result);
-                console.log(resultdias);
-                return res.status(200).json({ message: 'Clase saved!!' });
+            let clasedias = clase.diasSelect;
+            clasedias = req.body;
+            console.log(clasedias);
+            switch (clasedias.lenght) {
+                case 0:
+                    let dia = clase.diasSelect[0];
+                    const busquedaClase = yield adminModel_1.default.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+                    if (!busquedaClase) {
+                        const result = yield adminModel_1.default.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+                        //if
+                        const consultaIDClase = yield adminModel_1.default.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+                        //falta consutlar el ID de la clase.
+                        const resultdias = yield adminModel_1.default.crearClaseDias(dia); //falta enviar el id de la clase.
+                        console.log(result);
+                        console.log(resultdias);
+                        return res.status(200).json({ message: 'Clase saved!!' });
+                    }
+                    return res.status(403).json({ message: 'Clase exists!!' });
+                    break;
+                case 1:
+                    dia = clase.diasSelect[0];
+                    let dia1 = clase.diasSelect[1];
+                    break;
+                case 2:
+                    dia = clase.diasSelect[0];
+                    dia1 = clase.diasSelect[1];
+                    let dia2 = clase.diasSelect[2];
+                    break;
+                case 3:
+                    dia = clase.diasSelect[0];
+                    dia1 = clase.diasSelect[1];
+                    dia2 = clase.diasSelect[2];
+                    let dia3 = clase.diasSelect[3];
+                    break;
+                case 4:
+                    dia = clase.diasSelect[0];
+                    dia1 = clase.diasSelect[1];
+                    dia2 = clase.diasSelect[2];
+                    dia3 = clase.diasSelect[3];
+                    let dia4 = clase.diasSelect[4];
+                    break;
+                case 5:
+                    dia = clase.diasSelect[0];
+                    dia1 = clase.diasSelect[1];
+                    dia2 = clase.diasSelect[2];
+                    dia3 = clase.diasSelect[3];
+                    dia4 = clase.diasSelect[4];
+                    let dia5 = clase.diasSelect[5];
+                    break;
+                case 6:
+                    dia = clase.diasSelect[0];
+                    dia1 = clase.diasSelect[1];
+                    dia2 = clase.diasSelect[2];
+                    dia3 = clase.diasSelect[3];
+                    dia4 = clase.diasSelect[4];
+                    dia5 = clase.diasSelect[6];
+                    let dia6 = clase.diasSelect[6];
+                    break;
             }
-            return res.status(403).json({ message: 'Clase exists!!' });
         });
     }
     buscarClase(req, res) {

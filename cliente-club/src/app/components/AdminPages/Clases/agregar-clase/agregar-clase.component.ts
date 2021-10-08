@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@ang
 export class AgregarClaseComponent implements OnInit {
 
 
-  clase = {Id_Actividad: "", Id_Horario: "", Cupo_Clase: "", Numero_Usuario: "", Id_Dias: ""};
+  clase = {Id_Actividad: "", Id_Horario: "", Cupo_Clase: "", Numero_Usuario: ""};
 
   actividades: any = [];
   act = { Id_Actividad: "", descripcion: "" };
@@ -97,8 +97,8 @@ export class AgregarClaseComponent implements OnInit {
 
   AgregarClase(){
     console.log(this.clase)
-
-    this.usuariosService.agregarClase(this.clase).subscribe(
+    let CrearClase = [this.clase, this.diasSelect];
+    this.usuariosService.agregarClase(CrearClase).subscribe(
       res => {
         let result:any=res;
         console.log(result.message);
@@ -116,7 +116,7 @@ export class AgregarClaseComponent implements OnInit {
   }
 
   AgregarDias(){
-    console.log(this.clase)
+    console.log(this.diasSelect)
 
     this.usuariosService.agregarClase(this.diasSelect).subscribe(
       res => {
@@ -132,26 +132,24 @@ export class AgregarClaseComponent implements OnInit {
     )
   }
 
-  onCheckboxChange(e: any) {
 
-    console.log(this.dias);
+  onCheckboxChange(e : any, Id_dias: any) {
+
+    console.log(Id_dias);
 
     if (e.target.checked) {
 
-      this.diasSelect.push(new FormControl(e.target.value));
+      this.diasSelect.push(Id_dias);
+      console.log(this.diasSelect);
 
 
     } else {
 
-       const index = this.diasSelect.controls.findIndex((x: { value: any; }) => x.value === e.target.value);
-
-       this.diasSelect.removeAt(index);
+      const index = this.diasSelect.indexOf(Id_dias);
+      console.log(index);
+      this.diasSelect.splice(index,1);
 
     }
-
   }
 
-  onChange(){
-    console.log(this.dias);
-  }
 }

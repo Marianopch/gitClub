@@ -27,10 +27,12 @@
             </ul> -->
 
 
+            <!-- <div *ngFor="let dia of dias">
+              <select [(ngModel)]="dia.checked" [(ngModelChange)]="onCheckboxChange($event)">
+                <option  type="checkbox" *ngFor="let dia of dias" [value]="dia.Id_Dias"  > </option>
+            </select> 
+            </div> -->
 
-            <!-- <select  >
-                <option  type="checkbox" *ngFor="let dia of dias" value]="dia.Id_Dias" [(change)="onCheckboxChange($event)" > </option>
-            </select> -->
 
                 <!-- <label *ngFor="let dia of dias"> 
   
@@ -38,7 +40,7 @@
   
                   {{dia.Nombre_dias}}
   
-                </label> -->
+                </label>  -->
   
 
               <!-- <ul class="checkbox-items">
@@ -49,8 +51,8 @@
 
 
                 <div  *ngFor="let dia of dias">
-                  <input type="checkbox"  [value]="dia.Id_Dias" (change)="onCheckboxChange($event)" [(ngModel)]="dia.checked" [ngModelOptions]="{standalone: true}">{{dia.Nombre_dias}}
-                </div>
+                  <input type="checkbox"  [value]="dia.Id_dias" (change)="onCheckboxChange($event, dia.Id_dias)" [(ngModel)]="dia.checked" [ngModelOptions]="{standalone: true}">{{dia.Nombre_dias}}
+                </div> 
 
 
 
@@ -67,16 +69,16 @@
                     </label>
                 </div>
             </div> -->
-            <!-- <button class="btn btn-success btn-block" (click)="AgregarCompleto()"> Enviar </button> -->
+            <button class="btn btn-success btn-block" (click)="AgregarClase()"> Enviar </button>
         </form>
 
 
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <h4>Dia Seleccionado: {{diasSelect.length}} </h4>
             <ul>
               <li *ngFor="let diaSelect of diasSelect">{{diaSelect.Nombre_dias}}</li>
             </ul>
-          </div>
+          </div> -->
     </div>
 </div>
 

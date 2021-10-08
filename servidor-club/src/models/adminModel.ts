@@ -172,9 +172,9 @@ class AdminModel {
 		return result;
 	}
 
-	async crearClaseDias(Id_Dias: number) {
+	async crearClaseDias(dia: any) {
 
-		const resultDias = (await this.db.query('INSERT INTO diasclases  (Id_Dias)   Values  (?)', [Id_Dias]))[0].affectedRows;
+		const resultDias = (await this.db.query('INSERT INTO diasclases  (Id_Dias)   Values  (?)', [dia]))[0].affectedRows;
 		console.log(resultDias);
 		return resultDias;
 	}

@@ -75,7 +75,7 @@ class AdminController {
 		// const { Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario } = req.body;
 		// const result = await adminModel.actualizar(Numero_Usuario, Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario);
 		// const { Numero_Usuario } = req.params;
-		const result = await adminModel.actualizar(usuario.Numero_Usuario,usuario.Nombre_Usuario,usuario.Apellido_Usuario,usuario.DNI_Usuario,usuario.Direccion_Usuario,usuario.Mail_Usuario,usuario.Telefono_Usuario);
+		const result = await adminModel.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Direccion_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario);
 		// req.flash('info', 'Socio modificado correctamente');
 		// res.redirect('../buscarSocio');
 		return res.json(result);
@@ -156,27 +156,75 @@ class AdminController {
 	public async agregarClase(req: Request, res: Response) {
 		const clase = req.body;
 		console.log(req.body);
-
-		// for( let i = 0; i < clase.Id_Dias.length; ++ ) {
-
-		// }
-
-		const busquedaClase = await adminModel.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+		let clasedias = clase.diasSelect;
+		clasedias = req.body;
+		console.log(clasedias);
 
 
-		if (!busquedaClase) {
+		switch (clasedias.lenght) {
+			case 0:
+				let dia = clase.diasSelect[0];
 
-			const result = await adminModel.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+				const busquedaClase = await adminModel.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+				if (!busquedaClase) {
 
-			const resultdias = await adminModel.crearClaseDias(clase.Id_Dias);
+					const result = await adminModel.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+					
+					//if
+					
+					const consultaIDClase = await adminModel.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+					//falta consutlar el ID de la clase.
 
-			console.log(result);
-
-			console.log(resultdias);
-
-			return res.status(200).json({ message: 'Clase saved!!' });
+					const resultdias = await adminModel.crearClaseDias(dia, );//falta enviar el id de la clase.
+		
+					console.log(result);
+		
+					console.log(resultdias);
+		
+					return res.status(200).json({ message: 'Clase saved!!' });
+				}
+				return res.status(403).json({ message: 'Clase exists!!' });
+				break;
+			case 1:
+				dia = clase.diasSelect[0];
+				let dia1 = clase.diasSelect[1];
+				break;
+			case 2:
+				dia = clase.diasSelect[0];
+				dia1 = clase.diasSelect[1];
+				let dia2 = clase.diasSelect[2];
+				break;
+			case 3:
+				dia = clase.diasSelect[0];
+				dia1 = clase.diasSelect[1];
+				dia2 = clase.diasSelect[2];
+				let dia3 = clase.diasSelect[3];
+				break;
+			case 4:
+				dia = clase.diasSelect[0];
+				dia1 = clase.diasSelect[1];
+				dia2 = clase.diasSelect[2];
+				dia3 = clase.diasSelect[3];
+				let dia4 = clase.diasSelect[4];
+				break;
+			case 5:
+				dia = clase.diasSelect[0];
+				dia1 = clase.diasSelect[1];
+				dia2 = clase.diasSelect[2];
+				dia3 = clase.diasSelect[3];
+				dia4 = clase.diasSelect[4];
+				let dia5 = clase.diasSelect[5];
+				break;
+			case 6:
+				dia = clase.diasSelect[0];
+				dia1 = clase.diasSelect[1];
+				dia2 = clase.diasSelect[2];
+				dia3 = clase.diasSelect[3];
+				dia4 = clase.diasSelect[4];
+				dia5 = clase.diasSelect[6];
+				let dia6 = clase.diasSelect[6];
+				break;
 		}
-		return res.status(403).json({ message: 'Clase exists!!' });
 	}
 
 	public async buscarClase(req: Request, res: Response) {
@@ -186,7 +234,7 @@ class AdminController {
 
 		return res.json(clases);
 	}
-	
+
 
 
 	//MENU INSTRUCTORES

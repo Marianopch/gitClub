@@ -110,7 +110,8 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI}/buscarhorarios`);
   }
 
-  agregarClase(clase: Clase) {
+  agregarClase(clase: any) {
+    console.log(clase);
     return this.http.post(`${this.API_URI}/agregarClase`, clase);
   }
 
