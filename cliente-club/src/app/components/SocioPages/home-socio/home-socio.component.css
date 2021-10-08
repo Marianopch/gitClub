@@ -1,0 +1,58 @@
+/* * {
+    padding: 0px;
+    margin: 0px;
+  
+}
+
+.slide{
+    text-align: center;
+    padding: 220px 50px;
+    background-size: 1600px 500px  ;
+    background-position: center;
+    color: aliceblue;
+    font-family: sans-serif;
+}
+.s1{
+    background-image: url(C:\Users\maria\OneDrive\Escritorio\Imagenesproyecto\4077-gym.jpg);
+}
+.s2{
+    background-image: url(C:\Users\maria\OneDrive\Escritorio\Imagenesproyecto\32868-baloncesto.jpg);
+    display: none;
+}
+.s3{
+    background-image: url(C:\Users\maria\OneDrive\Escritorio\Imagenesproyecto\649353.jpg);
+    display: none;
+}
+ h2{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+p{
+    font-size: 18px;
+    margin-bottom: 20px;
+
+}
+button{
+    background-color: yellow;
+    padding: 5px 50px;
+    border: initial;
+} */
+
+h5{
+    font-size: 50px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: whitesmoke ;
+    
+}
+p{
+    font-size: 18px;
+    color: whitesmoke ;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.but{
+    background-color: yellow;
+    padding: 5px 50px;
+    border: initial;
+    font-weight: bold;
+}
