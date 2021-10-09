@@ -1,0 +1,25 @@
+div.modal-header {
+    background-color: rgb(33, 46, 46);
+    color: floralwhite;
+}
+
+input, select {
+    margin: 3px;
+    border: black;
+    border-width: 2px;
+    border-style: solid;
+}
+
+label.titulo {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+label.custom-control-label {
+    text-decoration: none;
+}
+
+.boton{
+    margin-top: 8px;
+    width: 25%;
+}

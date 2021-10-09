@@ -32,6 +32,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MiPerfilComponent } from './components/SocioPages/mi-perfil/mi-perfil.component';
 import { NovedadesComponent } from './components/SocioPages/novedades/novedades.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { FiltroPipe } from './pipes/filtro.pipe';
     MiPerfilComponent,
     NovedadesComponent,
     FiltroPipe,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

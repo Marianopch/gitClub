@@ -1,25 +1,36 @@
 <app-navigation></app-navigation>
-<h3><b> <u> REGISTRO ALTA ADMIN</u></b></h3>
+<h3><b> <u> REGISTRO CLASE</u></b></h3>
 
-<div >
-    <div class="container">
+<div>
+  <div class="container">
 
-        <form >
-            <select class="form-control" [(ngModel)]="clase.Id_Actividad" name="actividad">
-                <option *ngFor=" let actividad of actividades" [value]="actividad.Id_Actividad" > {{actividad.Descripcion_Actividad}} </option>
-            </select>
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" id="butAgr">
+      Nueva Clase
+    </button>
 
-            <input class="form-control" type="number" name="Cupo_Clase" [(ngModel)]="clase.Cupo_Clase" placeholder="Cupo" class="form-control">
+    <form>
+      <div class="form-group">
+        <label>Actividad</label>
+        <select class="form-control" [(ngModel)]="clase.Id_Actividad" name="actividad">
+          <option *ngFor=" let actividad of actividades" [value]="actividad.Id_Actividad">
+            {{actividad.Descripcion_Actividad}} </option>
+        </select>
+      </div>
 
-            <select class="form-control" [(ngModel)]="clase.Numero_Usuario" name="instructor">
-                <option *ngFor=" let ins of instructor" [value]="ins.Numero_Usuario" >  {{ins.Nombre_Usuario}}  {{ins.Apellido_Usuario}} </option>
-            </select>
+      <input class="form-control" type="number" name="Cupo_Clase" [(ngModel)]="clase.Cupo_Clase" placeholder="Cupo"
+        class="form-control">
 
-            <select class="form-control" [(ngModel)]="clase.Id_Horario" name="horario">
-                <option *ngFor=" let hora of horarios"  [value]="hora.Id_Horario" > {{hora.Comienzo_Horario}} {{hora.Finalizacion_Horario}}</option>
-            </select>
+      <select class="form-control" [(ngModel)]="clase.Numero_Usuario" name="instructor">
+        <option *ngFor=" let ins of instructor" [value]="ins.Numero_Usuario"> {{ins.Nombre_Usuario}}
+          {{ins.Apellido_Usuario}} </option>
+      </select>
 
-            <!-- <ul class="list-group">
+      <select class="form-control" [(ngModel)]="clase.Id_Horario" name="horario">
+        <option *ngFor=" let hora of horarios" [value]="hora.Id_Horario"> {{hora.Comienzo_Horario}}
+          {{hora.Finalizacion_Horario}}</option>
+      </select>
+
+      <!-- <ul class="list-group">
                 <li *ngFor=" let dia of dias">
                   <input class="form-check-input me-1" type="checkbox" [value]="clase.Id_Dias" >
                   {{dia.Nombre_dias}}
@@ -27,36 +38,42 @@
             </ul> -->
 
 
-            <!-- <div *ngFor="let dia of dias">
+      <!-- <div *ngFor="let dia of dias">
               <select [(ngModel)]="dia.checked" [(ngModelChange)]="onCheckboxChange($event)">
                 <option  type="checkbox" *ngFor="let dia of dias" [value]="dia.Id_Dias"  > </option>
             </select> 
             </div> -->
 
 
-                <!-- <label *ngFor="let dia of dias"> 
+      <!-- <label *ngFor="let dia of dias"> 
   
                   <input  type="checkbox" [value]="dia.Id_Dias" (change)="onCheckboxChange($event)" />
   
                   {{dia.Nombre_dias}}
   
                 </label>  -->
-  
 
-              <!-- <ul class="checkbox-items">
+
+      <!-- <ul class="checkbox-items">
                 <li  *ngFor="let dia of dias">
                   <input type="checkbox"  [value]="dia.Id_Dias" (change)="onCheckboxChange($event)">{{dia.Nombre_dias}}
                 </li>
               </ul> -->
 
-
+      <!-- LO DE LUCHOOOO
+-------------------------
                 <div  *ngFor="let dia of dias">
                   <input type="checkbox"  [value]="dia.Id_dias" (change)="onCheckboxChange($event, dia.Id_dias)" [(ngModel)]="dia.checked" [ngModelOptions]="{standalone: true}">{{dia.Nombre_dias}}
                 </div> 
+---------------------------- -->
+      <div *ngFor="let dia of dias" class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" [value]="dia.Id_dias"
+          (change)="onCheckboxChange($event, dia.Id_dias)" [(ngModel)]="dia.checked"
+          [ngModelOptions]="{standalone: true}">
+        <label class="custom-control-label" style="color: aliceblue; margin-left: 1%;">{{dia.Nombre_dias}} </label>
+      </div>
 
-
-
-            <!-- <div class="form-group">
+      <!-- <div class="form-group">
                 <label for="options">Options :</label>
                 <div *ngFor=" let dia of dias">
                     <label>
@@ -69,16 +86,93 @@
                     </label>
                 </div>
             </div> -->
-            <button class="btn btn-success btn-block" (click)="AgregarClase()"> Enviar </button>
-        </form>
+      <button class="btn btn-success btn-block" (click)="AgregarClase()"> Enviar </button>
+    </form>
 
 
-        <!-- <div class="col-md-4">
+    <!-- <div class="col-md-4">
             <h4>Dia Seleccionado: {{diasSelect.length}} </h4>
             <ul>
               <li *ngFor="let diaSelect of diasSelect">{{diaSelect.Nombre_dias}}</li>
             </ul>
           </div> -->
-    </div>
+  </div>
 </div>
 
+
+
+
+<!-- EL MODAL -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva Clase</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div *ngIf="!reintentar">
+          <div class="container">
+
+            <form>
+
+              <div class="form-group">
+                <label class="titulo">Actividad</label>
+                <select class="form-control" [(ngModel)]="clase.Id_Actividad" name="actividad">
+                  <option *ngFor=" let actividad of actividades" [value]="actividad.Id_Actividad">
+                    {{actividad.Descripcion_Actividad}} </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="titulo">Cupo de la Clase</label>
+                <input class="form-control" type="number" name="Cupo_Clase" [(ngModel)]="clase.Cupo_Clase"
+                  placeholder="Ingrese el cupo de socios para la clase" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label class="titulo">Instructor</label>
+                <select class="form-control" [(ngModel)]="clase.Numero_Usuario" name="instructor">
+                  <option *ngFor=" let ins of instructor" [value]="ins.Numero_Usuario"> {{ins.Nombre_Usuario}}
+                    {{ins.Apellido_Usuario}} </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="titulo">Horario de la Clase</label>
+                <select class="form-control" [(ngModel)]="clase.Id_Horario" name="horario">
+                  <option *ngFor=" let hora of horarios" [value]="hora.Id_Horario"> {{hora.Comienzo_Horario}}
+                    {{hora.Finalizacion_Horario}}</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="titulo">Dias de la Clase</label>
+                <div *ngFor="let dia of dias" class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" [value]="dia.Id_dias"
+                    (change)="onCheckboxChange($event, dia.Id_dias)" [(ngModel)]="dia.checked"
+                    [ngModelOptions]="{standalone: true}">
+                  <label class="custom-control-label" style="color: black; margin-left: 1%;">{{dia.Nombre_dias}}
+                  </label>
+                </div>
+              </div>
+              <button class="btn boton btn-success btn-block" (click)="AgregarClase()" data-bs-dismiss="modal">Crear Clase</button>
+            </form>
+          </div>
+        </div>
+        <div *ngIf="reintentar" class="card-body">
+          {{mensaje}} <br>
+          <!-- <button class="btn btn-info" (click)=recargarForm()>Reintentar</button> -->
+        </div>
+      </div>
+
+
+      <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="btn-guardar" data-bs-dismiss="modal">Crear</button>
+          </div> -->
+    </div>
+  </div>
+</div>

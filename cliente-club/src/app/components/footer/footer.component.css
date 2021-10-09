@@ -1,0 +1,19 @@
+footer {
+    background: #111;
+    color: #fff;
+    width: 100%;
+    bottom: 0px;
+  text-align:center ;
+
+    align-content: flex-end;
+   padding: 0.2%;
+    bottom: 0px;
+    
+    
+    
+  }
+
+  p{
+      margin-top: 0.7%;
+  }
+

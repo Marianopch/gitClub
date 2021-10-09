@@ -59,3 +59,14 @@ p{
 .negro{
     color: black;
 }
+
+img.imagen{
+    align-self: flex-start;
+    max-width:100%;
+    width:auto;
+    height:auto;
+    align-content: center   ;
+    display: contents;
+}
+
+
