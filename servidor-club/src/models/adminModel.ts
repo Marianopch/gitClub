@@ -166,15 +166,15 @@ class AdminModel {
 	}
 
 	async crearClase(Id_Actividad: string, Id_Horario: string, Cupo_Clase: string, Numero_Usuario: string) {
-		console.log(Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario);
+
 		const result = (await this.db.query('INSERT INTO clases  (Id_Actividad, Id_Horario , Cupo_Clase, Numero_Usuario)   Values  (?, ?, ? ,? )', [Id_Actividad, Id_Horario, Cupo_Clase ,Numero_Usuario]))[0].affectedRows;
-		console.log(result);
+
 		return result;
 	}
 
-	async crearClaseDias(dia: any) {
-
-		const resultDias = (await this.db.query('INSERT INTO diasclases  (Id_Dias)   Values  (?)', [dia]))[0].affectedRows;
+	async crearClaseDias(Id_Clase: number, dia: any) {
+		console.log(Id_Clase);
+		const resultDias = (await this.db.query('INSERT INTO diasclases  (Id_Clase, Id_Dias)   Values  (?, ?)', [Id_Clase, dia]))[0].affectedRows;
 		console.log(resultDias);
 		return resultDias;
 	}
@@ -203,6 +203,15 @@ class AdminModel {
 		console.log(dias);
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
 		return dias[0];
+	}
+
+	async consultaIDClase(Id_Actividad: number, Id_Horario: number, Cupo_Clase: number, Numero_Usuario: number) {//Devuelve todas las filas de la tabla usuario
+		//const db=this.connection;
+
+		const Id_Clase = await this.db.query('SELECT Id_Clase FROM clases WHERE Id_Actividad = ? AND Id_Horario = ? AND Cupo_Clase = ? AND Numero_Usuario = ?', [Id_Actividad, Id_Horario, Cupo_Clase ,Numero_Usuario]);
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return Id_Clase[0];
 	}
 }
 //Exportamos el enrutador con 

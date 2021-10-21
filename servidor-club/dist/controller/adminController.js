@@ -151,27 +151,28 @@ class AdminController {
     agregarClase(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const clase = req.body;
-            console.log(req.body);
-            let clasedias = clase.diasSelect;
-            clasedias = req.body;
-            console.log(clasedias);
-            switch (clasedias.lenght) {
-                case 0:
-                    let dia = clase.diasSelect[0];
-                    const busquedaClase = yield adminModel_1.default.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
-                    if (!busquedaClase) {
-                        const result = yield adminModel_1.default.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
-                        //if
-                        const consultaIDClase = yield adminModel_1.default.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
-                        //falta consutlar el ID de la clase.
-                        const resultdias = yield adminModel_1.default.crearClaseDias(dia); //falta enviar el id de la clase.
-                        console.log(result);
-                        console.log(resultdias);
-                        return res.status(200).json({ message: 'Clase saved!!' });
-                    }
+            let datosClase = clase[0];
+            let clasedias = clase[1];
+            switch (clasedias.length) {
+                case 1:
+                    let dia = clasedias[0];
+                    //const busquedaClase = await adminModel.buscarClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
+                    //if (!busquedaClase) {
+                    const result = yield adminModel_1.default.crearClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
+                    //if
+                    const Id_Clase = yield adminModel_1.default.consultaIDClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
+                    //falta consutlar el ID de la clase.
+                    //console.log("Id Clase", {Id_Clase} );
+                    let value = Object.keys(Id_Clase);
+                    console.log(value); // 'one'
+                    const resultdias = yield adminModel_1.default.crearClaseDias(Id_Clase, dia); //falta enviar el id de la clase.
+                    console.log(result);
+                    console.log(resultdias);
+                    return res.status(200).json({ message: 'Clase saved!!' });
+                    //}
                     return res.status(403).json({ message: 'Clase exists!!' });
                     break;
-                case 1:
+                case 0:
                     dia = clase.diasSelect[0];
                     let dia1 = clase.diasSelect[1];
                     break;
