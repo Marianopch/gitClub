@@ -71,6 +71,7 @@ class AdminController {
 		const usuario = req.body;
 		console.log(req.body);
 		console.log(req.params);
+		
 		// const { Numero_Usuario } = req.params
 		// const { Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario } = req.body;
 		// const result = await adminModel.actualizar(Numero_Usuario, Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario);

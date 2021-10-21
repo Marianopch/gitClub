@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 })
 
 export class CalendarioComponent implements OnInit {
+  
+  clasesTotales: any = [];
+  claseTotal = {Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: "" , Id_Dias:""}
 
   clasesLu: any = [];
   claseLu = {Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: ""}
@@ -41,7 +44,7 @@ export class CalendarioComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.cargarClases();
+    this.cargarClaseLu();
   }  
 
   cargarClases(){
@@ -53,6 +56,8 @@ export class CalendarioComponent implements OnInit {
     this.cargarClaseSa();
     this.cargarClaseDo();
   }
+
+  
 
   cargarClaseLu(){
     this.sociosService.clasesLu().subscribe(
