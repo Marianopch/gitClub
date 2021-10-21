@@ -191,15 +191,14 @@ class AdminModel {
     }
     crearClase(Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario);
             const result = (yield this.db.query('INSERT INTO clases  (Id_Actividad, Id_Horario , Cupo_Clase, Numero_Usuario)   Values  (?, ?, ? ,? )', [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario]))[0].affectedRows;
-            console.log(result);
             return result;
         });
     }
-    crearClaseDias(dia) {
+    crearClaseDias(Id_Clase, dia) {
         return __awaiter(this, void 0, void 0, function* () {
-            const resultDias = (yield this.db.query('INSERT INTO diasclases  (Id_Dias)   Values  (?)', [dia]))[0].affectedRows;
+            console.log(Id_Clase);
+            const resultDias = (yield this.db.query('INSERT INTO diasclases  (Id_Clase, Id_Dias)   Values  (?, ?)', [Id_Clase, dia]))[0].affectedRows;
             console.log(resultDias);
             return resultDias;
         });
@@ -229,6 +228,15 @@ class AdminModel {
             console.log(dias);
             //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
             return dias[0];
+        });
+    }
+    consultaIDClase(Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //const db=this.connection;
+            const Id_Clase = yield this.db.query('SELECT Id_Clase FROM clases WHERE Id_Actividad = ? AND Id_Horario = ? AND Cupo_Clase = ? AND Numero_Usuario = ?', [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario]);
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return Id_Clase[0];
         });
     }
 }
