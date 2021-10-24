@@ -33,6 +33,7 @@ import { MiPerfilComponent } from './components/SocioPages/mi-perfil/mi-perfil.c
 import { NovedadesComponent } from './components/SocioPages/novedades/novedades.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { FooterComponent } from './components/footer/footer.component';
+import { MisActividadesComponent } from './components/SocioPages/mis-actividades/mis-actividades.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NovedadesComponent,
     FiltroPipe,
     FooterComponent,
+    MisActividadesComponent,
   ],
   imports: [
     BrowserModule,

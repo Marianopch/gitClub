@@ -1,0 +1,34 @@
+<app-navigation></app-navigation>
+
+<div class="container">
+    <div class="table-responsive-md">
+    <table class="table table-success table-bordered border-dark" >
+
+        <thead>
+            <th>ID</th>
+            <th>Descripcion</th>
+            <th></th>
+        </thead>
+
+        <tbody *ngIf="actividades.length > 0; else fila">
+            <tr *ngFor=" let actividad of actividades">
+                <td><input type="text" name="ID" [(ngModel)]="actividad.Id_Actividad"></td>
+                <td><input type="text" name="Descripcion" [(ngModel)]="actividad.Descripcion_Actividad"></td>
+                <td>
+                    <!-- <button class="btn btn-info" (click)="modificarAct(actividad)"> Modificar </button>
+                    <button class="btn btn-danger" (click)="eliminarAct(actividad.Id_Actividad)"> Eliminar </button> -->
+                </td>
+            </tr>
+        </tbody>
+        <ng-template #fila>
+            <tbody>
+                <tr>
+                    <td colspan="4">No hay mas filas</td>
+                </tr>
+            </tbody>
+        </ng-template>
+    </table>
+</div>
+</div>
+
+<app-footer></app-footer>

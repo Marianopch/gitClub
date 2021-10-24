@@ -62,4 +62,10 @@ export class SociosService {
     return this.http.post(`${this.API_URI}/calendar/inscripcion`, envioDatos)
   }
 
+  //LISTAR ACTIVIDADES DEL SOCIO
+
+  ListarSocioActividades() {
+    return this.http.get(`${this.API_URI}/buscarActividad`);
+  }
+
 }

@@ -1,0 +1,17 @@
+
+table{
+    border: black;
+    margin-top: 5%;
+    border-radius: 20%;
+}
+
+thead{
+    background-color: aliceblue;
+    
+}
+
+app-footer{
+    position:absolute;
+   bottom: 0px;
+    width:100%;
+    }
