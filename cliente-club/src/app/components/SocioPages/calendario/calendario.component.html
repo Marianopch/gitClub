@@ -207,7 +207,7 @@
   </tbody>
 </table> -->
 
-<table class="tg">
+<!-- <table class="tg">
   <thead>
     <tr>
       <th class="tg-0pky"></th>
@@ -2015,9 +2015,2076 @@
     </div>
     </tr>
   </tbody>
-</table>
+</table> -->
 
-
+<table class="tg">
+  <thead>
+    <tr>
+      <th class="tg-0pky"></th>
+      <th class="tg-0pky">Lunes</th>
+      <th class="tg-0pky">Martes</th>
+      <th class="tg-0pky">Miercoles</th>
+      <th class="tg-0pky">Jueves</th>
+      <th class="tg-0pky">Viernes</th>
+      <th class="tg-0pky">Sabado</th>
+      <th class="tg-0pky">Domingo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="tg-2bhk">6</td>
+        <td>
+          <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+            <div *ngIf="claseLu.Comienzo_Horario=='6'&& claseLu.Id_Dias=='1'">
+              <tr>{{claseLu.Descripcion_Actividad}}</tr>
+              <tr>{{claseLu.Comienzo_Horario}}</tr>
+              <tr>{{claseLu.Finalizacion_Horario}}</tr>
+              <tr>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  (click)="buscarDatosClase(claseLu.Id_Clase)">
+                  Anotarme - Ver informacion
+                </button>
+              </tr>
+            </div>
+          </tr>
+        </td>
+        <td>
+          <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+            <div *ngIf="claseLu.Comienzo_Horario=='6'&& claseLu.Id_Dias=='2'">
+              <tr>{{claseLu.Descripcion_Actividad}}</tr>
+              <tr>{{claseLu.Comienzo_Horario}}</tr>
+              <tr>{{claseLu.Finalizacion_Horario}}</tr>
+              <tr>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  (click)="buscarDatosClase(claseLu.Id_Clase)">
+                  Anotarme - Ver informacion
+                </button>
+              </tr>
+            </div>
+          </tr>
+        </td>
+        <td>
+          <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+            <div *ngIf="claseLu.Comienzo_Horario=='6'&& claseLu.Id_Dias=='3'">
+              <tr>{{claseLu.Descripcion_Actividad}}</tr>
+              <tr>{{claseLu.Comienzo_Horario}}</tr>
+              <tr>{{claseLu.Finalizacion_Horario}}</tr>
+              <tr>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  (click)="buscarDatosClase(claseLu.Id_Clase)">
+                  Anotarme - Ver informacion
+                </button>
+              </tr>
+            </div>
+          </tr>
+        </td>
+        <td>
+          <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+            <div *ngIf="claseLu.Comienzo_Horario=='6'&& claseLu.Id_Dias=='4'">
+              <tr>{{claseLu.Descripcion_Actividad}}</tr>
+              <tr>{{claseLu.Comienzo_Horario}}</tr>
+              <tr>{{claseLu.Finalizacion_Horario}}</tr>
+              <tr>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  (click)="buscarDatosClase(claseLu.Id_Clase)">
+                  Anotarme - Ver informacion
+                </button>
+              </tr>
+            </div>
+          </tr>
+        </td>
+        <td>
+          <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+            <div *ngIf="claseLu.Comienzo_Horario=='6'&& claseLu.Id_Dias=='5'">
+              <tr>{{claseLu.Descripcion_Actividad}}</tr>
+              <tr>{{claseLu.Comienzo_Horario}}</tr>
+              <tr>{{claseLu.Finalizacion_Horario}}</tr>
+              <tr>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  (click)="buscarDatosClase(claseLu.Id_Clase)">
+                  Anotarme - Ver informacion
+                </button>
+              </tr>
+            </div>
+          </tr>
+        </td>
+        <td>
+          <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+            <div *ngIf="claseLu.Comienzo_Horario=='6'&& claseLu.Id_Dias=='6'">
+              <tr>{{claseLu.Descripcion_Actividad}}</tr>
+              <tr>{{claseLu.Comienzo_Horario}}</tr>
+              <tr>{{claseLu.Finalizacion_Horario}}</tr>
+              <tr>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  (click)="buscarDatosClase(claseLu.Id_Clase)">
+                  Anotarme - Ver informacion
+                </button>
+              </tr>
+            </div>
+          </tr>
+        </td>
+        <td>
+          <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+            <div *ngIf="claseLu.Comienzo_Horario=='6'&& claseLu.Id_Dias=='7'">
+              <tr>{{claseLu.Descripcion_Actividad}}</tr>
+              <tr>{{claseLu.Comienzo_Horario}}</tr>
+              <tr>{{claseLu.Finalizacion_Horario}}</tr>
+              <tr>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  (click)="buscarDatosClase(claseLu.Id_Clase)">
+                  Anotarme - Ver informacion
+                </button>
+              </tr>
+            </div>
+          </tr>
+        </td>
+    </tr>
+    <tr>
+      <td class="tg-0pky">7</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='7'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='7'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='7'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='7'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='7'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='7'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='7'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-2bhk">8</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='8'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='8'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='8'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='8'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='8'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='8'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='8'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-0pky">9</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='9'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='9'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='9'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='9'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='9'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='9'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='9'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-2bhk">10<br></td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='10'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='10'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='10'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='10'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='10'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='10'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='10'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-0pky">11</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='11'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='11'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='11'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='11'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='11'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='11'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='11'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-2bhk">12</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='12'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='12'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='12'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='12'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='12'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='12'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='12'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-0pky">13</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='13'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='13'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='13'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='13'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='13'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='13'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='13'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-2bhk">14</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='14'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='14'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='14'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='14'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='14'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='14'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='14'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-0pky">15</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='15'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='15'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='15'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='15'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='15'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='15'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='15'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-2bhk">16</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='16'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='16'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='16'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='16'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='16'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='16'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='16'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-0pky">17</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='17'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='17'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='17'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='17'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='17'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='17'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='17'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-2bhk">18</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='18'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='18'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='18'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='18'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='18'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='18'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='18'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-0pky">19</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='19'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='19'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='19'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='19'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='19'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='19'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='19'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-2bhk">20</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='20'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='20'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='20'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='20'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='20'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='20'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='20'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-0pky">21</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='21'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='21'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='21'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='21'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='21'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='21'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='21'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-2bhk">22</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='22'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='22'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='22'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='22'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='22'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='22'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='22'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-0pky">23</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='23'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='23'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='23'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='23'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='23'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='23'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-0pky">
+          <div *ngIf="claseLu.Comienzo_Horario=='23'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-2bhk">24</td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='24'&& claseLu.Id_Dias=='1'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='24'&& claseLu.Id_Dias=='2'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='24'&& claseLu.Id_Dias=='3'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='24'&& claseLu.Id_Dias=='4'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='24'&& claseLu.Id_Dias=='5'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='24'&& claseLu.Id_Dias=='6'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let claseLu of clasesLu" class="tg-2bhk">
+          <div *ngIf="claseLu.Comienzo_Horario=='24'&& claseLu.Id_Dias=='7'">
+            <tr>{{claseLu.Descripcion_Actividad}}</tr>
+            <tr>{{claseLu.Comienzo_Horario}}</tr>
+            <tr>{{claseLu.Finalizacion_Horario}}</tr>
+            <tr>
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="buscarDatosClase(claseLu.Id_Clase)">
+                Anotarme - Ver informacion
+              </button>
+            </tr>
+          </div>
+        </tr>
+      </td>
+    </tr>
+  </tbody>
+  </table>
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
