@@ -91,6 +91,14 @@ class SocioController {
             return res.json(inscripcion);
         });
     }
+    misActividades(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { Numero_Usuario } = req.params;
+            console.log(Numero_Usuario);
+            const misAct = yield socioModel_1.default.buscarmisAct(Numero_Usuario);
+            return res.json(misAct);
+        });
+    }
 }
 const socioController = new SocioController();
 exports.default = socioController;

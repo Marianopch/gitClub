@@ -90,7 +90,16 @@ class SocioController {
 		return res.json(inscripcion);
 	}
 
+	public async misActividades(req: Request, res: Response) {
 
+		const { Numero_Usuario } = req.params;
+
+		console.log(Numero_Usuario);
+
+		const misAct = await socioModel.buscarmisAct(Numero_Usuario);
+		return res.json(misAct);
+	}
+	
 
 }
 

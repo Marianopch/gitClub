@@ -27,6 +27,8 @@ class SocioRoutes {
         this.router.post('/calendar/inscripcion', socioController_1.default.inscripcionSocioClase);
         //SocioPage - MiPerfil Sector 
         this.router.get('/miperfil/:Numero_Usuario', socioController_1.default.miperfil);
+        //SocioPage - MisActividades Sector 
+        this.router.get('/buscarActividades/:Numero_Usuario', socioController_1.default.misActividades);
     }
 }
 //Exportamos el enrutador con 

@@ -15,7 +15,9 @@ actividades:any =[];
   constructor(private sociosService:SociosService , private router: Router) { }
 
   ngOnInit(): void {
-    this.sociosService.ListarSocioActividades().subscribe(
+    let Numero_Usuario = localStorage.getItem('Usuario');
+
+    this.sociosService.ListarSocioActividades(Numero_Usuario).subscribe(
       res => {
         this.actividades = res;
         console.log(res)

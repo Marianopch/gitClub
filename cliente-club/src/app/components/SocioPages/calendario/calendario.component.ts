@@ -49,12 +49,12 @@ export class CalendarioComponent implements OnInit {
 
   cargarClases(){
     this.cargarClaseLu();
-    this.cargarClaseMa();
-    this.cargarClaseMi();
-    this.cargarClaseJu();
-    this.cargarClaseVi();
-    this.cargarClaseSa();
-    this.cargarClaseDo();
+    // this.cargarClaseMa();
+    // this.cargarClaseMi();
+    // this.cargarClaseJu();
+    // this.cargarClaseVi();
+    // this.cargarClaseSa();
+    // this.cargarClaseDo();
   }
 
   
@@ -69,65 +69,65 @@ export class CalendarioComponent implements OnInit {
     )
   }
 
-  cargarClaseMa(){
-    this.sociosService.clasesMa().subscribe(
-      res => {
-        this.clasesMa = res;
-        console.log(res)
-      },
-      err => console.log(err)
-    )
-  }
+  // cargarClaseMa(){
+  //   this.sociosService.clasesMa().subscribe(
+  //     res => {
+  //       this.clasesMa = res;
+  //       console.log(res)
+  //     },
+  //     err => console.log(err)
+  //   )
+  // }
 
-  cargarClaseMi(){
-    this.sociosService.clasesMi().subscribe(
-      res => {
-        this.clasesMi = res;
-        console.log(res)
-      },
-      err => console.log(err)
-    )
-  }
+  // cargarClaseMi(){
+  //   this.sociosService.clasesMi().subscribe(
+  //     res => {
+  //       this.clasesMi = res;
+  //       console.log(res)
+  //     },
+  //     err => console.log(err)
+  //   )
+  // }
 
-  cargarClaseJu(){
-    this.sociosService.clasesJu().subscribe(
-      res => {
-        this.clasesJu = res;
-        console.log(res)
-      },
-      err => console.log(err)
-    )
-  }
+  // cargarClaseJu(){
+  //   this.sociosService.clasesJu().subscribe(
+  //     res => {
+  //       this.clasesJu = res;
+  //       console.log(res)
+  //     },
+  //     err => console.log(err)
+  //   )
+  // }
 
-  cargarClaseVi(){
-    this.sociosService.clasesVi().subscribe(
-      res => {
-        this.clasesVi = res;
-        console.log(res)
-      },
-      err => console.log(err)
-    )
-  }
+  // cargarClaseVi(){
+  //   this.sociosService.clasesVi().subscribe(
+  //     res => {
+  //       this.clasesVi = res;
+  //       console.log(res)
+  //     },
+  //     err => console.log(err)
+  //   )
+  // }
 
-  cargarClaseSa(){
-    this.sociosService.clasesSa().subscribe(
-      res => {
-        this.clasesSa = res;
-        console.log(res)
-      },
-      err => console.log(err)
-    )
-  }
+  // cargarClaseSa(){
+  //   this.sociosService.clasesSa().subscribe(
+  //     res => {
+  //       this.clasesSa = res;
+  //       console.log(res)
+  //     },
+  //     err => console.log(err)
+  //   )
+  // }
 
-  cargarClaseDo(){
-    this.sociosService.clasesDo().subscribe(
-      res => {
-        this.clasesDo = res;
-        console.log(res)
-      },
-      err => console.log(err)
-    )
-  }
+  // cargarClaseDo(){
+  //   this.sociosService.clasesDo().subscribe(
+  //     res => {
+  //       this.clasesDo = res;
+  //       console.log(res)
+  //     },
+  //     err => console.log(err)
+  //   )
+  // }
 
   buscarDatosClase(Id_Clase: any){
 

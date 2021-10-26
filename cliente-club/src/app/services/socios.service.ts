@@ -64,8 +64,8 @@ export class SociosService {
 
   //LISTAR ACTIVIDADES DEL SOCIO
 
-  ListarSocioActividades() {
-    return this.http.get(`${this.API_URI}/buscarActividad`);
+  ListarSocioActividades(Numero_Usuario: any) {
+    return this.http.get(`${this.API_URI}/buscarActividades/${Numero_Usuario}`);
   }
 
 }
