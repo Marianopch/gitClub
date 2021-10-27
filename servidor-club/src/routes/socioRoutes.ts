@@ -25,13 +25,16 @@ class SocioRoutes {
 
         this.router.get('/calendar/:Id_Clase', socioController.verInfoClase);
 
-        this.router.post('/calendar/inscripcion',socioController.inscripcionSocioClase)
+        this.router.post('/calendar/inscripcion', socioController.inscripcionSocioClase)
 
         //SocioPage - MiPerfil Sector 
         this.router.get('/miperfil/:Numero_Usuario', socioController.miperfil);
 
         //SocioPage - MisActividades Sector 
         this.router.get('/buscarActividades/:Numero_Usuario', socioController.misActividades);
+
+        //Comentarios
+        this.router.get('/list', socioController.listComent);
 
     }
 

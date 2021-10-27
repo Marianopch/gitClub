@@ -268,6 +268,42 @@ class AdminController {
 		res.render('adminPage/admins/agregarAdmin');
 	}
 
+	//Comentarios
+	public async listComent(req: Request, res: Response) {
+		//console.log(req.header("Authorization"));
+		console.log(req.body);
+		const comentario = await adminModel.listarComentario();
+		console.log(comentario);
+		return res.json(comentario);
+	}
+
+
+	public async createComent(req: Request, res: Response) {
+		//console.log(req.header("Authorization"));
+		const comentario = req.body;
+		console.log(req.body);
+		if(comentario.Descripcion_Comentario.length == 0 || comentario.Descripcion_Comentario.length > 1000){
+			 res.json ({ message: 'Comentario no guardado!!' });
+		}
+		if(comentario.Imagen_Comentario.length == 0){
+			res.json ({ message: 'Comentario no guardado!!' });
+		}
+		
+		const result = await adminModel.crearComentario(comentario);
+
+		return res.status(200).json({ message: 'Comentario saved!!' });
+
+	}
+
+	public async deleteComent(req: Request, res: Response) {
+		//console.log(req.header("Authorization"));
+
+		console.log(req.body);
+		const { id } = req.params; 
+		const result = await adminModel.eliminarComentario(id);
+		return res.json({ text: 'deleting a user ' + id });
+
+	}
 
 }
 

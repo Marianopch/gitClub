@@ -99,6 +99,14 @@ class SocioController {
 		const misAct = await socioModel.buscarmisAct(Numero_Usuario);
 		return res.json(misAct);
 	}
+
+	public async listComent(req: Request, res: Response) {
+		//console.log(req.header("Authorization"));
+		console.log(req.body);
+		const comentario = await socioModel.listarComentario();
+		console.log(comentario);
+		return res.json(comentario);
+	}
 	
 
 }

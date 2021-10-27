@@ -1,5 +1,29 @@
 <app-navigation></app-navigation>
-<BR>
-<p style="color: aliceblue; text-align: center;"><B>PROXIMAMENTE NOVEDADES</B></p>
-<BR>
-    <!-- <img src="https://previews.123rf.com/images/zhitkov/zhitkov1611/zhitkov161100008/66381061-p%C3%A1gina-en-construcci%C3%B3n-dise%C3%B1o-trabajadores-de-dibujos-animados-divertidos-reparaci%C3%B3n-sitio-web-utili.jpg"> -->
+  
+
+<div class="col mb-4" style="padding: 3%; margin-left: 25%;">
+    <div class="row row-cols-1 row-cols-md-2">
+      <div class="col mb-4" *ngIf="comentarios.length > 0; else fila">
+        <div *ngFor=" let comentario of comentarios" class="card" style="margin-bottom: 3%;">
+          <img src={{comentario.Imagen_Comentario}} alt="" class="card-img-top" style="margin-left: 40%;">
+          <hr class="solid">
+          <div class="card-body">
+            <h5 class="card-title" style="margin-left: 40%;">Titulo: {{comentario.titulo}}</h5>
+            <p class="card-text"   [innerHTML]="comentario.Descripcion_Comentario">{{comentario.descripcion}}</p>
+            
+            <p class="card-text" >{{comentario.id}}</p>
+            <hr class="solid">
+            <p class="card-text"><small class="text-muted">Usuario: {{comentario.Numero_Usuario}} , Fecha Creacion:
+                {{comentario.fcreacion}} </small></p>
+          </div>
+        </div>
+      </div>
+      <ng-template #fila>
+        <tbody>
+          <tr>
+            <td style="color: white;" colspan="4">No hay filas para mostrar</td>
+          </tr>
+        </tbody>
+      </ng-template>
+    </div>
+  </div>

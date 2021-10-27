@@ -239,6 +239,31 @@ class AdminModel {
             return Id_Clase[0];
         });
     }
+    //Comentario
+    listarComentario() {
+        return __awaiter(this, void 0, void 0, function* () {
+            //const db=this.connection;
+            const comentario = yield this.db.query('SELECT * FROM comentario order by fcreacion desc');
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return comentario[0];
+        });
+    }
+    crearComentario(comentario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('INSERT INTO comentario SET ?', [comentario]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
+    //Devuelve 1 si logro eliminar el usuario indicado por id
+    eliminarComentario(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const comentario = (yield this.db.query('DELETE FROM comentario WHERE Id_Comentario = ?', [id]))[0].affectedRows;
+            console.log(comentario);
+            return comentario;
+        });
+    }
 }
 //Exportamos el enrutador con 
 const adminModel = new AdminModel();

@@ -6,6 +6,7 @@ import { Clase } from '../models/claseModel';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Dias } from '../models/diaModel';
+import { Comentario } from '../models/comentarioModel';
 
 @Injectable({
   providedIn: 'root'
@@ -121,6 +122,26 @@ export class UsuariosService {
 
   listarDias(){
     return this.http.get(`${this.API_URI}/buscardias`);
+  }
+
+  // COmentarios
+  listarComentarios() {
+    return this.http.get(`${this.API_URI}/list`);
+
+  }
+
+  // filtrarUser(searchText: string) {
+  //   console.log(searchText);
+  //   return this.http.get(`${this.API_URI}/find/${searchText}`);
+  // }
+
+  guardarComentarios(comentario: Comentario) {
+    console.log(comentario);
+    return this.http.post(`${this.API_URI}/create`, comentario);
+  }
+
+  eliminarComentarios(comentario: any) {
+    return this.http.delete(`${this.API_URI}/delete/${comentario.id}`);
   }
 
   getToken() {//Obtenemos el token que despues enviara el interceptor x cada req

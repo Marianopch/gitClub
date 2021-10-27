@@ -18,7 +18,7 @@ import { CalendarioComponent } from './components/SocioPages/calendario/calendar
 import { MiPerfilComponent } from './components/SocioPages/mi-perfil/mi-perfil.component';
 import { NovedadesComponent } from './components/SocioPages/novedades/novedades.component';
 import { MisActividadesComponent } from './components/SocioPages/mis-actividades/mis-actividades.component';
-
+import { NovedadesAdminComponent } from './components/AdminPages/novedades-admin/novedades-admin.component';
 
 const routes: Routes = [
 	{
@@ -152,9 +152,15 @@ const routes: Routes = [
 		component: MiPerfilComponent,
 		canActivate: [AuthGuard]
 	},
+		//Socio y Admin - Comentario
 	{
 		path: 'socio/novedades',
 		component: NovedadesComponent,
+		canActivate: [AuthGuard]
+	},
+	{
+		path: 'admin/novedades',
+		component: NovedadesAdminComponent,
 		canActivate: [AuthGuard]
 	},
 ];

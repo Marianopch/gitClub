@@ -66,6 +66,10 @@ class AdminRoutes {
         this.router.post('/notarActividad', adminController_1.default.anotarActividad);
         this.router.get('/error', adminController_1.default.showError);
         //this.router.get('/buscarSocio',adminController.buscarSocio);
+        //Comentarios
+        this.router.get('/list', adminController_1.default.listComent);
+        this.router.post('/create', adminController_1.default.createComent);
+        this.router.delete('/delete/:id', adminController_1.default.deleteComent);
     }
 }
 //Exportamos el enrutador con 

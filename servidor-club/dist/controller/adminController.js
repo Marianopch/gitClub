@@ -241,6 +241,40 @@ class AdminController {
     mostrarFormAgregarAdmin(req, res) {
         res.render('adminPage/admins/agregarAdmin');
     }
+    //Comentarios
+    listComent(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //console.log(req.header("Authorization"));
+            console.log(req.body);
+            const comentario = yield adminModel_1.default.listarComentario();
+            console.log(comentario);
+            return res.json(comentario);
+        });
+    }
+    createComent(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //console.log(req.header("Authorization"));
+            const comentario = req.body;
+            console.log(req.body);
+            if (comentario.Descripcion_Comentario.length == 0 || comentario.Descripcion_Comentario.length > 1000) {
+                res.json({ message: 'Comentario no guardado!!' });
+            }
+            if (comentario.Imagen_Comentario.length == 0) {
+                res.json({ message: 'Comentario no guardado!!' });
+            }
+            const result = yield adminModel_1.default.crearComentario(comentario);
+            return res.status(200).json({ message: 'Comentario saved!!' });
+        });
+    }
+    deleteComent(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //console.log(req.header("Authorization"));
+            console.log(req.body);
+            const { id } = req.params;
+            const result = yield adminModel_1.default.eliminarComentario(id);
+            return res.json({ text: 'deleting a user ' + id });
+        });
+    }
 }
 const adminController = new AdminController();
 exports.default = adminController;

@@ -213,6 +213,29 @@ class AdminModel {
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
 		return Id_Clase[0];
 	}
+
+
+	//Comentario
+	async listarComentario() {//Devuelve todas las filas de la tabla usuario
+		//const db=this.connection;
+		const comentario = await this.db.query('SELECT * FROM comentario order by fcreacion desc');
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return comentario[0];
+	}
+
+	async crearComentario(comentario: object) {
+		const result = (await this.db.query('INSERT INTO comentario SET ?', [comentario]))[0].affectedRows;
+		console.log(result);
+		return result;
+	}
+
+	//Devuelve 1 si logro eliminar el usuario indicado por id
+	async eliminarComentario(id: string) {
+		const comentario = (await this.db.query('DELETE FROM comentario WHERE Id_Comentario = ?', [id]))[0].affectedRows;
+		console.log(comentario);
+		return comentario;
+	}
 }
 //Exportamos el enrutador con 
 

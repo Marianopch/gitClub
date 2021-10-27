@@ -1,0 +1,65 @@
+<app-navigation></app-navigation>
+
+
+
+<div class="col mb-4" style="padding: 3%; margin-left: 25%;">
+    <div class="row row-cols-1 row-cols-md-2">
+      <div class="col mb-4" *ngIf="comentarios.length > 0; else fila">
+        <div *ngFor=" let comentario of comentarios" class="card" style="margin-bottom: 3%;">
+          <img src={{comentario.Imagen_Comentario}} alt="" class="card-img-top" style="margin-left: 40%;">
+          <hr class="solid">
+          <div class="card-body">
+            <h5 class="card-title" style="margin-left: 40%;">Titulo: {{comentario.titulo}}</h5>
+            <p class="card-text"   [innerHTML]="comentario.Descripcion_Comentario">{{comentario.descripcion}}</p>
+            
+            <p class="card-text" >{{comentario.id}}</p>
+            <hr class="solid">
+            <p class="card-text"><small class="text-muted">Usuario: {{comentario.Numero_Usuario}} , Fecha Creacion:
+                {{comentario.fcreacion}} </small></p>
+            <button *ngIf="id_Rol == '1'" class="btn btn-danger btn-block"
+              (click)=eliminar(comentario)>Eliminar</button>
+          </div>
+        </div>
+      </div>
+      <ng-template #fila>
+        <tbody>
+          <tr>
+            <td style="color: white;" colspan="4">No hay filas para mostrar</td>
+          </tr>
+        </tbody>
+      </ng-template>
+    </div>
+  </div>
+  
+  
+  <div class="col mb-4" style="padding: 3%; margin-left: 25%;">
+    <div class="row row-cols-1 row-cols-md-2">
+      <div class="col mb-4">
+        
+        <form (submit)="crearComentario()" class="card">
+          <p style="text-decoration: underline; font-weight: bold;" >Crear el comentario</p>
+          <div class="form-group">
+            Titulo: <input type="text" name="titulo" [(ngModel)]="comentario.Titulo_Comentario" placeholder="Titulo">
+          </div>
+          <div class="form-group">
+            Descripcion: <input type="text" name="descripcion" [(ngModel)]="comentario.Descripcion_Comentario"
+              (focus)="limpiarComentario()" placeholder="Descripcion">
+            <div [ngSwitch]="errorComentario">
+              <div class="DivErrorComent" *ngSwitchCase="1">Error, campo vacio</div>
+              <div class="DivErrorComent" *ngSwitchCase="2">Error, excedió el limite maximo de caracteres</div>
+            </div>
+          </div>
+          Imagen: <input type="text" name="imagen" [(ngModel)]="comentario.Imagen_Comentario" (focus)="limpiarImagen()">
+          <div [ngSwitch]="errorImagen">
+            <div class="DivErrorComent" *ngSwitchCase="1">Error, campo vacio</div>
+          </div>
+          <input type="hidden" name="numero_Usuario" [(ngModel)]="comentario.Numero_Usuario">
+          <span></span>
+          <button class="btn btn-small btn-success" type="submit" (click)="verificarForm()">Crear</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+    

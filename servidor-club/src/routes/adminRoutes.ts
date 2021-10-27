@@ -75,6 +75,10 @@ class AdminRoutes {
         this.router.get('/error', adminController.showError);
         //this.router.get('/buscarSocio',adminController.buscarSocio);
 
+        //Comentarios
+        this.router.get('/list',adminController.listComent);
+		this.router.post('/create',adminController.createComent);
+		this.router.delete('/delete/:id',adminController.deleteComent);
     }
 
 }

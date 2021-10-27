@@ -29,6 +29,8 @@ class SocioRoutes {
         this.router.get('/miperfil/:Numero_Usuario', socioController_1.default.miperfil);
         //SocioPage - MisActividades Sector 
         this.router.get('/buscarActividades/:Numero_Usuario', socioController_1.default.misActividades);
+        //Comentarios
+        this.router.get('/list', socioController_1.default.listComent);
     }
 }
 //Exportamos el enrutador con 

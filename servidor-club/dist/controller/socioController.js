@@ -99,6 +99,15 @@ class SocioController {
             return res.json(misAct);
         });
     }
+    listComent(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //console.log(req.header("Authorization"));
+            console.log(req.body);
+            const comentario = yield socioModel_1.default.listarComentario();
+            console.log(comentario);
+            return res.json(comentario);
+        });
+    }
 }
 const socioController = new SocioController();
 exports.default = socioController;

@@ -101,6 +101,15 @@ class SocioModel {
             return null;
         });
     }
+    listarComentario() {
+        return __awaiter(this, void 0, void 0, function* () {
+            //const db=this.connection;
+            const comentario = yield this.db.query('SELECT * FROM comentario order by fcreacion desc');
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return comentario[0];
+        });
+    }
 }
 //Exportamos el enrutador con 
 const socioModel = new SocioModel();

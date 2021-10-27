@@ -68,4 +68,10 @@ export class SociosService {
     return this.http.get(`${this.API_URI}/buscarActividades/${Numero_Usuario}`);
   }
 
+    // COmentarios
+    listarComentarios() {
+      return this.http.get(`${this.API_URI}/list`);
+  
+    }
+
 }

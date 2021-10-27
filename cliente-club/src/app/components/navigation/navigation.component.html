@@ -143,6 +143,15 @@
       </ul>
     </div>
 
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link" routerLink="../../admin/novedades" style="color:aliceblue"> <i class="far fa-newspaper" style="margin: 5px;"></i> Novedades</a>
+          <!-- <button class="nav-button"><i class="far fa-newspaper"></i> Novedades </button> -->
+        </li>
+      </ul>
+    </div>
+
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" id="logout" (click)="logout()" style="color: white; margin: 10px;"> <b> Cerrar sesion <i
@@ -151,6 +160,10 @@
     </ul>
   </div>
 </nav>
+
+
+
+
 
 <!-- NAVBAR SOCIOS -->
 <nav *ngIf="rol== '2'" style="width: auto" class="navbar navbar-expand-lg navbar-dark bg-dark">
