@@ -16,13 +16,7 @@ class SocioRoutes {
             //res.render("partials/principal");
         });
         //SocioPage - Calendar Sector - Inscripcion
-        this.router.get('/clasesLu', socioController_1.default.clasesLu);
-        this.router.get('/clasesMa', socioController_1.default.clasesMa);
-        this.router.get('/clasesMi', socioController_1.default.clasesMi);
-        this.router.get('/clasesJu', socioController_1.default.clasesJu);
-        this.router.get('/clasesVi', socioController_1.default.clasesVi);
-        this.router.get('/clasesSa', socioController_1.default.clasesSa);
-        this.router.get('/clasesDo', socioController_1.default.clasesDo);
+        this.router.get('/clasesTotales', socioController_1.default.clasesTotales);
         this.router.get('/calendar/:Id_Clase', socioController_1.default.verInfoClase);
         this.router.post('/calendar/inscripcion', socioController_1.default.inscripcionSocioClase);
         //SocioPage - MiPerfil Sector 

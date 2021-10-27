@@ -35,6 +35,7 @@ import { FiltroPipe } from './pipes/filtro.pipe';
 import { FooterComponent } from './components/footer/footer.component';
 import { MisActividadesComponent } from './components/SocioPages/mis-actividades/mis-actividades.component';
 import { NovedadesAdminComponent } from './components/AdminPages/novedades-admin/novedades-admin.component';
+import { ClasesPipe } from './pipes/clases.pipe';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { NovedadesAdminComponent } from './components/AdminPages/novedades-admin
     FooterComponent,
     MisActividadesComponent,
     NovedadesAdminComponent,
+    ClasesPipe,
   ],
   imports: [
     BrowserModule,

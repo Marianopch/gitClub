@@ -25,46 +25,10 @@ class SocioModel {
             });
         });
     }
-    listarClaseLu() {
+    listarclasesTotales() {
         return __awaiter(this, void 0, void 0, function* () {
-            const usuarios = yield this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario,  Finalizacion_Horario, diasclases.Id_Dias FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad ');
-            return usuarios[0];
-        });
-    }
-    listarClaseMa() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const usuarios = yield this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "2" ');
-            return usuarios[0];
-        });
-    }
-    listarClaseMi() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const usuarios = yield this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "3" ');
-            return usuarios[0];
-        });
-    }
-    listarClaseJu() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const usuarios = yield this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "4" ');
-            return usuarios[0];
-        });
-    }
-    listarClaseVi() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const usuarios = yield this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "5" ');
-            return usuarios[0];
-        });
-    }
-    listarClaseSa() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const usuarios = yield this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "6" ');
-            return usuarios[0];
-        });
-    }
-    listarClaseDo() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const usuarios = yield this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario, Finalizacion_Horario FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE diasclases.Id_dias = "7" ');
-            return usuarios[0];
+            const clases = yield this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario,  Finalizacion_Horario, diasclases.Id_Dias FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad ');
+            return clases[0];
         });
     }
     verClase(Id_Clase) {

@@ -14,14 +14,7 @@ class SocioRoutes {
         });
 
         //SocioPage - Calendar Sector - Inscripcion
-        this.router.get('/clasesLu', socioController.clasesLu);
-        this.router.get('/clasesMa', socioController.clasesMa);
-        this.router.get('/clasesMi', socioController.clasesMi);
-        this.router.get('/clasesJu', socioController.clasesJu);
-        this.router.get('/clasesVi', socioController.clasesVi);
-        this.router.get('/clasesSa', socioController.clasesSa);
-        this.router.get('/clasesDo', socioController.clasesDo);
-
+        this.router.get('/clasesTotales', socioController.clasesTotales);
 
         this.router.get('/calendar/:Id_Clase', socioController.verInfoClase);
 

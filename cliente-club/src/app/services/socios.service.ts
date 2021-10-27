@@ -15,28 +15,9 @@ export class SociosService {
 
   //SocioPage - Calendar Sector - Inscripcion
 
-  clasesLu(){
-    return this.http.get(`${this.API_URI}/clasesLu`);
+  clasesTotales(){
+    return this.http.get(`${this.API_URI}/clasesTotales`);
   }
-  clasesMa(){
-    return this.http.get(`${this.API_URI}/clasesMa`);
-  }
-  clasesMi(){
-    return this.http.get(`${this.API_URI}/clasesMi`);
-  }
-  clasesJu(){
-    return this.http.get(`${this.API_URI}/clasesJu`);
-  }
-  clasesVi(){
-    return this.http.get(`${this.API_URI}/clasesVi`);
-  }
-  clasesSa(){
-    return this.http.get(`${this.API_URI}/clasesSa`);
-  }
-  clasesDo(){
-    return this.http.get(`${this.API_URI}/clasesDo`);
-  }
-
 
   buscarDatosSocio(Numero_Usuario: any){
     return this.http.get(`${this.API_URI}/miperfil/${Numero_Usuario}`)

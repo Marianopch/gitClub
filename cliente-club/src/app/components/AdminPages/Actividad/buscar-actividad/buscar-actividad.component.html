@@ -1,26 +1,29 @@
 <app-navigation></app-navigation>
 
-<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"  id="butAgregar">
-    Nueva Actividad
-</button>
+
 
 <div class="container">
-    <div class="table-responsive-md">
-    <table class="table table-success table-bordered border-dark" >
+
+
+    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" id="butAgr">
+        Nueva Actividad
+    </button>
+
+
+    <table class="table table-success table-hover">
 
         <thead>
             <th>ID</th>
             <th>Descripcion</th>
-            <th></th>
+            <th>Accion</th>
         </thead>
 
         <tbody *ngIf="actividades.length > 0; else fila">
             <tr *ngFor=" let actividad of actividades">
-                <td><input type="text" name="ID" [(ngModel)]="actividad.Id_Actividad"></td>
-                <td><input type="text" name="Descripcion" [(ngModel)]="actividad.Descripcion_Actividad"></td>
+                <td>{{actividad.Id_Actividad}}</td>
+                <td>{{actividad.Descripcion_Actividad}}</td>
                 <td>
-                    <button class="btn btn-info" (click)="modificarAct(actividad)"> Modificar </button>
-                    <button class="btn btn-danger" (click)="eliminarAct(actividad.Id_Actividad)"> Eliminar </button>
+                    <button id='butMod' class="btn btn-danger" (click)="eliminarAct(actividad.Id_Actividad)"> Eliminar </button>
                 </td>
             </tr>
         </tbody>
@@ -32,7 +35,7 @@
             </tbody>
         </ng-template>
     </table>
-</div>
+
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -63,3 +66,4 @@
             </div>
         </div>
     </div>
+</div>

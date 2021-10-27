@@ -1,20 +1,9 @@
-thead{
-    background-color: azure;
+button#butAgr {
+    width: 100%;
+    margin-bottom: 1%;
+    margin-top: 1%;
 }
 
-#butAgregar {
-    margin: 20px;
-}
-
-.btn-info:hover{
-    background-color: royalblue;
-} 
-
-table{
-    border: black;
-}
-
-div.modal-header{
-    background-color: rgb(33, 46, 46);
-    color: floralwhite;
+button#butMod {
+    width: 100%;
 }

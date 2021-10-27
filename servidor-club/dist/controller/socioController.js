@@ -15,53 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const socioModel_1 = __importDefault(require("../models/socioModel"));
 class SocioController {
     //SocioPage - Calendar Sector - Inscripcion
-    clasesLu(req, res) {
+    clasesTotales(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
-            const usuarios = yield socioModel_1.default.listarClaseLu();
-            return res.json(usuarios);
-        });
-    }
-    clasesMa(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
-            const usuarios = yield socioModel_1.default.listarClaseMa();
-            return res.json(usuarios);
-        });
-    }
-    clasesMi(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
-            const usuarios = yield socioModel_1.default.listarClaseMi();
-            return res.json(usuarios);
-        });
-    }
-    clasesJu(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
-            const usuarios = yield socioModel_1.default.listarClaseJu();
-            return res.json(usuarios);
-        });
-    }
-    clasesVi(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
-            const usuarios = yield socioModel_1.default.listarClaseVi();
-            return res.json(usuarios);
-        });
-    }
-    clasesSa(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
-            const usuarios = yield socioModel_1.default.listarClaseSa();
-            return res.json(usuarios);
-        });
-    }
-    clasesDo(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
-            const usuarios = yield socioModel_1.default.listarClaseDo();
-            return res.json(usuarios);
+            const clases = yield socioModel_1.default.listarclasesTotales();
+            return res.json(clases);
         });
     }
     //SocioPage - MiPerfil Sector 
