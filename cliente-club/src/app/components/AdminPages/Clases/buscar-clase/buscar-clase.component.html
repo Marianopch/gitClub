@@ -4,13 +4,13 @@
 <br>
 <br>
 
-<div class="container">
+<div class='container-fluid' >
 
-    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" id="butAgr">
+    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" id="butAgr" >
         Nueva Clase
     </button>
-    <br>
-    <br>
+
+    
     <table class="table table-success table-hover">
         <thead>
             <th>Numero Clase</th>
@@ -22,19 +22,13 @@
         </thead>
         <tbody *ngIf="clases.length > 0; else fila">
             <tr *ngFor=" let clase of clases">
-                <td><input type="text" name="Id_Clase" [(ngModel)]="clase.Id_Clase"></td>
-                <td><input type="text" name="Descripcion_Actividad" [(ngModel)]="clase.Descripcion_Actividad"></td>
+                <td> {{clase.Id_Clase}} </td>
+                <td> {{clase.Descripcion_Actividad}} </td>
+                <td> {{clase.Nombre_Usuario}} {{clase.Apellido_Usuario}} </td>
+                <td> {{clase.Comienzo_Horario}}:00 - {{clase.Finalizacion_Horario}}:00 </td>
+                <td> {{clase.Cupo_Clase}} </td>
                 <td>
-                    <input type="text" name="Nombre_Usuario" [(ngModel)]="clase.Nombre_Usuario">
-                    <input type="text" name="Apellido_Usuario" [(ngModel)]="clase.Apellido_Usuario">
-                </td>
-                <td>
-                    <input type="text" name="Nombre_Usuario" [(ngModel)]="clase.Comienzo_Horario">
-                    <input type="text" name="Apellido_Usuario" [(ngModel)]="clase.Finalizacion_Horario">
-                </td>
-                <td><input type="number" name="Cupo_Clase" [(ngModel)]="clase.Cupo_Clase"></td>
-                <td>
-                    <button class="btn btn-info" id="btnMod"> Modificar </button>
+                    <!-- <button class="btn btn-info" id="btnMod"> Modificar </button> -->
                     <button class="btn btn-danger" id="btnEli"> Eliminar </button>
                 </td>
             </tr>
@@ -48,7 +42,6 @@
         </ng-template>
     </table>
 </div>
-
 
 <!-- EL MODAL -->
 

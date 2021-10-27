@@ -7,16 +7,26 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width:80px;
+    height:80px;
 }
 
+nav {
+  background-color: 	rgb(44, 94, 56);
 
+}
   
 .nav-link{
   cursor: pointer;
  
- 
 }
 
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
 
  /* .navbar {

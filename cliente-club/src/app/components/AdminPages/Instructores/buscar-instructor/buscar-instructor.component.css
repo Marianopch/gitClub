@@ -1,76 +1,120 @@
-table {
+/* table {
     
-   border: 2px solid #000;
-}
-thead{
+    border: 2px solid #000;
+ }
+ thead{
+     width: 100%;
+     background-color: cadetblue;
+ }
+ thead, tbody {
     width: 100%;
-    background-color: cadetblue;
-}
-thead, tbody {
-   width: 100%;
-   text-align: left;
-   vertical-align: top;
-   border: 2px solid #000;
-   border-spacing: 0;
-}
-h4{
-    margin: 10px;
-    color: whitesmoke;
-}
+    text-align: left;
+    vertical-align: top;
+    border: 2px solid #000;
+    border-spacing: 0;
+ }
+ h4{
+     margin: 10px;
+     color: whitesmoke;
+ }
 
-input{
-    margin: 3px;
-    border: black;
-    border-width: 2px;
-    border-style: solid;
+ input{
+     margin: 3px;
+     border: black;
+     border-width: 2px;
+     border-style: solid;
+     
+ }
+
+ .input{
+     width: 100px;
+ }
+ #but{
+    background-color: lightslategrey  ;
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px;
     
 }
 
-.input{
-   width: 100px;
+#butEli {
+    margin: 3px;
 }
 
-#but{
-   background-color: lightslategrey  ;
-   border: none;
-   color: white;
-   padding: 12px 32px;
-   text-decoration: none;
-   
-   border-radius: 4px;
-   cursor: pointer;
-   margin: 10px;
-   
-}
-#butEli{
-   margin: 3px;
-}
-
-#butMod{
-   margin: 3px;
-}
-
-#btnAgr{
-   margin: 10px;
-}
+#butAgr{
+    margin: 10px;
+ }
+ 
+ #butMod{
+    margin: 3px;
+ }
 
 #but:hover{
-   background-color: goldenrod;
+    background-color: goldenrod;
 }
 
 .btn-info:hover{
-   background-color: blue;
+    background-color: blue;
 }
 
 #btnEli:hover{
-   background-color: darkred;
+    background-color: darkred;
 }
 
 div.modal-header{
+    background-color: rgb(33, 46, 46);
+    color: floralwhite;
+}
+
+div.card-body{
+    background-color: aliceblue;
+ } */
+
+ thead{
+   background-color: cadetblue;
+}
+
+div.modal-header {
    background-color: rgb(33, 46, 46);
    color: floralwhite;
 }
 
-div.card-body{
-   background-color: aliceblue;
+/* input, select {
+   margin: 3px;
+   border: black;
+   border-width: 2px;
+   border-style: solid;
+} */
+
+label.titulo {
+   font-weight: bold;
+   text-decoration: underline;
+}
+
+label.custom-control-label {
+   text-decoration: none;
+}
+
+.boton{
+   margin-top: 8px;
+   width: 25%;
+}
+
+button#butAgr {
+   width: 100%;
+   margin-bottom: 1%;
+}
+
+div#divForm {
+   margin-top: 1%;
+
+}
+
+button#butMod {
+   width: 100%;
 }
