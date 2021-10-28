@@ -31,6 +31,13 @@ class SocioModel {
             return clases[0];
         });
     }
+    llenarCalendario(Descripcion_Actividad) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const clases = yield this.db.query('SELECT * FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE actividades.Descripcion_Actividad = ?;', [Descripcion_Actividad]);
+            console.log(clases);
+            return clases[0];
+        });
+    }
     verClase(Id_Clase) {
         return __awaiter(this, void 0, void 0, function* () {
             const encontrado = yield this.db.query('SELECT * FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad JOIN usuarios ON usuarios.Numero_Usuario = clases.Numero_Usuario WHERE clases.Id_Clase = ?;', [Id_Clase]);

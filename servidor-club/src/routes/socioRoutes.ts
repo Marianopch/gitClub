@@ -16,6 +16,8 @@ class SocioRoutes {
         //SocioPage - Calendar Sector - Inscripcion
         this.router.get('/clasesTotales', socioController.clasesTotales);
 
+        this.router.get('/llenarCalendar', socioController.llenarCalendar);
+
         this.router.get('/calendar/:Id_Clase', socioController.verInfoClase);
 
         this.router.post('/calendar/inscripcion', socioController.inscripcionSocioClase)

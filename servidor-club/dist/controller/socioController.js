@@ -22,6 +22,13 @@ class SocioController {
             return res.json(clases);
         });
     }
+    llenarCalendar(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { Descripcion_Actividad } = req.params;
+            const clases = yield socioModel_1.default.llenarCalendario(Descripcion_Actividad);
+            return res.json(clases);
+        });
+    }
     //SocioPage - MiPerfil Sector 
     miperfil(req, res) {
         return __awaiter(this, void 0, void 0, function* () {

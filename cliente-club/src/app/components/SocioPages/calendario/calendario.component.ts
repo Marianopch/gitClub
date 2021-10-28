@@ -14,6 +14,10 @@ export class CalendarioComponent implements OnInit {
   clasesTotales: any = [];
   claseTotal = { Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: "", Id_Dias: "" }
 
+  desc_clase = {Descripcion_Actividad: ""}
+
+  clasesCalendar: any = [];
+
   infoClase: any = [];
 
 
@@ -21,12 +25,21 @@ export class CalendarioComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     this.cargarClases();
   }
 
 
-  
+  BuscarClase(){
+    this.sociosService.llenarCalendar(this.desc_clase).subscribe(
+      res => {
+        this.clasesCalendar = res;
+        console.log(res)
+      },
+      err => console.log(err)
+    )
+  }
+
+
   cargarClases() {
     this.sociosService.clasesTotales().subscribe(
       res => {

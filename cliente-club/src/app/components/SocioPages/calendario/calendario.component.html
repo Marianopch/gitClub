@@ -4,15 +4,14 @@
 
   <form>
     <label class="titulo">Actividad</label>
-    <select class="form-control" name="actividad">
-      <option *ngFor=" let claseTotal of clasesTotales" [value]="claseTotal.Descripcion_Actividad">
-        {{claseTotal.Descripcion_Actividad}} </option>
+    <select class="form-control" name="actividad" [(ngModel)]="desc_clase.Descripcion_Actividad">
+      <option *ngFor=" let claseTotal of clasesTotales" [value]="claseTotal.Descripcion_Actividad"> {{claseTotal.Descripcion_Actividad}} </option>
     </select>
-    <button class="btn boton btn-success btn-block" (click)="#"> Buscar </button>
+    <button class="btn boton btn-success btn-block" (click)="BuscarClase()"> Buscar </button>
 
   </form>
 
-  <table class="tg">
+  <!-- <table class="tg">
     <thead>
       <tr>
         <th class="tg-0pky">Hora</th>
@@ -2079,11 +2078,11 @@
 </td>
 </tr>
 </tbody>
-</table>
+</table> -->
 </div>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -2107,12 +2106,7 @@
 
           <label>Cupo:</label>
           <p>{{infoClase.Cupo_Clase}}</p>
-          <!-- <form>
-                      <label>Nombre de la actividad</label>
-                      <input type="text" name="descripcion" [(ngModel)]="act.descripcion" placeholder="Descripcion"
-                          class="form-control">
-                      <button class="btn btn-success btn-block" (click)="registrar()">Enviar</button>
-                  </form> -->
+
         </div>
 
 
@@ -2124,4 +2118,4 @@
 
       </div>
     </div>
-  </div>
+  </div> -->

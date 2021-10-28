@@ -19,6 +19,11 @@ export class SociosService {
     return this.http.get(`${this.API_URI}/clasesTotales`);
   }
 
+  llenarCalendar(desc_clase: any){
+    console.log("Service:" ,desc_clase);
+    return this.http.get(`${this.API_URI}/llenarCalendar`, desc_clase);
+  }
+
   buscarDatosSocio(Numero_Usuario: any){
     return this.http.get(`${this.API_URI}/miperfil/${Numero_Usuario}`)
   }
