@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="table-responsive-md">
-    <table class="table table-success table-bordered border-dark" >
+    <table class="table table-success table-hover" >
 
         <thead>
             <th>Clase</th>
@@ -14,9 +14,9 @@
         <tbody *ngIf="actividades.length > 0; else fila">
             <tr *ngFor=" let actividad of actividades">
                 <td>{{actividad.Descripcion_Actividad}}</td>
-                <td>{{actividad.Comienzo_Horario}}</td>
-                <td>{{actividad.Finalizacion_Horario}}</td>
-                <td>{{actividad.Id_Dias}}</td>
+                <td>{{actividad.Comienzo_Horario}}:00 Hs</td>
+                <td>{{actividad.Finalizacion_Horario}}:00 Hs</td>
+                <td>{{actividad.Nombre_dias}}</td>
             </tr>
         </tbody>
         <ng-template #fila>

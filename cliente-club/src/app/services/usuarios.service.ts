@@ -141,7 +141,7 @@ export class UsuariosService {
   }
 
   eliminarComentarios(comentario: any) {
-    return this.http.delete(`${this.API_URI}/delete/${comentario.id}`);
+    return this.http.delete(`${this.API_URI}/delete/${comentario.Id_Comentario}`);
   }
 
   getToken() {//Obtenemos el token que despues enviara el interceptor x cada req

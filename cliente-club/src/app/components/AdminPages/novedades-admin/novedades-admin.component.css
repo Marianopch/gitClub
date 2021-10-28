@@ -8,3 +8,19 @@ img {
   hr.solid {
     border-top: 3px solid #bbb;
   }
+
+
+.container-fluid .box {
+    width:100%;
+    /* margin:50px; */
+    display:table;
+}
+.container-fluid .box .box-row {
+    display:table-row;
+}
+.container-fluid .box .box-cell {
+    display:table-cell;
+    border:1px solid black;
+    width:25%;
+    padding:10px;
+}

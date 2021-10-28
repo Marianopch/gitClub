@@ -269,10 +269,10 @@ class AdminController {
     deleteComent(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //console.log(req.header("Authorization"));
-            console.log(req.body);
-            const { id } = req.params;
-            const result = yield adminModel_1.default.eliminarComentario(id);
-            return res.json({ text: 'deleting a user ' + id });
+            const { Id_Comentario } = req.params;
+            console.log("controller:", Id_Comentario);
+            const result = yield adminModel_1.default.eliminarComentario(Id_Comentario);
+            return res.json({ text: 'Comentario Eliminado: ' + Id_Comentario });
         });
     }
 }

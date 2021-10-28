@@ -69,7 +69,7 @@ class AdminRoutes {
         //Comentarios
         this.router.get('/list', adminController_1.default.listComent);
         this.router.post('/create', adminController_1.default.createComent);
-        this.router.delete('/delete/:id', adminController_1.default.deleteComent);
+        this.router.delete('/delete/:Id_Comentario', adminController_1.default.deleteComent);
     }
 }
 //Exportamos el enrutador con 

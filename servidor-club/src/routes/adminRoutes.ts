@@ -78,7 +78,7 @@ class AdminRoutes {
         //Comentarios
         this.router.get('/list',adminController.listComent);
 		this.router.post('/create',adminController.createComent);
-		this.router.delete('/delete/:id',adminController.deleteComent);
+		this.router.delete('/delete/:Id_Comentario',adminController.deleteComent);
     }
 
 }

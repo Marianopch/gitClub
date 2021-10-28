@@ -1,33 +1,12 @@
 <app-navigation></app-navigation>
-<!-- <form action="#" method="POST">
-    <div>
-        <h4>Filtros</h4>
-        <input  type="text" placeholder="Numero Socio">
-        <input type="text" placeholder="Nombre">
-        <input type="text" placeholder="Apellido">
-        <input type="number" placeholder="DNI">
-        <br>
-        <br>
-        <button id="but">Filtrar</button>
-    </div>
-</form> -->
 
 <div class="container-fluid">
-
     <form>
         <div id="divForm" class ="form-group mb-2">
             <div class = "input-group">
                 <div class= "input-group-text bg-white">
                     <i class="fas fa-search"></i>
                     <input  class="form-control" placeholder="Nombre o Apellido"[(ngModel)]="filterPost" name="filterpost" >
-                    <!-- <div class="input-group-prepend">
-                        
-                        <div  class="input-group-text" id="btnGroupAddon2"> <i class="far fa-address-card"></i> __Para Crear un Nuevo Usuario haga "click" en "Nuevo" 
-                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Nuevo
-                            </button>
-                        </div>
-                    </div> -->
                 </div> 
             </div>
         </div>
@@ -65,7 +44,8 @@
                 <td>{{usuario.Descripcion_Rol}}</td>
                 <td>{{usuario.Descripcion_Estado}}</td>
                 <td>
-                    <button class="btn btn-info" id="butMod"  (click)="modificarUser(usuario)"> Modificar </button>
+                    <button class="btn btn-info" id="butMod" data-bs-toggle="modal" data-bs-target="#modModal" (click)="buscarArray(usuario.Numero_Usuario)"> Modificar </button>
+                    <!-- <button class="btn btn-info" id="butMod"  (click)="modificarUser(usuario)"> Modificar </button> -->
                     <button class="btn btn-danger" id="butMod" (click)="eliminarUser(usuario.Numero_Usuario)"> Eliminar </button>
                 </td>
             </tr>
@@ -99,13 +79,10 @@
                 <h5 class="modal-title" id="exampleModalLabel">Nuevo Socio</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <div class="modal-body">
                 <div *ngIf="!reintentar">
                     <div class="container">
-                
                         <form (submit)=registrar()>
-                
                             <input type="text" name="Numero_Usuario" [(ngModel)]="user.Numero_Usuario" placeholder="Numero Socio"
                                 class="form-control" autofocus>
                             <div [ngSwitch]=" errorNumUs" >
@@ -178,8 +155,64 @@
                     <button class="btn btn-info" (click)=recargarForm()>Reintentar</button>
                 </div>
             </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn-guardar" data-bs-dismiss="modal">Crear</button>
+            </div> -->
+        </div>
+    </div>
+</div>
 
 
+
+<!-- -------------------------------------MODAL INFORMACION SOCIO--------------------------------------------------------- -->
+
+<div class="modal fade" id="modModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Informacion del Socio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="!reintentar">
+                    <div class="container">
+                        <form >
+                            <input type="text" name="Numero_Usuario" [(ngModel)]="usuariosfilter.Numero_Usuario" placeholder={{usuariosfilter.Numero_Usuario}}
+                                class="form-control" autofocus>
+
+                            <input type="text" name="Nombre_Usuario" [(ngModel)]="usuariosfilter.Nombre_Usuario" placeholder= {{usuariosfilter.Nombre_Usuario}}
+                                class="form-control">
+
+                            <input type="text" name="Apellido_Usuario"  [(ngModel)]="usuariosfilter.Apellido_Usuario" placeholder= {{usuariosfilter.Apellido_Usuario}}
+                                class="form-control">
+
+                            <input type="text" name="DNI_Usuario" [(ngModel)]="usuariosfilter.DNI_Usuario"  placeholder= {{usuariosfilter.DNI_Usuario}}
+                                 class="form-control">
+
+                            <input type="text" name="Mail_Usuario" [(ngModel)]="usuariosfilter.Mail_Usuario" placeholder= {{usuariosfilter.Mail_Usuario}}
+                                class="form-control">
+
+                            <input type="text" name="Telefono_Usuario" [(ngModel)]="usuariosfilter.Telefono_Usuario" placeholder= {{usuariosfilter.Telefono_Usuario}}
+                                class="form-control">
+
+                            <input type="text" name="Direccion_Usuario" [(ngModel)]="usuariosfilter.Direccion_Usuario" placeholder= {{usuariosfilter.Direccion_Usuario}}
+                                class="form-control">
+
+                            <input type="password" name="Password_Usuario" [(ngModel)]="usuariosfilter.Password_Usuario" placeholder= {{usuariosfilter.Password_Usuario}}
+                                class="form-control">
+                
+                            <input type="hidden" name="Id_Rol" [(ngModel)]="usuariosfilter.Id_Rol" value="2" class="form-control">
+                            <input type="hidden" name="Id_Estado" [(ngModel)]="usuariosfilter.Id_Estado" value="1"  class="form-control">
+                            <button class="btn btn-success btn-block" (click)="modificarUser(usuariosfilter)" data-bs-dismiss="modal">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+                <div *ngIf="reintentar" class="card-body">
+                    {{mensaje}} <br>
+                    <button class="btn btn-info" (click)=recargarForm()>Reintentar</button>
+                </div>
+            </div>
             <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" id="btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" id="btn-guardar" data-bs-dismiss="modal">Crear</button>

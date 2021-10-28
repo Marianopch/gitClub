@@ -1,13 +1,17 @@
 .title {
     text-align: center;
-    color: bisque;
+    color: rgb(44, 94, 56);
+}
+
+label {
+  color: whitesmoke;
 }
 
 /* Bordered form */
 form {
     border: 3px solid #f1f1f1;
     border-radius: 10PX;
-    background-color: beige;
+    background-color: rgb(44, 94, 56);
     width: 80%;
     margin: auto;
     

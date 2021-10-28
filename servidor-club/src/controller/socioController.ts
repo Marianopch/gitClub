@@ -17,7 +17,7 @@ class SocioController {
 
 	public async llenarCalendar(req: Request, res: Response) {
 
-		const { Descripcion_Actividad } = req.params;
+		const  { Descripcion_Actividad } = req.params;
 		const clases = await socioModel.llenarCalendario(Descripcion_Actividad);
 		return res.json(clases);
 	}

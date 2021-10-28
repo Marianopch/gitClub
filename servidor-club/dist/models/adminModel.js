@@ -257,9 +257,9 @@ class AdminModel {
         });
     }
     //Devuelve 1 si logro eliminar el usuario indicado por id
-    eliminarComentario(id) {
+    eliminarComentario(Id_Comentario) {
         return __awaiter(this, void 0, void 0, function* () {
-            const comentario = (yield this.db.query('DELETE FROM comentario WHERE Id_Comentario = ?', [id]))[0].affectedRows;
+            const comentario = (yield this.db.query('DELETE FROM comentario WHERE Id_Comentario = ?', [Id_Comentario]))[0].affectedRows;
             console.log(comentario);
             return comentario;
         });

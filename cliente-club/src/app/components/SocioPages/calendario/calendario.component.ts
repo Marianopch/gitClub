@@ -14,9 +14,10 @@ export class CalendarioComponent implements OnInit {
   clasesTotales: any = [];
   claseTotal = { Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: "", Id_Dias: "" }
 
-  desc_clase = {Descripcion_Actividad: ""}
+  desc_clase = { Descripcion_Actividad: "" }
 
   clasesCalendar: any = [];
+  claseCalendar = { Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: "", Id_Dias: "" }
 
   infoClase: any = [];
 
@@ -30,7 +31,7 @@ export class CalendarioComponent implements OnInit {
 
 
   BuscarClase(){
-    this.sociosService.llenarCalendar(this.desc_clase).subscribe(
+    this.sociosService.llenarCalendar(this.desc_clase.Descripcion_Actividad).subscribe(
       res => {
         this.clasesCalendar = res;
         console.log(res)

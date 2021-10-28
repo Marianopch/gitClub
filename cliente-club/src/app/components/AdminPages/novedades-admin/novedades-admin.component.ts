@@ -14,7 +14,7 @@ export class NovedadesAdminComponent implements OnInit {
   comentarios: any = [];
   comentario = { Titulo_Comentario: "", Descripcion_Comentario: "", Imagen_Comentario: "", Numero_Usuario: localStorage.getItem('Usuario')};
   nroUsuario = localStorage.getItem('Usuario');
-  id_Rol = localStorage.getItem('Rol');
+  id_Rol = localStorage.getItem('rol');
   errorComentario = 0;
   errorImagen = 0;
   userName= "";
@@ -24,7 +24,8 @@ export class NovedadesAdminComponent implements OnInit {
     this.usuariosService.listarComentarios().subscribe(
       res => {
         this.comentarios = res;
-        console.log(res)
+        console.log(this.id_Rol);
+        console.log(res);
         this.limpiarComentario();
         this.limpiarImagen();
 

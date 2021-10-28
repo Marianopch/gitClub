@@ -7,3 +7,7 @@ button#butAgr {
 button#butMod {
     width: 100%;
 }
+
+thead{
+    background-color: cadetblue;
+}

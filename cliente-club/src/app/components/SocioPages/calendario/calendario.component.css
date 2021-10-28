@@ -267,7 +267,7 @@
     color: red;
   } */
 
-  table {
+  /* table {
     background: #fff;
     width: 100%;
     height: 100%;
@@ -293,4 +293,73 @@ td:nth-child(even) {background-color: #f2f2f2;}
 .tg th{background-color:#657b83;border-color:#93a1a1;border-style:solid;border-width:1px;color:#fdf6e3;
   font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg .tg-2bhk{background-color:#eee8d5;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top} */
+
+thead{
+  background-color: cadetblue;
+}
+
+table{
+  border: black;
+  text-align: center;
+}
+
+/* table {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+  margin-top: 3%;
+} */
+
+th#hora{
+  width: 5%;
+}
+
+th#dia{
+  width: 13%;
+}
+
+/* div#divform {
+  width: 50%;
+  padding: 1%;
+  flex-direction : row;
+}
+
+div#divformLeft{
+  width: 25%;
+  text-align:justify;
+}
+
+div#divformRight{
+  width: 10%;
+  text-align:justify;
+} */
+
+.container .box {
+padding: 1%;
+  display:table;
+}
+.container .box .box-row {
+  display:table-row;
+}
+.container .box .box-cell {
+  display:table-cell;
+  width:25%;
+  padding: 3%;
+
+}
+
+button {
+  background-color: rgb(44, 94, 56);
+  color: whitesmoke;
+}
+
+button#btncerrar{
+  background-color: rgb(163, 14, 14);
+  color: whitesmoke;
+}
+
+/* div#exampleModal{
+  text-align: center;
+} */

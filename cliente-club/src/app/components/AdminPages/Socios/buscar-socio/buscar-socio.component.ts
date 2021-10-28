@@ -11,9 +11,11 @@ import { Router } from '@angular/router';
 
 export class BuscarSocioComponent implements OnInit {
 
+  constructor(private usuariosService: UsuariosService, private router: Router) { }
+
   filterPost ='';
   page:number =0;
-  usuarios: any = [];
+
   errorNumUs=0;
   errorNombre=0;
   errorApellido=0;
@@ -25,8 +27,10 @@ export class BuscarSocioComponent implements OnInit {
 
   reintentar: boolean = false;
   mensaje: string = "";
+  usuarios: any = [];
   user = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "2", Id_Estado: "1" };
-  constructor(private usuariosService: UsuariosService, private router: Router) { }
+  usuariosfilter: any = [];
+  userfilter = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "2", Id_Estado: "1" };
 
   ngOnInit(): void {
     this.usuariosService.listarUsuarios().subscribe(
@@ -47,6 +51,22 @@ export class BuscarSocioComponent implements OnInit {
     this.page -=10;
   }
 //-------------------------
+
+
+  buscarArray(Numero: any) {
+
+    // for(let elemento of this.usuarios){
+    //   // if(Numero == elemento.Numero_Usuario){
+    //   // this.usuariosfilter.push(this.usuarios[elemento]);
+    //   //   console.log(this.usuarios[elemento]);
+    //   console.log("Index:", elemento.Numero_Usuario.indexOf(Numero)) ;
+    //   // }
+    // }
+
+    // console.log("Index:", this.usuarios.Numero_Usuario.indexOf(Numero)) ;
+    this.usuariosfilter = this.usuarios.find((u: { Numero_Usuario: any; }) => u.Numero_Usuario === Numero );
+
+  }
 
   eliminarUser(Numero_Usuario: any) {
 

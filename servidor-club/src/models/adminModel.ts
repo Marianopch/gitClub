@@ -231,8 +231,8 @@ class AdminModel {
 	}
 
 	//Devuelve 1 si logro eliminar el usuario indicado por id
-	async eliminarComentario(id: string) {
-		const comentario = (await this.db.query('DELETE FROM comentario WHERE Id_Comentario = ?', [id]))[0].affectedRows;
+	async eliminarComentario(Id_Comentario: string) {
+		const comentario = (await this.db.query('DELETE FROM comentario WHERE Id_Comentario = ?', [Id_Comentario]))[0].affectedRows;
 		console.log(comentario);
 		return comentario;
 	}

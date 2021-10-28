@@ -298,10 +298,11 @@ class AdminController {
 	public async deleteComent(req: Request, res: Response) {
 		//console.log(req.header("Authorization"));
 
-		console.log(req.body);
-		const { id } = req.params; 
-		const result = await adminModel.eliminarComentario(id);
-		return res.json({ text: 'deleting a user ' + id });
+
+		const { Id_Comentario } = req.params; 
+		console.log("controller:", Id_Comentario);
+		const result = await adminModel.eliminarComentario(Id_Comentario);
+		return res.json({ text: 'Comentario Eliminado: ' + Id_Comentario });
 
 	}
 
