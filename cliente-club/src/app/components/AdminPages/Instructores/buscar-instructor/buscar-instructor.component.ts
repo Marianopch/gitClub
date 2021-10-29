@@ -23,6 +23,9 @@ export class BuscarInstructorComponent implements OnInit {
 
   reintentar: boolean = false;
   mensaje: string = "";
+  usuariosfilter: any = [];
+  userfilter = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "3", Id_Estado: "1" };
+
   user={  Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario:"", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "3", Id_Estado: "1", Id_Instructor: "1"};
   constructor(private usuariosService: UsuariosService, private router: Router) { }
 
@@ -235,4 +238,14 @@ export class BuscarInstructorComponent implements OnInit {
       this.user.Mail_Usuario = '';
       this.user.Password_Usuario = '';
   }
+
+  // -----------------------------------------
+// Para Modificar
+
+buscarArray(Numero: any): void {
+
+
+  this.usuariosfilter = this.usuarios.find((u: { Numero_Usuario: any; }) => u.Numero_Usuario === Numero );
+
+}
 }

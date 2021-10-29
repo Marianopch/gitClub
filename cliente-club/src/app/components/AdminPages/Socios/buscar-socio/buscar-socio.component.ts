@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Router } from '@angular/router';
 
@@ -24,6 +24,8 @@ export class BuscarSocioComponent implements OnInit {
   errorTel=0;
   errorDirec=0;
   errorPassword=0;
+  @ViewChild('closeAddExpenseModal')
+  closeAddExpenseModal!: ElementRef;
 
   reintentar: boolean = false;
   mensaje: string = "";
@@ -53,7 +55,7 @@ export class BuscarSocioComponent implements OnInit {
 //-------------------------
 
 
-  buscarArray(Numero: any) {
+  buscarArray(Numero: any): void {
 
     // for(let elemento of this.usuarios){
     //   // if(Numero == elemento.Numero_Usuario){
@@ -65,6 +67,7 @@ export class BuscarSocioComponent implements OnInit {
 
     // console.log("Index:", this.usuarios.Numero_Usuario.indexOf(Numero)) ;
     this.usuariosfilter = this.usuarios.find((u: { Numero_Usuario: any; }) => u.Numero_Usuario === Numero );
+    
 
   }
 
@@ -89,6 +92,8 @@ export class BuscarSocioComponent implements OnInit {
         let result: any = res;
         console.log(result.message);
         this.ngOnInit();
+       
+
       },
       err => console.log(err)
     )
@@ -130,6 +135,23 @@ export class BuscarSocioComponent implements OnInit {
     this.errorMail=this.verificarMail(this.user.Mail_Usuario);
     this.errorTel=this.verificarTelefono(this.user.Telefono_Usuario);
     this.errorDirec=this.verificarDireccion(this.user.Direccion_Usuario);
+    if(  (this.errorNombre+this.errorPassword+this.errorNumUs+this.errorMail+this.errorDNI+this.errorTel+this.errorDirec)>0){
+      return false;
+    }
+    return true;
+  }
+
+  verificarModificarForm():boolean{
+  
+    this.errorNombre=this.verificarNombre(this.usuariosfilter.Nombre_Usuario);
+    this.errorApellido=this.verificarApellido(this.usuariosfilter.Apellido_Usuario);
+    this.errorPassword=this.verificarPassword (this.usuariosfilter.Password_Usuario);
+    this.errorDNI=this.verificarDNI(this.usuariosfilter.DNI_Usuario);
+    
+   //this.errorRePassrword=verificarRePassword(this.user.password, this.user.repassword);
+    this.errorMail=this.verificarMail(this.usuariosfilter.Mail_Usuario);
+    this.errorTel=this.verificarTelefono(this.usuariosfilter.Telefono_Usuario);
+    this.errorDirec=this.verificarDireccion(this.usuariosfilter.Direccion_Usuario);
     if(  (this.errorNombre+this.errorPassword+this.errorNumUs+this.errorMail+this.errorDNI+this.errorTel+this.errorDirec)>0){
       return false;
     }

@@ -33,7 +33,8 @@ export class BuscarActividadComponent implements OnInit {
     this.usuariosService.eliminarActividad(id).subscribe(
       response => {
         console.log(response);
-        this.router.navigate(['admin/home']);
+        this.router.navigate(['admin/buscarActividad']);
+        this.ngOnInit();
       },
       error => {
         console.log(error);
@@ -62,7 +63,9 @@ export class BuscarActividadComponent implements OnInit {
       res => {
         let result:any=res;
         console.log(result.message);
-        this.router.navigate(['admin/home']);
+        this.router.navigate(['admin/buscarActividad']);
+        this.ngOnInit();
+        this.resetModal();
         
       },
       err => {
@@ -77,6 +80,12 @@ export class BuscarActividadComponent implements OnInit {
     this.reintentar = false;
     this.mensaje = "";
   }
+
+  resetModal() {
+    this.act.descripcion = '';
+    this.act.id = '';
+
+}
 
 
 }
