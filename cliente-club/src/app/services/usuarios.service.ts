@@ -26,8 +26,8 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI}/buscarSocio`);
   }
 
-  buscarUsuario(id: string) {
-    return this.http.get(`${this.API_URI}/find/${id}`);
+  buscarUsuario(Numero_Usuario: string) {
+    return this.http.get(`${this.API_URI}/find/${Numero_Usuario}`);
   }
 
   guardarUsuario(usuario: Usuario) {
@@ -50,16 +50,14 @@ export class UsuariosService {
     return this.http.post(`${this.API_URI}/signup`, usuario);
   }
 
-  isLoggedIn(): Boolean {
-    return !!localStorage.getItem('token'); //Si existe token retorna true
-    //es el equivalente de testearlo con if pero ahora en una sola linea.
+  buscarClase(Numero_Usuario: string){
+    return this.http.get(`${this.API_URI}/buscarClaseSocio/${Numero_Usuario}`);
   }
 
-  logOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('rol');
-    this.router.navigate(['/']);
+  eliminarClasseUser(Numero_Usuario: string, Id_Clase: number){
+    return this.http.delete(`${this.API_URI}/eliminarClaseUser/${Numero_Usuario}/${Id_Clase}`);
   }
+
 
   //AdminPage - Admin Sector
   
@@ -130,6 +128,11 @@ export class UsuariosService {
 
   }
 
+  cargaEstados(){
+    return this.http.get(`${this.API_URI}/buscarEstados`);
+  }
+
+
   // filtrarUser(searchText: string) {
   //   console.log(searchText);
   //   return this.http.get(`${this.API_URI}/find/${searchText}`);
@@ -145,7 +148,20 @@ export class UsuariosService {
   }
 
   getToken() {//Obtenemos el token que despues enviara el interceptor x cada req
+    let trae = localStorage.getItem('token');
+    console.log("Funca el GetTokenservice", trae)
     return localStorage.getItem('token');
+  }
+
+  isLoggedIn(): Boolean {
+    return !!localStorage.getItem('token'); //Si existe token retorna true
+    //es el equivalente de testearlo con if pero ahora en una sola linea.
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('rol');
+    this.router.navigate(['/']);
   }
 }
 

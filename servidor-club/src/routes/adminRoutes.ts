@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import adminController from '../controller/adminController';
-
+import { TokenValidation } from '../lib/verifytoken';
 
 class AdminRoutes {
     public router: Router = Router();
@@ -18,6 +18,7 @@ class AdminRoutes {
 
         //Menu Socios.
         //Buscar
+        this.router.get('/find/:Numero_Usuario', adminController.buscarUsuario);
         this.router.get('/buscarSocio', adminController.listarSocios);
         //Agregar
         this.router.post('/signup', adminController.agregarUsuario);
@@ -26,6 +27,8 @@ class AdminRoutes {
         this.router.delete('/eliminarSocio/:Numero_Usuario', adminController.eliminar)
         //Modificar
         this.router.put('/modificarSocio/:Numero_Usuario', adminController.modificarSocio);
+        this.router.get('/buscarClaseSocio/:Numero_Usuario', adminController.buscarClaseSocio);
+        this.router.delete('/eliminarClaseUser/:Numero_Usuario/:Id_Clase', adminController.eliminarClaseSocio)
 
         //Menu Activades.
         //Buscar
@@ -56,7 +59,7 @@ class AdminRoutes {
         //Buscar
         this.router.get('/buscarAdmin', adminController.listarAdmin);
         //Agregar
-        this.router.post('/agregarAdmin', adminController.agregarUsuario);
+        this.router.post('/agregarAdmin' ,adminController.agregarUsuario);
         this.router.get('/agregarAdmin', adminController.mostrarFormAgregarAdmin);
         //Eliminar
         this.router.delete('/eliminarAdmin/:Numero_Usuario', adminController.eliminar)
@@ -76,9 +79,11 @@ class AdminRoutes {
         //this.router.get('/buscarSocio',adminController.buscarSocio);
 
         //Comentarios
-        this.router.get('/list',adminController.listComent);
-		this.router.post('/create',adminController.createComent);
-		this.router.delete('/delete/:Id_Comentario',adminController.deleteComent);
+        this.router.get('/list', adminController.listComent);
+		this.router.post('/create', adminController.createComent);
+		this.router.delete('/delete/:Id_Comentario', adminController.deleteComent);
+        
+        this.router.get('/buscarEstados', adminController.buscarEstados);
     }
 
 }

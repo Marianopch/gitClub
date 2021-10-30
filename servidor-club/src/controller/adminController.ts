@@ -18,6 +18,7 @@ class AdminController {
 	}
 
 	public async listarSocios(req: Request, res: Response) {
+		console.log(req.header("Authorization"));
 		console.log(req.body);
 
 		const usuarios = await adminModel.listarTodosSocios();
@@ -69,17 +70,33 @@ class AdminController {
 	public async modificarSocio(req: Request, res: Response) {
 
 		const usuario = req.body;
-		console.log(req.body);
-		console.log(req.params);
+		console.log("Controller:", req.body);
 		
-		// const { Numero_Usuario } = req.params
-		// const { Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario } = req.body;
-		// const result = await adminModel.actualizar(Numero_Usuario, Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario);
-		// const { Numero_Usuario } = req.params;
-		const result = await adminModel.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Direccion_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario);
-		// req.flash('info', 'Socio modificado correctamente');
-		// res.redirect('../buscarSocio');
+		const result = await adminModel.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario, usuario.Direccion_Usuario, usuario.Password_Usuario, usuario.Id_Estado);
+
 		return res.json(result);
+	}
+
+	public async buscarClaseSocio(req: Request, res: Response) {
+
+		const { Numero_Usuario } = req.params;
+		
+
+		const clases = await adminModel.buscarClaseSocio(Numero_Usuario);
+
+		return res.json(clases);
+	}
+
+	public async eliminarClaseSocio(req: Request, res: Response) {
+
+		const { Numero_Usuario } = req.params;
+		
+		const { Id_Clase } = req.params;
+
+		console.log("Controller:", Numero_Usuario, " " ,Id_Clase)
+		const clases = await adminModel.eliminarClaseSocio(Numero_Usuario, Id_Clase);
+
+		return res.json(clases);
 	}
 
 
@@ -305,6 +322,26 @@ class AdminController {
 		return res.json({ text: 'Comentario Eliminado: ' + Id_Comentario });
 
 	}
+
+	public async buscarEstados(req: Request, res: Response) {
+		console.log(req.body);
+
+		const estados = await adminModel.buscarEstados();
+
+		return res.json(estados);
+	}
+
+	public async buscarUsuario(req: Request, res: Response) {
+
+		const { Numero_Usuario } = req.params; 
+
+		const usuario = await adminModel.findUser(Numero_Usuario);
+
+		return res.json(usuario);
+	}
+
+
+
 
 }
 

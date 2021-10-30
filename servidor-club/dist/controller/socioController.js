@@ -17,6 +17,7 @@ class SocioController {
     //SocioPage - Calendar Sector - Inscripcion
     clasesTotales(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.header("Authorization"));
             console.log(req.body);
             const clases = yield socioModel_1.default.listarclasesTotales();
             return res.json(clases);
@@ -24,6 +25,7 @@ class SocioController {
     }
     llenarCalendar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.header("Authorization"));
             const { Descripcion_Actividad } = req.params;
             const clases = yield socioModel_1.default.llenarCalendario(Descripcion_Actividad);
             return res.json(clases);
@@ -32,6 +34,7 @@ class SocioController {
     //SocioPage - MiPerfil Sector 
     miperfil(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.header("Authorization"));
             const { Numero_Usuario } = req.params;
             const datosusuario = yield socioModel_1.default.verDatosUser(Numero_Usuario);
             return res.json(datosusuario);
@@ -39,6 +42,7 @@ class SocioController {
     }
     verInfoClase(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.header("Authorization"));
             const { Id_Clase } = req.params;
             const datosclase = yield socioModel_1.default.verClase(Id_Clase);
             return res.json(datosclase);
@@ -46,6 +50,7 @@ class SocioController {
     }
     inscripcionSocioClase(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.header("Authorization"));
             const envioDatos = req.body;
             console.log(envioDatos);
             console.log(envioDatos[0]);
@@ -58,6 +63,7 @@ class SocioController {
     }
     misActividades(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.header("Authorization"));
             const { Numero_Usuario } = req.params;
             console.log(Numero_Usuario);
             const misAct = yield socioModel_1.default.buscarmisAct(Numero_Usuario);

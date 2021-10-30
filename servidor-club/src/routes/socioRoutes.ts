@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import socioController from '../controller/socioController';
-
+import { TokenValidation } from '../lib/verifytoken';
 
 class SocioRoutes {
     public router: Router = Router();
@@ -26,7 +26,7 @@ class SocioRoutes {
         this.router.get('/miperfil/:Numero_Usuario', socioController.miperfil);
 
         //SocioPage - MisActividades Sector 
-        this.router.get('/buscarActividades/:Numero_Usuario', socioController.misActividades);
+        this.router.get('/buscarActividades/:Numero_Usuario' ,socioController.misActividades);
 
         //Comentarios
         this.router.get('/list', socioController.listComent);

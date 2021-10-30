@@ -118,3 +118,11 @@ div#divForm {
 button#butMod {
     width: 100%;
 }
+
+input#modalinput {
+    margin-bottom: 2%;
+}
+
+button#btnmodal{
+    width: 100%;
+}

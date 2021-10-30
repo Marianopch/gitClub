@@ -9,6 +9,7 @@ class SocioController {
 	//SocioPage - Calendar Sector - Inscripcion
 
 	public async clasesTotales(req: Request, res: Response) {
+		console.log(req.header("Authorization"));
 
 		console.log(req.body);
 		const clases = await socioModel.listarclasesTotales();
@@ -16,6 +17,7 @@ class SocioController {
 	}
 
 	public async llenarCalendar(req: Request, res: Response) {
+		console.log(req.header("Authorization"));
 
 		const  { Descripcion_Actividad } = req.params;
 		const clases = await socioModel.llenarCalendario(Descripcion_Actividad);
@@ -24,6 +26,7 @@ class SocioController {
 	
 	//SocioPage - MiPerfil Sector 
 	public async miperfil(req: Request, res: Response) {
+		console.log(req.header("Authorization"));
 
 		const { Numero_Usuario } = req.params;
 
@@ -33,6 +36,7 @@ class SocioController {
 	}
 
 	public async verInfoClase(req: Request, res: Response) {
+		console.log(req.header("Authorization"));
 
 		const { Id_Clase } = req.params;
 
@@ -42,6 +46,7 @@ class SocioController {
 	}
 
 	public async inscripcionSocioClase(req: Request, res: Response) {
+		console.log(req.header("Authorization"));
 
 		const envioDatos = req.body;
 		console.log(envioDatos);
@@ -56,6 +61,7 @@ class SocioController {
 	}
 
 	public async misActividades(req: Request, res: Response) {
+		console.log(req.header("Authorization"));
 
 		const { Numero_Usuario } = req.params;
 

@@ -24,6 +24,7 @@ class AdminController {
     }
     listarSocios(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.header("Authorization"));
             console.log(req.body);
             const usuarios = yield adminModel_1.default.listarTodosSocios();
             //const users = usuarios;
@@ -70,16 +71,25 @@ class AdminController {
     modificarSocio(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const usuario = req.body;
-            console.log(req.body);
-            console.log(req.params);
-            // const { Numero_Usuario } = req.params
-            // const { Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario } = req.body;
-            // const result = await adminModel.actualizar(Numero_Usuario, Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario);
-            // const { Numero_Usuario } = req.params;
-            const result = yield adminModel_1.default.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Direccion_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario);
-            // req.flash('info', 'Socio modificado correctamente');
-            // res.redirect('../buscarSocio');
+            console.log("Controller:", req.body);
+            const result = yield adminModel_1.default.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario, usuario.Direccion_Usuario, usuario.Password_Usuario, usuario.Id_Estado);
             return res.json(result);
+        });
+    }
+    buscarClaseSocio(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { Numero_Usuario } = req.params;
+            const clases = yield adminModel_1.default.buscarClaseSocio(Numero_Usuario);
+            return res.json(clases);
+        });
+    }
+    eliminarClaseSocio(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { Numero_Usuario } = req.params;
+            const { Id_Clase } = req.params;
+            console.log("Controller:", Numero_Usuario, " ", Id_Clase);
+            const clases = yield adminModel_1.default.eliminarClaseSocio(Numero_Usuario, Id_Clase);
+            return res.json(clases);
         });
     }
     //MENU ACTIVIDADES
@@ -273,6 +283,20 @@ class AdminController {
             console.log("controller:", Id_Comentario);
             const result = yield adminModel_1.default.eliminarComentario(Id_Comentario);
             return res.json({ text: 'Comentario Eliminado: ' + Id_Comentario });
+        });
+    }
+    buscarEstados(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const estados = yield adminModel_1.default.buscarEstados();
+            return res.json(estados);
+        });
+    }
+    buscarUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { Numero_Usuario } = req.params;
+            const usuario = yield adminModel_1.default.findUser(Numero_Usuario);
+            return res.json(usuario);
         });
     }
 }

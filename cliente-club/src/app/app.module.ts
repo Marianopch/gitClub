@@ -13,7 +13,7 @@ import { UsuariosService } from './services/usuarios.service';
 import { BuscarSocioComponent } from './components/AdminPages/Socios/buscar-socio/buscar-socio.component';
 import { AgregarSocioComponent } from './components/AdminPages/Socios/agregar-socio/agregar-socio.component';
 import { AuthGuard } from './auth.guard';
-
+import { SociosService } from './services/socios.service';
 import { AgregarAdminComponent } from './components/AdminPages/Admin/agregar-admin/agregar-admin.component'; 
 import { BuscarAdminComponent } from './components/AdminPages/Admin/buscar-admin/buscar-admin.component';
 import { BuscarActividadComponent } from './components/AdminPages/Actividad/buscar-actividad/buscar-actividad.component';
@@ -36,7 +36,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MisActividadesComponent } from './components/SocioPages/mis-actividades/mis-actividades.component';
 import { NovedadesAdminComponent } from './components/AdminPages/novedades-admin/novedades-admin.component';
 import { ClasesPipe } from './pipes/clases.pipe';
-
+import {TokenInterceptorService} from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -69,15 +69,17 @@ import { ClasesPipe } from './pipes/clases.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory,
-    })
-  ],
+    FormsModule
+    ],
   providers: [
     UsuariosService,
-    AuthGuard
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi:true
+    },
+    SociosService
   ],
   bootstrap: [AppComponent]
 })

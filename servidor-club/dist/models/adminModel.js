@@ -45,6 +45,15 @@ class AdminModel {
             return null;
         });
     }
+    findUser(Numero_Usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM Usuarios WHERE Numero_Usuario= ? ;', [Numero_Usuario]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (encontrado.length > 1)
+                return encontrado[0][0];
+            return null;
+        });
+    }
     //Devuelve 1 si logro crear un nuevo usuario de la tabla usuarios
     crear(usuario) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -82,13 +91,13 @@ class AdminModel {
         });
     }
     //Devuelve 1 si logro actualizar el usuario indicado por id
-    actualizar(Numero_Usuario, Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Direccion_Usuario, Mail_Usuario, Telefono_Usuario) {
+    actualizar(Numero_Usuario, Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario, Password_Usuario, Id_Estado) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = (yield this.db.query('UPDATE Usuarios SET Nombre_Usuario = ? , Apellido_Usuario = ? , DNI_Usuario = ?, Mail_Usuario = ?, Telefono_Usuario = ? , Direccion_Usuario = ?  WHERE Numero_Usuario = ?', [Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario, Numero_Usuario]))[0].affectedRows;
+            const result = (yield this.db.query('UPDATE Usuarios SET Nombre_Usuario = ? , Apellido_Usuario = ? , DNI_Usuario = ?, Mail_Usuario = ?, Telefono_Usuario = ? , Direccion_Usuario = ? , Password_Usuario = ?, Id_Estado = ? WHERE Numero_Usuario = ?', [Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario, Password_Usuario, Id_Estado, Numero_Usuario]))[0].affectedRows;
             // async actualizar(Numero_Usuario: string, Nombre_Usuario: string, Apellido_Usuario: string, DNI_Usuario: number, Mail_Usuario: string, Telefono_Usuario: number, Direccion_Usuario: string) {
             // 	console.log(Numero_Usuario);
             // 	const result = (await this.db.query('UPDATE Usuarios SET Nombre_Usuario = ?, Apellido_Usuario = ?, DNI_Usuario = ? ,Mail_Usuario = ?, Telefono_Usuario = ?, Direccion_Usuario = ? WHERE Numero_Usuario = ?', [Numero_Usuario, Nombre_Usuario, Apellido_Usuario, DNI_Usuario, Mail_Usuario, Telefono_Usuario, Direccion_Usuario]))[0].affectedRows;
-            console.log(result);
+            console.log("BD:", result);
             return result;
         });
     }
@@ -107,6 +116,23 @@ class AdminModel {
             if (encontrado.length > 1)
                 return encontrado[0][0];
             return null;
+        });
+    }
+    buscarClaseSocio(Numero_Usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //const db=this.connection;
+            //const usuarios = await this.db.query('SELECT Numero_Usuario, Nombre_Usuario, Password_Usuario FROM Usuarios');
+            const clasesSocio = yield this.db.query('SELECT C.Id_Clase, A.Descripcion_Actividad, SC.Numero_Usuario FROM sociosclases SC JOIN clases C ON SC.Id_Clase = C.Id_Clase JOIN actividades A ON A.Id_Actividad = C.Id_Actividad JOIN horarios H ON C.Id_Horario = H.Id_Horario JOIN diasclases DC ON DC.Id_Clase = C.Id_Clase JOIN dias D ON D.Id_dias = DC.Id_Dias WHERE SC.Numero_Usuario = ?;', [Numero_Usuario]);
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return clasesSocio[0];
+        });
+    }
+    eliminarClaseSocio(Numero_Usuario, Id_Clase) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const claseSocio = (yield this.db.query('DELETE FROM sociosclases WHERE Numero_Usuario = ? AND Id_Clase = ?', [Numero_Usuario, Id_Clase]))[0].affectedRows;
+            console.log(claseSocio);
+            return claseSocio;
         });
     }
     //MENU ACTIVIDADES
@@ -262,6 +288,15 @@ class AdminModel {
             const comentario = (yield this.db.query('DELETE FROM comentario WHERE Id_Comentario = ?', [Id_Comentario]))[0].affectedRows;
             console.log(comentario);
             return comentario;
+        });
+    }
+    buscarEstados() {
+        return __awaiter(this, void 0, void 0, function* () {
+            //const db=this.connection;
+            const estados = yield this.db.query('SELECT * FROM Estados;');
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return estados[0];
         });
     }
 }

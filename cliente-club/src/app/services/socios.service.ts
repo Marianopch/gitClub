@@ -15,25 +15,25 @@ export class SociosService {
 
   //SocioPage - Calendar Sector - Inscripcion
 
-  clasesTotales(){
+  clasesTotales() {
     return this.http.get(`${this.API_URI}/clasesTotales`);
   }
 
-  llenarCalendar(Descripcion_Actividad: string){
+  llenarCalendar(Descripcion_Actividad: string) {
     return this.http.get(`${this.API_URI}/llenarCalendar/${Descripcion_Actividad}`);
   }
 
-  buscarDatosSocio(Numero_Usuario: any){
+  buscarDatosSocio(Numero_Usuario: any) {
     return this.http.get(`${this.API_URI}/miperfil/${Numero_Usuario}`)
   }
-  
-  buscarClase(Id_Clase: any){
+
+  buscarClase(Id_Clase: any) {
     return this.http.get(`${this.API_URI}/calendar/${Id_Clase}`)
   }
 
   // inscribirSocio(claseSocio: claseSocio ): Observable<claseSocio>{
   //   console.log(claseSocio);
-    
+
   //   return this.http.post(`${this.API_URI}/calendar/inscripcion`, claseSocio)
   // }
 
@@ -42,7 +42,7 @@ export class SociosService {
   //   return this.http.post(`${this.API_URI}/calendar/inscripcion`, claseSocio)
   // }
 
-  inscribirSocio(envioDatos: claseSocio ){
+  inscribirSocio(envioDatos: claseSocio) {
     console.log(envioDatos);
     return this.http.post(`${this.API_URI}/calendar/inscripcion`, envioDatos)
   }
@@ -53,10 +53,26 @@ export class SociosService {
     return this.http.get(`${this.API_URI}/buscarActividades/${Numero_Usuario}`);
   }
 
-    // COmentarios
-    listarComentarios() {
-      return this.http.get(`${this.API_URI}/list`);
-  
-    }
+  // COmentarios
+  listarComentarios() {
+    return this.http.get(`${this.API_URI}/list`);
+
+  }
+
+
+  getToken() {//Obtenemos el token que despues enviara el interceptor x cada req
+    return localStorage.getItem('token');
+  }
+
+  isLoggedIn(): Boolean {
+    return !!localStorage.getItem('token'); //Si existe token retorna true
+    //es el equivalente de testearlo con if pero ahora en una sola linea.
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('rol');
+    this.router.navigate(['/']);
+  }
 
 }

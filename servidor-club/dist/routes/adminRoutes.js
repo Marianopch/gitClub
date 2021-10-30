@@ -19,6 +19,7 @@ class AdminRoutes {
         this.router.post('/home', adminController_1.default.home);
         //Menu Socios.
         //Buscar
+        this.router.get('/find/:Numero_Usuario', adminController_1.default.buscarUsuario);
         this.router.get('/buscarSocio', adminController_1.default.listarSocios);
         //Agregar
         this.router.post('/signup', adminController_1.default.agregarUsuario);
@@ -27,6 +28,8 @@ class AdminRoutes {
         this.router.delete('/eliminarSocio/:Numero_Usuario', adminController_1.default.eliminar);
         //Modificar
         this.router.put('/modificarSocio/:Numero_Usuario', adminController_1.default.modificarSocio);
+        this.router.get('/buscarClaseSocio/:Numero_Usuario', adminController_1.default.buscarClaseSocio);
+        this.router.delete('/eliminarClaseUser/:Numero_Usuario/:Id_Clase', adminController_1.default.eliminarClaseSocio);
         //Menu Activades.
         //Buscar
         this.router.get('/buscarActividad', adminController_1.default.listarActividad);
@@ -70,6 +73,7 @@ class AdminRoutes {
         this.router.get('/list', adminController_1.default.listComent);
         this.router.post('/create', adminController_1.default.createComent);
         this.router.delete('/delete/:Id_Comentario', adminController_1.default.deleteComent);
+        this.router.get('/buscarEstados', adminController_1.default.buscarEstados);
     }
 }
 //Exportamos el enrutador con 

@@ -32,7 +32,11 @@ export class BuscarSocioComponent implements OnInit {
   usuarios: any = [];
   user = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "2", Id_Estado: "1" };
   usuariosfilter: any = [];
-  userfilter = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "2", Id_Estado: "1" };
+  userfilter = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "2", Id_Estado: "" };
+  estados: any = [];
+  estado = {Descripcion_Estado: ""};
+  clasesSocio: any = [];
+  claseSocio = {Id_Clase: "", Descripcion_Actividad: ""}
 
   ngOnInit(): void {
     this.usuariosService.listarUsuarios().subscribe(
@@ -42,6 +46,7 @@ export class BuscarSocioComponent implements OnInit {
       },
       err => console.log(err)
     )
+    this.cargarEstados();
   }
   
 //FILTRO PIPE
@@ -55,7 +60,7 @@ export class BuscarSocioComponent implements OnInit {
 //-------------------------
 
 
-  buscarArray(Numero: any): void {
+  buscarArray(Numero:string){
 
     // for(let elemento of this.usuarios){
     //   // if(Numero == elemento.Numero_Usuario){
@@ -66,7 +71,15 @@ export class BuscarSocioComponent implements OnInit {
     // }
 
     // console.log("Index:", this.usuarios.Numero_Usuario.indexOf(Numero)) ;
-    this.usuariosfilter = this.usuarios.find((u: { Numero_Usuario: any; }) => u.Numero_Usuario === Numero );
+    this.usuariosService.buscarUsuario(Numero).subscribe(
+      res => {
+        this.usuariosfilter = res;
+        console.log(res)
+      },
+      err => console.log(err)
+    )
+    // this.usuariosfilter = this.usuarios.find((u: { Numero_Usuario: any; }) => u.Numero_Usuario === Numero );
+    // console.log("UsuarioEncontado:", this.usuariosfilter);
     
 
   }
@@ -85,18 +98,42 @@ export class BuscarSocioComponent implements OnInit {
       });
   }
 
+  eliminarClaseUser(Numero_Usuario: any, Id_Clase: any) {
+
+    this.usuariosService.eliminarClasseUser(Numero_Usuario, Id_Clase).subscribe(
+      response => {
+        console.log(response);
+        this.router.navigate(['admin/buscarSocio']);
+      },
+      error => {
+        console.log(error);
+        this.router.navigate(['admin/buscarSocio']);
+      });
+  }
+
   modificarUser(usuario: any) {
-    console.log(usuario);
+    console.log("Component:", usuario);
     this.usuariosService.actualizarUsuario(usuario.Numero_Usuario, usuario).subscribe(
       res => {
         let result: any = res;
-        console.log(result.message);
+        console.log("Respuesta back:", result);
         this.ngOnInit();
        
 
       },
       err => console.log(err)
     )
+  }
+
+  buscarClase(Numero_Usuario: any){
+    this.usuariosService.buscarClase(Numero_Usuario).subscribe(
+      res => {
+        this.clasesSocio = res;
+        console.log("Respuesta:", this.clasesSocio)
+      },
+      err => {
+        console.log(err);
+      });
   }
 
   // METODOS CREAR
@@ -123,6 +160,16 @@ export class BuscarSocioComponent implements OnInit {
       
     )
 	}
+
+  cargarEstados() {
+    this.usuariosService.cargaEstados().subscribe(
+      res => {
+        this.estados = res;
+        console.log(res)
+      },
+      err => console.log(err)
+    )
+  }
 
   verificarForm():boolean{
     this.errorNumUs=this.verificarNumUs(this.user.Numero_Usuario);
