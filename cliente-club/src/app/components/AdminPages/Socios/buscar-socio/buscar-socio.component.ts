@@ -324,6 +324,6 @@ export class BuscarSocioComponent implements OnInit {
     this.user.Direccion_Usuario = '';
     this.user.Mail_Usuario = '';
     this.user.Password_Usuario = '';
-}
+  }
 
 }

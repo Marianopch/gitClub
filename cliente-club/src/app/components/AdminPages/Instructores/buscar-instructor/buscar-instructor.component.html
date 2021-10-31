@@ -8,14 +8,6 @@
                 <div class= "input-group-text bg-white">
                     <i class="fas fa-search"></i>
                     <input  class="form-control" placeholder="Nombre o Apellido"[(ngModel)]="filterPost" name="filterpost" >
-                    <!-- <div class="input-group-prepend">
-                        
-                        <div  class="input-group-text" id="btnGroupAddon2"> <i class="far fa-address-card"></i> __Para Crear un Nuevo Usuario haga "click" en "Nuevo" 
-                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Nuevo
-                            </button>
-                        </div>
-                    </div> -->
                 </div> 
             </div>
         </div>
@@ -26,7 +18,7 @@
     </button>
 
     <table id="tableprincipal" class="table table-success table-hover">
-        <thead >
+        <thead>
             <th id="thprincipal">Numero</th>
             <th id="thprincipal">Nombre</th>
             <th id="thprincipal">Apellido</th>
@@ -236,7 +228,7 @@
     </div>
 </div>
 
-<!-- -------------------------------------MODAL CLASE SOCIO--------------------------------------------------------- -->
+<!-- -------------------------------------MODAL CLASE INSTRUCTOR--------------------------------------------------------- -->
 
 <div class="modal fade" id="claseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog">
@@ -257,7 +249,7 @@
                             <td>{{claseSocio.Id_Clase}}</td>
                             <td>{{claseSocio.Descripcion_Actividad}}</td>
                             <td>
-                                <button class="btn btn-success btn-block" (click)="eliminarClaseUser(claseSocio.Numero_Usuario, claseSocio.Id_Clase)" data-bs-dismiss="modal">Enviar</button>
+                                <!-- <button class="btn btn-success btn-block" (click)="eliminarClaseUser(claseSocio.Numero_Usuario, claseSocio.Id_Clase)" data-bs-dismiss="modal">Enviar</button> -->
                             </td>
                         </tr>
                     </tbody>

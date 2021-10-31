@@ -269,7 +269,7 @@ class AdminModel {
     listarComentario() {
         return __awaiter(this, void 0, void 0, function* () {
             //const db=this.connection;
-            const comentario = yield this.db.query('SELECT * FROM comentario order by fcreacion desc');
+            const comentario = yield this.db.query('SELECT Id_Comentario, Titulo_Comentario, Descripcion_Comentario, Numero_Usuario, DATE_FORMAT(fcreacion, "%d/%m/%Y %H:%i") AS fcreacion FROM comentario order by fcreacion desc;');
             //console.log(usuarios[0]);
             //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
             return comentario[0];

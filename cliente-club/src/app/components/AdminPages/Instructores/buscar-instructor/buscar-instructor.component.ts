@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  ViewChild, ElementRef } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,7 @@ export class BuscarInstructorComponent implements OnInit {
 
   filterPost = '';
   page: number = 0;
+  
   usuarios: any = [];
   errorNumUs = 0;
   errorNombre = 0;
@@ -20,6 +21,8 @@ export class BuscarInstructorComponent implements OnInit {
   errorTel = 0;
   errorDirec = 0;
   errorPassword = 0;
+  @ViewChild('closeAddExpenseModal')
+  closeAddExpenseModal!: ElementRef;
 
   reintentar: boolean = false;
   mensaje: string = "";
@@ -31,6 +34,7 @@ export class BuscarInstructorComponent implements OnInit {
   claseSocio = {Id_Clase: "", Descripcion_Actividad: ""};
 
   user = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "3", Id_Estado: "1", Id_Instructor: "1" };
+  
   constructor(private usuariosService: UsuariosService, private router: Router) { }
 
   ngOnInit(): void {
