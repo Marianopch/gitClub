@@ -1,14 +1,93 @@
 <app-navigation></app-navigation>
 
-<div class="col mb-4" style="padding: 3%; margin-left: 25%;">
+<div class="container-fluid">
+  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#crearModel" id="butAgr">
+    Nuevo Comentario
+  </button>
+
+  <!-- -------------------------------------MUESTRA COMENTARIO--------------------------------------------------------- -->
+
+  <div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-4" *ngFor=" let comentario of comentarios">
+      <div class="card" >
+        <div class="card-body" style="background-color: rgb(132, 196, 147); color: rgb(0, 0, 0);">
+          <h5 class="card-title">{{comentario.Titulo_Comentario}}</h5>
+          <hr style="border: 1;">
+          <p class="card-text">{{comentario.Descripcion_Comentario}}</p>
+          <div class="card-footer">
+            <!-- <p><small>{{comentario.fcreacion}}</small></p>
+            <button *ngIf="id_Rol == '1'" class="btn btn-danger btn-block" (click)=eliminar(comentario)>Eliminar</button> -->
+            <div class="box">
+            <div class="box-row">
+              <div class="box-cell box1">
+                 <p><small>{{comentario.fcreacion}}</small></p>
+              </div>
+              <div class="box-cell box2">
+                <button *ngIf="id_Rol == '1'" class="btn btn-danger btn-block" (click)=eliminar(comentario)>Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- -------------------------------------MODAL CREACION COMENTARIO--------------------------------------------------------- -->
+
+<div class="modal fade" id="crearModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Nuevo Comentario</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div >
+                  <div class="container">
+                    <form (submit)="crearComentario()" class="card">
+                      <p style="text-decoration: underline; font-weight: bold;">Crear el comentario</p>
+                      <div class="form-group">
+                        Titulo: <input type="text" name="titulo" [(ngModel)]="comentario.Titulo_Comentario" placeholder="Titulo" id="modalinput">
+                      </div>
+                      <div class="form-group">
+                            Descripcion: <input type="text" name="descripcion" [(ngModel)]="comentario.Descripcion_Comentario" id="modalinput"
+                            (focus)="limpiarComentario()" placeholder="Descripcion">
+                            <div [ngSwitch]="errorComentario">
+                              <div class="DivErrorComent" *ngSwitchCase="1">Error, campo vacio</div>
+                              <div class="DivErrorComent" *ngSwitchCase="2">Error, excedió el limite maximo de caracteres</div>
+                            </div>
+                      </div>
+                      <input type="hidden" name="numero_Usuario" [(ngModel)]="comentario.Numero_Usuario">
+                      <span></span>
+                      <button class="btn btn-small btn-success" type="submit" (click)="verificarForm()">Crear</button>
+                    </form>
+                  </div>
+              </div>
+          </div>
+
+
+          <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="btn-guardar" data-bs-dismiss="modal">Crear</button>
+          </div> -->
+      </div>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="col mb-4" style="padding: 3%; margin-left: 25%;">
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col mb-4" *ngIf="comentarios.length > 0; else fila">
       <div *ngFor=" let comentario of comentarios" class="card" style="margin-bottom: 3%;">
-        <img src={{comentario.Imagen_Comentario}} alt="" class="card-img-top" style="margin-left: 40%;">
-        <hr class="solid">
         <div class="card-body">
           <h5 class="card-title" style="margin-left: 40%;"> {{comentario.Titulo_Comentario}}</h5>
-          <p class="card-text" [innerHTML]="comentario.Descripcion_Comentario">{{comentario.descripcion}}</p>
+          <hr class="solid">
+          <p class="card-text" [innerHTML]="comentario.Descripcion_Comentario">{{comentario.Descripcion_Comentario}}</p>
 
           <p class="card-text">{{comentario.id}}</p>
           <hr class="solid">
@@ -26,9 +105,9 @@
       </tbody>
     </ng-template>
   </div>
-</div>
+</div> -->
 
-
+<!-- 
 <div class="col mb-4" style="padding: 3%; margin-left: 25%;">
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col mb-4">
@@ -56,4 +135,4 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->

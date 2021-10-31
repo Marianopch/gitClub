@@ -25,6 +25,10 @@ export class BuscarInstructorComponent implements OnInit {
   mensaje: string = "";
   usuariosfilter: any = [];
   userfilter = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "3", Id_Estado: "1" };
+  estados: any = [];
+  estado = {Descripcion_Estado: ""};
+  clasesSocio: any = [];
+  claseSocio = {Id_Clase: "", Descripcion_Actividad: ""};
 
   user = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "3", Id_Estado: "1", Id_Instructor: "1" };
   constructor(private usuariosService: UsuariosService, private router: Router) { }
@@ -37,6 +41,7 @@ export class BuscarInstructorComponent implements OnInit {
       },
       err => console.log(err)
     )
+    this.cargarEstados();
   }
 
   //FILTRO PIPE
@@ -49,8 +54,17 @@ export class BuscarInstructorComponent implements OnInit {
   }
   //-------------------------
 
-  eliminarUser(Numero_Usuario: any) {
+  cargarEstados() {
+    this.usuariosService.cargaEstados().subscribe(
+      res => {
+        this.estados = res;
+        console.log(res)
+      },
+      err => console.log(err)
+    )
+  }
 
+  eliminarUser(Numero_Usuario: any) {
     console.log(this.usuarios)
     this.usuariosService.eliminarInstructor(Numero_Usuario).subscribe(
       response => {
@@ -75,6 +89,16 @@ export class BuscarInstructorComponent implements OnInit {
     )
   }
 
+  buscarClase(Numero_Usuario: any){
+    this.usuariosService.buscarClase(Numero_Usuario).subscribe(
+      res => {
+        this.clasesSocio = res;
+        console.log("Respuesta:", this.clasesSocio)
+      },
+      err => {
+        console.log(err);
+      });
+  }
 
   // AGREGAR INSTRUCTOR
 

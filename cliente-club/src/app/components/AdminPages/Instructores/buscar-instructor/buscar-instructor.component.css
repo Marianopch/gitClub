@@ -118,3 +118,24 @@ div#divForm {
 button#butMod {
    width: 100%;
 }
+
+button#butMod {
+   width: 100%;
+}
+
+th#thprincipal {
+   width: 16%;
+}
+
+
+table#tableprincipal {
+   text-align: center;
+}
+
+input#modalinput {
+   margin-bottom: 2%;
+}
+
+button#btnmodal {
+   width: 100%;
+}

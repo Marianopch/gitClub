@@ -123,6 +123,15 @@ input#modalinput {
     margin-bottom: 2%;
 }
 
-button#btnmodal{
+button#btnmodal {
     width: 100%;
 }
+
+th#thprincipal {
+    width: 16%;
+}
+
+table#tableprincipal {
+    text-align: center;
+}
+

@@ -16,20 +16,20 @@
         Nuevo Socio
     </button>
 
-    <table class="table table-success table-hover">
+    <table id="tableprincipal" class="table table-success table-hover">
         <thead >
-            <th>Numero</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>DNI</th>
+            <th id="thprincipal">Numero</th>
+            <th id="thprincipal">Nombre</th>
+            <th id="thprincipal">Apellido</th>
+            <th id="thprincipal">DNI</th>
             <!-- <th>Mail</th>
             <th>Telefono</th>
             <th>Direccion</th>
             <th>Fecha Creacion</th>
             <th>Password</th>
             <th>Rol</th> -->
-            <th>Estado</th>
-            <th>Acciones</th>
+            <th id="thprincipal">Estado</th>
+            <th> Acciones</th>
         </thead>
         <tbody *ngIf="usuarios.length > 0; else fila">
             <tr *ngFor=" let usuario of usuarios | filtro:filterPost:page ">
@@ -55,7 +55,7 @@
         <ng-template #fila>
             <tbody>
                 <tr>
-                    <td colspan="4">No hay mas filas</td>
+                    <td colspan="4">No hay Administradores</td>
                 </tr>
             </tbody>
         </ng-template>
@@ -78,7 +78,7 @@
     <div class="modal-dialog">
         <div class="modal-content" >
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nuevo Socio</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Instructor</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" >
@@ -180,10 +180,10 @@
                 <div *ngIf="!reintentar">
                     <div class="container">
                         <form (submit)="modificarUser(usuariosfilter)" >
-                            <input type="text" name="Numero_Usuario" [(ngModel)]="usuariosfilter.Numero_Usuario" 
+                            <input type="text" name="Numero_Usuario" [(ngModel)]="usuariosfilter.Numero_Usuario" id="modalinput"
                                 class="form-control" autofocus readonly>
 
-                            <input type="text" name="Nombre_Usuario" [(ngModel)]="usuariosfilter.Nombre_Usuario" 
+                            <input type="text" name="Nombre_Usuario" [(ngModel)]="usuariosfilter.Nombre_Usuario" id="modalinput"
                                 class="form-control">
                                 <div [ngSwitch]="errorNombre">
                                     <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -191,7 +191,7 @@
                                     <div *ngSwitchCase="3">Nombre debe ser alfabetico</div>
                                 </div>
 
-                            <input type="text" name="Apellido_Usuario"  [(ngModel)]="usuariosfilter.Apellido_Usuario" 
+                            <input type="text" name="Apellido_Usuario"  [(ngModel)]="usuariosfilter.Apellido_Usuario" id="modalinput"
                                 class="form-control">
                                 <div   [ngSwitch]="errorApellido">
                                     <div *ngSwitchCase="1" >Debes completar el campo</div>
@@ -199,7 +199,7 @@
                                     <div *ngSwitchCase="3">Apellido  debe ser alfabetico</div>
                                 </div>
 
-                            <input type="text" name="DNI_Usuario" [(ngModel)]="usuariosfilter.DNI_Usuario"  
+                            <input type="text" name="DNI_Usuario" [(ngModel)]="usuariosfilter.DNI_Usuario"  id="modalinput"
                                  class="form-control">
                                  <div [ngSwitch]="errorDNI">
                                     <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -208,7 +208,7 @@
                                     <div *ngSwitchCase="4">DNI debe ser Numerico</div>
                                 </div>
 
-                            <input type="text" name="Mail_Usuario" [(ngModel)]="usuariosfilter.Mail_Usuario" 
+                            <input type="text" name="Mail_Usuario" [(ngModel)]="usuariosfilter.Mail_Usuario" id="modalinput"
                                 class="form-control">
                                 <div [ngSwitch]="errorMail">
                                     <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -216,7 +216,7 @@
                                     <div *ngSwitchCase="3">Email debe ser nombre@dominio.algo .</div>
                                 </div>
 
-                            <input type="text" name="Telefono_Usuario" [(ngModel)]="usuariosfilter.Telefono_Usuario" 
+                            <input type="text" name="Telefono_Usuario" [(ngModel)]="usuariosfilter.Telefono_Usuario" id="modalinput"
                                 class="form-control">
                                 <div [ngSwitch]="errorTel">
                                     <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -225,7 +225,7 @@
                                     <div *ngSwitchCase="4">El telefono debe ser Numerico. Ej: 1199887766 </div>
                                 </div>
 
-                            <input type="text" name="Direccion_Usuario" [(ngModel)]="usuariosfilter.Direccion_Usuario" 
+                            <input type="text" name="Direccion_Usuario" [(ngModel)]="usuariosfilter.Direccion_Usuario" id="modalinput"
                                 class="form-control">
                                 <div [ngSwitch]="errorDirec">
                                     <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -233,7 +233,7 @@
                                     <div *ngSwitchCase="3">La direccion debe ser formato nombre calle - altura. Ej: Calle falsa 123.</div>
                                 </div>
 
-                            <input type="password" name="Password_Usuario" [(ngModel)]="usuariosfilter.Password_Usuario" 
+                            <input type="password" name="Password_Usuario" [(ngModel)]="usuariosfilter.Password_Usuario" id="modalinput"
                                 class="form-control">
                                 <div [ngSwitch]="errorPassword">
                                     <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -243,7 +243,7 @@
                 
                             <input type="hidden" name="Id_Rol" [(ngModel)]="usuariosfilter.Id_Rol" value="2" class="form-control">
                             <!-- <input type="hidden" name="Id_Estado" [(ngModel)]="usuariosfilter.Id_Estado" value="1"  class="form-control"> -->
-                            <div  class="box-cell box2">
+                            <div  class="box-cell box2" style="margin-bottom: 2%;">
                                 <select class="form-control" name="Id_Estado" [(ngModel)]="usuariosfilter.Id_Estado">
                                   <option *ngFor=" let estado of estados" [value]="estado.Id_Estado">
                                     {{estado.Descripcion_Estado}}

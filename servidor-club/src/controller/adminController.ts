@@ -298,13 +298,13 @@ class AdminController {
 	public async createComent(req: Request, res: Response) {
 		//console.log(req.header("Authorization"));
 		const comentario = req.body;
-		console.log(req.body);
-		if(comentario.Descripcion_Comentario.length == 0 || comentario.Descripcion_Comentario.length > 1000){
+		console.log("Controller:", req.body);
+		if(comentario.Descripcion_Comentario.lenght == 0 || comentario.Descripcion_Comentario.lenght > 1000){
 			 res.json ({ message: 'Comentario no guardado!!' });
 		}
-		if(comentario.Imagen_Comentario.length == 0){
-			res.json ({ message: 'Comentario no guardado!!' });
-		}
+		// if(comentario.Imagen_Comentario.lenght == 0){
+		// 	res.json ({ message: 'Comentario no guardado!!' });
+		// }
 		
 		const result = await adminModel.crearComentario(comentario);
 

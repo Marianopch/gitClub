@@ -22,23 +22,23 @@
     </form>
 
     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" id="butAgr">
-        Nuevo Socio
+        Nuevo Administrador
     </button>
 
-    <table class="table table-success table-hover">
+    <table id="tableprincipal" class="table table-success table-hover">
         <thead >
-            <th>Numero</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>DNI</th>
-            <th>Mail</th>
+            <th id="thprincipal">Numero</th>
+            <th id="thprincipal">Nombre</th>
+            <th id="thprincipal">Apellido</th>
+            <th id="thprincipal">DNI</th>
+            <!-- <th>Mail</th>
             <th>Telefono</th>
             <th>Direccion</th>
             <th>Fecha Creacion</th>
             <th>Password</th>
-            <th>Rol</th>
-            <th>Estado</th>
-            <th>Acciones</th>
+            <th>Rol</th> -->
+            <th id="thprincipal">Estado</th>
+            <th id="thprincipal">Acciones</th>
         </thead>
         <tbody *ngIf="usuarios.length > 0; else fila">
             <tr *ngFor=" let usuario of usuarios | filtro:filterPost:page ">
@@ -46,15 +46,15 @@
                 <td>{{usuario.Nombre_Usuario}}</td>
                 <td>{{usuario.Apellido_Usuario}}</td>
                 <td>{{usuario.DNI_Usuario}}</td>
-                <td  >{{usuario.Mail_Usuario}}</td>
+                <!-- <td>{{usuario.Mail_Usuario}}</td>
                 <td>{{usuario.Telefono_Usuario}}</td>
                 <td >{{usuario.Direccion_Usuario}}</td>
                 <td>{{usuario.FechaCreacion_Usuario}}</td>
                 <td>{{usuario.Password_Usuario}}</td>
-                <td>Admin</td>
+                <td>Admin</td> -->
                 <td>{{usuario.Descripcion_Estado}}</td>
                 <td>
-                    <button class="btn btn-info" id="butMod" data-bs-toggle="modal" data-bs-target="#modModal" (click)="buscarArray(usuario.Numero_Usuario)"> Modificar </button>
+                    <button class="btn btn-info" id="butMod" data-bs-toggle="modal" data-bs-target="#modModal" (click)="buscarArray(usuario.Numero_Usuario)"> Ver mas informacion - Modificar </button>
                     <!-- <button class="btn btn-info" id="butMod"  (click)="modificarUser(usuario)"> Modificar </button> -->
                     <button class="btn btn-danger" id="butMod" (click)="eliminarUser(usuario.Numero_Usuario)"> Eliminar </button>
                 </td>
@@ -80,6 +80,10 @@
 
 </div>
 
+
+
+<!-- -------------------------------------MODAL CREACION ADMIN--------------------------------------------------------- -->
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -94,7 +98,7 @@
                 
                         <form (submit)=registrar()>
                 
-                            <input type="text" name="Numero_Usuario" [(ngModel)]="user.Numero_Usuario" placeholder="Numero Socio"
+                            <input type="text" name="Numero_Usuario" [(ngModel)]="user.Numero_Usuario" placeholder="Numero Admin" id="modalinput"
                                 class="form-control" autofocus>
                             <div [ngSwitch]=" errorNumUs" >
                                 <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -104,35 +108,35 @@
                                     max.
                                     EJ: S00001 .</div>
                             </div>
-                            <input type="text" name="Nombre_Usuario" [(ngModel)]="user.Nombre_Usuario" placeholder="Nombre"
+                            <input type="text" name="Nombre_Usuario" [(ngModel)]="user.Nombre_Usuario" placeholder="Nombre" id="modalinput"
                                 class="form-control">
                             <div [ngSwitch]="errorNombre">
                                 <div *ngSwitchCase="1">Debes completar el campo</div>
                                 <div *ngSwitchCase="2">Nombre muy largo</div>
                                 <div *ngSwitchCase="3">Nombre debe ser alfabetico</div>
                             </div>
-                            <input type="text" name="Apellido_Usuario"  [(ngModel)]="user.Apellido_Usuario" placeholder="Apellido"
+                            <input type="text" name="Apellido_Usuario"  [(ngModel)]="user.Apellido_Usuario" placeholder="Apellido" id="modalinput"
                                 class="form-control">
                             <div   [ngSwitch]="errorApellido">
                                 <div *ngSwitchCase="1" >Debes completar el campo</div>
                                 <div *ngSwitchCase="2">Apellido muy largo</div>
                                 <div *ngSwitchCase="3">Apellido  debe ser alfabetico</div>
                             </div>
-                            <input type="text" name="DNI_Usuario" [(ngModel)]="user.DNI_Usuario" placeholder="DNI" class="form-control">
+                            <input type="text" name="DNI_Usuario" [(ngModel)]="user.DNI_Usuario" placeholder="DNI" class="form-control" id="modalinput">
                             <div [ngSwitch]="errorDNI">
                                 <div *ngSwitchCase="1">Debes completar el campo</div>
                                 <div *ngSwitchCase="2">DNI muy largo</div>
                                 <div *ngSwitchCase="3">DNI muy corto. Debe ser mayor a 1000000</div>
                                 <div *ngSwitchCase="4">DNI debe ser Numerico</div>
                             </div>
-                            <input type="text" name="Mail_Usuario" [(ngModel)]="user.Mail_Usuario" placeholder="Mail"
+                            <input type="text" name="Mail_Usuario" [(ngModel)]="user.Mail_Usuario" placeholder="Mail" id="modalinput"
                                 class="form-control">
                             <div [ngSwitch]="errorMail">
                                 <div *ngSwitchCase="1">Debes completar el campo</div>
                                 <div *ngSwitchCase="2">Email muy largo</div>
                                 <div *ngSwitchCase="3">Email debe ser nombre@dominio.algo .</div>
                             </div>
-                            <input type="text" name="Telefono_Usuario" [(ngModel)]="user.Telefono_Usuario" placeholder="Telefono"
+                            <input type="text" name="Telefono_Usuario" [(ngModel)]="user.Telefono_Usuario" placeholder="Telefono" id="modalinput"
                                 class="form-control">
                             <div [ngSwitch]="errorTel">
                                 <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -140,14 +144,14 @@
                                 <div *ngSwitchCase="3">Telefono muy corto</div>
                                 <div *ngSwitchCase="4">El telefono debe ser Numerico. Ej: 1199887766 </div>
                             </div>
-                            <input type="text" name="Direccion_Usuario" [(ngModel)]="user.Direccion_Usuario" placeholder="Direccion"
+                            <input type="text" name="Direccion_Usuario" [(ngModel)]="user.Direccion_Usuario" placeholder="Direccion" id="modalinput"
                                 class="form-control">
                             <div [ngSwitch]="errorDirec">
                                 <div *ngSwitchCase="1">Debes completar el campo</div>
                                 <div *ngSwitchCase="2">La direccion es muy larga</div>
                                 <div *ngSwitchCase="3">La direccion debe ser formato nombre calle - altura. Ej: Calle falsa 123.</div>
                             </div>
-                            <input type="password" name="Password_Usuario" [(ngModel)]="user.Password_Usuario" placeholder="Password"
+                            <input type="password" name="Password_Usuario" [(ngModel)]="user.Password_Usuario" placeholder="Password" id="modalinput"
                                 class="form-control">
                             <div [ngSwitch]="errorPassword">
                                 <div *ngSwitchCase="1">Debes completar el campo</div>
@@ -157,7 +161,7 @@
                 
                             <input type="hidden" name="Id_Rol" [(ngModel)]="user.Id_Rol" value="2" class="form-control">
                             <input type="hidden" name="Id_Estado" [(ngModel)]="user.Id_Estado" value="1" class="form-control">
-                            <button class="btn btn-success btn-block" (click)="verificarForm()" data-bs-dismiss="modal">Enviar</button>
+                            <button class="btn btn-success btn-block" (click)="verificarForm()" data-bs-dismiss="modal" id="btnmodal">Enviar</button>
                         </form>
                     </div>
                 </div>
@@ -183,40 +187,47 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Informacion del Socio</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Informacion del Administrador</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div *ngIf="!reintentar">
                     <div class="container">
                         <form >
-                            <input type="text"  name="Numero_Usuario" [(ngModel)]="usuariosfilter.Numero_Usuario" placeholder={{usuariosfilter.Numero_Usuario}}
+                            <input type="text"  name="Numero_Usuario" [(ngModel)]="usuariosfilter.Numero_Usuario" placeholder={{usuariosfilter.Numero_Usuario}} id="modalinput"
                                 class="form-control" autofocus  readonly>
 
-                            <input type="text" name="Nombre_Usuario" [(ngModel)]="usuariosfilter.Nombre_Usuario" placeholder= {{usuariosfilter.Nombre_Usuario}}
+                            <input type="text" name="Nombre_Usuario" [(ngModel)]="usuariosfilter.Nombre_Usuario" placeholder= {{usuariosfilter.Nombre_Usuario}} id="modalinput"
                                 class="form-control">
 
-                            <input type="text" name="Apellido_Usuario"  [(ngModel)]="usuariosfilter.Apellido_Usuario" placeholder= {{usuariosfilter.Apellido_Usuario}}
+                            <input type="text" name="Apellido_Usuario"  [(ngModel)]="usuariosfilter.Apellido_Usuario" placeholder= {{usuariosfilter.Apellido_Usuario}} id="modalinput"
                                 class="form-control">
 
-                            <input type="text" name="DNI_Usuario" [(ngModel)]="usuariosfilter.DNI_Usuario"  placeholder= {{usuariosfilter.DNI_Usuario}}
+                            <input type="text" name="DNI_Usuario" [(ngModel)]="usuariosfilter.DNI_Usuario"  placeholder= {{usuariosfilter.DNI_Usuario}} id="modalinput"
                                  class="form-control">
 
-                            <input type="text" name="Mail_Usuario" [(ngModel)]="usuariosfilter.Mail_Usuario" placeholder= {{usuariosfilter.Mail_Usuario}}
+                            <input type="text" name="Mail_Usuario" [(ngModel)]="usuariosfilter.Mail_Usuario" placeholder= {{usuariosfilter.Mail_Usuario}} id="modalinput"
                                 class="form-control">
 
-                            <input type="text" name="Telefono_Usuario" [(ngModel)]="usuariosfilter.Telefono_Usuario" placeholder= {{usuariosfilter.Telefono_Usuario}}
+                            <input type="text" name="Telefono_Usuario" [(ngModel)]="usuariosfilter.Telefono_Usuario" placeholder= {{usuariosfilter.Telefono_Usuario}} id="modalinput"
                                 class="form-control">
 
-                            <input type="text" name="Direccion_Usuario" [(ngModel)]="usuariosfilter.Direccion_Usuario" placeholder= {{usuariosfilter.Direccion_Usuario}}
+                            <input type="text" name="Direccion_Usuario" [(ngModel)]="usuariosfilter.Direccion_Usuario" placeholder= {{usuariosfilter.Direccion_Usuario}} id="modalinput"
                                 class="form-control">
 
-                            <input type="password" name="Password_Usuario" [(ngModel)]="usuariosfilter.Password_Usuario" placeholder= {{usuariosfilter.Password_Usuario}}
+                            <input type="password" name="Password_Usuario" [(ngModel)]="usuariosfilter.Password_Usuario" placeholder= {{usuariosfilter.Password_Usuario}} id="modalinput"
                                 class="form-control">
                 
                             <input type="hidden" name="Id_Rol" [(ngModel)]="usuariosfilter.Id_Rol" value="2" class="form-control">
-                            <input type="hidden" name="Id_Estado" [(ngModel)]="usuariosfilter.Id_Estado" value="1"  class="form-control">
-                            <button class="btn btn-success btn-block" (click)="modificarUser(usuariosfilter)" data-bs-dismiss="modal">Enviar</button>
+                            <!-- <input type="hidden" name="Id_Estado" [(ngModel)]="usuariosfilter.Id_Estado" value="1"  class="form-control"> -->
+                            <div  class="box-cell box2" style="margin-bottom: 2%;">
+                                <select class="form-control" name="Id_Estado" [(ngModel)]="usuariosfilter.Id_Estado">
+                                  <option *ngFor=" let estado of estados" [value]="estado.Id_Estado">
+                                    {{estado.Descripcion_Estado}}
+                                  </option>
+                                </select>
+                            </div>
+                            <button class="btn btn-success btn-block" (click)="modificarUser(usuariosfilter)" data-bs-dismiss="modal" id="btnmodal">Modificar Administrador</button>
                         </form>
                     </div>
                 </div>

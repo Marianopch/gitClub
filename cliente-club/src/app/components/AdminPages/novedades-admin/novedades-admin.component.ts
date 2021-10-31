@@ -12,7 +12,7 @@ export class NovedadesAdminComponent implements OnInit {
 
   buscarTexto= "";
   comentarios: any = [];
-  comentario = { Titulo_Comentario: "", Descripcion_Comentario: "", Imagen_Comentario: "", Numero_Usuario: localStorage.getItem('Usuario')};
+  comentario = { Titulo_Comentario: "", Descripcion_Comentario: "", Numero_Usuario: localStorage.getItem('Usuario')};
   nroUsuario = localStorage.getItem('Usuario');
   id_Rol = localStorage.getItem('rol');
   errorComentario = 0;
@@ -27,7 +27,7 @@ export class NovedadesAdminComponent implements OnInit {
         console.log(this.id_Rol);
         console.log(res);
         this.limpiarComentario();
-        this.limpiarImagen();
+        // this.limpiarImagen();
 
       },
       err => console.log(err)
@@ -41,6 +41,7 @@ export class NovedadesAdminComponent implements OnInit {
         let result: any = res;
         console.log(result.message);
         this.ngOnInit();
+        this.limpiarComentario();
       },
       err => {
         console.log(err.error.message);
@@ -87,7 +88,7 @@ export class NovedadesAdminComponent implements OnInit {
 
   verificarForm(): boolean {
     this.errorComentario = this.verificarComentario(this.comentario.Descripcion_Comentario);
-    this.errorImagen = this.verificarImagen(this.comentario.Imagen_Comentario);
+    // this.errorImagen = this.verificarImagen(this.comentario.Imagen_Comentario);
     if (this.errorComentario + this.errorImagen > 0) {
       return false;
     }
@@ -103,14 +104,14 @@ export class NovedadesAdminComponent implements OnInit {
 
   }
 
-  limpiarImagen() {
-    if (this.errorImagen > 0) {
-      console.log("Limpiar imagen");
-      this.comentario.Imagen_Comentario = "";
-      this.errorImagen = 0;
-    }
+  // limpiarImagen() {
+  //   if (this.errorImagen > 0) {
+  //     console.log("Limpiar imagen");
+  //     this.comentario.Imagen_Comentario = "";
+  //     this.errorImagen = 0;
+  //   }
 
-  }
+  // }
 
   EnableDisable(this: any){
     let btnSubmit = document.getElementById("btnSubmit");
