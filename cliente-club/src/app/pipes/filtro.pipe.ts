@@ -9,6 +9,7 @@ export class FiltroPipe implements PipeTransform {
     const resultPosts = [];
     for (const usuario of value) {
       if (usuario.Nombre_Usuario.indexOf(args) > -1 || usuario.Apellido_Usuario.indexOf(args) > -1) {
+      
         resultPosts.push(usuario);
 
       };
