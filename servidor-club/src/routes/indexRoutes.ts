@@ -1,7 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { createPool } from 'mysql2/promise';
 import indexController from '../controller/indexController';
-import { TokenValidation } from '../lib/verifytoken';
 
 class IndexRoutes{
 	public router: Router = Router();

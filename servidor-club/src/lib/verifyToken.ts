@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 export const TokenValidation = (req:Request, res:Response, next:NextFunction) => {
 	//Recuperamos la cabecera y la dividimos en 2
     let token: any = (req.header("Authorization")?.split('Baerer ',2));
-    console.log("Puto:" , token)
+    console.log("VerifyToken:" , token)
     //tomamos la parte que nos interesa, el token, para despues evaluar.
     token= token['1'];
     console.log("Evaluando token recibido");
