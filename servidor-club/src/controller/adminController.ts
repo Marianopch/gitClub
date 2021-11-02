@@ -22,8 +22,8 @@ class AdminController {
 		//  let nroUsuario = localStorage.getItem('Usuario');
 		//  console.log(nroUsuario);
 		// console.log(req.body); 
-		// const { nroUsuario } = req.params;
-		// console.log("Controller:", nroUsuario);
+		const  nroUsuario  = req.body;
+		console.log("Controller:", nroUsuario);
 		//const { Numero_Usuario } = req.params
 
 		const usuarios = await adminModel.listarTodosSocios();
@@ -184,81 +184,82 @@ class AdminController {
 
 	public async agregarClase(req: Request, res: Response) {
 		const clase = req.body;
-		let datosClase = clase[0];
-
-		let clasedias = clase[1];
+		console.log(clase);
 
 
-		switch (clasedias.length) {
-			case 1:
-				let dia = clasedias[0];
-				//const busquedaClase = await adminModel.buscarClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
-				//if (!busquedaClase) {
+		// let datosClase = clase[0];
 
-					const result = await adminModel.crearClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
+		// let clasedias = clase[1];
+
+
+		// switch (clasedias.length) {
+		// 	case 1:
+		// 		let dia = clasedias[0];
+		// 		//const busquedaClase = await adminModel.buscarClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
+		// 		//if (!busquedaClase) {
+
+		// 			const result = await adminModel.crearClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
 					
-					//if
+		// 			//if
 					
-					const Id_Clase = await adminModel.consultaIDClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
-					//falta consutlar el ID de la clase.
+		// 			const Id_Clase = await adminModel.consultaIDClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
+		// 			//falta consutlar el ID de la clase.
 
-					//console.log("Id Clase", {Id_Clase} );
-					let value = Object.keys(Id_Clase);
+		// 			//console.log("Id Clase", {Id_Clase} );
+		// 			//let value = Object.keys(Id_Clase);
 
-					console.log(value); // 'one'
+		// 			//console.log(value); // 'one'
 
-
-
-					const resultdias = await adminModel.crearClaseDias(Id_Clase, dia);//falta enviar el id de la clase.
+		// 			const resultdias = await adminModel.crearClaseDias(Id_Clase, dia);//falta enviar el id de la clase.
 		
-					console.log(result);
+		// 			console.log(result);
 		
-					console.log(resultdias);
+		// 			console.log(resultdias);
 		
-					return res.status(200).json({ message: 'Clase saved!!' });
-				//}
-				return res.status(403).json({ message: 'Clase exists!!' });
-				break;
-			case 0:
-				dia = clase.diasSelect[0];
-				let dia1 = clase.diasSelect[1];
-				break;
-			case 2:
-				dia = clase.diasSelect[0];
-				dia1 = clase.diasSelect[1];
-				let dia2 = clase.diasSelect[2];
-				break;
-			case 3:
-				dia = clase.diasSelect[0];
-				dia1 = clase.diasSelect[1];
-				dia2 = clase.diasSelect[2];
-				let dia3 = clase.diasSelect[3];
-				break;
-			case 4:
-				dia = clase.diasSelect[0];
-				dia1 = clase.diasSelect[1];
-				dia2 = clase.diasSelect[2];
-				dia3 = clase.diasSelect[3];
-				let dia4 = clase.diasSelect[4];
-				break;
-			case 5:
-				dia = clase.diasSelect[0];
-				dia1 = clase.diasSelect[1];
-				dia2 = clase.diasSelect[2];
-				dia3 = clase.diasSelect[3];
-				dia4 = clase.diasSelect[4];
-				let dia5 = clase.diasSelect[5];
-				break;
-			case 6:
-				dia = clase.diasSelect[0];
-				dia1 = clase.diasSelect[1];
-				dia2 = clase.diasSelect[2];
-				dia3 = clase.diasSelect[3];
-				dia4 = clase.diasSelect[4];
-				dia5 = clase.diasSelect[6];
-				let dia6 = clase.diasSelect[6];
-				break;
-		}
+		// 			return res.status(200).json({ message: 'Clase saved!!' });
+		// 		//}
+		// 		return res.status(403).json({ message: 'Clase exists!!' });
+		// 		break;
+		// 	case 0:
+		// 		dia = clase.diasSelect[0];
+		// 		let dia1 = clase.diasSelect[1];
+		// 		break;
+		// 	case 2:
+		// 		dia = clase.diasSelect[0];
+		// 		dia1 = clase.diasSelect[1];
+		// 		let dia2 = clase.diasSelect[2];
+		// 		break;
+		// 	case 3:
+		// 		dia = clase.diasSelect[0];
+		// 		dia1 = clase.diasSelect[1];
+		// 		dia2 = clase.diasSelect[2];
+		// 		let dia3 = clase.diasSelect[3];
+		// 		break;
+		// 	case 4:
+		// 		dia = clase.diasSelect[0];
+		// 		dia1 = clase.diasSelect[1];
+		// 		dia2 = clase.diasSelect[2];
+		// 		dia3 = clase.diasSelect[3];
+		// 		let dia4 = clase.diasSelect[4];
+		// 		break;
+		// 	case 5:
+		// 		dia = clase.diasSelect[0];
+		// 		dia1 = clase.diasSelect[1];
+		// 		dia2 = clase.diasSelect[2];
+		// 		dia3 = clase.diasSelect[3];
+		// 		dia4 = clase.diasSelect[4];
+		// 		let dia5 = clase.diasSelect[5];
+		// 		break;
+		// 	case 6:
+		// 		dia = clase.diasSelect[0];
+		// 		dia1 = clase.diasSelect[1];
+		// 		dia2 = clase.diasSelect[2];
+		// 		dia3 = clase.diasSelect[3];
+		// 		dia4 = clase.diasSelect[4];
+		// 		dia5 = clase.diasSelect[6];
+		// 		let dia6 = clase.diasSelect[6];
+		// 		break;
+		// }
 	}
 
 	public async buscarClase(req: Request, res: Response) {

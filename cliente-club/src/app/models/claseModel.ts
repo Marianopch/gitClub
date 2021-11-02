@@ -3,5 +3,6 @@ export interface Clase {
     Id_Actividad?: string;
     Id_Horario?: string;
     Cupo_Clase?: string;
-    Id_Instructor?: string;
+    Numero_Usuario?: string;
+    Id_Dias?: [];
 }

@@ -28,6 +28,7 @@ export class BuscarSocioComponent implements OnInit {
   closeAddExpenseModal!: ElementRef;
 
   nroUsuario = localStorage.getItem('Usuario');
+  
   reintentar: boolean = false;
   mensaje: string = "";
   usuarios: any = [];

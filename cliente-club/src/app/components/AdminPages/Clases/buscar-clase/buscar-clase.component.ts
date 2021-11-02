@@ -11,11 +11,16 @@ import { Router } from '@angular/router';
 export class BuscarClaseComponent implements OnInit {
 
   clases: any = [];
-  clase = { Id_Clase: "", Descripcion_Actividad: "", Nombre_Usuario: "", Apellido_Usuario: "", Cupo_Clase: "" }
+  clase = { Id_Clase: "", Descripcion_Actividad: "", Nombre_Usuario: "", Apellido_Usuario: "", Cupo_Clase: ""}
 
   // CREAR CLASE 
   // --------------------------------------------------------------
-  clase2 = { Id_Actividad: "", Id_Horario: "", Cupo_Clase: "", Numero_Usuario: "" };
+  clase2 = { Id_Actividad: "", 
+    Id_Horario: "", 
+    Cupo_Clase: "", 
+    Numero_Usuario: "" , 
+    Id_Dias: []  
+  };
 
   actividades: any = [];
   act = { Id_Actividad: "", descripcion: "" };
@@ -106,15 +111,16 @@ export class BuscarClaseComponent implements OnInit {
     )
   }
 
-  AgregarCompleto() {
-    this.AgregarClase();
-    this.AgregarDias();
-  }
+  // AgregarCompleto() {
+  //   this.AgregarClase();
+  //   this.AgregarDias();
+  // }
 
   AgregarClase() {
     console.log(this.clase)
-    let CrearClase = [this.clase2, this.diasSelect];
-    this.usuariosService.agregarClase(CrearClase).subscribe(
+
+    // let CrearClase = [this.clase2, this.diasSelect];
+    this.usuariosService.agregarClase(this.clase2).subscribe(
       res => {
         let result: any = res;
         console.log(result.message);
@@ -131,22 +137,22 @@ export class BuscarClaseComponent implements OnInit {
     )
   }
 
-  AgregarDias() {
-    console.log(this.diasSelect)
+  // AgregarDias() {
+  //   console.log(this.diasSelect)
 
-    this.usuariosService.agregarClase(this.diasSelect).subscribe(
-      res => {
-        let result: any = res;
-        console.log(result.message);
+  //   this.usuariosService.agregarClase(this.diasSelect).subscribe(
+  //     res => {
+  //       let result: any = res;
+  //       console.log(result.message);
 
-      },
-      err => {
-        console.log(err.error.message);
-        this.reintentar = true;
-        this.mensaje = err.error.message;
-      }
-    )
-  }
+  //     },
+  //     err => {
+  //       console.log(err.error.message);
+  //       this.reintentar = true;
+  //       this.mensaje = err.error.message;
+  //     }
+  //   )
+  // }
 
 
   onCheckboxChange(e: any, Id_dias: any) {
@@ -158,6 +164,9 @@ export class BuscarClaseComponent implements OnInit {
       this.diasSelect.push(Id_dias);
       console.log(this.diasSelect);
 
+      for(let i = 0; i < this.diasSelect.length; i++) {
+        this.clase2.Id_Dias.push(this.diasSelect[i]) ;
+      }
 
     } else {
 

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Dias } from '../models/diaModel';
 import { Comentario } from '../models/comentarioModel';
+import { StorageModel } from '../models/storageModel';
 
 @Injectable({
   providedIn: 'root'
