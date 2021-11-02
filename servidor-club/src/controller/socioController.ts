@@ -79,7 +79,14 @@ class SocioController {
 		return res.json(comentario);
 	}
 	
-
+	public endSession(req: Request, res: Response) {
+		console.log(req.body);
+		req.session.user = {};
+		req.session.auth = false;
+		req.session.admin = false;
+		req.session.destroy(() => console.log("Session finalizada"));
+		res.redirect("/");
+	}
 }
 
 const socioController = new SocioController();

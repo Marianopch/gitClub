@@ -79,6 +79,14 @@ class SocioController {
             return res.json(comentario);
         });
     }
+    endSession(req, res) {
+        console.log(req.body);
+        req.session.user = {};
+        req.session.auth = false;
+        req.session.admin = false;
+        req.session.destroy(() => console.log("Session finalizada"));
+        res.redirect("/");
+    }
 }
 const socioController = new SocioController();
 exports.default = socioController;

@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import socioController from '../controller/socioController';
-import { TokenValidation } from '../lib/verifytoken';
+import { TokenValidation } from '../lib/verifyToken';
 
 class SocioRoutes {
     public router: Router = Router();

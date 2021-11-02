@@ -15,4 +15,4 @@ const TokenValidation = (req, res, next) => {
     next();
 };
 exports.TokenValidation = TokenValidation;
-//# sourceMappingURL=verifytoken.js.map
+//# sourceMappingURL=verifyToken.js.map

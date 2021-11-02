@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const adminController_1 = __importDefault(require("../controller/adminController"));
+const verifyToken_1 = require("../lib/verifyToken");
 class AdminRoutes {
     constructor() {
         this.router = express_1.Router();
@@ -20,7 +21,7 @@ class AdminRoutes {
         //Menu Socios.
         //Buscar
         this.router.get('/find/:Numero_Usuario', adminController_1.default.buscarUsuario);
-        this.router.get('/buscarSocio', adminController_1.default.listarSocios);
+        this.router.get('/buscarSocio', verifyToken_1.TokenValidation, adminController_1.default.listarSocios);
         //Agregar
         this.router.post('/signup', adminController_1.default.agregarUsuario);
         this.router.get('/signup', adminController_1.default.mostrarFormAgregar);
@@ -70,9 +71,9 @@ class AdminRoutes {
         this.router.get('/error', adminController_1.default.showError);
         //this.router.get('/buscarSocio',adminController.buscarSocio);
         //Comentarios
-        this.router.get('/list', adminController_1.default.listComent);
-        this.router.post('/create', adminController_1.default.createComent);
-        this.router.delete('/delete/:Id_Comentario', adminController_1.default.deleteComent);
+        this.router.get('/list', verifyToken_1.TokenValidation, adminController_1.default.listComent);
+        this.router.post('/create', verifyToken_1.TokenValidation, adminController_1.default.createComent);
+        this.router.delete('/delete/:Id_Comentario', verifyToken_1.TokenValidation, adminController_1.default.deleteComent);
         this.router.get('/buscarEstados', adminController_1.default.buscarEstados);
     }
 }

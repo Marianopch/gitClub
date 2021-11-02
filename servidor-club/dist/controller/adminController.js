@@ -25,7 +25,12 @@ class AdminController {
     listarSocios(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.header("Authorization"));
-            console.log(req.body);
+            //  let nroUsuario = localStorage.getItem('Usuario');
+            //  console.log(nroUsuario);
+            // console.log(req.body); 
+            // const { nroUsuario } = req.params;
+            // console.log("Controller:", nroUsuario);
+            //const { Numero_Usuario } = req.params
             const usuarios = yield adminModel_1.default.listarTodosSocios();
             //const users = usuarios;
             // if (!req.session.auth) {
@@ -140,6 +145,7 @@ class AdminController {
         console.log(req.body);
         req.session.user = {};
         req.session.auth = false;
+        req.session.admin = false;
         req.session.destroy(() => console.log("Session finalizada"));
         res.redirect("/");
     }
@@ -254,6 +260,7 @@ class AdminController {
     //Comentarios
     listComent(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.header("Authorization"));
             //console.log(req.header("Authorization"));
             console.log(req.body);
             const comentario = yield adminModel_1.default.listarComentario();
@@ -263,6 +270,7 @@ class AdminController {
     }
     createComent(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.header("Authorization"));
             //console.log(req.header("Authorization"));
             const comentario = req.body;
             console.log("Controller:", req.body);
@@ -279,6 +287,7 @@ class AdminController {
     deleteComent(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //console.log(req.header("Authorization"));
+            console.log(req.header("Authorization"));
             const { Id_Comentario } = req.params;
             console.log("controller:", Id_Comentario);
             const result = yield adminModel_1.default.eliminarComentario(Id_Comentario);

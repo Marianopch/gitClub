@@ -21,17 +21,25 @@ class IndexController {
             const usuario = Numero_Usuario;
             const password = Password_Usuario;
             const result = yield indexModel_1.default.buscarNombre(usuario);
-            console.log(usuario);
-            console.log(password);
-            console.log(result);
+            // console.log(usuario);
+            // console.log(password);
+            // console.log(result);
             if (!result)
                 return res.status(404).json({ message: "Usuario no registrado" });
-            console.log(result.Numero_Usuario);
-            console.log(result.Password_Usuario);
+            // console.log(result.Numero_Usuario);
+            // console.log(result.Password_Usuario);
             if ((result === null || result === void 0 ? void 0 : result.Numero_Usuario) == usuario && (result === null || result === void 0 ? void 0 : result.Password_Usuario) == password) {
                 req.session.user = result;
+                console.log("Session:", req.session.user);
                 req.session.auth = true;
-                if ((result === null || result === void 0 ? void 0 : result.rol) === "admin") {
+                // console.log("Rol:", result.rol);
+                // if (result?.rol === "admin") {
+                //     req.session.admin = true;
+                //     //    return res.redirect("../admin/home")
+                // } else {
+                //     req.session.admin = false;
+                // }
+                if ((result === null || result === void 0 ? void 0 : result.Id_Rol) === "1") {
                     req.session.admin = true;
                     //    return res.redirect("../admin/home")
                 }
@@ -58,6 +66,7 @@ class IndexController {
         console.log(req.body);
         req.session.user = {};
         req.session.auth = false;
+        req.session.admin = false;
         req.session.destroy(() => console.log("Session finalizada"));
         res.redirect("/");
     }

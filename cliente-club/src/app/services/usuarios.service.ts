@@ -22,8 +22,9 @@ export class UsuariosService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  listarUsuarios() {
-    return this.http.get(`${this.API_URI}/buscarSocio`);
+  listarUsuarios(nroUsuario: any) {
+    console.log("Serviec:", nroUsuario);
+    return this.http.get(`${this.API_URI}/buscarSocio`, nroUsuario);
   }
 
   buscarUsuario(Numero_Usuario: string) {
@@ -149,7 +150,7 @@ export class UsuariosService {
 
   getToken() {//Obtenemos el token que despues enviara el interceptor x cada req
     let trae = localStorage.getItem('token');
-    console.log("Funca el GetTokenservice", trae)
+    console.log("GetTokenservice", trae)
     return localStorage.getItem('token');
   }
 
@@ -161,6 +162,7 @@ export class UsuariosService {
   logOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('rol');
+    localStorage.removeItem('Usuario');
     this.router.navigate(['/']);
   }
 }

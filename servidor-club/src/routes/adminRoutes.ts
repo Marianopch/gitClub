@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import adminController from '../controller/adminController';
-import { TokenValidation } from '../lib/verifytoken';
+import { TokenValidation } from '../lib/verifyToken';
 
 class AdminRoutes {
     public router: Router = Router();
@@ -19,7 +19,7 @@ class AdminRoutes {
         //Menu Socios.
         //Buscar
         this.router.get('/find/:Numero_Usuario', adminController.buscarUsuario);
-        this.router.get('/buscarSocio', adminController.listarSocios);
+        this.router.get('/buscarSocio',TokenValidation, adminController.listarSocios);
         //Agregar
         this.router.post('/signup', adminController.agregarUsuario);
         this.router.get('/signup', adminController.mostrarFormAgregar);
@@ -79,9 +79,9 @@ class AdminRoutes {
         //this.router.get('/buscarSocio',adminController.buscarSocio);
 
         //Comentarios
-        this.router.get('/list', adminController.listComent);
-		this.router.post('/create', adminController.createComent);
-		this.router.delete('/delete/:Id_Comentario', adminController.deleteComent);
+        this.router.get('/list',TokenValidation, adminController.listComent);
+		this.router.post('/create',TokenValidation, adminController.createComent);
+		this.router.delete('/delete/:Id_Comentario',TokenValidation, adminController.deleteComent);
         
         this.router.get('/buscarEstados', adminController.buscarEstados);
     }
