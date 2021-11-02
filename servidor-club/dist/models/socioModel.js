@@ -27,7 +27,7 @@ class SocioModel {
     }
     listarclasesTotales() {
         return __awaiter(this, void 0, void 0, function* () {
-            const clases = yield this.db.query('SELECT clases.Id_Clase, Descripcion_Actividad, Comienzo_Horario,  Finalizacion_Horario, diasclases.Id_Dias FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad ');
+            const clases = yield this.db.query('SELECT * FROM actividades ;');
             return clases[0];
         });
     }

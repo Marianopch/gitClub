@@ -77,6 +77,9 @@ class AdminController {
         return __awaiter(this, void 0, void 0, function* () {
             const usuario = req.body;
             console.log("Controller:", req.body);
+            if (usuario.Id_Estado == 2) {
+                const resultado = yield adminModel_1.default.borrarClases(usuario.Numero_Usuario);
+            }
             const result = yield adminModel_1.default.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario, usuario.Direccion_Usuario, usuario.Password_Usuario, usuario.Id_Estado);
             return res.json(result);
         });

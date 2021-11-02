@@ -101,6 +101,13 @@ class AdminModel {
             return result;
         });
     }
+    borrarClases(Numero_Usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = (yield this.db.query('DELETE FROM sociosclases WHERE Numero_Usuario = ?', [Numero_Usuario]))[0].affectedRows;
+            console.log(user);
+            return user;
+        });
+    }
     //Devuelve 1 si logro eliminar el usuario indicado por id
     eliminar(Numero_Usuario) {
         return __awaiter(this, void 0, void 0, function* () {

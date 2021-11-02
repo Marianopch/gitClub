@@ -88,6 +88,12 @@ class AdminModel {
 		return result;
 	}
 
+	async borrarClases(Numero_Usuario: string) {
+		const user = (await this.db.query('DELETE FROM sociosclases WHERE Numero_Usuario = ?', [Numero_Usuario]))[0].affectedRows;
+		console.log(user);
+		return user;
+	}
+
 	//Devuelve 1 si logro eliminar el usuario indicado por id
 	async eliminar(Numero_Usuario: string) {
 		const user = (await this.db.query('DELETE FROM Usuarios WHERE Numero_Usuario = ?', [Numero_Usuario]))[0].affectedRows;

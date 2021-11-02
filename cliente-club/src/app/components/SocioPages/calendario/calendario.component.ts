@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class CalendarioComponent implements OnInit {
 
   clasesTotales: any = [];
-  claseTotal = { Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: "", Id_Dias: "" }
+  claseTotal = { Descripcion_Actividad: ""}
 
   desc_clase = { Descripcion_Actividad: "" }
 

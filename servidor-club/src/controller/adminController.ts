@@ -76,6 +76,11 @@ class AdminController {
 
 		const usuario = req.body;
 		console.log("Controller:", req.body);
+
+		if(usuario.Id_Estado == 2) { 
+
+			const resultado = await adminModel.borrarClases(usuario.Numero_Usuario);
+		}
 		
 		const result = await adminModel.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario, usuario.Direccion_Usuario, usuario.Password_Usuario, usuario.Id_Estado);
 
