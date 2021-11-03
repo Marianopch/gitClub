@@ -119,6 +119,13 @@ export class BuscarClaseComponent implements OnInit {
   AgregarClase() {
     console.log(this.clase)
 
+    var a = this.diasSelect.values();
+    for (let b of a){
+      console.log("Dias", b);
+      this.clase2.Id_Dias.push(b);
+      // this.clase2.Id_Dias.push(b.Id_dias);
+    }
+
     // let CrearClase = [this.clase2, this.diasSelect];
     this.usuariosService.agregarClase(this.clase2).subscribe(
       res => {
@@ -164,10 +171,9 @@ export class BuscarClaseComponent implements OnInit {
       this.diasSelect.push(Id_dias);
       console.log(this.diasSelect);
 
-      for(let i = 0; i < this.diasSelect.length; i++) {
-        this.clase2.Id_Dias.push(this.diasSelect[i]) ;
-      }
-
+      // for(let i = 0; i < this.diasSelect.length; i++) {
+      //   this.clase2.Id_Dias.push(this.diasSelect[i]) ;
+      // }
     } else {
 
       const index = this.diasSelect.indexOf(Id_dias);
