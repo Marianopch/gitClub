@@ -9,8 +9,12 @@ class AdminRoutes {
     }
     config(): void {
         this.router.get('/', (req: Request, res: Response) => {
+            
+            req.session.user = {};
+            req.session.auth = false;
+            req.session.admin = false;
+            req.session.habilitado = false;
             res.send('Main!!!');
-            //res.render("partials/principal");
         });
 
         this.router.get('/home', adminController.home);
@@ -19,7 +23,7 @@ class AdminRoutes {
         //Menu Socios.
         //Buscar
         this.router.get('/find/:Numero_Usuario', adminController.buscarUsuario);
-        this.router.get('/buscarSocio',TokenValidation, adminController.listarSocios);
+        this.router.get('/buscarSocio', adminController.listarSocios);
         //Agregar
         this.router.post('/signup', adminController.agregarUsuario);
         this.router.get('/signup', adminController.mostrarFormAgregar);

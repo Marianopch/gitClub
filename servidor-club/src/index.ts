@@ -13,8 +13,8 @@ declare module 'express-session' {
 	export interface SessionData {
 		admin: boolean;
 	  	user: { [key: string]: any} | any;//en user guardaremos datos de interes
-	  	auth: boolean //indicara si el usuario ha iniciado sesion o no.
-	  
+	  	auth: boolean; //indicara si el usuario ha iniciado sesion o no.
+		habilitado: boolean;
 	}
   }
 

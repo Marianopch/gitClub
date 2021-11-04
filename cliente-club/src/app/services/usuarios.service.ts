@@ -23,9 +23,8 @@ export class UsuariosService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  listarUsuarios(nroUsuario: any) {
-    console.log("Serviec:", nroUsuario);
-    return this.http.get(`${this.API_URI}/buscarSocio`, nroUsuario);
+  listarUsuarios() {
+    return this.http.get(`${this.API_URI}/buscarSocio`);
   }
 
   buscarUsuario(Numero_Usuario: string) {

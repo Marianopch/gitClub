@@ -30,21 +30,19 @@ class IndexController {
             // console.log(result.Password_Usuario);
             if ((result === null || result === void 0 ? void 0 : result.Numero_Usuario) == usuario && (result === null || result === void 0 ? void 0 : result.Password_Usuario) == password) {
                 req.session.user = result;
-                console.log("Session:", req.session.user);
                 req.session.auth = true;
-                // console.log("Rol:", result.rol);
-                // if (result?.rol === "admin") {
-                //     req.session.admin = true;
-                //     //    return res.redirect("../admin/home")
-                // } else {
-                //     req.session.admin = false;
-                // }
-                if ((result === null || result === void 0 ? void 0 : result.Id_Rol) === "1") {
+                if ((result === null || result === void 0 ? void 0 : result.Id_Rol) === 1) {
                     req.session.admin = true;
                     //    return res.redirect("../admin/home")
                 }
                 else {
                     req.session.admin = false;
+                }
+                if (result.Id_Estado === 1) {
+                    req.session.habilitado = true;
+                }
+                else {
+                    req.session.habilitado = false;
                 }
                 //res.redirect("./home");
                 const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
@@ -67,6 +65,7 @@ class IndexController {
         req.session.user = {};
         req.session.auth = false;
         req.session.admin = false;
+        req.session.habilitado = false;
         req.session.destroy(() => console.log("Session finalizada"));
         res.redirect("/");
     }

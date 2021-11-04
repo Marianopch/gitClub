@@ -27,7 +27,6 @@ export class BuscarSocioComponent implements OnInit {
   @ViewChild('closeAddExpenseModal')
   closeAddExpenseModal!: ElementRef;
 
-  nroUsuario = localStorage.getItem('Usuario');
   
   reintentar: boolean = false;
   mensaje: string = "";
@@ -41,7 +40,7 @@ export class BuscarSocioComponent implements OnInit {
   claseSocio = {Id_Clase: "", Descripcion_Actividad: ""}
 
   ngOnInit(): void {
-    this.usuariosService.listarUsuarios(this.nroUsuario).subscribe(
+    this.usuariosService.listarUsuarios().subscribe(
       res => {
         this.usuarios = res;
         console.log(res)

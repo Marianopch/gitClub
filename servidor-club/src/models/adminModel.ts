@@ -200,8 +200,30 @@ class AdminModel {
 	async crearClase(Id_Actividad: string, Id_Horario: string, Cupo_Clase: string, Numero_Usuario: string) {
 
 		const result = (await this.db.query('INSERT INTO clases  (Id_Actividad, Id_Horario , Cupo_Clase, Numero_Usuario)   Values  (?, ?, ? ,? )', [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario]))[0].affectedRows;
+		// this.db.promise()
+		// .execute('INSERT INTO clases  (Id_Actividad, Id_Horario , Cupo_Clase, Numero_Usuario)   Values  (?, ?, ? ,? )', [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario])
+		// .then(([result: any]) => {
+		// 	// console.log(result);
+		// 	if(result.affectedRows === 1){
+		// 		console.log("User Inserted");
+		// 	}
+		// }).catch((err: any) => {
+		// 	console.log(err);
+		// });
 
+		console.log(result);
 		return result;
+
+		// let stmt = 'INSERT INTO clases  (Id_Actividad, Id_Horario , Cupo_Clase, Numero_Usuario)   Values  (?, ?, ? ,? )' 
+		// // [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario];
+
+		// this.db.query(stmt, (err: { message: any; }, results: { insertId: string; }, fields: any) => {
+		// 	if (err) {
+		// 	  return console.error(err.message);
+		// 	}
+		// 	// get inserted id
+		// 	console.log('Todo Id:' + results.insertId);
+		//   });
 	}
 
 	async crearClaseDias(Id_Clase: number, dia: any) {
@@ -240,8 +262,7 @@ class AdminModel {
 	async consultaIDClase(Id_Actividad: number, Id_Horario: number, Cupo_Clase: number, Numero_Usuario: number) {//Devuelve todas las filas de la tabla usuario
 		//const db=this.connection;
 
-		const Id_Clase = await this.db.query('SELECT Id_Clase FROM clases WHERE Id_Actividad = ? AND Id_Horario = ? AND Cupo_Clase = ? AND Numero_Usuario = ?', [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario]);
-		//console.log(usuarios[0]);
+		const Id_Clase = await this.db.query('SELECT Id_Clase, Id_Actividad FROM clases WHERE Id_Actividad = ? AND Id_Horario = ? AND Cupo_Clase = ? AND Numero_Usuario = ?', [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario]);
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
 		return Id_Clase[0];
 	}

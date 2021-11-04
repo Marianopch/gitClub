@@ -13,15 +13,18 @@ class AdminRoutes {
     }
     config() {
         this.router.get('/', (req, res) => {
+            req.session.user = {};
+            req.session.auth = false;
+            req.session.admin = false;
+            req.session.habilitado = false;
             res.send('Main!!!');
-            //res.render("partials/principal");
         });
         this.router.get('/home', adminController_1.default.home);
         this.router.post('/home', adminController_1.default.home);
         //Menu Socios.
         //Buscar
         this.router.get('/find/:Numero_Usuario', adminController_1.default.buscarUsuario);
-        this.router.get('/buscarSocio', verifyToken_1.TokenValidation, adminController_1.default.listarSocios);
+        this.router.get('/buscarSocio', adminController_1.default.listarSocios);
         //Agregar
         this.router.post('/signup', adminController_1.default.agregarUsuario);
         this.router.get('/signup', adminController_1.default.mostrarFormAgregar);

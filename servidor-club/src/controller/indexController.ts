@@ -22,23 +22,24 @@ class IndexController {
 
         if (result?.Numero_Usuario == usuario && result?.Password_Usuario == password) {
             req.session.user = result;
-            console.log("Session:", req.session.user);
             req.session.auth = true;
-            // console.log("Rol:", result.rol);
-            // if (result?.rol === "admin") {
-            //     req.session.admin = true;
-            //     //    return res.redirect("../admin/home")
-            // } else {
-            //     req.session.admin = false;
-            // }
-            if (result?.Id_Rol === "1") {
+
+            if (result?.Id_Rol === 1) {
                 req.session.admin = true;
                 //    return res.redirect("../admin/home")
             } else {
                 req.session.admin = false;
             }
+
+            if (result.Id_Estado === 1){
+                req.session.habilitado = true;
+            } else {
+                req.session.habilitado = false;
+            }
+
             //res.redirect("./home");
             const token: string = jwt.sign({ _id: result.id }, "secretKey");
+
             res.status(200).json({ message: "Bienvenido " + result.Numero_Usuario, token: token, rol: result.Id_Rol });
             //res.status(200).json({ message: "Bienvenido " + result.Nombre_Usuario });
             return ;
@@ -59,6 +60,7 @@ class IndexController {
         req.session.user = {};
         req.session.auth = false;
         req.session.admin = false;
+        req.session.habilitado = false;
         req.session.destroy(() => console.log("Session finalizada"));
         res.redirect("/");
     }

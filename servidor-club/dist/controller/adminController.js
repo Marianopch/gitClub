@@ -24,21 +24,20 @@ class AdminController {
     }
     listarSocios(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.header("Authorization"));
-            //  let nroUsuario = localStorage.getItem('Usuario');
-            //  console.log(nroUsuario);
-            // console.log(req.body); 
-            const nroUsuario = req.body;
-            console.log("Controller:", nroUsuario);
-            //const { Numero_Usuario } = req.params
-            const usuarios = yield adminModel_1.default.listarTodosSocios();
-            //const users = usuarios;
+            // console.log(req.header("Authorization"));
+            console.log(req.session.auth, req.session.admin, req.session.habilitado);
             // if (!req.session.auth) {
-            // 	req.flash('error_session', 'Debes iniciar sesion para ver esta seccion');
-            // 	res.redirect("./error");
-            // 	//res.redirect("/");
+            //     return res.status(401).json({ message: "Debes iniciar sesión para realizar esta acción!" });
             // }
-            //res.render('adminPage/buscarSocio', { users: usuarios, mi_session: true });
+            // if (!req.session.admin) {
+            //     return res.status(401).json({ message: "Debes ser administrador para realizar esta acción!" });
+            // }
+            // if (!req.session.habilitado) {
+            //     return res.status(401).json({ message: "Debes ser ussuario activo para realizar esta acción!" });
+            // }
+            // const  nroUsuario  = req.body;
+            // console.log("Controller:", nroUsuario);
+            const usuarios = yield adminModel_1.default.listarTodosSocios();
             return res.json(usuarios);
         });
     }
@@ -170,68 +169,18 @@ class AdminController {
     agregarClase(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const clase = req.body;
-            console.log(clase);
-            // let datosClase = clase[0];
-            // let clasedias = clase[1];
-            // switch (clasedias.length) {
-            // 	case 1:
-            // 		let dia = clasedias[0];
-            // 		//const busquedaClase = await adminModel.buscarClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
-            // 		//if (!busquedaClase) {
-            // 			const result = await adminModel.crearClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
-            // 			//if
-            // 			const Id_Clase = await adminModel.consultaIDClase(datosClase.Id_Actividad, datosClase.Id_Horario, datosClase.Cupo_Clase, datosClase.Numero_Usuario);
-            // 			//falta consutlar el ID de la clase.
-            // 			//console.log("Id Clase", {Id_Clase} );
-            // 			//let value = Object.keys(Id_Clase);
-            // 			//console.log(value); // 'one'
-            // 			const resultdias = await adminModel.crearClaseDias(Id_Clase, dia);//falta enviar el id de la clase.
-            // 			console.log(result);
-            // 			console.log(resultdias);
-            // 			return res.status(200).json({ message: 'Clase saved!!' });
-            // 		//}
-            // 		return res.status(403).json({ message: 'Clase exists!!' });
-            // 		break;
-            // 	case 0:
-            // 		dia = clase.diasSelect[0];
-            // 		let dia1 = clase.diasSelect[1];
-            // 		break;
-            // 	case 2:
-            // 		dia = clase.diasSelect[0];
-            // 		dia1 = clase.diasSelect[1];
-            // 		let dia2 = clase.diasSelect[2];
-            // 		break;
-            // 	case 3:
-            // 		dia = clase.diasSelect[0];
-            // 		dia1 = clase.diasSelect[1];
-            // 		dia2 = clase.diasSelect[2];
-            // 		let dia3 = clase.diasSelect[3];
-            // 		break;
-            // 	case 4:
-            // 		dia = clase.diasSelect[0];
-            // 		dia1 = clase.diasSelect[1];
-            // 		dia2 = clase.diasSelect[2];
-            // 		dia3 = clase.diasSelect[3];
-            // 		let dia4 = clase.diasSelect[4];
-            // 		break;
-            // 	case 5:
-            // 		dia = clase.diasSelect[0];
-            // 		dia1 = clase.diasSelect[1];
-            // 		dia2 = clase.diasSelect[2];
-            // 		dia3 = clase.diasSelect[3];
-            // 		dia4 = clase.diasSelect[4];
-            // 		let dia5 = clase.diasSelect[5];
-            // 		break;
-            // 	case 6:
-            // 		dia = clase.diasSelect[0];
-            // 		dia1 = clase.diasSelect[1];
-            // 		dia2 = clase.diasSelect[2];
-            // 		dia3 = clase.diasSelect[3];
-            // 		dia4 = clase.diasSelect[4];
-            // 		dia5 = clase.diasSelect[6];
-            // 		let dia6 = clase.diasSelect[6];
-            // 		break;
-            // }
+            console.log("Controller Clase:", clase);
+            //Creo la Clase
+            const creacion = yield adminModel_1.default.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+            //Obtengo el Id de la Clase Creada
+            const a = yield adminModel_1.default.consultaIDClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+            console.log("Controller IdClase:", a[0].Id_Clase);
+            // for ( let i = 0; i < clase.Id_Dias.lenght; i++ ) {
+            for (var val of clase.Id_Dias) {
+                const resultdias = yield adminModel_1.default.crearClaseDias(a[0].Id_Clase, val);
+                console.log("Controller", resultdias);
+            }
+            return res.json({ message: 'Se llogro' });
         });
     }
     buscarClase(req, res) {

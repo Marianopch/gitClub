@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Router } from '@angular/router';
+import { Clase } from '../../../../models/claseModel';
 
 
 @Component({
@@ -10,16 +11,19 @@ import { Router } from '@angular/router';
 })
 export class BuscarClaseComponent implements OnInit {
 
+  constructor(private usuariosService: UsuariosService, private router: Router) { }
+
   clases: any = [];
   clase = { Id_Clase: "", Descripcion_Actividad: "", Nombre_Usuario: "", Apellido_Usuario: "", Cupo_Clase: ""}
 
-  // CREAR CLASE 
-  // --------------------------------------------------------------
-  clase2 = { Id_Actividad: "", 
+  result : number[] = [];
+
+  clase2 = { 
+    Id_Actividad: "", 
     Id_Horario: "", 
     Cupo_Clase: "", 
     Numero_Usuario: "" , 
-    Id_Dias: []  
+    Id_Dias: this.result
   };
 
   actividades: any = [];
@@ -39,10 +43,9 @@ export class BuscarClaseComponent implements OnInit {
 
   reintentar: boolean = false;
   mensaje: string = "";
-  // --------------------------------------------------------------
 
 
-  constructor(private usuariosService: UsuariosService, private router: Router) { }
+
 
   ngOnInit(): void {
 
@@ -116,6 +119,24 @@ export class BuscarClaseComponent implements OnInit {
   //   this.AgregarDias();
   // }
 
+  onCheckboxChange(e: any, Id_dias: any) {
+
+    console.log(Id_dias);
+
+    if (e.target.checked) {
+
+      this.diasSelect.push(Id_dias);
+      console.log(this.diasSelect);
+
+    } else {
+
+      const index = this.diasSelect.indexOf(Id_dias);
+      console.log(index);
+      this.diasSelect.splice(index, 1);
+
+    }
+  }
+
   AgregarClase() {
     console.log(this.clase)
 
@@ -126,7 +147,7 @@ export class BuscarClaseComponent implements OnInit {
       // this.clase2.Id_Dias.push(b.Id_dias);
     }
 
-    // let CrearClase = [this.clase2, this.diasSelect];
+     //let CrearClase = [this.clase2, this.diasSelect];
     this.usuariosService.agregarClase(this.clase2).subscribe(
       res => {
         let result: any = res;
@@ -162,26 +183,7 @@ export class BuscarClaseComponent implements OnInit {
   // }
 
 
-  onCheckboxChange(e: any, Id_dias: any) {
 
-    console.log(Id_dias);
-
-    if (e.target.checked) {
-
-      this.diasSelect.push(Id_dias);
-      console.log(this.diasSelect);
-
-      // for(let i = 0; i < this.diasSelect.length; i++) {
-      //   this.clase2.Id_Dias.push(this.diasSelect[i]) ;
-      // }
-    } else {
-
-      const index = this.diasSelect.indexOf(Id_dias);
-      console.log(index);
-      this.diasSelect.splice(index, 1);
-
-    }
-  }
 
 
 }
