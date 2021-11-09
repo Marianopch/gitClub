@@ -33,10 +33,10 @@ class AdminController {
             //     return res.status(401).json({ message: "Debes ser administrador para realizar esta acción!" });
             // }
             // if (!req.session.habilitado) {
-            //     return res.status(401).json({ message: "Debes ser ussuario activo para realizar esta acción!" });
+            //     return res.status(401).json({ message: "Debes ser usuario activo para realizar esta acción!" });
             // }
-            // const  nroUsuario  = req.body;
-            // console.log("Controller:", nroUsuario);
+            const nroUsuario = req.body;
+            console.log("Controller:", nroUsuario);
             const usuarios = yield adminModel_1.default.listarTodosSocios();
             return res.json(usuarios);
         });
