@@ -132,9 +132,9 @@ class AdminController {
 		const busqueda = await adminModel.buscarActividad(actividades.descripcion);
 		if (!busqueda) {
 			const result = await adminModel.crearActividad(actividades.descripcion);
-			return res.status(200).json({ message: 'User saved!!' });
+			return res.status(200).json({ message: "Actividad creada" });
 		}
-		return res.status(403).json({ message: 'User exists!!' });
+		return res.status(403).json({ message: 'Ya existe esa actividad' });
 	}
 
 	public async eliminarActividad(req: Request, res: Response) {
@@ -188,21 +188,29 @@ class AdminController {
 		const clase = req.body;
 		console.log("Controller Clase:" ,clase);
 
-		//Creo la Clase
-		const creacion = await adminModel.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
 
-		//Obtengo el Id de la Clase Creada
-		const a = await adminModel.consultaIDClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+		const buscarClase = await adminModel.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario)
 
-		console.log("Controller IdClase:", a[0].Id_Clase);
+		if(!buscarClase) {
 
-		// for ( let i = 0; i < clase.Id_Dias.lenght; i++ ) {
-		for ( var val of clase.Id_Dias) {
-			const resultdias = await adminModel.crearClaseDias(a[0].Id_Clase, val);
-			console.log("Controller", resultdias);
+			const creacion = await adminModel.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+
+			//Obtengo el Id de la Clase Creada
+			const consultaID = await adminModel.consultaIDClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+	
+			console.log("Controller IdClase:", consultaID[0].Id_Clase);
+	
+			// for ( let i = 0; i < clase.Id_Dias.lenght; i++ ) {
+			for ( var val of clase.Id_Dias) {
+				const resultdias = await adminModel.crearClaseDias(consultaID[0].Id_Clase, val);
+				console.log("Controller", resultdias);
+			}
+
+			return res.status(200).json({ message: "La clase fue creada correctamente." });
 		}
+		
+		return res.status(403).json({ message: "La clase ya existe, no se creo la clase." });
 
-		return res.json ({ message: 'Se llogro' });
 	}
 
 	public async buscarClase(req: Request, res: Response) {
@@ -211,6 +219,15 @@ class AdminController {
 		const clases = await adminModel.listarClases();
 
 		return res.json(clases);
+	}
+
+	public async eliminarClase (req: Request, res: Response) {
+		
+		console.log(req.body);
+		const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+		const result = await adminModel.eliminarClase(id);
+
+		return res.status(200).json({ message: 'Actividad ELIMINADA!' });
 	}
 
 
@@ -225,6 +242,32 @@ class AdminController {
 		return res.json(usuarios);
 	}
 
+	public async buscarClaseInstructor(req: Request, res: Response) {
+
+		const { id } = req.params;
+		
+		const clases = await adminModel.buscarClaseInstructores(id);
+		
+		return res.json(clases);
+	}
+
+	public async modificarInstructor(req: Request, res: Response) {
+
+		const usuario = req.body;
+		console.log("Controller:", req.body);
+
+		if(usuario.Id_Estado == 2) { 
+
+			const buscarIdClases = await adminModel.buscarClasesdeIntr(usuario.Numero_Usuario);
+			console.log("Buscar clase:", buscarIdClases);
+			//const buscarSocioClases = await adminModel.buscarSocioClases()
+			//const resultado = await adminModel.borrarClasesInstructor(usuario.Numero_Usuario);
+		}
+		
+		const result = await adminModel.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario, usuario.Direccion_Usuario, usuario.Password_Usuario, usuario.Id_Estado);
+
+		return res.json(result);
+	}
 
 
 	//MENU ADMIN

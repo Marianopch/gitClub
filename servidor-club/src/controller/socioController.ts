@@ -49,15 +49,30 @@ class SocioController {
 		console.log(req.header("Authorization"));
 
 		const envioDatos = req.body;
-		console.log(envioDatos);
-		console.log(envioDatos[0]);
-		console.log(envioDatos[1]);
-		// console.log(envioDatos.Id_Clase);
-		// console.log(envioDatos.Usuario);
 
-		const inscripcion = await socioModel.inscribirSocio(envioDatos[0], envioDatos[1]);
+		const busqueda = await socioModel.consultaClases(envioDatos[0], envioDatos[1]);
 
-		return res.json(inscripcion);
+		if(!busqueda) {
+
+			const cupo = await socioModel.consultarCupo(envioDatos[0]);
+
+			const cantidadInscriptos = await socioModel.cantidadInscriptos(envioDatos[0]);
+	
+			if ( cantidadInscriptos[0].Cantidad < cupo[0].CUPO_CLASE) {
+
+				const inscripcion = await socioModel.inscribirSocio(envioDatos[0], envioDatos[1]);
+				return res.status(200).json({ message: "El usuario fue inscripto a la clase." });
+
+			} else {
+
+				return res.status(403).json({ message: "No hay cupo para esta clase." });
+			}
+
+		} else {
+
+			return res.status(403).json({ message: "El usuario ya esta inscripto en esta clase." });
+		}
+
 	}
 
 	public async misActividades(req: Request, res: Response) {

@@ -117,9 +117,9 @@ class AdminController {
             const busqueda = yield adminModel_1.default.buscarActividad(actividades.descripcion);
             if (!busqueda) {
                 const result = yield adminModel_1.default.crearActividad(actividades.descripcion);
-                return res.status(200).json({ message: 'User saved!!' });
+                return res.status(200).json({ message: "Actividad creada" });
             }
-            return res.status(403).json({ message: 'User exists!!' });
+            return res.status(403).json({ message: 'Ya existe esa actividad' });
         });
     }
     eliminarActividad(req, res) {
@@ -170,17 +170,20 @@ class AdminController {
         return __awaiter(this, void 0, void 0, function* () {
             const clase = req.body;
             console.log("Controller Clase:", clase);
-            //Creo la Clase
-            const creacion = yield adminModel_1.default.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
-            //Obtengo el Id de la Clase Creada
-            const a = yield adminModel_1.default.consultaIDClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
-            console.log("Controller IdClase:", a[0].Id_Clase);
-            // for ( let i = 0; i < clase.Id_Dias.lenght; i++ ) {
-            for (var val of clase.Id_Dias) {
-                const resultdias = yield adminModel_1.default.crearClaseDias(a[0].Id_Clase, val);
-                console.log("Controller", resultdias);
+            const buscarClase = yield adminModel_1.default.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+            if (!buscarClase) {
+                const creacion = yield adminModel_1.default.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+                //Obtengo el Id de la Clase Creada
+                const consultaID = yield adminModel_1.default.consultaIDClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
+                console.log("Controller IdClase:", consultaID[0].Id_Clase);
+                // for ( let i = 0; i < clase.Id_Dias.lenght; i++ ) {
+                for (var val of clase.Id_Dias) {
+                    const resultdias = yield adminModel_1.default.crearClaseDias(consultaID[0].Id_Clase, val);
+                    console.log("Controller", resultdias);
+                }
+                return res.status(200).json({ message: "La clase fue creada correctamente." });
             }
-            return res.json({ message: 'Se llogro' });
+            return res.status(403).json({ message: "La clase ya existe, no se creo la clase." });
         });
     }
     buscarClase(req, res) {
@@ -190,6 +193,14 @@ class AdminController {
             return res.json(clases);
         });
     }
+    eliminarClase(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const result = yield adminModel_1.default.eliminarClase(id);
+            return res.status(200).json({ message: 'Actividad ELIMINADA!' });
+        });
+    }
     //MENU INSTRUCTORES
     listarInstructores(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -197,6 +208,27 @@ class AdminController {
             const usuarios = yield adminModel_1.default.listarTodosInstructores();
             const users = usuarios;
             return res.json(usuarios);
+        });
+    }
+    buscarClaseInstructor(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const clases = yield adminModel_1.default.buscarClaseInstructores(id);
+            return res.json(clases);
+        });
+    }
+    modificarInstructor(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const usuario = req.body;
+            console.log("Controller:", req.body);
+            if (usuario.Id_Estado == 2) {
+                const buscarIdClases = yield adminModel_1.default.buscarClasesdeIntr(usuario.Numero_Usuario);
+                console.log("Buscar clase:", buscarIdClases);
+                //const buscarSocioClases = await adminModel.buscarSocioClases()
+                //const resultado = await adminModel.borrarClasesInstructor(usuario.Numero_Usuario);
+            }
+            const result = yield adminModel_1.default.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario, usuario.Direccion_Usuario, usuario.Password_Usuario, usuario.Id_Estado);
+            return res.json(result);
         });
     }
     //MENU ADMIN

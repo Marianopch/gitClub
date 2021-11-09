@@ -112,7 +112,7 @@ class AdminModel {
 	async buscarClaseSocio(Numero_Usuario: string) {//Devuelve todas las filas de la tabla usuario
 		//const db=this.connection;
 		//const usuarios = await this.db.query('SELECT Numero_Usuario, Nombre_Usuario, Password_Usuario FROM Usuarios');
-		const clasesSocio = await this.db.query('SELECT C.Id_Clase, A.Descripcion_Actividad, SC.Numero_Usuario FROM sociosclases SC JOIN clases C ON SC.Id_Clase = C.Id_Clase JOIN actividades A ON A.Id_Actividad = C.Id_Actividad JOIN horarios H ON C.Id_Horario = H.Id_Horario JOIN diasclases DC ON DC.Id_Clase = C.Id_Clase JOIN dias D ON D.Id_dias = DC.Id_Dias WHERE SC.Numero_Usuario = ?;', [Numero_Usuario]);
+		const clasesSocio = await this.db.query('SELECT SC.Id_Clase, SC.Numero_Usuario as "Socio" ,U.Nombre_Usuario, U.Apellido_Usuario, A.Descripcion_Actividad, H.Comienzo_Horario, H.Finalizacion_Horario, group_concat( D.Nombre_Dias) as Dias FROM sociosclases SC JOIN clases C ON SC.Id_Clase = C.Id_Clase JOIN actividades A ON A.Id_Actividad = C.Id_Actividad JOIN horarios H ON C.Id_Horario = H.Id_Horario JOIN diasclases DC ON DC.Id_Clase = C.Id_Clase JOIN dias D ON D.Id_dias = DC.Id_Dias JOIN usuarios U ON U.Numero_Usuario = C.Numero_Usuario WHERE SC.Numero_Usuario = ? GROUP BY sc.Id_Clase;;', [Numero_Usuario]);
 		//console.log(usuarios[0]);
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
 		return clasesSocio[0];
@@ -178,6 +178,28 @@ class AdminModel {
 		return null;
 	}
 
+	async buscarClaseInstructores(id: string) {//Devuelve todas las filas de la tabla usuario
+		//const db=this.connection;
+		//const usuarios = await this.db.query('SELECT Numero_Usuario, Nombre_Usuario, Password_Usuario FROM Usuarios');
+		const clasesSocio :any = await this.db.query('SELECT * FROM clases C JOIN actividades A ON A.Id_Actividad = C.Id_Actividad JOIN horarios H ON C.Id_Horario = H.Id_Horario JOIN diasclases DC ON C.id_clase = DC.id_clase JOIN dias D ON DC.Id_dias = D.Id_dias WHERE C.Numero_Usuario = ?;', [id]);
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return clasesSocio[0];
+	}
+
+	async buscarClasesdeIntr(id: string) {//Devuelve todas las filas de la tabla usuario
+		//const db=this.connection;
+		//const usuarios = await this.db.query('SELECT Numero_Usuario, Nombre_Usuario, Password_Usuario FROM Usuarios');
+		const clasesSocio :any = await this.db.query('SELECT * FROM clases WHERE C.Numero_Usuario = ?', [id]);
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return clasesSocio[0];
+	}
+
+	async borrarClasesInstructor(id: string) {
+
+	}
+
 	//MENU CLASE
 	async listarHorarios() {//Devuelve todas las filas de la tabla usuario
 		//const db=this.connection;
@@ -200,30 +222,9 @@ class AdminModel {
 	async crearClase(Id_Actividad: string, Id_Horario: string, Cupo_Clase: string, Numero_Usuario: string) {
 
 		const result = (await this.db.query('INSERT INTO clases  (Id_Actividad, Id_Horario , Cupo_Clase, Numero_Usuario)   Values  (?, ?, ? ,? )', [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario]))[0].affectedRows;
-		// this.db.promise()
-		// .execute('INSERT INTO clases  (Id_Actividad, Id_Horario , Cupo_Clase, Numero_Usuario)   Values  (?, ?, ? ,? )', [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario])
-		// .then(([result: any]) => {
-		// 	// console.log(result);
-		// 	if(result.affectedRows === 1){
-		// 		console.log("User Inserted");
-		// 	}
-		// }).catch((err: any) => {
-		// 	console.log(err);
-		// });
 
 		console.log(result);
 		return result;
-
-		// let stmt = 'INSERT INTO clases  (Id_Actividad, Id_Horario , Cupo_Clase, Numero_Usuario)   Values  (?, ?, ? ,? )' 
-		// // [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario];
-
-		// this.db.query(stmt, (err: { message: any; }, results: { insertId: string; }, fields: any) => {
-		// 	if (err) {
-		// 	  return console.error(err.message);
-		// 	}
-		// 	// get inserted id
-		// 	console.log('Todo Id:' + results.insertId);
-		//   });
 	}
 
 	async crearClaseDias(Id_Clase: number, dia: any) {
@@ -232,6 +233,16 @@ class AdminModel {
 		console.log(resultDias);
 		return resultDias;
 	}
+
+	async eliminarClase (id: string) {
+		const clasedia = (await this.db.query('DELETE FROM diasclases WHERE Id_Clase = ?', [id]))[0].affectedRows;
+		console.log(clasedia);
+		const clase = (await this.db.query('DELETE FROM clases WHERE Id_Clase = ?', [id]))[0].affectedRows;
+		console.log(clase);
+		return clase;
+	}
+
+
 
 	async listarClases() {//Devuelve todas las filas de la tabla usuario
 		//const db=this.connection;
@@ -242,7 +253,7 @@ class AdminModel {
 	}
 
 	async buscarClase(Id_Actividad: number, Id_Horario: number, Cupo_Clase: number, Numero_Usuario: number) {
-		const clases = await this.db.query('SELECT * FROM clases WHERE Id_Actividad = ? AND Id_Horario = ? AND Cupo_Clase = ? AND Numero_Usuario = ?', [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario]);
+		const clases: any = await this.db.query('SELECT * FROM clases WHERE Id_Actividad = ? AND Id_Horario = ? AND Cupo_Clase = ? AND Numero_Usuario = ?', [Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario]);
 
 		if (clases.length > 1)
 			return clases[0][0];

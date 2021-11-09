@@ -271,7 +271,7 @@
 <!-- -------------------------------------MODAL CLASE SOCIO--------------------------------------------------------- -->
 
 <div class="modal fade" id="claseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-    <div class="modal-dialog">
+    <div class="modal-dialog" id="modalclass">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Clases del Socio</h5>
@@ -282,14 +282,22 @@
                     <thead >
                         <th>Clase</th>
                         <th>Actividad</th>
+                        <th>Comienzo</th>
+                        <th>Finalizcion</th>
+                        <th>Instructor</th>
+                        <th>Dias</th>
                         <th>Accion</th>
                     </thead>
                     <tbody *ngIf="clasesSocio.length > 0; else fila">
                         <tr *ngFor=" let claseSocio of clasesSocio">
                             <td>{{claseSocio.Id_Clase}}</td>
                             <td>{{claseSocio.Descripcion_Actividad}}</td>
+                            <td>{{claseSocio.Comienzo_Horario}}:00 HS</td>
+                            <td>{{claseSocio.Finalizacion_Horario}}:00 HS</td>
+                            <td>{{claseSocio.Nombre_Usuario}} {{claseSocio.Apellido_Usuario}} </td>
+                            <td>{{claseSocio.Dias}}</td>
                             <td>
-                                <button class="btn btn-danger btn-block" (click)="eliminarClaseUser(claseSocio.Numero_Usuario, claseSocio.Id_Clase)" data-bs-dismiss="modal">Eliminar</button>
+                                <button class="btn btn-danger btn-block" (click)="eliminarClaseUser(claseSocio.Socio, claseSocio.Id_Clase)" data-bs-dismiss="modal">Eliminar</button>
                             </td>
                         </tr>
                     </tbody>

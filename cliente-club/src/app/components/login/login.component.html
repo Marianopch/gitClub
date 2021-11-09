@@ -6,7 +6,7 @@
 
 <div class="container">
 
-<form (submit)="ingresar()" method="post">
+  <form (submit)="ingresar()" method="post">
     <div class="imgcontainer">
       <img src="https://escudosdeclubes.files.wordpress.com/2017/12/club-ferro-carril-oeste-caba-01.png?w=700&h=700" alt="Avatar" class="avatar">
     </div>
@@ -27,10 +27,10 @@
   
     
   </form>
-  <!-- <div *ngIf="reintentar" class="card-body">
-    {{mensaje}} <br>
-    <button (click)=recargarForm()>Reintentar</button>
-</div> -->
+
+  <div *ngIf="reintentar" class="alert alert-danger" role="alert">
+    {{mensaje}}
+  </div>
 
 </div>
 

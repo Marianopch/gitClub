@@ -52,13 +52,21 @@ class SocioController {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.header("Authorization"));
             const envioDatos = req.body;
-            console.log(envioDatos);
-            console.log(envioDatos[0]);
-            console.log(envioDatos[1]);
-            // console.log(envioDatos.Id_Clase);
-            // console.log(envioDatos.Usuario);
-            const inscripcion = yield socioModel_1.default.inscribirSocio(envioDatos[0], envioDatos[1]);
-            return res.json(inscripcion);
+            const busqueda = yield socioModel_1.default.consultaClases(envioDatos[0], envioDatos[1]);
+            if (!busqueda) {
+                const cupo = yield socioModel_1.default.consultarCupo(envioDatos[0]);
+                const cantidadInscriptos = yield socioModel_1.default.cantidadInscriptos(envioDatos[0]);
+                if (cantidadInscriptos[0].Cantidad < cupo[0].CUPO_CLASE) {
+                    const inscripcion = yield socioModel_1.default.inscribirSocio(envioDatos[0], envioDatos[1]);
+                    return res.status(200).json({ message: "El usuario fue inscripto a la clase." });
+                }
+                else {
+                    return res.status(403).json({ message: "No hay cupo para esta clase." });
+                }
+            }
+            else {
+                return res.status(403).json({ message: "El usuario ya esta inscripto en esta clase." });
+            }
         });
     }
     misActividades(req, res) {

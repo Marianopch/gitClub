@@ -14,40 +14,49 @@ class IndexController {
         // console.log(password);
         // console.log(result);
 
-        if (!result)
+        if (!result){
+
             return res.status(404).json({ message: "Usuario no registrado" });
+
+        } else {
+
+            if (result?.Numero_Usuario == usuario && result?.Password_Usuario == password) {
+                req.session.user = result;
+                req.session.auth = true;
+    
+                if (result?.Id_Rol === 1) {
+                    req.session.admin = true;
+                    //    return res.redirect("../admin/home")
+                } else {
+                    req.session.admin = false;
+                }
+    
+                if (result.Id_Estado === 1) {
+                    req.session.habilitado = true;
+                } else {
+                    req.session.habilitado = false;
+                }
+    
+                //res.redirect("./home");
+                const token: string = jwt.sign({ _id: result.id }, "secretKey");
+    
+                console.log(req.session.habilitado);
+                return res.status(200).json({ message: "Bienvenido " + result.Numero_Usuario, token: token, rol: result.Id_Rol });
+                //res.status(200).json({ message: "Bienvenido " + result.Nombre_Usuario });
+
+            }
+
+            return res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
+            //res.send({ "Usuario y/o contraseña incorrectos": req.body });
+            //req.flash("error_session", "Usuario y/o Password Incorrectos");
+            //res.redirect("./error");
+        }
+
 
         // console.log(result.Numero_Usuario);
         // console.log(result.Password_Usuario);
 
-        if (result?.Numero_Usuario == usuario && result?.Password_Usuario == password) {
-            req.session.user = result;
-            req.session.auth = true;
-
-            if (result?.Id_Rol === 1) {
-                req.session.admin = true;
-                //    return res.redirect("../admin/home")
-            } else {
-                req.session.admin = false;
-            }
-
-            if (result.Id_Estado === 1){
-                req.session.habilitado = true;
-            } else {
-                req.session.habilitado = false;
-            }
-
-            //res.redirect("./home");
-            const token: string = jwt.sign({ _id: result.id }, "secretKey");
-
-            res.status(200).json({ message: "Bienvenido " + result.Numero_Usuario, token: token, rol: result.Id_Rol });
-            //res.status(200).json({ message: "Bienvenido " + result.Nombre_Usuario });
-            return ;
-        }
-        res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
-        //res.send({ "Usuario y/o contraseña incorrectos": req.body });
-        //req.flash("error_session", "Usuario y/o Password Incorrectos");
-        //res.redirect("./error");
+        
     }
 
     public showError(req: Request, res: Response) {

@@ -152,6 +152,7 @@ export class BuscarClaseComponent implements OnInit {
       res => {
         let result: any = res;
         console.log(result.message);
+        this.ngOnInit();
         // this.router.navigate(['admin/home']);
 
       },
@@ -160,11 +161,25 @@ export class BuscarClaseComponent implements OnInit {
         this.reintentar = true;
         this.mensaje = err.error.message;
       }
-
-
     )
   }
 
+  eliminarClase(id: any) {
+    this.usuariosService.eliminarClase(id).subscribe(
+      res => {
+        let result: any = res;
+        console.log(result.message);
+        this.ngOnInit();
+        // this.router.navigate(['admin/home']);
+
+      },
+      err => {
+        console.log(err.error.message);
+        this.reintentar = true;
+        this.mensaje = err.error.message;
+      }
+    )
+  }
   // AgregarDias() {
   //   console.log(this.diasSelect)
 

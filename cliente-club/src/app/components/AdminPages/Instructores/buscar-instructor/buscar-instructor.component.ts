@@ -94,10 +94,10 @@ export class BuscarInstructorComponent implements OnInit {
   }
 
   buscarClase(Numero_Usuario: any){
-    this.usuariosService.buscarClase(Numero_Usuario).subscribe(
+    this.usuariosService.buscarClaseInstructor(Numero_Usuario).subscribe(
       res => {
         this.clasesSocio = res;
-        console.log("Respuesta:", this.clasesSocio)
+
       },
       err => {
         console.log(err);

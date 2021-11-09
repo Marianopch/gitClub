@@ -27,7 +27,7 @@ class SocioModel {
     }
     listarclasesTotales() {
         return __awaiter(this, void 0, void 0, function* () {
-            const clases = yield this.db.query('SELECT * FROM actividades ;');
+            const clases = yield this.db.query('SELECT * FROM actividades A WHERE EXISTS (SELECT * FROM clases C WHERE C.Id_Actividad = A.Id_Actividad)');
             return clases[0];
         });
     }
@@ -56,10 +56,21 @@ class SocioModel {
     }
     inscribirSocio(Id_Clase, Numero_Usuario) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(Id_Clase, Numero_Usuario);
             const result = (yield this.db.query('INSERT INTO sociosclases ( Id_Clase, Numero_Usuario ) VALUES  (?, ?)', [Id_Clase, Numero_Usuario]))[0].affectedRows;
-            console.log(result);
+            console.log("BD:", result);
             return result;
+        });
+    }
+    consultarCupo(clase) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const cupo = yield this.db.query('SELECT CUPO_CLASE FROM CLASES WHERE ID_CLASE = ?', [clase]);
+            return cupo[0];
+        });
+    }
+    cantidadInscriptos(clase) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const count = yield this.db.query('SELECT COUNT(*) as "Cantidad" FROM sociosclases WHERE Id_Clase = ?', [clase]);
+            return count[0];
         });
     }
     buscarmisAct(Numero_Usuario) {
@@ -78,6 +89,16 @@ class SocioModel {
             //console.log(usuarios[0]);
             //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
             return comentario[0];
+        });
+    }
+    consultaClases(clase, user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const consulta = yield this.db.query('SELECT * FROM sociosclases WHERE Id_Clase = ? AND Numero_Usuario = ?', [clase, user]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (consulta.length > 1) {
+                return consulta[0][0];
+            }
+            return null;
         });
     }
 }

@@ -29,7 +29,7 @@
                 <td> {{clase.Cupo_Clase}} </td>
                 <td>
                     <!-- <button class="btn btn-info" id="btnMod"> Modificar </button> -->
-                    <button class="btn btn-danger" id="btnEli"> Eliminar </button>
+                    <button class="btn btn-danger" id="btnEli" (click)='eliminarClase(clase.Id_Clase)'> Eliminar </button>
                 </td>
             </tr>
         </tbody>

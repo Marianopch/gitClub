@@ -55,9 +55,10 @@ class AdminRoutes {
         //Eliminar
         this.router.get('/eliminarInstructor/:Numero_Usuario', adminController.eliminar)
         //Modificar
-        this.router.post('/modificarInstructor/:Numero_Usuario', adminController.modificarSocio);
+        this.router.put('/modificarInstructor/:id', adminController.modificarInstructor);
+        this.router.get('/buscarClaseInstructor/:id', adminController.buscarClaseInstructor)
 
-
+        
 
         //Menu Admin
         //Buscar
@@ -75,6 +76,7 @@ class AdminRoutes {
         this.router.post('/agregarClase', adminController.agregarClase);
         this.router.get('/buscarClase', adminController.buscarClase);
         this.router.get('/buscardias', adminController.listarDias);
+        this.router.delete('/eliminarClase/:id', adminController.eliminarClase)
 
         //Socio-Actividad
         this.router.post('/notarActividad', adminController.anotarActividad);

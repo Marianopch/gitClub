@@ -100,6 +100,10 @@ export class UsuariosService {
     return this.http.delete(`${this.API_URI}/eliminarInstructor/${id}`);
   }
 
+  buscarClaseInstructor(id: string){
+    return this.http.get(`${this.API_URI}/buscarClaseInstructor/${id}`);
+  }
+
   //falta arreglar
   actualilzarInstructor(id: string, usuario: Usuario): Observable<Usuario> {
     return this.http.put(`${this.API_URI}/modificarInstructor/${id}`, usuario);
@@ -115,12 +119,16 @@ export class UsuariosService {
     return this.http.post(`${this.API_URI}/agregarClase`, clase);
   }
 
-  listarClase(){
+  listarClase() {
     return this.http.get(`${this.API_URI}/buscarClase`);
   }
 
-  listarDias(){
+  listarDias() {
     return this.http.get(`${this.API_URI}/buscardias`);
+  }
+
+  eliminarClase(id: any) {
+    return this.http.delete(`${this.API_URI}/eliminarClase/${id}`);
   }
 
   // COmentarios

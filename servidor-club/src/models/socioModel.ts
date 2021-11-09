@@ -19,7 +19,7 @@ class SocioModel {
 
 	async listarclasesTotales() {
 
-		const clases = await this.db.query('SELECT * FROM actividades ;');
+		const clases = await this.db.query('SELECT * FROM actividades A WHERE EXISTS (SELECT * FROM clases C WHERE C.Id_Actividad = A.Id_Actividad)');
 
 		return clases[0];
 	}
@@ -42,9 +42,6 @@ class SocioModel {
 			return encontrado[0][0];
 		return null;
 	}
-
-
-
 	
 	//SocioPage - MiPerfil Sector 
 	async verDatosUser(Numero_Usuario: string) {
@@ -57,13 +54,26 @@ class SocioModel {
 	}
 
 	async inscribirSocio(Id_Clase:string, Numero_Usuario:string) {
-		console.log(Id_Clase, Numero_Usuario)
+
 		const result = (await this.db.query('INSERT INTO sociosclases ( Id_Clase, Numero_Usuario ) VALUES  (?, ?)', [Id_Clase,Numero_Usuario]))[0].affectedRows;
-		
-		console.log(result);
+		console.log("BD:", result);
 		return result;
 	}
+
+	async consultarCupo(clase: string) {
+
+		const cupo = await this.db.query('SELECT CUPO_CLASE FROM CLASES WHERE ID_CLASE = ?',[clase]);
+
+		return cupo[0];
+	}
 	
+	async cantidadInscriptos(clase: string) {
+
+		const count = await this.db.query('SELECT COUNT(*) as "Cantidad" FROM sociosclases WHERE Id_Clase = ?',[clase]);
+
+		return count[0];
+	}
+
 	async buscarmisAct(Numero_Usuario: string) {
 
 		const encontrado = await this.db.query('SELECT * FROM Usuarios U JOIN sociosclases SC ON U.Numero_Usuario = SC.Numero_Usuario JOIN clases C ON SC.Id_Clase = C.Id_Clase JOIN diasclases DC ON C.id_clase = DC.id_clase JOIN dias D ON DC.Id_dias = D.Id_dias JOIN horarios H ON C.Id_Horario = H.Id_Horario JOIN actividades A ON A.Id_Actividad = C.Id_Actividad WHERE U.Numero_Usuario = ?;', [Numero_Usuario]);
@@ -80,6 +90,19 @@ class SocioModel {
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
 		return comentario[0];
 	}
+
+
+	async consultaClases(clase: string, user: string) {
+
+		const consulta: any = await this.db.query('SELECT * FROM sociosclases WHERE Id_Clase = ? AND Numero_Usuario = ?', [clase, user]);
+        //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+
+        if (consulta.length > 1){
+            return consulta[0][0];
+		}
+
+        return null;
+    }
 
 }
 //Exportamos el enrutador con 

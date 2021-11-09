@@ -24,6 +24,7 @@ class IndexModel {
         const encontrado: any = await this.db.query('SELECT * FROM usuarios WHERE Numero_Usuario = ?', [nombre]);
         //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
         if (encontrado.length > 1)
+            console.log("Bd:", encontrado[0][0])
             return encontrado[0][0];
         return null;
     }
