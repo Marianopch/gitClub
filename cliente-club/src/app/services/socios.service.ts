@@ -63,6 +63,10 @@ export class SociosService {
 
   }
 
+  listarUltimosComentarios() {
+    return this.http.get(`${this.API_URI}/lastComents`);
+  }
+
 
   getToken() {//Obtenemos el token que despues enviara el interceptor x cada req
     return localStorage.getItem('token');

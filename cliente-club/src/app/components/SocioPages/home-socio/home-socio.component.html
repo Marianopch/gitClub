@@ -32,15 +32,18 @@
 <li></li>
 <li></li>
 </ul> -->
-
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false" >
+<div class="cointainer-fluid">
+  
+  <div id="div-child" >
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false" >
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <!-- <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button> -->
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
-    <div class="carousel-inner" id="prueba">
-      <div class="carousel-item active"  data-bs-interval="5000">
+
+    <div class="carousel-inner" id="prueba" style="width: 50%;">
+      <div class="carousel-item active"  data-bs-interval="5000" >
         <img src="https://images.alphacoders.com/649/thumb-1920-649361.jpg" class="d-block imagen"  alt="hola lucho">
         <div class="carousel-caption d-none d-md-block">
           <h5 class="negro">NATATORIO</h5>
@@ -49,7 +52,7 @@
         </div>
         
       </div>
-      <div class="carousel-item" data-bs-interval="5000">
+      <!-- <div class="carousel-item" data-bs-interval="5000">
         <img src="https://images7.alphacoders.com/363/thumb-1920-363760.jpg" class="d-block  imagen"  alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>BASQUET</h5>
@@ -57,7 +60,8 @@
           <p>nuestro gran equipos de profesores te espera para darte la mejor experiencia en Basquet.</p>
           <button class="but" routerLink="../../socio/calendar">¡Inscribite!</button>
         </div>
-      </div>
+      </div> -->
+
       <div class="carousel-item" data-bs-interval="5000">
         <img src="https://images.alphacoders.com/692/thumb-1920-692037.jpg" class="d-block imagen"  alt="...">
         <div class="carousel-caption d-none d-md-block">
@@ -67,14 +71,45 @@
         </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+
+    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
+    
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
-    </button>
+    </button> -->
+  </div>
   </div>
 
-  <app-footer></app-footer>
+  <div id="div-child" >
+    <div class="col mb-4" *ngFor=" let comentario of comentarios">
+      <div class="card" >
+        <div class="card-body" style="background-color: rgb(132, 196, 147); color: rgb(0, 0, 0);">
+        <h5 class="card-title">{{comentario.Titulo_Comentario}}</h5>
+        <hr style="border: 1;">
+        <p class="card-text">{{comentario.Descripcion_Comentario}}</p>
+        <div class="card-footer">
+          <!-- <p><small>{{comentario.fcreacion}}</small></p>
+          <button *ngIf="id_Rol == '1'" class="btn btn-danger btn-block" (click)=eliminar(comentario)>Eliminar</button> -->
+          <div class="box">
+            <div class="box-row">
+            <div class="box-cell box1">
+               <p><small>{{comentario.fcreacion}}</small></p>
+            </div>
+            <div class="box-cell box2">
+            </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <!-- <app-footer></app-footer> -->
+

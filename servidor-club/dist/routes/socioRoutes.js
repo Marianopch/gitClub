@@ -27,6 +27,7 @@ class SocioRoutes {
         this.router.delete('/misActividades/:id/:Numero_Usuario', socioController_1.default.eliminarClase);
         //Comentarios
         this.router.get('/list', socioController_1.default.listComent);
+        this.router.get('/lastComents', socioController_1.default.listarUltimosComentarios);
     }
 }
 //Exportamos el enrutador con 

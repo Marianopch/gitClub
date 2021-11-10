@@ -33,6 +33,7 @@ class SocioRoutes {
 
         //Comentarios
         this.router.get('/list', socioController.listComent);
+        this.router.get('/lastComents', socioController.listarUltimosComentarios);
 
     }
 

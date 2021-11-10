@@ -104,6 +104,14 @@ class SocioController {
 		console.log(comentario);
 		return res.json(comentario);
 	}
+
+	public async listarUltimosComentarios(req: Request, res: Response) {
+		//console.log(req.header("Authorization"));
+
+		const comentario = await socioModel.listarUltimoComentario();
+
+		return res.json(comentario);
+	}
 	
 	public endSession(req: Request, res: Response) {
 		console.log(req.body);

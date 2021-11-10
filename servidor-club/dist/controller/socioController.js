@@ -96,6 +96,13 @@ class SocioController {
             return res.json(comentario);
         });
     }
+    listarUltimosComentarios(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //console.log(req.header("Authorization"));
+            const comentario = yield socioModel_1.default.listarUltimoComentario();
+            return res.json(comentario);
+        });
+    }
     endSession(req, res) {
         console.log(req.body);
         req.session.user = {};

@@ -98,6 +98,14 @@ class SocioModel {
 		return comentario[0];
 	}
 
+	async listarUltimoComentario() {//Devuelve todas las filas de la tabla usuario
+		//const db=this.connection;
+		const comentario = await this.db.query('SELECT Id_Comentario, Titulo_Comentario, Descripcion_Comentario, Numero_Usuario, DATE_FORMAT(fcreacion, "%d/%m/%Y %H:%i") AS fcreacion FROM comentario order by fcreacion desc LIMIT 3');
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return comentario[0];
+	}
+
 
 	async consultaClases(clase: string, user: string) {
 
