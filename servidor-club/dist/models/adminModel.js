@@ -142,6 +142,13 @@ class AdminModel {
             return claseSocio;
         });
     }
+    eliminarSociosdeClase(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const eliminados = (yield this.db.query('DELETE FROM sociosClases WHERE Id_Clase = ?', [id]))[0].affectedRows;
+            console.log(eliminados);
+            return eliminados;
+        });
+    }
     //MENU ACTIVIDADES
     listarTodasActividades() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -205,7 +212,7 @@ class AdminModel {
         return __awaiter(this, void 0, void 0, function* () {
             //const db=this.connection;
             //const usuarios = await this.db.query('SELECT Numero_Usuario, Nombre_Usuario, Password_Usuario FROM Usuarios');
-            const clasesSocio = yield this.db.query('SELECT * FROM clases C JOIN actividades A ON A.Id_Actividad = C.Id_Actividad JOIN horarios H ON C.Id_Horario = H.Id_Horario JOIN diasclases DC ON C.id_clase = DC.id_clase JOIN dias D ON DC.Id_dias = D.Id_dias WHERE C.Numero_Usuario = ?;', [id]);
+            const clasesSocio = yield this.db.query('SELECT C.Id_Clase, A.Descripcion_Actividad, H.Comienzo_Horario, H.Finalizacion_Horario, group_concat( D.Nombre_Dias) as Dias, C.Cupo_Clase FROM clases C JOIN actividades A ON A.Id_Actividad = C.Id_Actividad JOIN horarios H ON C.Id_Horario = H.Id_Horario JOIN diasclases DC ON C.id_clase = DC.id_clase JOIN dias D ON DC.Id_dias = D.Id_dias WHERE C.Numero_Usuario = ? GROUP BY (Id_Clase);', [id]);
             //console.log(usuarios[0]);
             //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
             return clasesSocio[0];
@@ -213,12 +220,13 @@ class AdminModel {
     }
     buscarClasesdeIntr(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            //const db=this.connection;
-            //const usuarios = await this.db.query('SELECT Numero_Usuario, Nombre_Usuario, Password_Usuario FROM Usuarios');
-            const clasesSocio = yield this.db.query('SELECT * FROM clases WHERE C.Numero_Usuario = ?', [id]);
-            //console.log(usuarios[0]);
-            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
-            return clasesSocio[0];
+            const clasesSocio = yield this.db.query('SELECT COUNT(*) AS Cantidad FROM clases C WHERE C.Numero_Usuario = ?', [id]);
+            if (clasesSocio[0][0].Cantidad === 0) {
+                return 0;
+            }
+            else {
+                return 1;
+            }
         });
     }
     borrarClasesInstructor(id) {
@@ -233,6 +241,15 @@ class AdminModel {
             //console.log(usuarios[0]);
             //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
             return horarios[0];
+        });
+    }
+    listarTodosInstructoresActivos() {
+        return __awaiter(this, void 0, void 0, function* () {
+            //const db=this.connection;
+            const usuarios = yield this.db.query('SELECT Numero_Usuario, Nombre_Usuario, Apellido_Usuario FROM Usuarios WHERE Id_Rol = 3 AND Id_Estado = 1');
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return usuarios[0];
         });
     }
     buscarHora(Id_Horario) {
@@ -270,12 +287,23 @@ class AdminModel {
             return clase;
         });
     }
+    buscarInscriptosClase(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const busqueda = yield this.db.query('SELECT COUNT(*) AS Cantidad FROM sociosClases WHERE Id_Clase = ?', [id]);
+            console.log("BD Busqueda", busqueda[0][0].Cantidad);
+            if (busqueda[0][0].Cantidad === 0) {
+                return 0;
+            }
+            else {
+                return 1;
+            }
+            //return busqueda[0][0].Cantidad;
+            //return null;
+        });
+    }
     listarClases() {
         return __awaiter(this, void 0, void 0, function* () {
-            //const db=this.connection;
-            const clases = yield this.db.query('Select * from clases JOIN Actividades ON actividades.Id_Actividad = clases.Id_Actividad JOIN Horarios ON clases.Id_Horario = horarios.Id_Horario JOIN Usuarios ON usuarios.Numero_Usuario = clases.Numero_Usuario;');
-            //console.log(usuarios[0]);
-            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            const clases = yield this.db.query('Select C.Id_Clase, A.Descripcion_Actividad, H.Comienzo_Horario, H.Finalizacion_Horario, group_concat( D.Nombre_Dias) as Dias, U.Nombre_Usuario, U.Apellido_Usuario, C.Cupo_Clase from clases C JOIN Actividades A ON A.Id_Actividad = C.Id_Actividad JOIN Horarios H ON C.Id_Horario = H.Id_Horario JOIN Usuarios U ON U.Numero_Usuario = C.Numero_Usuario JOIN diasclases DC ON C.id_clase = DC.id_clase JOIN dias D ON DC.Id_dias = D.Id_dias GROUP BY (Id_Clase)');
             return clases[0];
         });
     }
@@ -291,10 +319,15 @@ class AdminModel {
         return __awaiter(this, void 0, void 0, function* () {
             //const db=this.connection;
             const dias = yield this.db.query('SELECT * FROM dias');
-            //console.log(usuarios[0]);
-            console.log(dias);
-            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
             return dias[0];
+        });
+    }
+    buscarClaseActividad(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const clases = yield this.db.query('SELECT * FROM clases WHERE Id_Actividad = ?', [id]);
+            if (clases.length > 1)
+                return clases[0][0];
+            return null;
         });
     }
     consultaIDClase(Id_Actividad, Id_Horario, Cupo_Clase, Numero_Usuario) {

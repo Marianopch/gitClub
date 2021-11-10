@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 export class MisActividadesComponent implements OnInit {
 
 actividades:any =[];
-
+reintentar: boolean = false;
+mensaje: string = "";
 
   constructor(private sociosService:SociosService , private router: Router) { }
 
@@ -23,6 +24,25 @@ actividades:any =[];
         console.log(res)
       },
       err => console.log(err)
+    )
+  }
+
+  eliminarClase(id: any) {
+
+    let Numero_Usuario = localStorage.getItem('Usuario');
+
+    this.sociosService.eliminarClase(id, Numero_Usuario).subscribe(
+      res => {
+        let result: any = res;
+        console.log(result.message);
+        this.ngOnInit();
+
+      },
+      err => {
+        console.log(err.error.message);
+        this.reintentar = true;
+        this.mensaje = err.error.message;
+      }
     )
   }
 

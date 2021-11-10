@@ -4,7 +4,6 @@
 
 <div class="container">
 
-
     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" id="butAgr">
         Nueva Actividad
     </button>
@@ -17,24 +16,26 @@
             <th>Descripcion</th>
             <th>Accion</th>
         </thead>
-
-        <tbody *ngIf="actividades.length > 0; else fila">
-            <tr *ngFor=" let actividad of actividades">
-                <td>{{actividad.Id_Actividad}}</td>
-                <td>{{actividad.Descripcion_Actividad}}</td>
-                <td>
-                    <button id='butMod' class="btn btn-danger" (click)="eliminarAct(actividad.Id_Actividad)"> Eliminar </button>
-                </td>
-            </tr>
-        </tbody>
-        <ng-template #fila>
-            <tbody>
-                <tr>
-                    <td colspan="4">No hay mas filas</td>
+            <tbody *ngIf="actividades.length > 0; else fila" >
+                <tr *ngFor=" let actividad of actividades">
+                    <td>{{actividad.Id_Actividad}}</td>
+                    <td>{{actividad.Descripcion_Actividad}}</td>
+                    <td>
+                        <button id='butMod' class="btn btn-danger" (click)="eliminarAct(actividad.Id_Actividad)"> Eliminar </button>
+                    </td>
                 </tr>
             </tbody>
-        </ng-template>
+            <ng-template #fila>
+                <tbody>
+                    <tr>
+                        <td colspan="4">No hay mas filas</td>
+                    </tr>
+                </tbody>
+            </ng-template>
     </table>
+    <div *ngIf="reintentar" class="alert alert-danger" role="alert">
+        <Strong>{{mensaje}}</Strong>
+    </div>
 
 </div>
 
@@ -47,9 +48,7 @@
             </div>
 
             <div class="modal-body">
-                <div *ngIf="!reintentar">
-
-
+                <div >
                     <form>
                         <label>Nombre de la actividad</label>
                         <input type="text" name="descripcion" [(ngModel)]="act.descripcion" placeholder="Descripcion"
@@ -57,6 +56,10 @@
                         <button class="btn btn-success btn-block"  (click)="registrar()" data-bs-dismiss="modal">Enviar</button>
                     </form>
                 </div>
+                <!-- <div *ngIf="reintentar2" class="alert alert-danger" role="alert">
+                    {{mensaje}}
+                </div> -->
+                
             </div>
         </div>
     </div>

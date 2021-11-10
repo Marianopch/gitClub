@@ -124,10 +124,15 @@ class AdminController {
     }
     eliminarActividad(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
-            const { Id_Actividad } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
-            const result = yield adminModel_1.default.eliminarActividad(Id_Actividad);
-            return res.status(200).json({ message: 'Actividad ELIMINADA!' });
+            const { Id_Actividad } = req.params;
+            const busqueda = yield adminModel_1.default.buscarClaseActividad(Id_Actividad);
+            if (!busqueda) {
+                const result = yield adminModel_1.default.eliminarActividad(Id_Actividad);
+                return res.status(200).json({ message: 'Actividad ELIMINADA!' });
+            }
+            else {
+                return res.status(403).json({ message: 'NO SE PUDO ELIMINAR. Primero se debe eliminar las clases que consuman dicha actividad!' });
+            }
         });
     }
     modificarActividad(req, res) {
@@ -169,14 +174,11 @@ class AdminController {
     agregarClase(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const clase = req.body;
-            console.log("Controller Clase:", clase);
             const buscarClase = yield adminModel_1.default.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
             if (!buscarClase) {
                 const creacion = yield adminModel_1.default.crearClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
                 //Obtengo el Id de la Clase Creada
                 const consultaID = yield adminModel_1.default.consultaIDClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
-                console.log("Controller IdClase:", consultaID[0].Id_Clase);
-                // for ( let i = 0; i < clase.Id_Dias.lenght; i++ ) {
                 for (var val of clase.Id_Dias) {
                     const resultdias = yield adminModel_1.default.crearClaseDias(consultaID[0].Id_Clase, val);
                     console.log("Controller", resultdias);
@@ -193,12 +195,28 @@ class AdminController {
             return res.json(clases);
         });
     }
-    eliminarClase(req, res) {
+    listarInstructoresActivos(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
-            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
-            const result = yield adminModel_1.default.eliminarClase(id);
-            return res.status(200).json({ message: 'Actividad ELIMINADA!' });
+            const usuarios = yield adminModel_1.default.listarTodosInstructoresActivos();
+            console.log(usuarios);
+            return res.json(usuarios);
+        });
+    }
+    eliminarClase(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const busqueda = yield adminModel_1.default.buscarInscriptosClase(id);
+            if (busqueda === 0) {
+                //console.log("CN Busqueda", busqueda[0].Id_Clase)
+                const result = yield adminModel_1.default.eliminarClase(id);
+                return res.status(200).json({ message: 'Clase ELIMINADA!' });
+            }
+            else {
+                const eliminados = yield adminModel_1.default.eliminarSociosdeClase(id);
+                const result = yield adminModel_1.default.eliminarClase(id);
+                return res.status(200).json({ message: 'Se elimino los Socios inscriptos a la clase Y la clase!!' });
+            }
         });
     }
     //MENU INSTRUCTORES
@@ -220,15 +238,20 @@ class AdminController {
     modificarInstructor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const usuario = req.body;
-            console.log("Controller:", req.body);
+            console.log("Controller:", usuario.Numero_Usuario);
             if (usuario.Id_Estado == 2) {
                 const buscarIdClases = yield adminModel_1.default.buscarClasesdeIntr(usuario.Numero_Usuario);
                 console.log("Buscar clase:", buscarIdClases);
-                //const buscarSocioClases = await adminModel.buscarSocioClases()
-                //const resultado = await adminModel.borrarClasesInstructor(usuario.Numero_Usuario);
+                if (buscarIdClases === 0) {
+                    const result = yield adminModel_1.default.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario, usuario.Direccion_Usuario, usuario.Password_Usuario, usuario.Id_Estado);
+                    return res.status(200).json({ message: 'Se modificaron los datos!' });
+                }
+                else {
+                    return res.status(403).json({ message: 'No se modifico, primero se deberian eliminar las clases que el instructor esta dando.' });
+                }
             }
             const result = yield adminModel_1.default.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario, usuario.Direccion_Usuario, usuario.Password_Usuario, usuario.Id_Estado);
-            return res.json(result);
+            return res.status(200).json({ message: 'Se modificaron los datos!!!' });
         });
     }
     //MENU ADMIN

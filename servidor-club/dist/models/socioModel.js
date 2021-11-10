@@ -33,7 +33,7 @@ class SocioModel {
     }
     llenarCalendario(Descripcion_Actividad) {
         return __awaiter(this, void 0, void 0, function* () {
-            const clases = yield this.db.query('SELECT * FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad WHERE actividades.Descripcion_Actividad = ?;', [Descripcion_Actividad]);
+            const clases = yield this.db.query('SELECT * FROM clases JOIN diasclases ON clases.id_clase = diasclases.id_clase JOIN dias ON diasclases.Id_dias = dias.Id_dias JOIN horarios ON clases.Id_Horario = horarios.Id_Horario JOIN actividades ON actividades.Id_Actividad = clases.Id_Actividad  WHERE actividades.Descripcion_Actividad = ?;', [Descripcion_Actividad]);
             return clases[0];
         });
     }
@@ -75,11 +75,16 @@ class SocioModel {
     }
     buscarmisAct(Numero_Usuario) {
         return __awaiter(this, void 0, void 0, function* () {
-            const encontrado = yield this.db.query('SELECT * FROM Usuarios U JOIN sociosclases SC ON U.Numero_Usuario = SC.Numero_Usuario JOIN clases C ON SC.Id_Clase = C.Id_Clase JOIN diasclases DC ON C.id_clase = DC.id_clase JOIN dias D ON DC.Id_dias = D.Id_dias JOIN horarios H ON C.Id_Horario = H.Id_Horario JOIN actividades A ON A.Id_Actividad = C.Id_Actividad WHERE U.Numero_Usuario = ?;', [Numero_Usuario]);
-            console.log('BD:', encontrado);
+            const encontrado = yield this.db.query('SELECT SC.Id_Clase, A.Descripcion_Actividad, H.Comienzo_Horario, H.Finalizacion_Horario, group_concat( D.Nombre_Dias) as Dias FROM Usuarios U JOIN sociosclases SC ON U.Numero_Usuario = SC.Numero_Usuario JOIN clases C ON SC.Id_Clase = C.Id_Clase JOIN diasclases DC ON C.id_clase = DC.id_clase JOIN dias D ON DC.Id_dias = D.Id_dias JOIN horarios H ON C.Id_Horario = H.Id_Horario JOIN actividades A ON A.Id_Actividad = C.Id_Actividad WHERE U.Numero_Usuario = ? GROUP BY SC.Id_Clase;', [Numero_Usuario]);
             if (encontrado.length > 1)
                 return encontrado[0];
             return null;
+        });
+    }
+    eliminarClase(id, Numero_Usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const clasedia = (yield this.db.query('DELETE FROM sociosClases WHERE Id_Clase = ? AND Numero_Usuario = ?', [id, Numero_Usuario]))[0].affectedRows;
+            return clasedia;
         });
     }
     listarComentario() {

@@ -8,14 +8,7 @@
                 <div class= "input-group-text bg-white">
                     <i class="fas fa-search"></i>
                     <input  class="form-control" placeholder="Nombre o Apellido"[(ngModel)]="filterPost" name="filterpost" >
-                    <!-- <div class="input-group-prepend">
-                        
-                        <div  class="input-group-text" id="btnGroupAddon2"> <i class="far fa-address-card"></i> __Para Crear un Nuevo Usuario haga "click" en "Nuevo" 
-                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Nuevo
-                            </button>
-                        </div>
-                    </div> -->
+
                 </div> 
             </div>
         </div>
@@ -31,12 +24,7 @@
             <th id="thprincipal">Nombre</th>
             <th id="thprincipal">Apellido</th>
             <th id="thprincipal">DNI</th>
-            <!-- <th>Mail</th>
-            <th>Telefono</th>
-            <th>Direccion</th>
-            <th>Fecha Creacion</th>
-            <th>Password</th>
-            <th>Rol</th> -->
+
             <th id="thprincipal">Estado</th>
             <th id="thprincipal">Acciones</th>
         </thead>
@@ -46,16 +34,9 @@
                 <td>{{usuario.Nombre_Usuario}}</td>
                 <td>{{usuario.Apellido_Usuario}}</td>
                 <td>{{usuario.DNI_Usuario}}</td>
-                <!-- <td>{{usuario.Mail_Usuario}}</td>
-                <td>{{usuario.Telefono_Usuario}}</td>
-                <td >{{usuario.Direccion_Usuario}}</td>
-                <td>{{usuario.FechaCreacion_Usuario}}</td>
-                <td>{{usuario.Password_Usuario}}</td>
-                <td>Admin</td> -->
                 <td>{{usuario.Descripcion_Estado}}</td>
                 <td>
                     <button class="btn btn-info" id="butMod" data-bs-toggle="modal" data-bs-target="#modModal" (click)="buscarArray(usuario.Numero_Usuario)"> Ver mas informacion - Modificar </button>
-                    <!-- <button class="btn btn-info" id="butMod"  (click)="modificarUser(usuario)"> Modificar </button> -->
                     <button class="btn btn-danger" id="butMod" (click)="eliminarUser(usuario.Numero_Usuario)"> Eliminar </button>
                 </td>
             </tr>

@@ -80,10 +80,21 @@ class SocioController {
 
 		const { Numero_Usuario } = req.params;
 
-		console.log(Numero_Usuario);
-
 		const misAct = await socioModel.buscarmisAct(Numero_Usuario);
 		return res.json(misAct);
+	}
+
+	public async eliminarClase(req: Request, res: Response) {
+		console.log(req.header("Authorization"));
+
+		const { id } = req.params;
+		const { Numero_Usuario } = req.params;
+
+		console.log("Id",id , "Numero", Numero_Usuario);
+
+		const eliminar = await socioModel.eliminarClase(id, Numero_Usuario);
+
+		return res.status(200).json({ message: 'Clase ELIMINADA!' });
 	}
 
 	public async listComent(req: Request, res: Response) {

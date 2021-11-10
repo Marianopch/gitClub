@@ -85,7 +85,7 @@ export class BuscarClaseComponent implements OnInit {
   }
 
   cargarIns() {
-    this.usuariosService.listarInstructor().subscribe(
+    this.usuariosService.listarInstructorActivos().subscribe(
       res => {
         this.instructor = res;
         console.log(res)

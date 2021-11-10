@@ -40,15 +40,16 @@ class IndexController {
                     }
                     if (result.Id_Estado === 1) {
                         req.session.habilitado = true;
+                        //res.redirect("./home");
+                        const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
+                        console.log(req.session.habilitado);
+                        return res.status(200).json({ message: "Bienvenido " + result.Numero_Usuario, token: token, rol: result.Id_Rol });
+                        //res.status(200).json({ message: "Bienvenido " + result.Nombre_Usuario });
                     }
                     else {
                         req.session.habilitado = false;
+                        return res.status(403).json({ message: "Usuario No habilitado por falta de pago. Contactarse con Administracion" });
                     }
-                    //res.redirect("./home");
-                    const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
-                    console.log(req.session.habilitado);
-                    return res.status(200).json({ message: "Bienvenido " + result.Numero_Usuario, token: token, rol: result.Id_Rol });
-                    //res.status(200).json({ message: "Bienvenido " + result.Nombre_Usuario });
                 }
                 return res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
                 //res.send({ "Usuario y/o contraseña incorrectos": req.body });

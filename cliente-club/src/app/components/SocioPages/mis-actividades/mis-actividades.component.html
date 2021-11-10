@@ -9,6 +9,7 @@
             <th>Comienzo</th>
             <th>Finalizacion</th>
             <th>Dias</th>
+            <th>Accion</th>
         </thead>
 
         <tbody *ngIf="actividades.length > 0; else fila">
@@ -16,13 +17,16 @@
                 <td>{{actividad.Descripcion_Actividad}}</td>
                 <td>{{actividad.Comienzo_Horario}}:00 Hs</td>
                 <td>{{actividad.Finalizacion_Horario}}:00 Hs</td>
-                <td>{{actividad.Nombre_dias}}</td>
+                <td>{{actividad.Dias}}</td>
+                <td>
+                    <button class="btn btn-danger" id="btnEli" (click)='eliminarClase(actividad.Id_Clase)'> Eliminar </button>
+                </td>
             </tr>
         </tbody>
         <ng-template #fila>
             <tbody>
                 <tr>
-                    <td colspan="4">No hay mas filas</td>
+                    <td colspan="5">No esta inscripto a una clase</td>
                 </tr>
             </tbody>
         </ng-template>

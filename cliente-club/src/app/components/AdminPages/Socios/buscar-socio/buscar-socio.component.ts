@@ -91,11 +91,11 @@ export class BuscarSocioComponent implements OnInit {
     this.usuariosService.eliminarUsuario(Numero_Usuario).subscribe(
       response => {
         console.log(response);
-        this.router.navigate(['admin/home']);
+        this.ngOnInit();
       },
       error => {
         console.log(error);
-        this.router.navigate(['admin/agregarSocio']);
+        this.ngOnInit();
       });
   }
 
@@ -113,16 +113,18 @@ export class BuscarSocioComponent implements OnInit {
   }
 
   modificarUser(usuario: any) {
-    console.log("Component:", usuario);
+
     this.usuariosService.actualizarUsuario(usuario.Numero_Usuario, usuario).subscribe(
       res => {
         let result: any = res;
-        console.log("Respuesta back:", result);
         this.ngOnInit();
        
 
       },
-      err => console.log(err)
+      err => {
+        console.log(err)
+        this.mensaje = err.error.message
+      }
     )
   }
 

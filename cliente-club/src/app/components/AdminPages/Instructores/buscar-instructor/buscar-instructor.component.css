@@ -64,3 +64,8 @@ input#modalinput {
 button#btnmodal {
    width: 100%;
 }
+
+div#modalclass {
+   max-width: 100%;
+   margin: 3%;
+}

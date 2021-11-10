@@ -27,6 +27,9 @@ class SocioRoutes {
 
         //SocioPage - MisActividades Sector 
         this.router.get('/buscarActividades/:Numero_Usuario' ,socioController.misActividades);
+        
+        this.router.delete('/misActividades/:id/:Numero_Usuario' ,socioController.eliminarClase);
+
 
         //Comentarios
         this.router.get('/list', socioController.listComent);

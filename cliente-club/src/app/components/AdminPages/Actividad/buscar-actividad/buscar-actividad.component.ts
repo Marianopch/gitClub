@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-buscar-actividad',
   templateUrl: './buscar-actividad.component.html',
@@ -14,7 +15,9 @@ export class BuscarActividadComponent implements OnInit {
 
   reintentar: boolean = false;
   mensaje: string = "";
-  
+  reintentar2: boolean= false;
+  mensaje2: string = "";
+
   constructor(private usuariosService: UsuariosService, private router: Router) { }
 
   ngOnInit(): void {
@@ -33,12 +36,12 @@ export class BuscarActividadComponent implements OnInit {
     this.usuariosService.eliminarActividad(id).subscribe(
       response => {
         console.log(response);
-        this.router.navigate(['admin/buscarActividad']);
         this.ngOnInit();
       },
       error => {
-        console.log(error);
-        this.router.navigate(['admin/agregarActividad']);
+        console.log(error.error.message);
+         this.reintentar = true;
+         this.mensaje = error.error.message;
       });
   }
 
@@ -62,16 +65,16 @@ export class BuscarActividadComponent implements OnInit {
     this.usuariosService.guardarActividad(this.act).subscribe(
       res => {
         let result:any=res;
-        console.log(result.message);
-        this.router.navigate(['admin/buscarActividad']);
         this.ngOnInit();
         this.resetModal();
+        this.recargarForm();
         
       },
       err => {
         console.log(err.error.message);
-        this.reintentar = true;
+        this.reintentar2 = true;
         this.mensaje = err.error.message;
+        this.resetModal();
       }
     )
 	}
@@ -84,8 +87,7 @@ export class BuscarActividadComponent implements OnInit {
   resetModal() {
     this.act.descripcion = '';
     this.act.id = '';
-
-}
+  }
 
 
 }

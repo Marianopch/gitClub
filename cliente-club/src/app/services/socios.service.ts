@@ -31,6 +31,10 @@ export class SociosService {
     return this.http.get(`${this.API_URI}/calendar/${Id_Clase}`)
   }
 
+  eliminarClase(id: any, Numero_Usuario: any) {
+    return this.http.delete(`${this.API_URI}/misActividades/${id}/${Numero_Usuario}`)
+  }
+
   // inscribirSocio(claseSocio: claseSocio ): Observable<claseSocio>{
   //   console.log(claseSocio);
 

@@ -17,7 +17,7 @@ export class CalendarioComponent implements OnInit {
   desc_clase = { Descripcion_Actividad: "" }
 
   clasesCalendar: any = [];
-  claseCalendar = { Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: "", Id_Dias: "" }
+  claseCalendar = { Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: "", Id_Dias: "", Clase: "" }
 
   infoClase: any = [];
 

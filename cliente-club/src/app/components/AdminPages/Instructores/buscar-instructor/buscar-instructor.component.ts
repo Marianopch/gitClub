@@ -27,7 +27,7 @@ export class BuscarInstructorComponent implements OnInit {
   reintentar: boolean = false;
   mensaje: string = "";
   usuariosfilter: any = [];
-  userfilter = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "3", Id_Estado: "1" };
+  userfilter = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "2", Id_Estado: "" };
   estados: any = [];
   estado = {Descripcion_Estado: ""};
   clasesSocio: any = [];
@@ -68,26 +68,41 @@ export class BuscarInstructorComponent implements OnInit {
     )
   }
 
+  eliminarClaseUser(Numero_Usuario: any, Id_Clase: any) {
+
+    this.usuariosService.eliminarClasseUser(Numero_Usuario, Id_Clase).subscribe(
+      response => {
+        console.log(response);
+        this.router.navigate(['admin/buscarSocio']);
+      },
+      error => {
+        console.log(error);
+        this.router.navigate(['admin/buscarSocio']);
+      });
+  }
+
   eliminarUser(Numero_Usuario: any) {
     console.log(this.usuarios)
     this.usuariosService.eliminarInstructor(Numero_Usuario).subscribe(
       response => {
         console.log(response);
-        this.router.navigate(['admin/home']);
+        this.ngOnInit();
       },
       error => {
         console.log(error);
-        this.router.navigate(['admin/agregarInstructor']);
+        this.ngOnInit();
       });
   }
 
   modificarUser(usuario: any) {
-    console.log(usuario);
+
     this.usuariosService.actualilzarInstructor(usuario.Numero_Usuario, usuario).subscribe(
       res => {
         let result: any = res;
-        console.log(result.message);
+
         this.ngOnInit();
+       
+
       },
       err => console.log(err)
     )

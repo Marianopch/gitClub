@@ -127,6 +127,10 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI}/buscardias`);
   }
 
+  listarInstructorActivos() {
+    return this.http.get(`${this.API_URI}/buscarInstructorActivos`);
+  }
+
   eliminarClase(id: any) {
     return this.http.delete(`${this.API_URI}/eliminarClase/${id}`);
   }

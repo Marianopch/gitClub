@@ -17,6 +17,7 @@
             <th>Actividad</th>
             <th>Instructor</th>
             <th>Horario</th>
+            <th>Dias</th>
             <th>Cupo Clase</th>
             <th>Acciones</th>
         </thead>
@@ -26,9 +27,9 @@
                 <td> {{clase.Descripcion_Actividad}} </td>
                 <td> {{clase.Nombre_Usuario}} {{clase.Apellido_Usuario}} </td>
                 <td> {{clase.Comienzo_Horario}}:00 - {{clase.Finalizacion_Horario}}:00 </td>
+                <td> {{clase.Dias}}</td>
                 <td> {{clase.Cupo_Clase}} </td>
                 <td>
-                    <!-- <button class="btn btn-info" id="btnMod"> Modificar </button> -->
                     <button class="btn btn-danger" id="btnEli" (click)='eliminarClase(clase.Id_Clase)'> Eliminar </button>
                 </td>
             </tr>
@@ -36,7 +37,7 @@
         <ng-template #fila>
             <tbody>
                 <tr>
-                    <td colspan="4">No hay mas filas</td>
+                    <td colspan="6">No hay Clases Creadas</td>
                 </tr>
             </tbody>
         </ng-template>
@@ -110,15 +111,8 @@
                 </div>
                 <div *ngIf="reintentar" class="card-body">
                     {{mensaje}} <br>
-                    <!-- <button class="btn btn-info" (click)=recargarForm()>Reintentar</button> -->
                 </div>
             </div>
-
-
-            <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btn-guardar" data-bs-dismiss="modal">Crear</button>
-            </div> -->
         </div>
     </div>
 </div>

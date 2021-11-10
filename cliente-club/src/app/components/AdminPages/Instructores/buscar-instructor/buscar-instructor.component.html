@@ -23,12 +23,6 @@
             <th id="thprincipal">Nombre</th>
             <th id="thprincipal">Apellido</th>
             <th id="thprincipal">DNI</th>
-            <!-- <th>Mail</th>
-            <th>Telefono</th>
-            <th>Direccion</th>
-            <th>Fecha Creacion</th>
-            <th>Password</th>
-            <th>Rol</th> -->
             <th id="thprincipal">Estado</th>
             <th>Acciones</th>
         </thead>
@@ -38,12 +32,6 @@
                 <td>{{usuario.Nombre_Usuario}}</td>
                 <td>{{usuario.Apellido_Usuario}}</td>
                 <td>{{usuario.DNI_Usuario}}</td>
-                <!-- <td  >{{usuario.Mail_Usuario}}</td>
-                <td>{{usuario.Telefono_Usuario}}</td>
-                <td >{{usuario.Direccion_Usuario}}</td>
-                <td>{{usuario.FechaCreacion_Usuario}}</td>
-                <td>{{usuario.Password_Usuario}}</td>
-                <td>Instructor</td> -->
                 <td>{{usuario.Descripcion_Estado}}</td>
                 <td>
                     <button class="btn btn-info" id="butMod" data-bs-toggle="modal" data-bs-target="#modModal" (click)="buscarArray(usuario.Numero_Usuario)"> Ver mas informacion - Modificar </button>
@@ -72,7 +60,7 @@
 
 </div>
 
-
+<!-- -------------------------------------MODAL CREACION INSTRUCTOR--------------------------------------------------------- -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -170,7 +158,7 @@
     </div>
 </div>
 
-<!-- -------------------------------------MODAL INFORMACION SOCIO--------------------------------------------------------- -->
+<!-- -------------------------------------MODAL INFORMACION INSTRUCTOR--------------------------------------------------------- -->
 
 <div class="modal fade" id="modModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog">
@@ -208,6 +196,7 @@
                                 class="form-control">
                 
                             <input type="hidden" name="Id_Rol" [(ngModel)]="usuariosfilter.Id_Rol" value="3" class="form-control">
+                            
                             <div  class="box-cell box2" style="margin-bottom: 2%;">
                                 <select class="form-control" name="Id_Estado" [(ngModel)]="usuariosfilter.Id_Estado">
                                   <option *ngFor=" let estado of estados" [value]="estado.Id_Estado">
@@ -231,7 +220,7 @@
 <!-- -------------------------------------MODAL CLASE INSTRUCTOR--------------------------------------------------------- -->
 
 <div class="modal fade" id="claseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-    <div class="modal-dialog">
+    <div class="modal-dialog" id="modalclass">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Clases del Instructor</h5>
@@ -242,21 +231,23 @@
                     <thead >
                         <th>Clase</th>
                         <th>Actividad</th>
-                        <th>Accion</th>
+                        <th>Comienzo</th>
+                        <th>Finalizacion</th>
+                        <th>Dias</th>
                     </thead>
-                    <tbody *ngIf="clasesSocio.length > 0; else fila">
+                    <tbody *ngIf="clasesSocio.length > 0; else filas">
                         <tr *ngFor=" let claseSocio of clasesSocio">
                             <td>{{claseSocio.Id_Clase}}</td>
                             <td>{{claseSocio.Descripcion_Actividad}}</td>
-                            <td>
-                                <!-- <button class="btn btn-success btn-block" (click)="eliminarClaseUser(claseSocio.Numero_Usuario, claseSocio.Id_Clase)" data-bs-dismiss="modal">Enviar</button> -->
-                            </td>
+                            <td>{{claseSocio.Comienzo_Horario}}:00 HS</td>
+                            <td>{{claseSocio.Finalizacion_Horario}}:00 HS</td>
+                            <td>{{claseSocio.Dias}}</td>
                         </tr>
                     </tbody>
-                    <ng-template #fila>
+                    <ng-template #filas>
                         <tbody>
                             <tr>
-                                <td colspan="4"> No esta inscripto a ninguna clase</td>
+                                <td colspan="5"> No esta inscripto a ninguna clase</td>
                             </tr>
                         </tbody>
                     </ng-template>

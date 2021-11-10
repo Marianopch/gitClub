@@ -71,6 +71,7 @@ class AdminRoutes {
         this.router.get('/buscarClase', adminController_1.default.buscarClase);
         this.router.get('/buscardias', adminController_1.default.listarDias);
         this.router.delete('/eliminarClase/:id', adminController_1.default.eliminarClase);
+        this.router.get('/buscarInstructorActivos', adminController_1.default.listarInstructoresActivos);
         //Socio-Actividad
         this.router.post('/notarActividad', adminController_1.default.anotarActividad);
         this.router.get('/error', adminController_1.default.showError);

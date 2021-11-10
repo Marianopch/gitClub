@@ -55,7 +55,7 @@
         <ng-template #fila>
             <tbody>
                 <tr>
-                    <td colspan="4">No hay Administradores</td>
+                    <td colspan="4">No hay Socios</td>
                 </tr>
             </tbody>
         </ng-template>
@@ -288,7 +288,7 @@
                         <th>Dias</th>
                         <th>Accion</th>
                     </thead>
-                    <tbody *ngIf="clasesSocio.length > 0; else fila">
+                    <tbody *ngIf="clasesSocio.length > 0; else filas">
                         <tr *ngFor=" let claseSocio of clasesSocio">
                             <td>{{claseSocio.Id_Clase}}</td>
                             <td>{{claseSocio.Descripcion_Actividad}}</td>
@@ -301,10 +301,10 @@
                             </td>
                         </tr>
                     </tbody>
-                    <ng-template #fila>
+                    <ng-template #filas>
                         <tbody>
                             <tr>
-                                <td colspan="4"> No esta inscripto a ninguna clase</td>
+                                <td colspan="7"> No esta inscripto a ninguna clase</td>
                             </tr>
                         </tbody>
                     </ng-template>

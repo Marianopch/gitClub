@@ -138,11 +138,25 @@ class AdminController {
 	}
 
 	public async eliminarActividad(req: Request, res: Response) {
-		console.log(req.body);
-		const { Id_Actividad } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
-		const result = await adminModel.eliminarActividad(Id_Actividad);
 
-		return res.status(200).json({ message: 'Actividad ELIMINADA!' });
+		const { Id_Actividad } = req.params; 
+
+		const busqueda = await adminModel.buscarClaseActividad(Id_Actividad);
+
+		if(!busqueda) {
+
+			const result = await adminModel.eliminarActividad(Id_Actividad);
+
+			return res.status(200).json({ message: 'Actividad ELIMINADA!' });
+			
+		} else {
+			
+			return res.status(403).json({ message: 'NO SE PUDO ELIMINAR. Primero se debe eliminar las clases que consuman dicha actividad!' });
+		}
+
+		
+
+
 	}
 
 	public async modificarActividad(req: Request, res: Response) {
@@ -186,8 +200,6 @@ class AdminController {
 
 	public async agregarClase(req: Request, res: Response) {
 		const clase = req.body;
-		console.log("Controller Clase:" ,clase);
-
 
 		const buscarClase = await adminModel.buscarClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario)
 
@@ -197,10 +209,7 @@ class AdminController {
 
 			//Obtengo el Id de la Clase Creada
 			const consultaID = await adminModel.consultaIDClase(clase.Id_Actividad, clase.Id_Horario, clase.Cupo_Clase, clase.Numero_Usuario);
-	
-			console.log("Controller IdClase:", consultaID[0].Id_Clase);
-	
-			// for ( let i = 0; i < clase.Id_Dias.lenght; i++ ) {
+		
 			for ( var val of clase.Id_Dias) {
 				const resultdias = await adminModel.crearClaseDias(consultaID[0].Id_Clase, val);
 				console.log("Controller", resultdias);
@@ -221,13 +230,37 @@ class AdminController {
 		return res.json(clases);
 	}
 
+	public async listarInstructoresActivos(req: Request, res: Response) {
+		console.log(req.body);
+
+		const usuarios = await adminModel.listarTodosInstructoresActivos();
+		console.log(usuarios);
+		return res.json(usuarios);
+	}
+
 	public async eliminarClase (req: Request, res: Response) {
 		
-		console.log(req.body);
-		const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
-		const result = await adminModel.eliminarClase(id);
 
-		return res.status(200).json({ message: 'Actividad ELIMINADA!' });
+		const { id } = req.params; 
+
+
+		const busqueda = await adminModel.buscarInscriptosClase(id);
+
+		if(busqueda === 0) {
+			//console.log("CN Busqueda", busqueda[0].Id_Clase)
+			const result = await adminModel.eliminarClase(id);
+
+			return res.status(200).json({ message: 'Clase ELIMINADA!' });
+
+		} else {
+
+			const eliminados = await adminModel.eliminarSociosdeClase(id)
+
+			const result = await adminModel.eliminarClase(id);
+
+			return res.status(200).json({ message: 'Se elimino los Socios inscriptos a la clase Y la clase!!' });
+		}
+
 	}
 
 
@@ -254,19 +287,30 @@ class AdminController {
 	public async modificarInstructor(req: Request, res: Response) {
 
 		const usuario = req.body;
-		console.log("Controller:", req.body);
+		console.log("Controller:", usuario.Numero_Usuario);
 
 		if(usuario.Id_Estado == 2) { 
 
 			const buscarIdClases = await adminModel.buscarClasesdeIntr(usuario.Numero_Usuario);
 			console.log("Buscar clase:", buscarIdClases);
-			//const buscarSocioClases = await adminModel.buscarSocioClases()
-			//const resultado = await adminModel.borrarClasesInstructor(usuario.Numero_Usuario);
+
+			if (buscarIdClases === 0 ) {
+
+				const result = await adminModel.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario, usuario.Direccion_Usuario, usuario.Password_Usuario, usuario.Id_Estado);
+
+				return res.status(200).json({ message: 'Se modificaron los datos!' });
+
+			} else {
+
+				return res.status(403).json({ message: 'No se modifico, primero se deberian eliminar las clases que el instructor esta dando.' });
+			}
+
 		}
 		
 		const result = await adminModel.actualizar(usuario.Numero_Usuario, usuario.Nombre_Usuario, usuario.Apellido_Usuario, usuario.DNI_Usuario, usuario.Mail_Usuario, usuario.Telefono_Usuario, usuario.Direccion_Usuario, usuario.Password_Usuario, usuario.Id_Estado);
 
-		return res.json(result);
+		return res.status(200).json({ message: 'Se modificaron los datos!!!' });
+
 	}
 
 
