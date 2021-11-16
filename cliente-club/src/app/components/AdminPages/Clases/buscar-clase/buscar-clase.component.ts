@@ -73,6 +73,8 @@ export class BuscarClaseComponent implements OnInit {
   }
 
 
+  cargarCupoActual() {
+  }
 
   cargarAct() {
     this.usuariosService.listarActividad().subscribe(

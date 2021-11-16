@@ -46,7 +46,7 @@ app-footer{
    } */
 
 
-   .cointainer-fluid {
+   /* .cointainer-fluid {
     border: 1px solid black;
     margin: 1rem;
     padding: 2rem 2rem;
@@ -57,7 +57,24 @@ app-footer{
     border: 1px solid red;
     padding: 1rem 1rem;
     vertical-align: middle;
-  }
+  } */
   
+  .container {
+      max-width: 100%;
+      padding: 1%;
+  }
+
+  .container .box {
+    width:100%;
+    display:table;
+}
+.container .box .box-row {
+    display:table-row;
+    width:100%;
+}
+.container .box .box-cell {
+    display:table-cell;
+    width:100%;
+}
 
 

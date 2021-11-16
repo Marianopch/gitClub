@@ -50,9 +50,10 @@ class SocioController {
     }
     inscripcionSocioClase(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.header("Authorization"));
             const envioDatos = req.body;
             const busqueda = yield socioModel_1.default.consultaClases(envioDatos[0], envioDatos[1]);
+            // const horario = await socioModel.consultaHorario(envioDatos[1], envioDatos[2]);
+            // console.log(horario[0].Contado);
             if (!busqueda) {
                 const cupo = yield socioModel_1.default.consultarCupo(envioDatos[0]);
                 const cantidadInscriptos = yield socioModel_1.default.cantidadInscriptos(envioDatos[0]);

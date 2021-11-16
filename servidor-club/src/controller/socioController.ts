@@ -46,11 +46,14 @@ class SocioController {
 	}
 
 	public async inscripcionSocioClase(req: Request, res: Response) {
-		console.log(req.header("Authorization"));
 
 		const envioDatos = req.body;
 
 		const busqueda = await socioModel.consultaClases(envioDatos[0], envioDatos[1]);
+
+		// const horario = await socioModel.consultaHorario(envioDatos[1], envioDatos[2]);
+
+		// console.log(horario[0].Contado);
 
 		if(!busqueda) {
 

@@ -119,6 +119,18 @@ class SocioModel {
         return null;
     }
 
+	async consultaHorario(user: string, horario: string) {
+
+		const consulta: any = await this.db.query('SELECT COUNT(*) AS Contado FROM SOCIOSCLASES SC JOIN CLASES C ON SC.ID_CLASE = C.ID_CLASE JOIN HORARIOS H ON H.ID_HORARIO = C.ID_HORARIO JOIN DIASCLASES DC ON DC.ID_CLASE = C.ID_CLASE JOIN DIAS D ON D.ID_DIAS = DC.ID_DIAS WHERE H.COMIENZO_HORARIO = ? AND SC.NUMERO_USUARIO = ?', [horario, user]);
+        //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+
+        if (consulta.length > 1){
+            return consulta[0][0];
+		}
+
+        return null;
+    }
+
 }
 //Exportamos el enrutador con 
 
