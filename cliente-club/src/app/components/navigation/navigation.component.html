@@ -6,6 +6,21 @@
       <!-- <i class="fas fa-house-user"></i> -->
     </a>
 
+    <!-- Example single danger button -->
+<div class="btn-group" style="background-color: rgb(44, 94, 56) ;">
+  <button type="button" class="btn btn-lg" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="fas fa-bars" style="color: whitesmoke;"></i>
+  </button>
+  <ul class="dropdown-menu" style="background-color: rgb(44, 94, 56) ;">
+    <li><a class="dropdown-item" routerLink="../../admin/buscarSocio">SOCIOS</a></li>
+    <li><a class="dropdown-item" routerLink="../../admin/buscarAdmin">ADMINISTRADORES</a></li>
+    <li><a class="dropdown-item" routerLink="../../admin/buscarActividad">ACTIVIDADES</a></li>
+    <li><a class="dropdown-item" routerLink="../../admin/buscarInstructor">INSTRUCTORES</a></li>
+    <li><a class="dropdown-item" routerLink="../../admin/buscarClase">CLASES</a></li>
+    <li><a class="dropdown-item" routerLink="../../admin/novedades">NOVEDADES</a></li>
+  </ul>
+</div>
+
     <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
       aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -70,7 +85,7 @@
     </div> -->
 
     <div class="collapse navbar-collapse">
-      <ul class="navbar-nav" style="margin-left: 80%;">
+      <ul class="navbar-nav" style="margin-left: 90%;">
         <li>
           <a class="nav-link" role="button" routerLink="../../admin/novedades" id="logout" (click)="logout()" 
             aria-expanded="false"> <b>Cerrar sesion <i class="fas fa-sign-out-alt"></i></b></a>

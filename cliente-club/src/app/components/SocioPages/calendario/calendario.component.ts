@@ -20,7 +20,10 @@ export class CalendarioComponent implements OnInit {
   claseCalendar = { Id_Clase: "", Descripcion_Actividad: "", Comienzo_Horario: "", Finalizacion_Horario: "", Id_Dias: "", Clase: "" }
 
   infoClase: any = [];
-
+  reintentar: boolean = false;
+  mensaje: string = "";
+  reintentar2: boolean = false;
+  mensaje2: string = "";
 
   constructor(private sociosService: SociosService, private router: Router) { }
 
@@ -74,11 +77,19 @@ export class CalendarioComponent implements OnInit {
     this.sociosService.inscribirSocio(envioDatos).subscribe(
       res => {
         let result: any = res;
-        console.log(result.message);
+        console.log(result);
+        this.reintentar = false;
+        this.reintentar2 = true;
+        this.mensaje = "";
+        this.mensaje2 = result.message;
 
       },
       err => {
         console.log(err.error.message);
+         this.reintentar = true;
+         this.reintentar2 = false;
+         this.mensaje2 = "";
+         this.mensaje = err.error.message;
 
       }
     )

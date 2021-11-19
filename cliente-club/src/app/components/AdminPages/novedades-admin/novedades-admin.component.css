@@ -12,7 +12,6 @@ img {
 
 .container-fluid .box {
     width:100%;
-    /* margin:50px; */
     display:table;
 }
 .container-fluid .box .box-row {
@@ -36,12 +35,6 @@ div.modal-header {
   color: floralwhite;
 }
 
-/* input, select {
-  margin: 3px;
-  border: black;
-  border-width: 2px;
-  border-style: solid;
-} */
 
 label.titulo {
   font-weight: bold;
@@ -89,7 +82,3 @@ button#btnmodal {
   width: 100%;
 }
 
-h5 {
-  text-align: center;
-  font-weight: bold;
-}

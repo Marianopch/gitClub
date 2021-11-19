@@ -61,7 +61,7 @@ body {
 }
 
 .card {
-    background: cadetblue;
+    background: rgb(44, 94, 56);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;

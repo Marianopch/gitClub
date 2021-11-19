@@ -1,16 +1,17 @@
 <app-navigation></app-navigation>
 
 
-<br>
-<br>
 
 <div class='container-fluid' >
+
+    <div *ngIf="reintentar" class="alert alert-danger" role="alert">
+        {{mensaje}}
+    </div>
 
     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" id="butAgr" >
         Nueva Clase
     </button>
-
-    
+ 
     <table class="table table-success table-hover">
         <thead>
             <th>Numero Clase</th>
@@ -108,9 +109,6 @@
                                 data-bs-dismiss="modal">Crear Clase</button>
                         </form>
                     </div>
-                </div>
-                <div *ngIf="reintentar" class="card-body">
-                    {{mensaje}} <br>
                 </div>
             </div>
         </div>

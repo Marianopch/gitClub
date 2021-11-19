@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import socioModel from '../models/socioModel';
 import flash from "connect-flash";
 import jwt from "jsonwebtoken";
+import { convertToObject } from 'typescript';
 
 
 class SocioController {
@@ -11,7 +12,6 @@ class SocioController {
 	public async clasesTotales(req: Request, res: Response) {
 		console.log(req.header("Authorization"));
 
-		console.log(req.body);
 		const clases = await socioModel.listarclasesTotales();
 		return res.json(clases);
 	}
@@ -19,14 +19,13 @@ class SocioController {
 	public async llenarCalendar(req: Request, res: Response) {
 		console.log(req.header("Authorization"));
 
-		const  { Descripcion_Actividad } = req.params;
+		const { Descripcion_Actividad } = req.params;
 		const clases = await socioModel.llenarCalendario(Descripcion_Actividad);
 		return res.json(clases);
 	}
-	
+
 	//SocioPage - MiPerfil Sector 
 	public async miperfil(req: Request, res: Response) {
-		console.log(req.header("Authorization"));
 
 		const { Numero_Usuario } = req.params;
 
@@ -45,52 +44,80 @@ class SocioController {
 		return res.json(datosclase);
 	}
 
+
 	public async inscripcionSocioClase(req: Request, res: Response) {
+
 
 		const envioDatos = req.body;
 
-		console.log(envioDatos);
 		const busqueda = await socioModel.consultaClases(envioDatos[0], envioDatos[1]);
 
-		//traigo horario y dia de la clase a anotarse
-		const horarioClaseAnotar = await socioModel.consultaHorario(envioDatos[0]);
+		if (!busqueda) {
 
-		//traigo horario y dia de la clases inscriptas
-		
-		const horarioClasesInscriptas = await socioModel.consultaHorario2(envioDatos[1]);
+			const cupo = await socioModel.consultarCupo(envioDatos[0]);
 
-		//hago un array con los dias 
-		const arrayDias1 =  horarioClaseAnotar.Dias.split(',');
+			const cantidadInscriptos = await socioModel.cantidadInscriptos(envioDatos[0]);
 
-		//hago un array con los dias 
-		const arrayDias2 =  horarioClasesInscriptas.Dias.split(',');
+			if (cantidadInscriptos[0].Cantidad < cupo[0].CUPO_CLASE) {
 
-		console.log('Array1:', arrayDias1);
+				//traigo horario y dia de la clase a anotarse
+				const horarioClaseAnotar = await socioModel.consultaHorario(envioDatos[0]);
 
-		console.log('Array2:', arrayDias2);
-		// }
-		//console.log("Clases Inscriptas:", horarioClaseAnotar);
-		// if(!busqueda) {
+				//traigo horario y dia de la clases inscriptas
+				const horarioClasesInscriptas = await socioModel.consultaHorario2(envioDatos[1], envioDatos[2]);
 
-		// 	const cupo = await socioModel.consultarCupo(envioDatos[0]);
+				//hago un array con los dias 
+				const arrayDias1 = horarioClaseAnotar.Dias.split(',');
 
-		// 	const cantidadInscriptos = await socioModel.cantidadInscriptos(envioDatos[0]);
-	
-		// 	if ( cantidadInscriptos[0].Cantidad < cupo[0].CUPO_CLASE) {
 
-		// 		const inscripcion = await socioModel.inscribirSocio(envioDatos[0], envioDatos[1]);
-		// 		return res.status(200).json({ message: "El usuario fue inscripto a la clase." });
+				//hago un array con los dias 
+				if (horarioClasesInscriptas == null || horarioClasesInscriptas == undefined) {
+					const inscripcion = await socioModel.inscribirSocio(envioDatos[0], envioDatos[1]);
 
-		// 	} else {
+					return res.json({ message: "El usuario fue inscripto a la clase." });
 
-		// 		return res.status(403).json({ message: "No hay cupo para esta clase." });
-		// 	}
+				} else {
 
-		// } else {
+					const arrayDias2 = horarioClasesInscriptas.Dias.split(',');
 
-		// 	return res.status(403).json({ message: "El usuario ya esta inscripto en esta clase." });
-		// }
+					let resultado = findCommonElement(arrayDias1, arrayDias2);
 
+					if (resultado == true) {
+						return res.status(403).json({ message: 'No puedes inscribirte a las clases, hay una clase con este horario en la cual esta inscripto.' });
+						
+					} else {
+
+						const inscripcion = await socioModel.inscribirSocio(envioDatos[0], envioDatos[1]);
+
+						return res.json({ message: "El usuario fue inscripto a la clase." });
+					}
+				}
+
+			} else {
+
+				return res.status(403).json({ message: "No hay cupo para esta clase." });
+			}
+
+
+		} else {
+
+			return res.status(403).json({ message: "El usuario ya esta inscripto en esta clase." });
+		}
+
+		function findCommonElement(array1: string | any[], array2: string | any[]) {
+
+			for (let i = 0; i < array1.length; i++) {
+
+				for (let j = 0; j < array2.length; j++) {
+
+					if (array1[i] === array2[j]) {
+
+						return true;
+					}
+				}
+			}
+			return false;
+		}
 	}
 
 	public async misActividades(req: Request, res: Response) {
@@ -108,7 +135,7 @@ class SocioController {
 		const { id } = req.params;
 		const { Numero_Usuario } = req.params;
 
-		console.log("Id",id , "Numero", Numero_Usuario);
+		console.log("Id", id, "Numero", Numero_Usuario);
 
 		const eliminar = await socioModel.eliminarClase(id, Numero_Usuario);
 
@@ -119,7 +146,7 @@ class SocioController {
 		//console.log(req.header("Authorization"));
 		console.log(req.body);
 		const comentario = await socioModel.listarComentario();
-		console.log(comentario);
+
 		return res.json(comentario);
 	}
 
@@ -130,9 +157,9 @@ class SocioController {
 
 		return res.json(comentario);
 	}
-	
+
 	public endSession(req: Request, res: Response) {
-		console.log(req.body);
+
 		req.session.user = {};
 		req.session.auth = false;
 		req.session.admin = false;

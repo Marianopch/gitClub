@@ -11,6 +11,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class MiPerfilComponent implements OnInit {
 
   usuarios: any = [];
+  usuariosCarga: any = [];
   errorNumUs=0;
   errorNombre=0;
   errorApellido=0;

@@ -1,29 +1,28 @@
 <app-navigation></app-navigation>
 
 <div class="container-fluid">
-  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#crearModel" id="butAgr">
-    Nuevo Comentario
+  <button type="button" class="btn btn-light" data-bs-toggle="modal" style=" font-weight: bold;  border-color: green;  width: 30%; margin-left: 35%;" data-bs-target="#crearModel" id="butAgr">
+    NUEVO COMENTARIO
   </button>
 
   <!-- -------------------------------------MUESTRA COMENTARIO--------------------------------------------------------- -->
 
   <div class="row row-cols-1 row-cols-md-3">
     <div class="col mb-4" *ngFor=" let comentario of comentarios">
-      <div class="card" >
-        <div class="card-body" style="background-color: rgb(132, 196, 147); color: rgb(0, 0, 0);">
-          <h5 class="card-title">{{comentario.Titulo_Comentario}}</h5>
-          <hr style="border: 1;">
+      <div class="card" style=" border-radius: 25px;" >
+        <div class="card-header" style="background-color: rgb(44, 94, 56); border-radius: 25px 25px 0px 0px; color: whitesmoke;">
+          <h3 class="card-title" >{{comentario.Titulo_Comentario}}</h3>
+        </div>
+        <div class="card-body" style="color: black;">
           <p class="card-text">{{comentario.Descripcion_Comentario}}</p>
           <div class="card-footer">
-            <!-- <p><small>{{comentario.fcreacion}}</small></p>
-            <button *ngIf="id_Rol == '1'" class="btn btn-danger btn-block" (click)=eliminar(comentario)>Eliminar</button> -->
             <div class="box">
             <div class="box-row">
               <div class="box-cell box1">
                  <p><small>{{comentario.fcreacion}}</small></p>
               </div>
               <div class="box-cell box2">
-                <button *ngIf="id_Rol == '1'" class="btn btn-danger btn-block" (click)=eliminar(comentario)>Eliminar</button>
+                <button *ngIf="id_Rol == '1'" class="btn btn-outline-danger btn-sm" (click)=eliminar(comentario) style="margin-left: 50%;">Eliminar</button>
               </div>
             </div>
           </div>
@@ -51,14 +50,18 @@
                       <div class="form-group">
                         Titulo: <input type="text" name="titulo" [(ngModel)]="comentario.Titulo_Comentario" placeholder="Titulo" id="modalinput">
                       </div>
-                      <div class="form-group">
-                            Descripcion: <input type="text" name="descripcion" [(ngModel)]="comentario.Descripcion_Comentario" id="modalinput"
-                            (focus)="limpiarComentario()" placeholder="Descripcion">
-                            <div [ngSwitch]="errorComentario">
-                              <div class="DivErrorComent" *ngSwitchCase="1">Error, campo vacio</div>
-                              <div class="DivErrorComent" *ngSwitchCase="2">Error, excedió el limite maximo de caracteres</div>
-                            </div>
+                      <div class="input-group">
+                        Descripcion: <textarea class="form-control" [ngModelOptions]="{standalone: true}" aria-label="With textarea" [(ngModel)]="comentario.Descripcion_Comentario" id="modalinput" (focus)="limpiarComentario()" placeholder="Descripcion"></textarea>
+                        <!-- <div [ngSwitch]="errorComentario">
+                          <div class="DivErrorComent" *ngSwitchCase="1">Error, campo vacio</div>
+                          <div class="DivErrorComent" *ngSwitchCase="2">Error, excedió el limite maximo de caracteres</div>
+                        </div> -->
                       </div>
+                      <!-- <div class="form-group">
+                            Descripcion: <input type="text" name="descripcion" [(ngModel)]="comentario.Descripcion_Comentario" id="modalinput"
+                            (focus)="limpiarComentario()" placeholder="Descripcion"> -->
+
+                      <!-- </div> -->
                       <input type="hidden" name="numero_Usuario" [(ngModel)]="comentario.Numero_Usuario">
                       <span></span>
                       <button class="btn btn-small btn-success" type="submit" (click)="verificarForm()">Crear</button>
@@ -66,72 +69,35 @@
                   </div>
               </div>
           </div>
-
-
-          <!-- <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="btn-guardar" data-bs-dismiss="modal">Crear</button>
-          </div> -->
       </div>
   </div>
 </div>
 
 
-
-
-<!-- <div class="col mb-4" style="padding: 3%; margin-left: 25%;">
-  <div class="row row-cols-1 row-cols-md-2">
-    <div class="col mb-4" *ngIf="comentarios.length > 0; else fila">
-      <div *ngFor=" let comentario of comentarios" class="card" style="margin-bottom: 3%;">
-        <div class="card-body">
-          <h5 class="card-title" style="margin-left: 40%;"> {{comentario.Titulo_Comentario}}</h5>
-          <hr class="solid">
-          <p class="card-text" [innerHTML]="comentario.Descripcion_Comentario">{{comentario.Descripcion_Comentario}}</p>
-
-          <p class="card-text">{{comentario.id}}</p>
-          <hr class="solid">
-          <p class="card-text"><small class="text-muted">Usuario: {{comentario.Numero_Usuario}} , Fecha Creacion:
-              {{comentario.fcreacion}} </small></p>
-          <button *ngIf="id_Rol == '1'" class="btn btn-danger btn-block" (click)=eliminar(comentario)>Eliminar</button>
+<!-- <div class="container">
+ 
+<div class="row">
+ 
+  <div class="col-sm-4" *ngFor=" let comentario of comentarios" >
+    <div class="card text-dark bg-warning" >
+    <div class="card-header text-center" style="background-color: rgb(44, 94, 56);" ><h4>{{comentario.Titulo_Comentario}}</h4></div>
+      <div class="card-body " style="background-color: whitesmoke;">
+        <p class="card-text text-left" >{{comentario.Descripcion_Comentario}} </p>
+      </div>
+      <div class="card-footer text-right" style="background-color: rgb(44, 94, 56);">
+        <div class="box">
+          <div class="box-row">
+            <div class="box-cell box1">
+               <p><small>{{comentario.fcreacion}}</small></p>
+            </div>
+            <div class="box-cell box2">
+              <button *ngIf="id_Rol == '1'" class="btn btn-outline-danger btn-sm" (click)=eliminar(comentario)>Eliminar</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <ng-template #fila>
-      <tbody>
-        <tr>
-          <td style="color: white;" colspan="4">No hay filas para mostrar</td>
-        </tr>
-      </tbody>
-    </ng-template>
   </div>
+</div>
 </div> -->
 
-<!-- 
-<div class="col mb-4" style="padding: 3%; margin-left: 25%;">
-  <div class="row row-cols-1 row-cols-md-2">
-    <div class="col mb-4">
-
-      <form (submit)="crearComentario()" class="card">
-        <p style="text-decoration: underline; font-weight: bold;">Crear el comentario</p>
-        <div class="form-group">
-          Titulo: <input type="text" name="titulo" [(ngModel)]="comentario.Titulo_Comentario" placeholder="Titulo">
-        </div>
-        <div class="form-group">
-          Descripcion: <input type="text" name="descripcion" [(ngModel)]="comentario.Descripcion_Comentario"
-            (focus)="limpiarComentario()" placeholder="Descripcion">
-          <div [ngSwitch]="errorComentario">
-            <div class="DivErrorComent" *ngSwitchCase="1">Error, campo vacio</div>
-            <div class="DivErrorComent" *ngSwitchCase="2">Error, excedió el limite maximo de caracteres</div>
-          </div>
-        </div>
-        Imagen: <input type="text" name="imagen" [(ngModel)]="comentario.Imagen_Comentario" (focus)="limpiarImagen()">
-        <div [ngSwitch]="errorImagen">
-          <div class="DivErrorComent" *ngSwitchCase="1">Error, campo vacio</div>
-        </div>
-        <input type="hidden" name="numero_Usuario" [(ngModel)]="comentario.Numero_Usuario">
-        <span></span>
-        <button class="btn btn-small btn-success" type="submit" (click)="verificarForm()">Crear</button>
-      </form>
-    </div>
-  </div>
-</div> -->

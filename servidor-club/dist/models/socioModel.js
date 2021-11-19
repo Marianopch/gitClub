@@ -117,7 +117,7 @@ class SocioModel {
     }
     consultaHorario(idClase) {
         return __awaiter(this, void 0, void 0, function* () {
-            const consulta = yield this.db.query('SELECT C.ID_CLASE, group_concat( DC.Id_dias) AS "Dias", H.COMIENZO_HORARIO FROM CLASES C JOIN Horarios H ON C.Id_Horario = H.Id_Horario JOIN diasclases DC ON C.id_clase = DC.id_clase  WHERE C.Id_Clase = 35 GROUP BY (C.Id_Clase);', [idClase]);
+            const consulta = yield this.db.query('SELECT C.ID_CLASE, group_concat( DC.Id_dias) AS "Dias", H.COMIENZO_HORARIO FROM CLASES C JOIN Horarios H ON C.Id_Horario = H.Id_Horario JOIN diasclases DC ON C.id_clase = DC.id_clase  WHERE C.Id_Clase = ? GROUP BY (C.Id_Clase);', [idClase]);
             //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
             if (consulta.length > 1) {
                 return consulta[0][0];
@@ -125,9 +125,9 @@ class SocioModel {
             return null;
         });
     }
-    consultaHorario2(idsocio) {
+    consultaHorario2(idsocio, horario) {
         return __awaiter(this, void 0, void 0, function* () {
-            const consulta = yield this.db.query('SELECT SC.ID_CLASE, group_concat( Dc.Id_dias) AS "Dias", H.COMIENZO_HORARIO FROM SOCIOSCLASES SC JOIN CLASES C ON C.Id_Clase = SC.Id_Clase JOIN diasclases DC ON C.id_clase = DC.id_clase JOIN Horarios H ON C.Id_Horario = H.Id_Horario WHERE SC.NUMERO_USUARIO = ? GROUP BY (C.Id_Clase);', [idsocio]);
+            const consulta = yield this.db.query('SELECT SC.ID_CLASE, group_concat( Dc.Id_dias) AS "Dias", H.COMIENZO_HORARIO FROM SOCIOSCLASES SC JOIN CLASES C ON C.Id_Clase = SC.Id_Clase JOIN diasclases DC ON C.id_clase = DC.id_clase JOIN Horarios H ON C.Id_Horario = H.Id_Horario WHERE SC.NUMERO_USUARIO = ? AND H.COMIENZO_HORARIO = ? GROUP BY (C.Id_Clase);', [idsocio, horario]);
             //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
             if (consulta.length > 1) {
                 return consulta[0][0];
