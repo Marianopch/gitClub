@@ -119,9 +119,21 @@ class SocioModel {
         return null;
     }
 
-	async consultaHorario(user: string, horario: string) {
+	async consultaHorario(idClase: string) {
 
-		const consulta: any = await this.db.query('SELECT COUNT(*) AS Contado FROM SOCIOSCLASES SC JOIN CLASES C ON SC.ID_CLASE = C.ID_CLASE JOIN HORARIOS H ON H.ID_HORARIO = C.ID_HORARIO JOIN DIASCLASES DC ON DC.ID_CLASE = C.ID_CLASE JOIN DIAS D ON D.ID_DIAS = DC.ID_DIAS WHERE H.COMIENZO_HORARIO = ? AND SC.NUMERO_USUARIO = ?', [horario, user]);
+		const consulta: any = await this.db.query('SELECT C.ID_CLASE, group_concat( DC.Id_dias) AS "Dias", H.COMIENZO_HORARIO FROM CLASES C JOIN Horarios H ON C.Id_Horario = H.Id_Horario JOIN diasclases DC ON C.id_clase = DC.id_clase  WHERE C.Id_Clase = 35 GROUP BY (C.Id_Clase);', [idClase]);
+        //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+
+        if (consulta.length > 1){
+            return consulta[0][0];
+		}
+
+        return null;
+    }
+
+		async consultaHorario2(idsocio: string) {
+
+		const consulta: any = await this.db.query('SELECT SC.ID_CLASE, group_concat( Dc.Id_dias) AS "Dias", H.COMIENZO_HORARIO FROM SOCIOSCLASES SC JOIN CLASES C ON C.Id_Clase = SC.Id_Clase JOIN diasclases DC ON C.id_clase = DC.id_clase JOIN Horarios H ON C.Id_Horario = H.Id_Horario WHERE SC.NUMERO_USUARIO = ? GROUP BY (C.Id_Clase);', [idsocio]);
         //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
 
         if (consulta.length > 1){

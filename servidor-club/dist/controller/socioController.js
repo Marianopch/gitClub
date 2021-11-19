@@ -51,23 +51,32 @@ class SocioController {
     inscripcionSocioClase(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const envioDatos = req.body;
+            console.log(envioDatos);
             const busqueda = yield socioModel_1.default.consultaClases(envioDatos[0], envioDatos[1]);
-            // const horario = await socioModel.consultaHorario(envioDatos[1], envioDatos[2]);
-            // console.log(horario[0].Contado);
-            if (!busqueda) {
-                const cupo = yield socioModel_1.default.consultarCupo(envioDatos[0]);
-                const cantidadInscriptos = yield socioModel_1.default.cantidadInscriptos(envioDatos[0]);
-                if (cantidadInscriptos[0].Cantidad < cupo[0].CUPO_CLASE) {
-                    const inscripcion = yield socioModel_1.default.inscribirSocio(envioDatos[0], envioDatos[1]);
-                    return res.status(200).json({ message: "El usuario fue inscripto a la clase." });
-                }
-                else {
-                    return res.status(403).json({ message: "No hay cupo para esta clase." });
-                }
-            }
-            else {
-                return res.status(403).json({ message: "El usuario ya esta inscripto en esta clase." });
-            }
+            //traigo horario y dia de la clase a anotarse
+            const horarioClaseAnotar = yield socioModel_1.default.consultaHorario(envioDatos[0]);
+            //traigo horario y dia de la clases inscriptas
+            const horarioClasesInscriptas = yield socioModel_1.default.consultaHorario2(envioDatos[1]);
+            //hago un array con los dias 
+            const arrayDias1 = horarioClaseAnotar.Dias.split(',');
+            //hago un array con los dias 
+            const arrayDias2 = horarioClasesInscriptas.Dias.split(',');
+            console.log('Array1:', arrayDias1);
+            console.log('Array2:', arrayDias2);
+            // }
+            //console.log("Clases Inscriptas:", horarioClaseAnotar);
+            // if(!busqueda) {
+            // 	const cupo = await socioModel.consultarCupo(envioDatos[0]);
+            // 	const cantidadInscriptos = await socioModel.cantidadInscriptos(envioDatos[0]);
+            // 	if ( cantidadInscriptos[0].Cantidad < cupo[0].CUPO_CLASE) {
+            // 		const inscripcion = await socioModel.inscribirSocio(envioDatos[0], envioDatos[1]);
+            // 		return res.status(200).json({ message: "El usuario fue inscripto a la clase." });
+            // 	} else {
+            // 		return res.status(403).json({ message: "No hay cupo para esta clase." });
+            // 	}
+            // } else {
+            // 	return res.status(403).json({ message: "El usuario ya esta inscripto en esta clase." });
+            // }
         });
     }
     misActividades(req, res) {

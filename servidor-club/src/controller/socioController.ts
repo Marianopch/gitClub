@@ -49,32 +49,47 @@ class SocioController {
 
 		const envioDatos = req.body;
 
+		console.log(envioDatos);
 		const busqueda = await socioModel.consultaClases(envioDatos[0], envioDatos[1]);
 
-		// const horario = await socioModel.consultaHorario(envioDatos[1], envioDatos[2]);
+		//traigo horario y dia de la clase a anotarse
+		const horarioClaseAnotar = await socioModel.consultaHorario(envioDatos[0]);
 
-		// console.log(horario[0].Contado);
+		//traigo horario y dia de la clases inscriptas
+		
+		const horarioClasesInscriptas = await socioModel.consultaHorario2(envioDatos[1]);
 
-		if(!busqueda) {
+		//hago un array con los dias 
+		const arrayDias1 =  horarioClaseAnotar.Dias.split(',');
 
-			const cupo = await socioModel.consultarCupo(envioDatos[0]);
+		//hago un array con los dias 
+		const arrayDias2 =  horarioClasesInscriptas.Dias.split(',');
 
-			const cantidadInscriptos = await socioModel.cantidadInscriptos(envioDatos[0]);
+		console.log('Array1:', arrayDias1);
+
+		console.log('Array2:', arrayDias2);
+		// }
+		//console.log("Clases Inscriptas:", horarioClaseAnotar);
+		// if(!busqueda) {
+
+		// 	const cupo = await socioModel.consultarCupo(envioDatos[0]);
+
+		// 	const cantidadInscriptos = await socioModel.cantidadInscriptos(envioDatos[0]);
 	
-			if ( cantidadInscriptos[0].Cantidad < cupo[0].CUPO_CLASE) {
+		// 	if ( cantidadInscriptos[0].Cantidad < cupo[0].CUPO_CLASE) {
 
-				const inscripcion = await socioModel.inscribirSocio(envioDatos[0], envioDatos[1]);
-				return res.status(200).json({ message: "El usuario fue inscripto a la clase." });
+		// 		const inscripcion = await socioModel.inscribirSocio(envioDatos[0], envioDatos[1]);
+		// 		return res.status(200).json({ message: "El usuario fue inscripto a la clase." });
 
-			} else {
+		// 	} else {
 
-				return res.status(403).json({ message: "No hay cupo para esta clase." });
-			}
+		// 		return res.status(403).json({ message: "No hay cupo para esta clase." });
+		// 	}
 
-		} else {
+		// } else {
 
-			return res.status(403).json({ message: "El usuario ya esta inscripto en esta clase." });
-		}
+		// 	return res.status(403).json({ message: "El usuario ya esta inscripto en esta clase." });
+		// }
 
 	}
 
