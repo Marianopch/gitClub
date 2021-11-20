@@ -62,3 +62,14 @@ div#modalclass {
     max-width: 100%;
     margin: 3%;
 }
+
+app-footer{
+   
+    align-self: flex-end;
+     width:100%;
+     height:60px; 
+  }  
+
+  button.boton1{
+      margin-bottom: 5px;
+  }

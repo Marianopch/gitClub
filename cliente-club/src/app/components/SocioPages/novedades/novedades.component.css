@@ -8,3 +8,11 @@ img {
   hr.solid {
     border-top: 3px solid #bbb;
   }
+
+  app-footer{
+    position: relative;
+    bottom: -100px;
+    /* align-self: flex-end; */
+     width:100%;
+     height:60px; 
+ }  

@@ -82,3 +82,11 @@ button#btnmodal {
   width: 100%;
 }
 
+app-footer{
+  position: relative;
+  bottom: -100px;
+  /* align-self: flex-end; */
+   width:100%;
+   height:60px; 
+}  
+
