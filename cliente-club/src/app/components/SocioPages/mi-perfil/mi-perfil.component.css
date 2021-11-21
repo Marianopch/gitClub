@@ -100,12 +100,7 @@ button.btn-outline-warning {
     border-color: black;
 }
 
-app-footer {
-    position: absolute;
-    width: 100%;
-    bottom: 0%;
-    
-}
+
 
 div#divcontainer{
     margin-top: 2%;

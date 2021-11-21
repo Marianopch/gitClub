@@ -23,4 +23,16 @@ input::-webkit-inner-spin-button {
     bottom:0;
   }
 } */
+
+div.main{
+  min-height: 92.5vh;
+  
+}
+
+.footer{
+  bottom: 0;
+width: 100%;
+  
+}
+
   

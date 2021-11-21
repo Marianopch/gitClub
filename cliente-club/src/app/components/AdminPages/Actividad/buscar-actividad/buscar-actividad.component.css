@@ -12,20 +12,6 @@ thead{
     background-color: cadetblue;
 }
 
-app-footer{
-    position:absolute;
-   bottom: 0px;
-    width:100%;
-     }  
-   
-    
-  
-  
-   @media(min-height: 750px){  app-footer{
-      position: absolute;
-      
-      
-    }
-   }
+
   
   

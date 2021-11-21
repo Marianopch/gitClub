@@ -20,7 +20,7 @@ import { BuscarActividadComponent } from './components/AdminPages/Actividad/busc
 import { AgregarActividadComponent } from './components/AdminPages/Actividad/agregar-actividad/agregar-actividad.component';
 import { BuscarInstructorComponent } from './components/AdminPages/Instructores/buscar-instructor/buscar-instructor.component';
 import { AgregarInstructorComponent } from './components/AdminPages/Instructores/agregar-instructor/agregar-instructor.component';
-import { InscribirseComponent } from './components/SocioPages/inscribirse/inscribirse.component';
+
 import { HomeSocioComponent } from './components/SocioPages/home-socio/home-socio.component';
 import { BuscarClaseComponent } from './components/AdminPages/Clases/buscar-clase/buscar-clase.component';
 import { AgregarClaseComponent } from './components/AdminPages/Clases/agregar-clase/agregar-clase.component';
@@ -52,7 +52,7 @@ import {TokenInterceptorService} from './services/token-interceptor.service';
     AgregarActividadComponent,
     BuscarInstructorComponent,
     AgregarInstructorComponent,
-    InscribirseComponent,
+  
     HomeSocioComponent,
     BuscarClaseComponent,
     AgregarClaseComponent,

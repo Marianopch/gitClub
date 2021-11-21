@@ -58,3 +58,7 @@ input#modalinput {
 button#btnmodal {
    width: 100%;
 }
+
+button.boton1{
+   margin-bottom: 10px;
+}

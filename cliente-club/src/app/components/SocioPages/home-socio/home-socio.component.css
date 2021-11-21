@@ -36,15 +36,7 @@ app-footer{
     height:60px; 
 }  
    
-    
-   /* @media(min-height: 750px){  app-footer{
-      position: fixed;
-      align-self: flex-end;
-      
-      
-    }
-   } */
-
+   
 
    /* .cointainer-fluid {
     border: 1px solid black;
@@ -75,6 +67,7 @@ app-footer{
 .container .box .box-cell {
     display:table-cell;
     width:100%;
+    
 }
 
 
