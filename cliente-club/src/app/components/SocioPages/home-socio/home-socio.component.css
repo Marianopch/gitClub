@@ -5,12 +5,25 @@ h5.negro{
     color: black;
     
 }
-p.negro{
+h5.blanco{
+    font-size: 50px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: whitesmoke;
+}
+    
+p.blanco{
     font-size: 18px;
     color: whitesmoke ;
     font-family: sans-serif;
     font-weight: bold;
-    color: black;
+   
+}
+p.negro{
+    font-size: 18px;
+    color: black ;
+    font-family: sans-serif;
+    font-weight: bold;
+   
 }
 .but{
     background-color: yellow;
@@ -18,9 +31,7 @@ p.negro{
     border: initial;
     font-weight: bold;
 }
-.negro{
 
-}
 
 /* img.imagen{
     
@@ -30,12 +41,7 @@ p.negro{
     display: contents;
 } */
 
-app-footer{
-    
-   align-self: flex-end;
-    width:100%;
-    height:60px; 
-}  
+
    
    
 

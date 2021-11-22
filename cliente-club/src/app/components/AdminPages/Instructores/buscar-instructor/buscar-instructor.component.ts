@@ -11,7 +11,7 @@ export class BuscarInstructorComponent implements OnInit {
 
   filterPost = '';
   page: number = 0;
-  
+ 
   usuarios: any = [];
   errorNumUs = 0;
   errorNombre = 0;
@@ -87,10 +87,13 @@ export class BuscarInstructorComponent implements OnInit {
       response => {
         console.log(response);
         this.ngOnInit();
+        this.reintentar=false;
       },
       error => {
-        console.log(error);
-        this.ngOnInit();
+        this.mensaje= error.error.message;
+        console.log(error, this.mensaje);
+        this.reintentar=true;
+        
       });
   }
 

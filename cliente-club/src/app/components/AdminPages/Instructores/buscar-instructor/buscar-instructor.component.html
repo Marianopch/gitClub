@@ -2,6 +2,8 @@
 
 <div class="container-fluid">
 
+
+
     <form>
         <div id="divForm" class ="form-group mb-2">
             <div class = "input-group">
@@ -12,6 +14,10 @@
             </div>
         </div>
     </form>
+
+    <div *ngIf="reintentar" class="alert alert-danger" role="alert">
+        {{mensaje}}
+    </div> 
 
     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" id="butAgr">
         Nuevo Instructor

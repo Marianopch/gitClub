@@ -53,7 +53,7 @@ class AdminRoutes {
         this.router.post('/agregarInstructor', adminController.agregarUsuario);
         //this.router.get('/agregarInstructor', adminController.mostrarFormInstructores);
         //Eliminar
-        this.router.get('/eliminarInstructor/:Numero_Usuario', adminController.eliminar)
+        this.router.delete('/eliminarInstructor/:Numero_Usuario', adminController.eliminarInstructor)
         //Modificar
         this.router.put('/modificarInstructor/:id', adminController.modificarInstructor);
         this.router.get('/buscarClaseInstructor/:id', adminController.buscarClaseInstructor)

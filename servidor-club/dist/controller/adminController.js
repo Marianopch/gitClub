@@ -67,6 +67,21 @@ class AdminController {
             return res.status(200).json({ message: 'USUARIO ELIMINADO!' });
         });
     }
+    eliminarInstructor(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { Numero_Usuario } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const busqueda = yield adminModel_1.default.buscarClaseInstructor(Numero_Usuario);
+            console.log("BD: ", busqueda);
+            if (busqueda === 0) {
+                const result = yield adminModel_1.default.eliminar(Numero_Usuario);
+                return res.status(200).json({ message: 'Instructor ELIMINADA!' });
+            }
+            else {
+                return res.status(403).json({ message: 'NO SE PUDO ELIMINAR. Primero se debe eliminar las clases a las que esta el Instructor ASIGNADO!' });
+            }
+        });
+    }
     anotarActividad(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             res.render('adminPage/anotarActividad');

@@ -96,8 +96,9 @@ class AdminModel {
 
 	//Devuelve 1 si logro eliminar el usuario indicado por id
 	async eliminar(Numero_Usuario: string) {
-		const user = (await this.db.query('DELETE FROM Usuarios WHERE Numero_Usuario = ?', [Numero_Usuario]))[0].affectedRows;
-		console.log(user);
+		const user:any = (await this.db.query('DELETE FROM Usuarios WHERE Numero_Usuario = ?', [Numero_Usuario]))[0].affectedRows;
+		console.log("BD: ",user);
+	
 		return user;
 	}
 
@@ -199,6 +200,17 @@ class AdminModel {
 		const clasesSocio :any = await this.db.query('SELECT COUNT(*) AS Cantidad FROM clases C WHERE C.Numero_Usuario = ?', [id]);
 
 		if (clasesSocio[0][0].Cantidad === 0) {
+			return 0;
+		} else {
+			return 1
+		}
+	}
+
+	async buscarClaseInstructor(id: string) {
+
+		const clases: any = await this.db.query('SELECT COUNT(*) AS Cantidad FROM clases WHERE Numero_Usuario = ?', [id]);
+
+		if (clases[0][0].Cantidad === 0) {
 			return 0;
 		} else {
 			return 1

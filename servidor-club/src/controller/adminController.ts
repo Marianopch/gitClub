@@ -61,12 +61,34 @@ class AdminController {
 	public async eliminar(req: Request, res: Response) {
 		console.log(req.body);
 		const { Numero_Usuario } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
-
+		
 		const result = await adminModel.eliminar(Numero_Usuario);
 
-
+		
 		return res.status(200).json({ message: 'USUARIO ELIMINADO!' });
+		
+		
 	}
+
+	public async eliminarInstructor(req: Request, res: Response) {
+		console.log(req.body);
+		const { Numero_Usuario } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+		
+		const busqueda = await adminModel.buscarClaseInstructor(Numero_Usuario);
+		console.log("BD: ",busqueda)
+		if(busqueda===0) {
+
+			const result = await adminModel.eliminar(Numero_Usuario);
+
+			return res.status(200).json({ message: 'Instructor ELIMINADA!' });
+			
+		} else {
+			
+			return res.status(403).json({ message: 'NO SE PUDO ELIMINAR. Primero se debe eliminar las clases a las que esta el Instructor ASIGNADO!' });
+		}
+		
+	}
+
 
 	public async anotarActividad(req: Request, res: Response) {
 
