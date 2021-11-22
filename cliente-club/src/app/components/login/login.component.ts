@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
   }
 
   ingresar() {
-    console.log(this.user)
+
+    this.user.Numero_Usuario= this.user.Numero_Usuario.toUpperCase()
     this.usuariosService.ingresar(this.user).subscribe(
       res => {
         let result: any = res;

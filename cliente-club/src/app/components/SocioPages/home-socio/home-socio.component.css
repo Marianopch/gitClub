@@ -1,15 +1,16 @@
 
-h5{
+h5.negro{
     font-size: 50px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: whitesmoke ;
+    color: black;
     
 }
-p{
+p.negro{
     font-size: 18px;
     color: whitesmoke ;
     font-family: sans-serif;
     font-weight: bold;
+    color: black;
 }
 .but{
     background-color: yellow;
@@ -18,16 +19,16 @@ p{
     font-weight: bold;
 }
 .negro{
-    color: black;
+
 }
 
-img.imagen{
+/* img.imagen{
     
   
     width:100%;
     align-content: center   ;
     display: contents;
-}
+} */
 
 app-footer{
     
@@ -51,7 +52,7 @@ app-footer{
     vertical-align: middle;
   } */
   
-  .container {
+  /* .container {
       max-width: 100%;
       padding: 1%;
   }
@@ -68,6 +69,6 @@ app-footer{
     display:table-cell;
     width:100%;
     
-}
+} */
 
 
