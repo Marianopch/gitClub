@@ -5,6 +5,13 @@ NUEVA ACTIVIDAD</button>
 
 <div class="container">
 
+    <div *ngIf="reintentar" class="alert alert-danger" role="alert">
+        <Strong>{{mensaje}}</Strong>
+    </div>
+
+    <div *ngIf="reintentar2" class="alert alert-success" role="alert">
+        <Strong>{{mensaje}}</Strong>
+    </div>
   
 
 
@@ -32,9 +39,7 @@ NUEVA ACTIVIDAD</button>
                 </tbody>
             </ng-template>
     </table>
-    <div *ngIf="reintentar" class="alert alert-danger" role="alert">
-        <Strong>{{mensaje}}</Strong>
-    </div>
+  
 
 </div>
 

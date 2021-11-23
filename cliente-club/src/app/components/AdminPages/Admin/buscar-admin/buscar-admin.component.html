@@ -18,6 +18,15 @@
         NUEVO ADMINISTRADOR
     </button>
 
+    <div *ngIf="reintentar" class="alert alert-danger" role="alert">
+        <Strong>{{mensaje}}</Strong>
+    </div>
+
+    
+    <div *ngIf="reintentar2" class="alert alert-success" role="alert">
+        <Strong>{{mensaje}}</Strong>
+    </div>
+
     <table id="tableprincipal" class="table table-success table-hover">
         <thead >
             <th id="thprincipal">Numero</th>

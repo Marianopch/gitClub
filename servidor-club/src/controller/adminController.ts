@@ -51,11 +51,11 @@ class AdminController {
 		if (!busqueda) {
 			const result = await adminModel.crear(usuario);
 			//req.flash('info', 'Socio creado correctamente');
-			return res.status(200).json({ message: 'User saved!!' });
+			return res.status(200).json({ message: 'EL USUARIO FUE CREADO CORRECTAMENTE' });
 			//res.render("adminPage/avisosAdmin", { fin: true });
 		}
 
-		return res.status(403).json({ message: 'User exists!!' });
+		return res.status(403).json({ message: 'EL NUMERO DE USUARIO O DNI DE USUARIO YA EXISTE' });
 	}
 
 	public async eliminar(req: Request, res: Response) {
@@ -69,6 +69,8 @@ class AdminController {
 		
 		
 	}
+
+	
 
 	public async eliminarInstructor(req: Request, res: Response) {
 		console.log(req.body);

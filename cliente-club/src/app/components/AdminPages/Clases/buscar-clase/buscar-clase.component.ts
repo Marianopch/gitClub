@@ -42,6 +42,7 @@ export class BuscarClaseComponent implements OnInit {
   diaSelect = { Id_dias: "", Nombre_dias: "", checked: false };
 
   reintentar: boolean = false;
+  reintentar2:boolean=false;
   mensaje: string = "";
 
 
@@ -170,14 +171,17 @@ export class BuscarClaseComponent implements OnInit {
     this.usuariosService.eliminarClase(id).subscribe(
       res => {
         let result: any = res;
-        console.log(result.message);
+        this.mensaje=result.message;
         this.ngOnInit();
+        this.reintentar2=true;
+        this.reintentar=false;
         // this.router.navigate(['admin/home']);
 
       },
       err => {
         console.log(err.error.message);
         this.reintentar = true;
+        this.reintentar2=false;
         this.mensaje = err.error.message;
       }
     )

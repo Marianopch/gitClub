@@ -23,6 +23,8 @@ export class BuscarAdminComponent implements OnInit {
 
 
   reintentar: boolean = false;
+  reintentar2:boolean=false;
+
   mensaje: string = "";
   usuariosfilter: any = [];
   estados: any = [];
@@ -69,12 +71,15 @@ export class BuscarAdminComponent implements OnInit {
     console.log(this.usuarios)
     this.usuariosService.eliminarAdmin(Numero_Usuario).subscribe(
       response => {
+        let res:any= response;
+        this.mensaje=res.message;
         console.log(response);
-        this.router.navigate(['admin/home']);
+        this.ngOnInit();
+        this.reintentar2=true
       },
       error => {
         console.log(error);
-        this.router.navigate(['admin/agregarAdmin']);
+        this.ngOnInit() ;     
       });
   }
 
@@ -98,15 +103,18 @@ export class BuscarAdminComponent implements OnInit {
     this.usuariosService.registrar(this.user).subscribe(
       res => {
         let result: any = res;
-        console.log(result.message);
-        this.router.navigate(['admin/buscarAdmin']);
+        this.mensaje= result.message;
+        
         this.resetModal();
         this.ngOnInit();
+        this.reintentar2=true;
+        this.reintentar=false;
 
       },
       err => {
         console.log(err.error.message);
         this.reintentar = true;
+        this.reintentar2=false;
         this.mensaje = err.error.message;
       }
 

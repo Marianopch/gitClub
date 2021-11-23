@@ -14,8 +14,9 @@ export class BuscarActividadComponent implements OnInit {
   act = { id: "", descripcion: "" };
 
   reintentar: boolean = false;
+
   mensaje: string = "";
-  reintentar2: boolean= false;
+  reintentar2: boolean = false;
   mensaje2: string = "";
 
   constructor(private usuariosService: UsuariosService, private router: Router) { }
@@ -36,12 +37,19 @@ export class BuscarActividadComponent implements OnInit {
     this.usuariosService.eliminarActividad(id).subscribe(
       response => {
         console.log(response);
+        let respuesta: any = response;
+        this.mensaje = respuesta.message;
         this.ngOnInit();
+        this.reintentar = false;
+        this.reintentar2 = true;
+
       },
       error => {
         console.log(error.error.message);
-         this.reintentar = true;
-         this.mensaje = error.error.message;
+        this.reintentar2 = false;
+        this.reintentar = true;
+
+        this.mensaje = error.error.message;
       });
   }
 
@@ -58,26 +66,26 @@ export class BuscarActividadComponent implements OnInit {
   }
 
   //Agregar actividad
-  registrar(){
-		
+  registrar() {
+
     console.log(this.act)
-    
+
     this.usuariosService.guardarActividad(this.act).subscribe(
       res => {
-        let result:any=res;
+        let result: any = res;
         this.ngOnInit();
         this.resetModal();
         this.recargarForm();
-        
+
       },
       err => {
         console.log(err.error.message);
-        this.reintentar2 = true;
+
         this.mensaje = err.error.message;
         this.resetModal();
       }
     )
-	}
+  }
 
   recargarForm() {
     this.reintentar = false;
