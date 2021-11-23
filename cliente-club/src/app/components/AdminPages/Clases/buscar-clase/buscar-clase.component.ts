@@ -155,8 +155,8 @@ export class BuscarClaseComponent implements OnInit {
       res => {
         let result: any = res;
         console.log(result.message);
-        this.ngOnInit();
-        // this.router.navigate(['admin/home']);
+        //this.ngOnInit();
+        this.router.navigate(['admin/home']);
 
       },
       err => {
