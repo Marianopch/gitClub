@@ -1,8 +1,17 @@
 button#butAgr {
-    width: 100%;
+   
     margin-bottom: 1%;
-    margin-top: 1%;
-}
+    border-radius: 10px;
+   margin-top: 2%;
+ 
+    font-weight: bold;  border-color: green;  width: 30%; margin-left: 35%;
+ 
+ }
+ 
+ button#butAgr:hover{
+    background-color: limegreen;
+ }
+ 
 
 button#butMod {
     width: 100%;

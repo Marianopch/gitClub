@@ -75,7 +75,7 @@ class AdminController {
             console.log("BD: ", busqueda);
             if (busqueda === 0) {
                 const result = yield adminModel_1.default.eliminar(Numero_Usuario);
-                return res.status(200).json({ message: 'Instructor ELIMINADA!' });
+                return res.status(200).json({ message: 'Instructor ELIMINADO!' });
             }
             else {
                 return res.status(403).json({ message: 'NO SE PUDO ELIMINAR. Primero se debe eliminar las clases a las que esta el Instructor ASIGNADO!' });

@@ -25,6 +25,7 @@ export class BuscarInstructorComponent implements OnInit {
   closeAddExpenseModal!: ElementRef;
 
   reintentar: boolean = false;
+  reintentar2: boolean = false;
   mensaje: string = "";
   usuariosfilter: any = [];
   userfilter = { Numero_Usuario: "", Nombre_Usuario: "", Apellido_Usuario: "", DNI_Usuario: "", Mail_Usuario: "", Telefono_Usuario: "", Direccion_Usuario: "", Password_Usuario: "", Id_Rol: "2", Id_Estado: "" };
@@ -85,14 +86,18 @@ export class BuscarInstructorComponent implements OnInit {
     console.log(this.usuarios)
     this.usuariosService.eliminarInstructor(Numero_Usuario).subscribe(
       response => {
+        let resul:any= response;
+        this.mensaje= resul.message;
         console.log(response);
         this.ngOnInit();
         this.reintentar=false;
+        this.reintentar2=true;
       },
       error => {
         this.mensaje= error.error.message;
         console.log(error, this.mensaje);
         this.reintentar=true;
+        this.reintentar2=false;
         
       });
   }

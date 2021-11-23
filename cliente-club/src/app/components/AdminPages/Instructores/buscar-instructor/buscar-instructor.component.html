@@ -19,8 +19,12 @@
         {{mensaje}}
     </div> 
 
-    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" id="butAgr">
-        Nuevo Instructor
+    <div *ngIf="reintentar2" class="alert alert-success" role="alert">
+        {{mensaje}}
+    </div> 
+
+    <button type="button" class="btn btn-light" data-bs-toggle="modal"  data-bs-target="#exampleModal" id="butAgr">
+        NUEVO INSTRUCTOR
     </button>
 
     <table id="tableprincipal" class="table table-success table-hover">

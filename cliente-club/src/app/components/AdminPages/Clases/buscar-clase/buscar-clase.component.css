@@ -28,9 +28,26 @@ label.custom-control-label {
     width: 25%;
 }
 
+button#butAgr {
+   
+    margin-bottom: 1%;
+    border-radius: 10px;
+   
+ 
+    font-weight: bold;  border-color: green;  width: 30%; margin-left: 35%;
+    margin-bottom: 1%;
+    margin-top: 2%;
+ 
+ }
+ 
+ button#butAgr:hover{
+    background-color: limegreen;
+ }
+ 
+
 button{
     width: 100%;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
 }
 
 div.container{

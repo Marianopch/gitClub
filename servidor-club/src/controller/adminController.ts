@@ -80,7 +80,7 @@ class AdminController {
 
 			const result = await adminModel.eliminar(Numero_Usuario);
 
-			return res.status(200).json({ message: 'Instructor ELIMINADA!' });
+			return res.status(200).json({ message: 'Instructor ELIMINADO!' });
 			
 		} else {
 			

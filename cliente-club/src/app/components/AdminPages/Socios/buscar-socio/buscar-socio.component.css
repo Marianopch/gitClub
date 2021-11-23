@@ -29,9 +29,19 @@ label.custom-control-label {
 }
 
 button#butAgr {
-    width: 100%;
+   
     margin-bottom: 1%;
-}
+    border-radius: 10px;
+   
+ 
+    font-weight: bold;  border-color: green;  width: 30%; margin-left: 35%;
+ 
+ }
+ 
+ button#butAgr:hover{
+    background-color: limegreen;
+ }
+ 
 
 div#divForm {
     margin-top: 1%;

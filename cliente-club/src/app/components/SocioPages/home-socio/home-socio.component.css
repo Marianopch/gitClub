@@ -18,6 +18,13 @@ p.blanco{
     font-weight: bold;
    
 }
+p.blancoMed{
+    font-size: 24px;
+    color: whitesmoke ;
+    font-family: sans-serif;
+    font-weight: bold;
+   
+}
 p.negro{
     font-size: 18px;
     color: black ;
