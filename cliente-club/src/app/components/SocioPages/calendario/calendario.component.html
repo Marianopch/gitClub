@@ -17,14 +17,16 @@
           <label class="titulo">Actividad:</label>
         </div>
         <div  class="box-cell box2">
-          <select class="form-control" name="actividad" [(ngModel)]="desc_clase.Descripcion_Actividad">
+          <select class="form-control" name="actividad" [(ngModel)]="desc_clase.Descripcion_Actividad"
+          style="  border-color: green;
+          border-width: 2px;">
             <option *ngFor=" let claseTotal of clasesTotales" [value]="claseTotal.Descripcion_Actividad">
               {{claseTotal.Descripcion_Actividad}}
             </option>
           </select>
         </div>
         <div  class="box-cell box3">
-          <button class="btn boton btn-success btn-block" (click)="BuscarClase()"> Buscar </button>
+          <button class="btn btn-light btn-block" (click)="BuscarClase()" id="butAgr"> Buscar </button>
         </div>
       </div>
     </div>
@@ -1999,7 +2001,7 @@
 
         <div  class="modal-footer">
           <button type="button" class="btn btn-secondary" id="btn-cerrar" data-bs-dismiss="modal" id="btncerrar"> Cerrar </button>
-          <button type="button" class="btn btn-primary" id="btn-cerrar" data-bs-dismiss="modal"
+          <button type="button" class="btn btn-primary insc" id="btn-cerrar" data-bs-dismiss="modal"
             (click)="inscribirse(infoClase.Id_Clase, infoClase.Comienzo_Horario)"> Inscribirme! </button>
         </div>
 

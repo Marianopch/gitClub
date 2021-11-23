@@ -350,7 +350,7 @@ padding: 1%;
 
 }
 
-button {
+button.insc {
   background-color: rgb(44, 94, 56);
   color: whitesmoke;
 }
@@ -364,3 +364,24 @@ button#btncerrar{
   text-align: center;
 } */
 
+label.titulo{
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+
+}
+
+button#butAgr {
+   
+  margin-bottom: 1%;
+  border-radius: 10px;
+ 
+
+  font-weight: bold;  border-color: green; 
+    
+
+}
+
+button#butAgr:hover{
+  background-color: limegreen;
+}
